@@ -9,7 +9,10 @@ async function createMentors() {
        bio TEXT,
        socials TEXT[],
        location TEXT,
-       photourl 
+       photourl TEXT,
+       tagline TEXT,
+       skills TEXT[],
+       relationships TEXT[],
         )`);
   console.log("Created mentors table: ", res);
 }
