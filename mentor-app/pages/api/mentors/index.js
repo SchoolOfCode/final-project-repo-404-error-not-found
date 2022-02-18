@@ -1,23 +1,29 @@
 import mentors from "../../../database/mock-data";
+import { getAllMentors } from "../../../models/mentors";
 
 export default async function (req, res) {
   const HTTPMethod = req.method;
 
   switch (HTTPMethod) {
     case "GET":
+      //call some imported function that handles logic/sql queries
+      const mentors = await getAllMentors();
       res.status(200).json(mentors);
       break;
     case "POST":
-      const newItem = {
-        id: id,
-        title: title,
-        author: author,
-      };
-      db.push(newItem);
-      res.status(200).json({ id: id, title: title, author: author });
+      //call some imported function that handles logic/sql queries
+      res.status(200).json({});
+      break;
+    case "PATCH":
+      //call some imported function that handles logic/sql queries
+      res.status(200).json(mentors);
+      break;
+    case "DELETE":
+      //call some imported function that handles logic/sql queries
+      res.status(200).json({});
       break;
     default:
-      res.setHeader("Allow", ["GET", "POST"]);
+      res.setHeader("Allow", ["GET", "POST", "PATCH", "DELETE"]);
       res.status(405).end(`Method ${HTTPMethod} not Allowed`);
   }
 }
