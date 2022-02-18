@@ -1,14 +1,25 @@
+import Link from "next/link";
 const Navbar = () => {
   return (
     <nav>
       <div className="logo">
         <h1>Mentor App</h1>
       </div>
-      <a>Home</a>
-      <a>About</a>
-      <a>Contact</a>
-      <a>Find a Mentor</a>
-      <a>Log In</a>
+      <Link href="/">
+        <a>Home</a>
+      </Link>
+      <Link href="/about">
+        <a>About</a>
+      </Link>
+      <Link href="/contact">
+        <a>Contact</a>
+      </Link>
+      <Link href="/allMentors">
+        <a>Find a Mentor</a>
+      </Link>
+      <Link href="/login">
+        <a>Log In</a>
+      </Link>
     </nav>
   );
 };
