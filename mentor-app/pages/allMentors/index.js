@@ -12,12 +12,15 @@ const allMentors = ({ mentors }) => {
     <div>
       <h1>Mentors</h1>
       {mentors.map((mentor) => {
-        const { bio } = mentor;
+        console.log({ mentors });
+        const { bio, firstName, email, socials } = mentor;
         return (
           <div key={mentor.id}>
             <a>
-              <h3>{mentor.firstName}</h3>
-              {/* <p>{bio.firstParagraph}</p> */}
+              <h3>{firstName}</h3>
+              <p>{email}</p>
+              <p>{bio}</p>
+              {/* <p>{[0].socials[0]}</p> */}
             </a>
           </div>
         );
