@@ -2,11 +2,14 @@
   "name": "mentor-app",
   "version": "0.1.0",
   "private": true,
+
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "createDB": "node database/scripts/createMentorsTable.js",
+    "populateDB": "node database/scripts/populateMentorsTable.js"
   },
   "dependencies": {
     "next": "12.1.0",

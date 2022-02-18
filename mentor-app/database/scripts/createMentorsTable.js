@@ -1,4 +1,4 @@
-import query from "../index";
+import query from '../index.js'
 
 async function createMentors() {
   let res = await query(`CREATE TABLE IF NOT EXISTS mentors (
@@ -7,14 +7,14 @@ async function createMentors() {
        surname TEXT,
        email TEXT,
        bio TEXT,
-       socials TEXT[],
+       socials jsonb,
        location TEXT,
        photourl TEXT,
        tagline TEXT,
        skills TEXT[],
-       relationships TEXT[],
-        )`);
-  console.log("Created mentors table: ", res);
+       relationships jsonb
+        );`)
+  console.log('Created mentors table: ', res)
 }
 
-createMentors();
+createMentors()
