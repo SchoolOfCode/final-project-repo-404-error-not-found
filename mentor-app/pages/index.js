@@ -6,9 +6,7 @@ import { Footer } from "../components/footer.js";
 export default function Home() {
   return (
     <div>
-      <Navbar />
       <h1>Homepage</h1>
-      <Footer />
     </div>
   );
 }
