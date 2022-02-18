@@ -1,7 +1,7 @@
 const d = new Date();
 let year = d.getFullYear();
 
-export function footer() {
+export function Footer() {
   return (
     <footer>
       <p>{year}</p>
