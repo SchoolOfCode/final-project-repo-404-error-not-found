@@ -13,7 +13,8 @@ const mentors = [
     relationships: {},
   },
   {
-    firstName: "Sally",
+
+    firstname: "Sally",
     surname: "Davies",
     email: "sally@hotmail.com",
     bio: "Sally plays darts.",
@@ -24,7 +25,6 @@ const mentors = [
     skills: ["javascript", "postgres", "database"],
     relationships: {},
   },
-  {},
 ];
 
 export default mentors;

@@ -1,4 +1,5 @@
 export const getStaticProps = async () => {
+
   const res = await fetch("http://localhost:3000/api/mentors");
   const data = await res.json();
 
@@ -10,6 +11,7 @@ export const getStaticProps = async () => {
 const allMentors = ({ mentors }) => {
   return (
     <div>
+
       <h1>Mentors</h1>
       {mentors.map((mentor) => {
         console.log({ mentors });
@@ -23,6 +25,7 @@ const allMentors = ({ mentors }) => {
               {/* <p>{[0].socials[0]}</p> */}
             </a>
           </div>
+
         );
       })}
     </div>
