@@ -1,7 +1,7 @@
 const dbconfig = {
-  uri: process.env.DB_URI,
-};
+  uri: process.env.NEXT_PUBLIC_DB_URI,
+}
 
-console.log(dbconfig);
+console.log(dbconfig)
 
-export default dbconfig;
+export default dbconfig
