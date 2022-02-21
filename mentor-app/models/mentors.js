@@ -4,8 +4,14 @@ import query from '../database/index.js'
 
 //get all users
 export async function getAllMentors() {
-  let getUsers = await query('SELECT * FROM mentors;') //id??
+  let getUsers = await query('SELECT * FROM mentors;')
   return getUsers.rows
+}
+
+//get an mentor
+export async function getMentor(id) {
+  let getMentor = await query('SELECT * FROM mentors WHERE userid = $1;', [id])
+  return getMentor.rows
 }
 
 export async function createMentor(mentor) {
@@ -42,7 +48,6 @@ export async function createMentor(mentor) {
 
 //delete mentor
 export async function deleteMentor(id) {
-  console.log('called in mentors')
   let deletedMentor = await query('DELETE FROM mentors WHERE userid = $1;', [
     id,
   ])
