@@ -12,10 +12,10 @@ const allMentors = ({ mentors }) => {
     <div>
       <h1>Mentors</h1>
       {mentors.map((mentor) => {
-        console.log({ mentors });
-        const { bio, firstname, email, socials, photourl, location } = mentor;
+        const { bio, firstname, email, socials, photourl, location, userid } =
+          mentor;
         return (
-          <div key={mentor.id}>
+          <div key={userid}>
             <a>
               <h3>{firstname}</h3>
               <h4>{location}</h4>
