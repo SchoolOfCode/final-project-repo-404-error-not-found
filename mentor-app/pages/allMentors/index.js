@@ -22,7 +22,7 @@ const allMentors = ({ mentors }) => {
               <p>{email}</p>
               <p>{bio}</p>
               <p>
-                {socials.name}: {socials.userName}
+                {socials.name} {socials.userName}
               </p>
               <img
                 src={photourl}
