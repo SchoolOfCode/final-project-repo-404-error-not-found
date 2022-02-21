@@ -1,4 +1,4 @@
-.container {
+/* .container {
   padding: 0 2rem;
 }
 
@@ -113,4 +113,26 @@
     width: 100%;
     flex-direction: column;
   }
+} */
+
+.title {
+  color: #333;
+  padding-bottom: 20px;
+  text-align: center;
+}
+.text {
+  color: #777;
+}
+.btn {
+  display: flex;
+  width: 150px;
+  padding: 14px 40px;
+  margin: auto;
+  background: #4979ff;
+  border-radius: 45px;
+  color: white;
+  text-align: center;
+}
+
+.homeButtons {
 }
