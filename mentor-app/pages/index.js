@@ -11,10 +11,10 @@ export default function Home() {
     <div>
       <h1 className={styles.title}>Homepage</h1>
       <h2 className={styles.title}> Join as a...</h2>
-      <div className={styles.btn}>
-        <button>Mentee</button>
-        <button>Mentor</button>
-      </div>
+      {/* <div className={styles.homeButtons}> */}
+      <button className={styles.btn}>Mentee</button>
+      <button className={styles.btn}>Mentor</button>
+      {/* </div> */}
     </div>
   );
 }
