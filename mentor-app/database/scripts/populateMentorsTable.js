@@ -1,5 +1,5 @@
-import mentors from "../mock-data.js";
-import query from "../index.js";
+import query from '../index.js'
+import mentors from '../mock-data.js'
 
 async function populateMentorsTable() {
   for (let i = 0; i < mentors.length; i++) {
@@ -14,10 +14,10 @@ async function populateMentorsTable() {
       tagline,
       skills,
       relationships,
-    } = mentors[i];
-
+    } = mentors[i]
+    console.log(mentors[i])
     const res = await query(
-      "INSERT INTO mentors ( firstname, surname,email,bio,socials, location,photourl, tagline,skills,relationships) VALUES ($1, $2, $3,$4, $5, $6,$7,$8,$9,$10)",
+      'INSERT INTO mentors ( firstname, surname,email,bio,socials, location,photourl, tagline,skills,relationships) VALUES ($1, $2, $3,$4, $5, $6,$7,$8,$9,$10)',
       [
         firstname,
         surname,
@@ -30,7 +30,7 @@ async function populateMentorsTable() {
         skills,
         relationships,
       ]
-    );
+    )
   }
 }
-populateMentorsTable();
+populateMentorsTable()
