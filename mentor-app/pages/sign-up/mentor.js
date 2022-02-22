@@ -99,7 +99,10 @@ function Mentor() {
               onChange={(e) => setProfileTagLine(e.target.value)}
               required
             />
-            (<Checkbox onChange={onChange}>Checkbox</Checkbox>)
+            <Checkbox onChange={onChange}>Frontend</Checkbox>
+            <Checkbox onChange={onChange}>Fullstack</Checkbox>
+            <Checkbox onChange={onChange}>Backend</Checkbox>
+            <Checkbox onChange={onChange}>UX/UI</Checkbox>
 
             <label htmlFor="technology">Technology I like to use</label>
             <input
