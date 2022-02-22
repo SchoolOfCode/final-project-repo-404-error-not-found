@@ -21,9 +21,9 @@ const allMentors = ({ mentors }) => {
               <h4>{location}</h4>
               <p>{email}</p>
               <p>{bio}</p>
-              <p>
+              {/* <p>
                 {socials.name} {socials.userName}
-              </p>
+              </p> */}
               <img
                 src={photourl}
                 style={{ width: 100, height: 100, borderRadius: "50%" }}

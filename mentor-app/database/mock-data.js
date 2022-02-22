@@ -4,10 +4,7 @@ const mentors = [
     surname: "Jones",
     email: "fred@fredjpnes.com",
     bio: "Fred was born a long time ago.",
-    socials: [
-      { name: "Github", userName: "fred@github" },
-      { name: "Twitter", userName: "@fred" },
-    ],
+    socials: [{ name: "Github", userName: "fred@github" }],
     location: "London",
     photourl:
       "https://d3vlf99qeg6bpx.cloudfront.net/content/uploads/2021/10/14174415/manchester-united-midfielder-fred-2021.jpg",
