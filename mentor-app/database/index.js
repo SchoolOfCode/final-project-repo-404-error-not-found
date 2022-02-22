@@ -1,5 +1,5 @@
 import pg from "pg";
-import dbconfig from "../config.js";
+import dbconfig from "./config.js";
 
 const pool = new pg.Pool({
   connectionString: dbconfig.uri,

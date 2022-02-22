@@ -7,11 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "createDB": "node database/scripts/createMentorsTable.js",
-    "populateDB": "node database/scripts/populateMentorsTable.js",
+    "createDB": "node -r dotenv/config database/scripts/createMentorsTable.js",
+    "populateDB": "node -r dotenv/config database/scripts/populateMentorsTable.js",
     "test": "jest"
   },
   "dependencies": {
+    "dotenv": "^16.0.0",
     "next": "12.1.0",
     "pg": "^8.7.3",
     "react": "17.0.2",
