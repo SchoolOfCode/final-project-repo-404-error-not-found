@@ -1,26 +1,40 @@
+import Link from "next/link";
+// const Mentor = () => {
+//   return (
+
+//   );
+// };
+// export default Mentor;
+
 import React from "react";
-// import { Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { Checkbox } from "antd";
 const url = process.env.REACT_APP_BACKEND_URL;
 function Mentor() {
   const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-  const [confirmEmail, setConfirmEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [company, setCompany] = useState("");
+  const [biography, setBiography] = useState("");
+  const [profileTagLine, setProfileTagLine] = useState("");
+  const [technology, setTechnology] = useState("");
+  const [socialMedia, setSocialMedia] = useState("");
+  function onChange(e) {
+    console.log(`checked = ${e.target.checked}`);
+  }
 
   //   const navigate = useNavigate();
   const submitForm = async (e) => {
     e.preventDefault();
     const body = {
       firstname,
-      lastname,
       email,
-      confirmEmail,
-      password,
-      confirmPassword,
+      jobTitle,
+      company,
+      biography,
+      profileTagLine,
+      technology,
+      socialMedia,
     };
     const response = await fetch("http://localhost:3000/api/mentors", {
       method: "POST",
@@ -41,54 +55,69 @@ function Mentor() {
             <input
               id="first-name"
               type="text"
-              placeholder="First Name..."
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
-              required
-            />
-            <label htmlFor="last-name">Last Name</label>
-            <input
-              id="last-name"
-              type="text"
-              placeholder="Last Name..."
-              value={lastname}
-              onChange={(e) => setLastname(e.target.value)}
               required
             />
             <label htmlFor="email">Email</label>
             <input
               id="email"
               type="text"
-              placeholder="Email..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <label htmlFor="confirm-email">Confirm Email</label>
+            <label htmlFor="jobTitle">Job Title</label>
             <input
-              id="confirm-email"
+              id="jobTitle"
               type="text"
-              placeholder="confirm-email"
-              value={confirmEmail}
-              onChange={(e) => setConfirmEmail(e.target.value)}
+              value={jobTitle}
+              onChange={(e) => setJobTitle(e.target.value)}
               required
             />
-            <label htmlFor="password">Password</label>
+            <label htmlFor="company">Company</label>
             <input
-              id="password"
+              id="company"
               type="text"
-              placeholder="Password..."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
               required
             />
-            <label htmlFor="confirm-password">Confirm Password</label>
+            <label htmlFor="biography">Biography</label>
             <input
-              id="confirm-password"
+              id="biography"
               type="text"
-              placeholder="Confirm Password..."
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={biography}
+              onChange={(e) => setBiography(e.target.value)}
+              required
+            />
+            <label htmlFor="profileTagLine">Profile Tagline</label>
+            <input
+              id="profiletagline"
+              type="text"
+              value={profileTagLine}
+              onChange={(e) => setProfileTagLine(e.target.value)}
+              required
+            />
+            <Checkbox onChange={onChange}>Frontend</Checkbox>
+            <Checkbox onChange={onChange}>Fullstack</Checkbox>
+            <Checkbox onChange={onChange}>Backend</Checkbox>
+            <Checkbox onChange={onChange}>UX/UI</Checkbox>
+
+            <label htmlFor="technology">Technology I like to use</label>
+            <input
+              id="technology"
+              type="text"
+              value={technology}
+              onChange={(e) => setTechnology(e.target.value)}
+              required
+            />
+            <label htmlFor="socialMedia">Social Media</label>
+            <input
+              id="socialmedia"
+              type="text"
+              value={socialMedia}
+              onChange={(e) => setSocialMedia(e.target.value)}
               required
             />
 
