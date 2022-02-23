@@ -20,7 +20,7 @@ export async function createMentor(mentor) {
     firstname,
     surname,
     email,
-    bio,
+    biography,
     socials,
     location,
     photourl,
@@ -29,12 +29,12 @@ export async function createMentor(mentor) {
     relationships,
   } = mentor;
   const res = await query(
-    "INSERT INTO mentors ( firstname, surname,email,bio,socials, location,photourl, tagline,skills,relationships) VALUES ($1, $2, $3,$4, $5, $6,$7,$8,$9,$10)",
+    "INSERT INTO mentors ( firstname, surname,email,biography,socials, location,photourl, tagline,skills,relationships) VALUES ($1, $2, $3,$4, $5, $6,$7,$8,$9,$10)",
     [
       firstname,
       surname,
       email,
-      bio,
+      biography,
       socials,
       location,
       photourl,
