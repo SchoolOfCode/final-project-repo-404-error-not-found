@@ -20,14 +20,26 @@ function Mentor() {
   const [biography, setBiography] = useState("");
   const [profileTagLine, setProfileTagLine] = useState("");
   const [skills, setSkills] = useState([]);
-  const [socialMedia, setSocialMedia] = useState("");
+  const [socialMediaType, setSocialMediaType] = useState("");
+  const [socialMediaUserName, setSocialMediaUserName] = useState("");
+  const [socialMedia, setSocialMedia] = useState({});
 
   //log skills array whenever it changes
   useEffect(() => {
-    console.log(skills);
+    console.log("skills: ", skills);
   }, [skills]);
 
-  function onChange(e) {
+  //update social media object whenever the type or username changes
+  useEffect(() => {
+    setSocialMedia({ [socialMediaType]: socialMediaUserName });
+  }, [socialMediaType, socialMediaUserName]);
+
+  //log socialMedia object whenever it changes
+  useEffect(() => {
+    console.log(socialMedia);
+  }, [socialMedia]);
+
+  function updateSkills(e) {
     console.log(`${e.target.id} = ${e.target.checked}`);
     //add skill to skills array when box is checked
     if (e.target.checked) {
@@ -51,9 +63,9 @@ function Mentor() {
       company,
       biography,
       profileTagLine,
-      //skills array will neeed constructing
+      //skills array will neeed constructing --DONE
       skills,
-      //social media object will need constructing
+      //social media object will need constructing --DONE (for single social media entry)
       socialMedia,
     };
     //patch request to update mentor at id
@@ -129,34 +141,39 @@ function Mentor() {
             />
 
             <label htmlFor="skills">Skills</label>
-            <Checkbox id="frontend" onChange={onChange}>
+            <Checkbox id="frontend" onChange={updateSkills}>
               Frontend
             </Checkbox>
-            <Checkbox id="fullstack" onChange={onChange}>
+            <Checkbox id="fullstack" onChange={updateSkills}>
               Fullstack
             </Checkbox>
-            <Checkbox id="backend" onChange={onChange}>
+            <Checkbox id="backend" onChange={updateSkills}>
               Backend
             </Checkbox>
-            <Checkbox id="ux-ui" onChange={onChange}>
+            <Checkbox id="ux-ui" onChange={updateSkills}>
               UX/UI
             </Checkbox>
 
-            {/* <label htmlFor="technology">Technology I like to use</label>
-            <input
-              id="technology"
-              type="text"
-              value={technology}
-              onChange={(e) => setTechnology(e.target.value)}
-              required
-            /> */}
+            {/* break into two inputs - social media type, social media name/handle  */}
 
-            <label htmlFor="socialMedia">Social Media</label>
+            <label htmlFor="socialmediatype">Social Media Type</label>
+            <select
+              name="socialMediaType"
+              id="socialmediatype"
+              onChange={(e) => setSocialMediaType(e.target.value)}
+            >
+              <option value="">--Please choose an option--</option>
+              <option value="github">GitHub</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="twitter">Twitter</option>
+            </select>
+
+            <label htmlFor="socialmediausername">Social Media</label>
             <input
-              id="socialmedia"
+              id="socialmediausername"
               type="text"
-              value={socialMedia}
-              onChange={(e) => setSocialMedia(e.target.value)}
+              value={socialMediaUserName}
+              onChange={(e) => setSocialMediaUserName(e.target.value)}
               required
             />
 
