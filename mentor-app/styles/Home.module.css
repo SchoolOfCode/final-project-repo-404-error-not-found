@@ -123,16 +123,38 @@
 .text {
   color: #777;
 }
-.btn {
+.mentor_btn {
+  display: flex;
+  width: 150px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-right: 50px;
+  background: #4979ff;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  font-family: "Nunito";
+  font-weight: bolder;
+  justify-content: center;
+  font-size: large;
+}
+
+.mentee_btn {
   display: flex;
   width: 150px;
   padding: 14px 40px;
   margin: auto;
   background: #4979ff;
-  border-radius: 45px;
+  border-radius: 20px;
   color: white;
   text-align: center;
+  font-family: "Nunito";
+  font-weight: bolder;
+  justify-content: center;
+  font-size: large;
 }
 
-.homeButtons {
+.homeButtonWrap {
+  display: flex;
+  justify-content: center;
 }
