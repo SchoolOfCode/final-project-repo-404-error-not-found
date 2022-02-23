@@ -1,28 +1,25 @@
-import Link from "next/link";
+import Link from 'next/link'
+
 const Navbar = () => {
   return (
     <nav>
-
-      <div className="logo">
+      <div className='logo'>
         <h1>Mentor App</h1>
       </div>
-      <Link href="/">
+      <Link href='/'>
         <a>Home</a>
       </Link>
-      <Link href="/about">
+      <Link href='/about'>
         <a>About</a>
       </Link>
-      <Link href="/contact">
+      <Link href='/contact'>
         <a>Contact</a>
       </Link>
-      <Link href="/allMentors">
+      <Link href='/allMentors'>
         <a>Find a Mentor</a>
       </Link>
-      <Link href="/login">
-        <a>Log In</a>
-      </Link>
-
+      <button>Log out</button>
     </nav>
-  );
-};
-export default Navbar;
+  )
+}
+export default Navbar
