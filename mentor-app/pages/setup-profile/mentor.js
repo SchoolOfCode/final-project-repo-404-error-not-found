@@ -168,7 +168,7 @@ function Mentor() {
               <option value="twitter">Twitter</option>
             </select>
 
-            <label htmlFor="socialmediausername">Social Media</label>
+            <label htmlFor="socialmediausername">Social Media Handle</label>
             <input
               id="socialmediausername"
               type="text"
