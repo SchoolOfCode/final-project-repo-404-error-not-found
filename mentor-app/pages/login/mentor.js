@@ -1,10 +1,24 @@
+import Link from 'next/link'
+import React from 'react'
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import firebase from '../../firebase/clientApp'
+
+const uiConfig = {
+  // Redirect to / after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+  signInSuccessUrl: '/',
+  // GitHub as the only included Auth Provider.
+  // You could add and configure more here!
+  signInOptions: [firebase.auth.GithubAuthProvider.PROVIDER_ID],
+}
+
 const Login = () => {
   return (
     <div>
-      <h1>Login</h1>
-      <p>Login</p>
+      <h1>Mentoree Login</h1>
+      <p>Please sign-in:</p>
+      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
