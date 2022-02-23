@@ -2,8 +2,10 @@ const mentors = [
   {
     firstname: "Fred",
     surname: "Jones",
+    jobtitle: "UX.UI Designer",
+    company: "ASOS",
     email: "fred@fredjpnes.com",
-    bio: "Fred was born a long time ago.",
+    biography: "Fred was born a long time ago.",
     socials: { name: "Github", userName: "fred@github" },
     location: "London",
     photourl:
@@ -15,8 +17,10 @@ const mentors = [
   {
     firstname: "Sally",
     surname: "Davies",
+    jobtitle: "Chief Of Delivery",
+    company: "Argos",
     email: "sally@hotmail.com",
-    bio: "Sally plays darts.",
+    biography: "Sally plays darts.",
     socials: { name: "Github", userName: "sally@github" },
     location: "Edinburgh",
     photourl: "https://m.media-amazon.com/images/I/61h+zQna+tL._AC_SX425_.jpg",
