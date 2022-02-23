@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import firebase from "../firebase/clientApp";
+import firebase from "../../firebase/clientApp"
 
 // Configure FirebaseUI.
 const uiConfig = {

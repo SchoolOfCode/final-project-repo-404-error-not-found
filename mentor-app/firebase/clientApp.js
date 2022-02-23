@@ -1,18 +1,18 @@
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 const clientCredentials = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    apiKey: "AIzaSyDPuRlh4lUZE-e2qEG-GWflZblx56UNef0",
+    authDomain:"mentoree-1ab01.firebaseapp.com",
+    projectId:"mentoree-1ab01",
+    storageBucket:"mentoree-1ab01.appspot.com",
+    messagingSenderId: "35053699656",
+    appId:"1:35053699656:web:6c8b738652ff8c1ecf8e7d",
   };
 
   if (!firebase.apps.length) {
     firebase.initializeApp(clientCredentials);
   }
-
+console.log(clientCredentials)
   export default firebase;
