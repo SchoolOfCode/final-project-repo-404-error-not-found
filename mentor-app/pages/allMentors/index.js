@@ -12,18 +12,30 @@ const allMentors = ({ mentors }) => {
     <div>
       <h1>Mentors</h1>
       {mentors.map((mentor) => {
-        const { bio, firstname, email, socials, photourl, location, userid } =
-          mentor;
+        const {
+          biography,
+          firstname,
+          email,
+          socials,
+          photourl,
+          location,
+          userid,
+          skills,
+        } = mentor;
         return (
           <div key={userid}>
             <a>
               <h3>{firstname}</h3>
               <h4>{location}</h4>
               <p>{email}</p>
-              <p>{bio}</p>
-              {/* <p>
+              <p>{biography}</p>
+              <p>
                 {socials.name} {socials.userName}
-              </p> */}
+              </p>
+              {skills.map((skill, index) => (
+                <p key={index}>{skill}</p>
+              ))}
+
               <img
                 src={photourl}
                 style={{ width: 100, height: 100, borderRadius: "50%" }}

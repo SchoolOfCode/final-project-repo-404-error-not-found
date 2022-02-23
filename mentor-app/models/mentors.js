@@ -76,7 +76,6 @@ export async function updateMentor(id, objectToUpdate) {
       objectToUpdate[columnName],
       id,
     ]);
-    return editMentor;
   }
   const updatedMentor = await query(`SELECT * FROM mentors WHERE userid = $1`, [
     id,
