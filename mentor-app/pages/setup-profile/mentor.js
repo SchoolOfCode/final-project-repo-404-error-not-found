@@ -15,14 +15,15 @@ function Mentor() {
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
+  const [jobtitle, setJobtitle] = useState("");
   const [company, setCompany] = useState("");
+  const [location, setLocation] = useState("");
   const [biography, setBiography] = useState("");
-  const [profileTagLine, setProfileTagLine] = useState("");
+  const [tagline, setTagline] = useState("");
   const [skills, setSkills] = useState([]);
   const [socialMediaType, setSocialMediaType] = useState("");
   const [socialMediaUserName, setSocialMediaUserName] = useState("");
-  const [socialMedia, setSocialMedia] = useState({});
+  const [socials, setSocials] = useState({});
 
   //log skills array whenever it changes
   useEffect(() => {
@@ -31,13 +32,13 @@ function Mentor() {
 
   //update social media object whenever the type or username changes
   useEffect(() => {
-    setSocialMedia({ [socialMediaType]: socialMediaUserName });
+    setSocials({ [socialMediaType]: socialMediaUserName });
   }, [socialMediaType, socialMediaUserName]);
 
   //log socialMedia object whenever it changes
   useEffect(() => {
-    console.log(socialMedia);
-  }, [socialMedia]);
+    console.log(socials);
+  }, [socials]);
 
   function updateSkills(e) {
     console.log(`${e.target.id} = ${e.target.checked}`);
@@ -57,16 +58,17 @@ function Mentor() {
       firstname,
       surname,
       email,
-      //no job title in db yet
-      jobTitle,
-      // no company in db yet
+      //no job title in db yet --DONE
+      jobtitle,
+      // no company in db yet --DONE
       company,
+      location,
       biography,
-      profileTagLine,
+      tagline,
       //skills array will neeed constructing --DONE
       skills,
       //social media object will need constructing --DONE (for single social media entry)
-      socialMedia,
+      socials,
     };
     //patch request to update mentor at id
     const response = await fetch(`http://localhost:3000/api/mentors/${id}`, {
@@ -107,12 +109,12 @@ function Mentor() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <label htmlFor="jobTitle">Job Title</label>
+            <label htmlFor="jobtitle">Job Title</label>
             <input
-              id="jobTitle"
+              id="jobtitle"
               type="text"
-              value={jobTitle}
-              onChange={(e) => setJobTitle(e.target.value)}
+              value={jobtitle}
+              onChange={(e) => setJobtitle(e.target.value)}
               required
             />
             <label htmlFor="company">Company</label>
@@ -123,6 +125,16 @@ function Mentor() {
               onChange={(e) => setCompany(e.target.value)}
               required
             />
+
+            <label htmlFor="location">Location</label>
+            <input
+              id="location"
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              required
+            />
+
             <label htmlFor="biography">Biography</label>
             <input
               id="biography"
@@ -131,12 +143,12 @@ function Mentor() {
               onChange={(e) => setBiography(e.target.value)}
               required
             />
-            <label htmlFor="profileTagLine">Profile Tagline</label>
+            <label htmlFor="tagline">Profile Tagline</label>
             <input
-              id="profiletagline"
+              id="tagline"
               type="text"
-              value={profileTagLine}
-              onChange={(e) => setProfileTagLine(e.target.value)}
+              value={tagline}
+              onChange={(e) => setTagline(e.target.value)}
               required
             />
 
