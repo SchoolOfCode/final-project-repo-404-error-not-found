@@ -1,8 +1,14 @@
-// this will need the userid provided after creating a new record on signup:
-// const id = something (will need to be an integer, or convert to integer here)
+
+import Link from 'next/link'
+import firebase from '../../firebase/clientApp'
+import { useAuthState } from 'react-firebase-hooks/auth'
+// const Mentor = () => {
+//   return (
+
 
 //for test purposes
 const id = 2;
+
 
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -49,11 +55,12 @@ function Mentor() {
       //remove skill from skillls array when box is unchecked
       setSkills([...skills.filter((item) => item !== e.target.id)]);
     }
+
   }
 
   //   const navigate = useNavigate();
   const submitForm = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const body = {
       firstname,
       surname,
@@ -64,6 +71,7 @@ function Mentor() {
       company,
       location,
       biography,
+
       tagline,
       //skills array will neeed constructing --DONE
       skills,
@@ -73,10 +81,12 @@ function Mentor() {
     //patch request to update mentor at id
     const response = await fetch(`http://localhost:3000/api/mentors/${id}`, {
       method: "PATCH",
+
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
+
     });
     console.log(JSON.stringify(body));
   };
@@ -84,15 +94,17 @@ function Mentor() {
     <>
       <div className="UpdateMentorProfileForm-container">
         <div className="UpdateMentorProfileForm">
+
           <form onSubmit={submitForm}>
-            <label htmlFor="first-name">First Name</label>
+            <label htmlFor='first-name'>First Name</label>
             <input
-              id="first-name"
-              type="text"
+              id='first-name'
+              type='text'
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
               required
             />
+
             <label htmlFor="surname">Surname</label>
             <input
               id="surname"
@@ -102,29 +114,33 @@ function Mentor() {
               required
             />
             <label htmlFor="email">Email</label>
+            
             <input
-              id="email"
-              type="text"
+              id='email'
+              type='text'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+
             <label htmlFor="jobtitle">Job Title</label>
             <input
               id="jobtitle"
               type="text"
               value={jobtitle}
               onChange={(e) => setJobtitle(e.target.value)}
+
               required
             />
-            <label htmlFor="company">Company</label>
+            <label htmlFor='company'>Company</label>
             <input
-              id="company"
-              type="text"
+              id='company'
+              type='text'
               value={company}
               onChange={(e) => setCompany(e.target.value)}
               required
             />
+
 
             <label htmlFor="location">Location</label>
             <input
@@ -136,21 +152,25 @@ function Mentor() {
             />
 
             <label htmlFor="biography">Biography</label>
+
             <input
-              id="biography"
-              type="text"
+              id='biography'
+              type='text'
               value={biography}
               onChange={(e) => setBiography(e.target.value)}
               required
             />
+
             <label htmlFor="tagline">Profile Tagline</label>
             <input
               id="tagline"
               type="text"
               value={tagline}
               onChange={(e) => setTagline(e.target.value)}
+
               required
             />
+
 
             <label htmlFor="skills">Skills</label>
             <Checkbox id="frontend" onChange={updateSkills}>
@@ -186,18 +206,20 @@ function Mentor() {
               type="text"
               value={socialMediaUserName}
               onChange={(e) => setSocialMediaUserName(e.target.value)}
+
               required
             />
 
-            <button className="submit-btn" onClick={submitForm}>
+            <button className='submit-btn' onClick={submitForm}>
               Submit
             </button>
           </form>
         </div>
       </div>
     </>
-  );
+  )
 }
+
 export default Mentor;
 
 //
