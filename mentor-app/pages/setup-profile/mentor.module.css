@@ -71,3 +71,12 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
+
+.biography {
+  display: grid;
+}
+.biotext {
+  resize: none;
+  height: 100px;
+  width: 350px;
+}

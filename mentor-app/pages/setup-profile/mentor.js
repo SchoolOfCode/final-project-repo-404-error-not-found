@@ -1,14 +1,11 @@
-
-import Link from 'next/link'
-import firebase from '../../firebase/clientApp'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import Link from "next/link";
+import firebase from "../../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
 // const Mentor = () => {
 //   return (
 
-
 //for test purposes
 const id = 2;
-
 
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -56,12 +53,11 @@ function Mentor() {
       //remove skill from skillls array when box is unchecked
       setSkills([...skills.filter((item) => item !== e.target.id)]);
     }
-
   }
 
   //   const navigate = useNavigate();
   const submitForm = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const body = {
       firstname,
       surname,
@@ -84,16 +80,14 @@ function Mentor() {
       method: "PATCH",
 
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-
     });
     console.log(JSON.stringify(body));
   };
   return (
     <>
-
       <div className={css.UpdateMentorProfileFormContainer}>
         <h1>Setup your mentor profile</h1>
         <h2>Add or edit your information below</h2>
@@ -161,7 +155,11 @@ function Mentor() {
             </div>
             <div className={css.biography}>
               <label htmlFor="biography">Biography</label>
-              <input
+              <textarea
+                className={css.biotext}
+                maxLength={"500"}
+                rows="4"
+                cols="20"
                 id="biography"
                 type="text"
                 value={biography}
@@ -223,14 +221,13 @@ function Mentor() {
               />
             </div>
             <button className={css.submitButton} onClick={submitForm}>
-
               Submit
             </button>
           </form>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Mentor;
