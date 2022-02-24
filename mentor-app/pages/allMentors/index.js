@@ -51,4 +51,4 @@ const AllMentors = ({ mentors }) => {
   );
 };
 
-export default allMentors;
+export default AllMentors;
