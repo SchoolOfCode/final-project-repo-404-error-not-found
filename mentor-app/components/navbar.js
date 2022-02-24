@@ -9,12 +9,22 @@ const auth = getAuth()
 const Navbar = () => {
   const [user, loading, error] = useAuthState(firebase.auth())
   const [isLogIn, setLogIn] = useState(null) //state check if user is logged in
-  console.log('Loading:', loading, '|', 'Current user:', user) //delete later
+  console.log('Loading:', loading, '|', 'Current user:', user.uid) //delete later
   const router = useRouter()
 
   useEffect(() => {
     setLogIn(user)
   }, [user])
+
+  useEffect(() => {
+    const data = {user_id: user.uid}
+  async function sendId () {
+    const res = await fetch ("http://localhost:3000/api/mentors", {
+      method: "POST", headers: {'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": '',}, body: JSON.stringify(data)
+    })
+    const response = await res.json()
+  }}, [user])
 
   function handleLogout() {
     signOut(auth)
