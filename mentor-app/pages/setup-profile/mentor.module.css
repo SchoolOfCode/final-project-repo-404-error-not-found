@@ -1,0 +1,60 @@
+.UpdateMentorProfileFormContainer {
+  text-align: center;
+}
+
+.UpdateMentorProfileForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 3px solid black;
+  text-align: left;
+  padding: 1em;
+}
+
+.UpdateMentorProfileForm .firstname,
+.UpdateMentorProfileForm .surname,
+.UpdateMentorProfileForm .email,
+.UpdateMentorProfileForm .jobtitle,
+.UpdateMentorProfileForm .company,
+.UpdateMentorProfileForm .location {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.UpdateMentorProfileForm .biography,
+.UpdateMentorProfileForm .tagline,
+.UpdateMentorProfileForm .skills,
+.UpdateMentorProfileForm .socials {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.UpdateMentorProfileForm .biography {
+  grid-row-start: 1;
+}
+.UpdateMentorProfileForm .tagline {
+  grid-row-start: 3;
+}
+.UpdateMentorProfileForm .skills {
+  grid-row-start: 4;
+  grid-row-end: 6;
+}
+
+.UpdateMentorProfileForm .socials {
+  grid-row-start: 7;
+  grid-row-end: 8;
+}
+
+.UpdateMentorProfileForm input {
+  display: block;
+  border-radius: 20px;
+  margin: 0 0em 1em;
+  width: 20em;
+}
+
+.dropdown {
+  margin-left: 1em;
+}
+
+.submit-btn {
+  grid-row-start: -1;
+}
