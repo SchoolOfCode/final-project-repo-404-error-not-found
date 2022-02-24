@@ -26,7 +26,9 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className={styles.title}>Homepage</h1>
+      <h1 className={styles.title}>
+        Bringing the joy of programming to everyone, everywhere
+      </h1>
       <h2 className={styles.title}> Join as a...</h2>
       {/* <div className={styles.homeButtons}> */}
       <div className={styles.homeButtonWrap}>
@@ -48,8 +50,9 @@ export default function Home() {
       <div className={styles.about}>
         <Link href="/#about">
           <h1>About</h1>
+          <h3></h3>
         </Link>{" "}
-        y <h3>How does it work?</h3>
+        <h3>How does it work?</h3>
         <h3>What are the benefits of mentorship?</h3>
       </div>
       <div className={styles.contact}>
