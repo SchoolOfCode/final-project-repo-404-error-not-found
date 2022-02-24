@@ -211,7 +211,7 @@ function Mentor() {
                 required
               />
             </div>
-            <button className="submit-btn" onClick={submitForm}>
+            <button className={css.submitButton} onClick={submitForm}>
               Submit
             </button>
           </form>

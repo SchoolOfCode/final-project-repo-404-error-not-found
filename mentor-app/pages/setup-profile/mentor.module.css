@@ -44,7 +44,7 @@
   grid-row-end: 8;
 }
 
-.UpdateMentorProfileForm input {
+.UpdateMentorProfileForm input[type="text"] {
   display: block;
   border-radius: 20px;
   margin: 0 0em 1em;
@@ -55,6 +55,19 @@
   margin-left: 1em;
 }
 
-.submit-btn {
-  grid-row-start: -1;
+.submitButton {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 50%;
+  background-color: green;
+  color: white;
+  margin: 2em auto;
+  border-radius: 20px;
+  padding: 1em;
+}
+
+.checkboxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
