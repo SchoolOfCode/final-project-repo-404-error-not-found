@@ -1,4 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link'
+import firebase from '../../firebase/clientApp'
+import { useAuthState } from 'react-firebase-hooks/auth'
 // const Mentor = () => {
 //   return (
 
@@ -6,26 +8,28 @@ import Link from "next/link";
 // };
 // export default Mentor;
 
-import React from "react";
-import { useState } from "react";
-import { Checkbox } from "antd";
-const url = process.env.REACT_APP_BACKEND_URL;
+import React from 'react'
+import { useState } from 'react'
+import { Checkbox } from 'antd'
+const url = process.env.REACT_APP_BACKEND_URL
 function Mentor() {
-  const [firstname, setFirstname] = useState("");
-  const [email, setEmail] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [company, setCompany] = useState("");
-  const [biography, setBiography] = useState("");
-  const [profileTagLine, setProfileTagLine] = useState("");
-  const [technology, setTechnology] = useState("");
-  const [socialMedia, setSocialMedia] = useState("");
+  const [user, loading, error] = useAuthState(firebase.auth())
+  console.log('Loading:', loading, '|', 'Current user:', user) //delete later
+  const [firstname, setFirstname] = useState('')
+  const [email, setEmail] = useState('')
+  const [jobTitle, setJobTitle] = useState('')
+  const [company, setCompany] = useState('')
+  const [biography, setBiography] = useState('')
+  const [profileTagLine, setProfileTagLine] = useState('')
+  const [technology, setTechnology] = useState('')
+  const [socialMedia, setSocialMedia] = useState('')
   function onChange(e) {
-    console.log(`checked = ${e.target.checked}`);
+    console.log(`checked = ${e.target.checked}`)
   }
 
   //   const navigate = useNavigate();
   const submitForm = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const body = {
       firstname,
       email,
@@ -35,66 +39,66 @@ function Mentor() {
       profileTagLine,
       technology,
       socialMedia,
-    };
-    const response = await fetch("http://localhost:3000/api/mentors", {
-      method: "POST",
+    }
+    const response = await fetch('http://localhost:3000/api/mentors', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
-    });
+    })
     // navigate("/dashboard/mentor", { replace: true });
-    console.log(response);
-  };
+    console.log(response)
+  }
   return (
     <>
-      <div className="NewUserForm-container">
-        <div className="NewUserForm">
+      <div className='NewUserForm-container'>
+        <div className='NewUserForm'>
           <form onSubmit={submitForm}>
-            <label htmlFor="first-name">First Name</label>
+            <label htmlFor='first-name'>First Name</label>
             <input
-              id="first-name"
-              type="text"
+              id='first-name'
+              type='text'
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
               required
             />
-            <label htmlFor="email">Email</label>
+            <label htmlFor='email'>Email</label>
             <input
-              id="email"
-              type="text"
+              id='email'
+              type='text'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <label htmlFor="jobTitle">Job Title</label>
+            <label htmlFor='jobTitle'>Job Title</label>
             <input
-              id="jobTitle"
-              type="text"
+              id='jobTitle'
+              type='text'
               value={jobTitle}
               onChange={(e) => setJobTitle(e.target.value)}
               required
             />
-            <label htmlFor="company">Company</label>
+            <label htmlFor='company'>Company</label>
             <input
-              id="company"
-              type="text"
+              id='company'
+              type='text'
               value={company}
               onChange={(e) => setCompany(e.target.value)}
               required
             />
-            <label htmlFor="biography">Biography</label>
+            <label htmlFor='biography'>Biography</label>
             <input
-              id="biography"
-              type="text"
+              id='biography'
+              type='text'
               value={biography}
               onChange={(e) => setBiography(e.target.value)}
               required
             />
-            <label htmlFor="profileTagLine">Profile Tagline</label>
+            <label htmlFor='profileTagLine'>Profile Tagline</label>
             <input
-              id="profiletagline"
-              type="text"
+              id='profiletagline'
+              type='text'
               value={profileTagLine}
               onChange={(e) => setProfileTagLine(e.target.value)}
               required
@@ -104,30 +108,30 @@ function Mentor() {
             <Checkbox onChange={onChange}>Backend</Checkbox>
             <Checkbox onChange={onChange}>UX/UI</Checkbox>
 
-            <label htmlFor="technology">Technology I like to use</label>
+            <label htmlFor='technology'>Technology I like to use</label>
             <input
-              id="technology"
-              type="text"
+              id='technology'
+              type='text'
               value={technology}
               onChange={(e) => setTechnology(e.target.value)}
               required
             />
-            <label htmlFor="socialMedia">Social Media</label>
+            <label htmlFor='socialMedia'>Social Media</label>
             <input
-              id="socialmedia"
-              type="text"
+              id='socialmedia'
+              type='text'
               value={socialMedia}
               onChange={(e) => setSocialMedia(e.target.value)}
               required
             />
 
-            <button className="submit-btn" onClick={submitForm}>
+            <button className='submit-btn' onClick={submitForm}>
               Submit
             </button>
           </form>
         </div>
       </div>
     </>
-  );
+  )
 }
-export default Mentor;
+export default Mentor
