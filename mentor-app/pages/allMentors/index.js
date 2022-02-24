@@ -9,7 +9,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const allMentors = ({ mentors }) => {
+const AllMentors = ({ mentors }) => {
   return (
     <div>
       <h1>Mentors</h1>

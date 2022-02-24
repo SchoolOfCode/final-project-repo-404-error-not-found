@@ -1,8 +1,14 @@
-// this will need the userid provided after creating a new record on signup:
-// const id = something (will need to be an integer, or convert to integer here)
+
+import Link from 'next/link'
+import firebase from '../../firebase/clientApp'
+import { useAuthState } from 'react-firebase-hooks/auth'
+// const Mentor = () => {
+//   return (
+
 
 //for test purposes
 const id = 2;
+
 
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -50,11 +56,12 @@ function Mentor() {
       //remove skill from skillls array when box is unchecked
       setSkills([...skills.filter((item) => item !== e.target.id)]);
     }
+
   }
 
   //   const navigate = useNavigate();
   const submitForm = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const body = {
       firstname,
       surname,
@@ -65,6 +72,7 @@ function Mentor() {
       company,
       location,
       biography,
+
       tagline,
       //skills array will neeed constructing --DONE
       skills,
@@ -74,15 +82,18 @@ function Mentor() {
     //patch request to update mentor at id
     const response = await fetch(`http://localhost:3000/api/mentors/${id}`, {
       method: "PATCH",
+
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
+
     });
     console.log(JSON.stringify(body));
   };
   return (
     <>
+
       <div className={css.UpdateMentorProfileFormContainer}>
         <h1>Setup your mentor profile</h1>
         <h2>Add or edit your information below</h2>
@@ -212,14 +223,16 @@ function Mentor() {
               />
             </div>
             <button className={css.submitButton} onClick={submitForm}>
+
               Submit
             </button>
           </form>
         </div>
       </div>
     </>
-  );
+  )
 }
+
 export default Mentor;
 
 //
