@@ -47,9 +47,9 @@ export default function Home() {
       <div className={styles.about}>
         <Link href="/#about">
           <h1>About</h1>
-          <h3>How does it work?</h3>
-          <h3>What are the benefits of mentorship?</h3>
-        </Link>
+        </Link>{" "}
+        y <h3>How does it work?</h3>
+        <h3>What are the benefits of mentorship?</h3>
       </div>
       <div className={styles.contact}>
         <Link href="/#contact">
