@@ -1,61 +1,65 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import firebase from '../firebase/clientApp'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { getAuth, signOut } from 'firebase/auth'
-import { useState, useEffect } from 'react'
-const auth = getAuth()
+import Link from "next/link";
+import { useRouter } from "next/router";
+import firebase from "../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth, signOut } from "firebase/auth";
+import { useState, useEffect } from "react";
+const auth = getAuth();
 
 const Navbar = () => {
-  const [user, loading, error] = useAuthState(firebase.auth())
-  const [isLogIn, setLogIn] = useState(null) //state check if user is logged in
-  console.log('Loading:', loading, '|', 'Current user:', user.uid) //delete later
-  const router = useRouter()
+  const [user, loading, error] = useAuthState(firebase.auth());
+  const [isLogIn, setLogIn] = useState(null); //state check if user is logged in
+  // console.log("Loading:", loading, "|", "Current user:", user.uid); //delete later
+  const router = useRouter();
 
   useEffect(() => {
-    setLogIn(user)
-  }, [user])
+    setLogIn(user);
+  }, [user]);
 
-  useEffect(() => {
-    const data = {user_id: user.uid}
-  async function sendId () {
-    const res = await fetch ("http://localhost:3000/api/mentors", {
-      method: "POST", headers: {'Content-Type': 'application/json',
-      "Access-Control-Allow-Origin": '',}, body: JSON.stringify(data)
-    })
-    const response = await res.json()
-  }}, [user])
+  useEffect(async () => {
+    const data = { loginid: user.uid };
+    console.log("about to send post request!");
+    const res = await fetch("http://localhost:3000/api/mentors", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "",
+      },
+      body: JSON.stringify(data),
+    });
+    const response = await res.json();
+  }, [user]);
 
   function handleLogout() {
     signOut(auth)
       .then(() => {
-        console.log('Logged out')
-        router.push('/')
+        console.log("Logged out");
+        router.push("/");
       })
       .catch((error) => {
-        console.log('error')
-      })
+        console.log("error");
+      });
   }
   return (
     <nav>
-      <div className='logo'>
+      <div className="logo">
         <h1>Mentor App</h1>
       </div>
-      <Link href='/'>
+      <Link href="/">
         <a>Home</a>
       </Link>
-      <Link href='/about'>
+      <Link href="/about">
         <a>About</a>
       </Link>
-      <Link href='/contact'>
+      <Link href="/contact">
         <a>Contact</a>
       </Link>
-      <Link href='/allMentors'>
+      <Link href="/allMentors">
         <a>Find a Mentor</a>
       </Link>
       {isLogIn && <button onClick={handleLogout}>Logout</button>}
       {/* if is not null, render the button */}
     </nav>
-  )
-}
-export default Navbar
+  );
+};
+export default Navbar;

@@ -10,13 +10,16 @@ export async function getAllMentors() {
 
 //get an mentor
 export async function getMentor(id) {
-  let getMentor = await query("SELECT * FROM mentors WHERE userid = $1;", [id]);
+  let getMentor = await query("SELECT * FROM mentors WHERE loginid = $1;", [
+    id,
+  ]);
   return getMentor.rows;
 }
 
 export async function createMentor(mentor) {
   console.log(mentor);
   const {
+    loginid,
     firstname,
     surname,
     email,
@@ -29,8 +32,9 @@ export async function createMentor(mentor) {
     relationships,
   } = mentor;
   const res = await query(
-    "INSERT INTO mentors ( firstname, surname,email,biography,socials, location,photourl, tagline,skills,relationships) VALUES ($1, $2, $3,$4, $5, $6,$7,$8,$9,$10)",
+    "INSERT INTO mentors (loginid, firstname, surname,email,biography,socials, location,photourl, tagline,skills,relationships) VALUES ($1, $2, $3,$4, $5, $6,$7,$8,$9,$10,$11)",
     [
+      loginid,
       firstname,
       surname,
       email,
