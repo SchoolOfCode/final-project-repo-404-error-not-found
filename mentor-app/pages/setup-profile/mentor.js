@@ -1,6 +1,7 @@
 import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/router";
 // const Mentor = () => {
 //   return (
 
@@ -115,11 +116,10 @@ function Mentor() {
       }
     );
     console.log(JSON.stringify(body));
+    router.push("/profile/mentor");
   };
   return (
     <>
-
-
       <div className={css.UpdateMentorProfileFormContainer}>
         <h1>Setup your mentor profile</h1>
         <h2>Add or edit your information below</h2>
@@ -249,8 +249,6 @@ function Mentor() {
               />
             </div>
             <button className={css.submitButton} onClick={submitForm}>
-
-
               Submit
             </button>
           </form>
