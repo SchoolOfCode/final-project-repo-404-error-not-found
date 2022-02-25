@@ -1,3 +1,6 @@
+// import css from "./index.module.css";
+import styles from "../../styles/AllMentors.module.css";
+
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:3000/api/mentors");
   const data = await res.json();
@@ -7,7 +10,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const allMentors = ({ mentors }) => {
+const AllMentors = ({ mentors }) => {
   return (
     <div>
       <h1>Mentors</h1>
@@ -24,22 +27,23 @@ const allMentors = ({ mentors }) => {
         } = mentor;
         return (
           <div key={userid}>
-            <a>
-              <h3>{firstname}</h3>
-              <h4>{location}</h4>
-              <p>{email}</p>
-              <p>{biography}</p>
-              <p>
-                {socials.name} {socials.userName}
-              </p>
-              {skills.map((skill, index) => (
-                <p key={index}>{skill}</p>
-              ))}
-
+            <a className={styles.mentorCard}>
               <img
                 src={photourl}
                 style={{ width: 100, height: 100, borderRadius: "50%" }}
               ></img>
+              <div className={styles.cardTextArea}>
+                <h3>{firstname}</h3>
+                <h4>{location}</h4>
+                <p>{email}</p>
+                <p>{biography}</p>
+                <p>
+                  {socials.name} {socials.userName}
+                </p>
+                {skills.map((skill, index) => (
+                  <p key={index}>{skill}</p>
+                ))}
+              </div>
             </a>
           </div>
         );
@@ -48,4 +52,4 @@ const allMentors = ({ mentors }) => {
   );
 };
 
-export default allMentors;
+export default AllMentors;
