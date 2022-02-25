@@ -1,6 +1,7 @@
-import React from 'react'
-import 'antd/dist/antd.css' // or 'antd/dist/antd.less'
-import { Row, Col } from 'antd'
+import React from "react";
+import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import { Row, Col } from "antd";
+import css from "./mentor.module.css";
 
 export default function Profile() {
   return (
@@ -17,5 +18,5 @@ export default function Profile() {
         <Col span={2}>col-6</Col>
       </Row>
     </>
-  )
+  );
 }
