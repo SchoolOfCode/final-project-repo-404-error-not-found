@@ -1,38 +1,39 @@
-import Link from "next/link";
-import firebase from "../../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useRouter } from "next/router";
+import Link from 'next/link'
+import firebase from '../../firebase/clientApp'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { useRouter } from 'next/router'
 // const Mentor = () => {
 //   return (
 
 //for test purposes
 // const id = 2;
 
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { Checkbox } from "antd";
-import css from "./mentor.module.css";
-const url = process.env.REACT_APP_BACKEND_URL;
+import React, { useEffect } from 'react'
+import { useState } from 'react'
+import { Checkbox } from 'antd'
+import css from './mentor.module.css'
+const url = process.env.REACT_APP_BACKEND_URL
 
 //add location and profile pic url fields
 
 function Mentor() {
-  const [user, loading, error] = useAuthState(firebase.auth());
-  const loginid = user ? user.uid : "";
+  const [user, loading, error] = useAuthState(firebase.auth())
+  const loginid = user ? user.uid : ''
+  const router = useRouter()
 
-  const [firstname, setFirstname] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [jobtitle, setJobtitle] = useState("");
-  const [company, setCompany] = useState("");
-  const [location, setLocation] = useState("");
-  const [biography, setBiography] = useState("");
-  const [tagline, setTagline] = useState("");
-  const [skills, setSkills] = useState([]);
-  const [socialMediaType, setSocialMediaType] = useState("");
-  const [socialMediaUserName, setSocialMediaUserName] = useState("");
-  const [socials, setSocials] = useState({});
-  const [isLogIn, setLogIn] = useState(null);
+  const [firstname, setFirstname] = useState('')
+  const [surname, setSurname] = useState('')
+  const [email, setEmail] = useState('')
+  const [jobtitle, setJobtitle] = useState('')
+  const [company, setCompany] = useState('')
+  const [location, setLocation] = useState('')
+  const [biography, setBiography] = useState('')
+  const [tagline, setTagline] = useState('')
+  const [skills, setSkills] = useState([])
+  const [socialMediaType, setSocialMediaType] = useState('')
+  const [socialMediaUserName, setSocialMediaUserName] = useState('')
+  const [socials, setSocials] = useState({})
+  const [isLogIn, setLogIn] = useState(null)
 
   // useEffect(() => {
   //   setLogIn(user);
@@ -40,49 +41,49 @@ function Mentor() {
 
   useEffect(async () => {
     if (user !== null) {
-      const data = { loginid: user.uid };
-      console.log("about to send post request!");
-      const res = await fetch("http://localhost:3000/api/mentors", {
-        method: "POST",
+      const data = { loginid: user.uid }
+      console.log('about to send post request!')
+      const res = await fetch('http://localhost:3000/api/mentors', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "",
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '',
         },
         body: JSON.stringify(data),
-      });
-      const response = await res.json();
+      })
+      const response = await res.json()
     }
-  }, [user]);
+  }, [user])
 
   //log skills array whenever it changes
   useEffect(() => {
-    console.log("skills: ", skills);
-  }, [skills]);
+    console.log('skills: ', skills)
+  }, [skills])
 
   //update social media object whenever the type or username changes
   useEffect(() => {
-    setSocials({ [socialMediaType]: socialMediaUserName });
-  }, [socialMediaType, socialMediaUserName]);
+    setSocials({ [socialMediaType]: socialMediaUserName })
+  }, [socialMediaType, socialMediaUserName])
 
   //log socialMedia object whenever it changes
   useEffect(() => {
-    console.log(socials);
-  }, [socials]);
+    console.log(socials)
+  }, [socials])
 
   function updateSkills(e) {
-    console.log(`${e.target.id} = ${e.target.checked}`);
+    console.log(`${e.target.id} = ${e.target.checked}`)
     //add skill to skills array when box is checked
     if (e.target.checked) {
-      setSkills([...skills, e.target.id]);
+      setSkills([...skills, e.target.id])
     } else if (e.target.checked === false) {
       //remove skill from skillls array when box is unchecked
-      setSkills([...skills.filter((item) => item !== e.target.id)]);
+      setSkills([...skills.filter((item) => item !== e.target.id)])
     }
   }
 
   //   const navigate = useNavigate();
   const submitForm = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const body = {
       firstname,
       surname,
@@ -99,25 +100,25 @@ function Mentor() {
       skills,
       //social media object will need constructing --DONE (for single social media entry)
       socials,
-    };
+    }
     //patch request to update mentor at id
     // const data = { loginid: user.uid };
-    const loginid = user.uid;
+    const loginid = user.uid
 
     const response = await fetch(
       `http://localhost:3000/api/mentors/${loginid}`,
       {
-        method: "PATCH",
+        method: 'PATCH',
 
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
       }
-    );
-    console.log(JSON.stringify(body));
-    router.push("/profile/mentor");
-  };
+    )
+    console.log(JSON.stringify(body))
+    router.push('/profile/mentor')
+  }
   return (
     <>
       <div className={css.UpdateMentorProfileFormContainer}>
@@ -126,80 +127,80 @@ function Mentor() {
         <div>
           <form onSubmit={submitForm} className={css.UpdateMentorProfileForm}>
             <div className={css.firstname}>
-              <label htmlFor="first-name">First Name</label>
+              <label htmlFor='first-name'>First Name</label>
               <input
-                id="first-name"
-                type="text"
+                id='first-name'
+                type='text'
                 value={firstname}
                 onChange={(e) => setFirstname(e.target.value)}
                 required
               />
             </div>
             <div className={css.surname}>
-              <label htmlFor="surname">Surname</label>
+              <label htmlFor='surname'>Surname</label>
               <input
-                id="surname"
-                type="text"
+                id='surname'
+                type='text'
                 value={surname}
                 onChange={(e) => setSurname(e.target.value)}
                 required
               />
             </div>
             <div className={css.email}>
-              <label htmlFor="email">Email</label>
+              <label htmlFor='email'>Email</label>
               <input
-                id="email"
-                type="text"
+                id='email'
+                type='text'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div className={css.jobtitle}>
-              <label htmlFor="jobtitle">Job Title</label>
+              <label htmlFor='jobtitle'>Job Title</label>
               <input
-                id="jobtitle"
-                type="text"
+                id='jobtitle'
+                type='text'
                 value={jobtitle}
                 onChange={(e) => setJobtitle(e.target.value)}
                 required
               />
             </div>
             <div className={css.company}>
-              <label htmlFor="company">Company</label>
+              <label htmlFor='company'>Company</label>
               <input
-                id="company"
-                type="text"
+                id='company'
+                type='text'
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
                 required
               />
             </div>
             <div className={css.location}>
-              <label htmlFor="location">Location</label>
+              <label htmlFor='location'>Location</label>
               <input
-                id="location"
-                type="text"
+                id='location'
+                type='text'
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 required
               />
             </div>
             <div className={css.biography}>
-              <label htmlFor="biography">Biography</label>
+              <label htmlFor='biography'>Biography</label>
               <input
-                id="biography"
-                type="text"
+                id='biography'
+                type='text'
                 value={biography}
                 onChange={(e) => setBiography(e.target.value)}
                 required
               />
             </div>
             <div className={css.tagline}>
-              <label htmlFor="tagline">Profile Tagline</label>
+              <label htmlFor='tagline'>Profile Tagline</label>
               <input
-                id="tagline"
-                type="text"
+                id='tagline'
+                type='text'
                 value={tagline}
                 onChange={(e) => setTagline(e.target.value)}
                 required
@@ -207,42 +208,42 @@ function Mentor() {
             </div>
             <div className={css.skills}>
               <h4>
-                <label htmlFor="skills">Skills</label>
+                <label htmlFor='skills'>Skills</label>
               </h4>
               <div className={css.checkboxes}>
-                <Checkbox id="frontend" onChange={updateSkills}>
+                <Checkbox id='frontend' onChange={updateSkills}>
                   Frontend
                 </Checkbox>
-                <Checkbox id="fullstack" onChange={updateSkills}>
+                <Checkbox id='fullstack' onChange={updateSkills}>
                   Fullstack
                 </Checkbox>
-                <Checkbox id="backend" onChange={updateSkills}>
+                <Checkbox id='backend' onChange={updateSkills}>
                   Backend
                 </Checkbox>
-                <Checkbox id="ux-ui" onChange={updateSkills}>
+                <Checkbox id='ux-ui' onChange={updateSkills}>
                   UX/UI
                 </Checkbox>
               </div>
             </div>
             {/* break into two inputs - social media type, social media name/handle  */}
             <div className={css.socials}>
-              <label htmlFor="socialmediatype">Social Media Type</label>
+              <label htmlFor='socialmediatype'>Social Media Type</label>
               <select
-                name="socialMediaType"
+                name='socialMediaType'
                 className={css.dropdown}
-                id="socialmediatype"
+                id='socialmediatype'
                 onChange={(e) => setSocialMediaType(e.target.value)}
               >
-                <option value="">--Please choose an option--</option>
-                <option value="github">GitHub</option>
-                <option value="linkedin">LinkedIn</option>
-                <option value="twitter">Twitter</option>
+                <option value=''>--Please choose an option--</option>
+                <option value='github'>GitHub</option>
+                <option value='linkedin'>LinkedIn</option>
+                <option value='twitter'>Twitter</option>
               </select>
               <br />
-              <label htmlFor="socialmediausername">Social Media Handle</label>
+              <label htmlFor='socialmediausername'>Social Media Handle</label>
               <input
-                id="socialmediausername"
-                type="text"
+                id='socialmediausername'
+                type='text'
                 value={socialMediaUserName}
                 onChange={(e) => setSocialMediaUserName(e.target.value)}
                 required
@@ -255,10 +256,10 @@ function Mentor() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Mentor;
+export default Mentor
 
 //
 // {
