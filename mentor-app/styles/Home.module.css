@@ -123,11 +123,11 @@
 .text {
   color: #777;
 }
+
 .mentor_btn {
   display: flex;
-  width: 150px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  width: 180px;
+  padding: 11px 93px;
   margin-right: 50px;
   background: #4979ff;
   border-radius: 20px;
@@ -136,13 +136,22 @@
   font-family: "Nunito";
   font-weight: bolder;
   justify-content: center;
-  font-size: large;
+  cursor: pointer;
+  font-size: 2rem;
+  transform: scale(0.9);
+  transition: 0.3s ease-in-out transform;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.185);
+}
+
+.mentor_btn:hover {
+  transform: scale(1);
+  background: #01a32ae1;
 }
 
 .mentee_btn {
   display: flex;
-  width: 150px;
-  padding: 14px 40px;
+  width: 180px;
+  padding: 11px 93px;
   margin: auto;
   background: #4979ff;
   border-radius: 20px;
@@ -151,7 +160,16 @@
   font-family: "Nunito";
   font-weight: bolder;
   justify-content: center;
-  font-size: large;
+  cursor: pointer;
+  font-size: 2rem;
+  transform: scale(0.9);
+  transition: 0.3s ease-in-out transform;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.185);
+}
+
+.mentee_btn:hover {
+  transform: scale(1);
+  background: #01a32ae1;
 }
 
 .homeButtonWrap {
@@ -163,7 +181,7 @@
   color: #333;
   padding-bottom: 20px;
   padding-top: 40px;
-  margin: 500px auto;
+  margin: 80px auto;
   text-align: center;
   background-color: rgb(127, 255, 238);
 }
@@ -172,6 +190,6 @@
   color: #333;
   padding-bottom: 20px;
   padding-top: 40px;
-  margin: 500px auto;
+  margin: 80px auto;
   text-align: center;
 }
