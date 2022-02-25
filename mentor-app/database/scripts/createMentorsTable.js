@@ -2,7 +2,7 @@ import query from "../index.js";
 
 async function createMentors() {
   let res = await query(`CREATE TABLE IF NOT EXISTS mentors (
-        loginid TEXT,
+        loginid TEXT UNIQUE,
         userid SERIAL PRIMARY KEY,
        firstname TEXT,
        surname TEXT,

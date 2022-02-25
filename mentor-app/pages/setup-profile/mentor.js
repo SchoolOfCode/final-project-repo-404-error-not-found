@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 //   return (
 
 //for test purposes
-const id = 2;
+// const id = 2;
 
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -30,6 +30,27 @@ function Mentor() {
   const [socialMediaType, setSocialMediaType] = useState("");
   const [socialMediaUserName, setSocialMediaUserName] = useState("");
   const [socials, setSocials] = useState({});
+  const [isLogIn, setLogIn] = useState(null);
+
+  // useEffect(() => {
+  //   setLogIn(user);
+  // }, [user]);
+
+  useEffect(async () => {
+    if (user !== null) {
+      const data = { loginid: user.uid };
+      console.log("about to send post request!");
+      const res = await fetch("http://localhost:3000/api/mentors", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "",
+        },
+        body: JSON.stringify(data),
+      });
+      const response = await res.json();
+    }
+  }, [user]);
 
   //log skills array whenever it changes
   useEffect(() => {
@@ -78,6 +99,9 @@ function Mentor() {
       socials,
     };
     //patch request to update mentor at id
+    // const data = { loginid: user.uid };
+    const loginid = user.uid;
+
     const response = await fetch(
       `http://localhost:3000/api/mentors/${loginid}`,
       {

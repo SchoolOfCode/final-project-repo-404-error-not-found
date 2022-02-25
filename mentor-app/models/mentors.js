@@ -75,14 +75,15 @@ export async function updateMentor(id, objectToUpdate) {
 
   for (let i = 0; i < keys.length; i++) {
     const columnName = keys[i];
-    const stringUpdate = `UPDATE mentors SET ${keys[i]} = ($1) WHERE userid = ($2);`;
+    const stringUpdate = `UPDATE mentors SET ${keys[i]} = ($1) WHERE loginid = ($2);`;
     const editMentor = await query(stringUpdate, [
       objectToUpdate[columnName],
       id,
     ]);
   }
-  const updatedMentor = await query(`SELECT * FROM mentors WHERE userid = $1`, [
-    id,
-  ]);
+  const updatedMentor = await query(
+    `SELECT * FROM mentors WHERE loginid = $1`,
+    [id]
+  );
   return updatedMentor;
 }

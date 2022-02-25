@@ -16,20 +16,6 @@ const Navbar = () => {
     setLogIn(user);
   }, [user]);
 
-  useEffect(async () => {
-    const data = { loginid: user.uid };
-    console.log("about to send post request!");
-    const res = await fetch("http://localhost:3000/api/mentors", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "",
-      },
-      body: JSON.stringify(data),
-    });
-    const response = await res.json();
-  }, [user]);
-
   function handleLogout() {
     signOut(auth)
       .then(() => {
