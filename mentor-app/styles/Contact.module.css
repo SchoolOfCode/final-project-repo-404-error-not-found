@@ -1,4 +1,11 @@
+.contactContainer {
+  border-radius: 1rem;
+  --tw-border-opacity: 1;
+  border: 5px solid rgb(229 231 235 / var(--tw-border-opacity));
+}
 .contact {
   font-family: "Nunito";
   padding-left: 10rem;
+  /* display: grid;
+  grid-template-columns: 2fr 1fr; */
 }

@@ -1,12 +1,6 @@
-import Head from "next/head";
-import Image from "next/image";
-import Navbar from "../components/navbar";
-import About from "./about.js";
-import Contact from "./contact.js";
+import Contact from "../components/Contact.js";
+import About from "../components/About.js";
 import styles from "../styles/Home.module.css";
-import { Footer } from "../components/footer.js";
-import Mentor from "../pages/sign-up/mentor";
-import Mentee from "../pages/sign-up/mentee";
 import Link from "next/link";
 import firebase from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -48,17 +42,10 @@ export default function Home() {
       </div>
 
       <div className={styles.about}>
-        <Link href="/#about">
-          <h1>About</h1>
-          <h3></h3>
-        </Link>{" "}
-        <h3>How does it work?</h3>
-        <h3>What are the benefits of mentorship?</h3>
+        <About />
       </div>
-      <div className={styles.contact}>
-        <Link href="/#contact">
-          <h1>Contact</h1>
-        </Link>
+      <div className={styles.contactContainer}>
+        <Contact />
       </div>
     </div>
   );

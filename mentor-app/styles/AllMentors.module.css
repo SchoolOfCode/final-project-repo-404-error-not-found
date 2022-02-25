@@ -1,0 +1,11 @@
+.mentorCard {
+  /* border: 3px solid blue; */
+  padding: 2em;
+  margin: 1em;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  border-radius: 1rem;
+  --tw-border-opacity: 1;
+  border: 3px solid rgb(229 231 235 / var(--tw-border-opacity));
+}
