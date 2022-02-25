@@ -8,6 +8,7 @@ body {
 a {
   color: #333;
   text-decoration: none;
+  transition: color 0.5s;
 }
 .content {
   max-width: 960px;
@@ -19,7 +20,8 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  transition: border-bottom 0.5s;
 }
 nav a {
   margin-left: 12px;
@@ -34,4 +36,10 @@ footer {
   margin-top: 60px;
   color: #777;
   border-top: 1px solid #eaeaea;
+}
+nav:hover {
+  border-bottom: 1px solid black;
+}
+nav a:hover {
+  color: black;
 }
