@@ -1,14 +1,11 @@
-
-import Link from 'next/link'
-import firebase from '../../firebase/clientApp'
-import { useAuthState } from 'react-firebase-hooks/auth'
+import Link from "next/link";
+import firebase from "../../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
 // const Mentor = () => {
 //   return (
 
-
 //for test purposes
-const id = 2;
-
+// const id = 2;
 
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -19,6 +16,9 @@ const url = process.env.REACT_APP_BACKEND_URL;
 //add location and profile pic url fields
 
 function Mentor() {
+  const [user, loading, error] = useAuthState(firebase.auth());
+  const loginid = user ? user.uid : "";
+
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -31,6 +31,27 @@ function Mentor() {
   const [socialMediaType, setSocialMediaType] = useState("");
   const [socialMediaUserName, setSocialMediaUserName] = useState("");
   const [socials, setSocials] = useState({});
+  const [isLogIn, setLogIn] = useState(null);
+
+  // useEffect(() => {
+  //   setLogIn(user);
+  // }, [user]);
+
+  useEffect(async () => {
+    if (user !== null) {
+      const data = { loginid: user.uid };
+      console.log("about to send post request!");
+      const res = await fetch("http://localhost:3000/api/mentors", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "",
+        },
+        body: JSON.stringify(data),
+      });
+      const response = await res.json();
+    }
+  }, [user]);
 
   //log skills array whenever it changes
   useEffect(() => {
@@ -56,12 +77,11 @@ function Mentor() {
       //remove skill from skillls array when box is unchecked
       setSkills([...skills.filter((item) => item !== e.target.id)]);
     }
-
   }
 
   //   const navigate = useNavigate();
   const submitForm = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const body = {
       firstname,
       surname,
@@ -80,19 +100,25 @@ function Mentor() {
       socials,
     };
     //patch request to update mentor at id
-    const response = await fetch(`http://localhost:3000/api/mentors/${id}`, {
-      method: "PATCH",
+    // const data = { loginid: user.uid };
+    const loginid = user.uid;
 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
+    const response = await fetch(
+      `http://localhost:3000/api/mentors/${loginid}`,
+      {
+        method: "PATCH",
 
-    });
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      }
+    );
     console.log(JSON.stringify(body));
   };
   return (
     <>
+
 
       <div className={css.UpdateMentorProfileFormContainer}>
         <h1>Setup your mentor profile</h1>
@@ -224,13 +250,14 @@ function Mentor() {
             </div>
             <button className={css.submitButton} onClick={submitForm}>
 
+
               Submit
             </button>
           </form>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Mentor;

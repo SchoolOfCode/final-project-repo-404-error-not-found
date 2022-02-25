@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Link as LinkS } from "react-scroll";
+
 import { useRouter } from "next/router";
 import firebase from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -11,7 +11,9 @@ const auth = getAuth();
 const Navbar = () => {
   const [user, loading, error] = useAuthState(firebase.auth());
   const [isLogIn, setLogIn] = useState(null); //state check if user is logged in
-  console.log("Loading:", loading, "|", "Current user:", user); //delete later
+
+  // console.log("Loading:", loading, "|", "Current user:", user.uid); //delete later
+
   const router = useRouter();
 
   useEffect(() => {
@@ -31,15 +33,19 @@ const Navbar = () => {
   return (
     <nav>
       <div className="logo">
+
         <h1>Mentor||ee</h1>
+
       </div>
       <Link href="/">
         <a>Home</a>
       </Link>
+
       <Link href="/#about">
         <a>About</a>
       </Link>
       <Link href="/#contact">
+
         <a>Contact</a>
       </Link>
       <Link href="/allMentors">
