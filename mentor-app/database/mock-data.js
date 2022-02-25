@@ -81,7 +81,8 @@ const mentors = [
       linkedin: "kelly@linkin",
     },
     location: "Ipswich",
-    photourl: null,
+    photourl:
+      "https://lumiere-a.akamaihd.net/v1/images/ct_mickeymouseandfriends_mickey_ddt-16970_4e99445d.jpeg",
     tagline: "vbb",
     skills: ["frontend", "fullstack"],
     relationships: null,

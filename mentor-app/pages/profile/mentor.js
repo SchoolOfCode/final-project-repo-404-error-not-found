@@ -39,29 +39,29 @@ export default function Profile() {
               <div className={css.socialLink}>Social</div>
               <div className={css.socialLink}>Social</div>
             </div>
-            <div className="biographyArea">
-              <h3>Biography</h3>
-              <p>
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum."
-              </p>
-            </div>
           </div>
           <div className={css.profileRight}>
             <h1>{currentMentor.firstname}</h1>
             <h3>Location</h3>
             <h3>Response Time</h3>
             <div className={css.skills}>
-              <div>skill</div>
-              <div>skill</div>
-              <div>skill</div>
-              <div>skill</div>
+              <div className={css.skill}>skill</div>
+              <div className={css.skill}>skill</div>
+              <div className={css.skill}>skill</div>
+              <div className={css.skill}>skill</div>
             </div>
+          </div>
+          <div className="biographyArea">
+            <h3>Biography</h3>
+            <p>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </p>
           </div>
         </Col>
 
