@@ -1,5 +1,6 @@
 const mentors = [
   {
+    loginid: "99whatever",
     firstname: "Fred",
     surname: "Jones",
     jobtitle: "UX.UI Designer",
@@ -15,6 +16,7 @@ const mentors = [
     relationships: {},
   },
   {
+    loginid: "17whatever",
     firstname: "Sally",
     surname: "Davies",
     jobtitle: "Chief Of Delivery",
@@ -27,6 +29,62 @@ const mentors = [
     tagline: "Sally be good",
     skills: ["javascript", "postgres", "database"],
     relationships: {},
+  },
+  {
+    loginid: "12whatever",
+    userid: 12,
+    firstname: "Bob",
+    surname: "Bobbits",
+    jobtitle: "The Chief",
+    company: "Megacorp",
+    email: "bob@bobbits.com",
+    biography:
+      "Bob first started coding in the original dot.com boom of 1952, and has led the field in Bobness for nearly seven decades now - continually pushing the boundaries of bobness, and taking in multiple shifts in direction.  He has two cats and lives in the Algarve.",
+    socials: {
+      linkedin: "bob@linkedin",
+    },
+    location: "Scarborough",
+    photourl:
+      "https://i.pinimg.com/originals/e7/c1/67/e7c167c2372de5eaff3912377d6d88d2.jpg",
+    tagline: "Best Bob in town...",
+    skills: ["frontend", "ux-ui"],
+    relationships: {},
+  },
+  {
+    loginid: "71Pj0h4QqxUQMdeBqP03MQ8XtfK2",
+    userid: 36,
+    firstname: "Novel",
+    surname: "Alam",
+    jobtitle: "Software Developer",
+    company: "Soc",
+    email: "NovelAlam@hotmail.com",
+    biography: "meh",
+    socials: {
+      github: "NovelAlam",
+    },
+    location: "LONDON",
+    photourl: null,
+    tagline: "Hey",
+    skills: ["frontend", "backend", "fullstack"],
+    relationships: null,
+  },
+  {
+    loginid: "AuTqPEVjr8bfxkJ8HdGoVlAaLVE2",
+    userid: 33,
+    firstname: "Kelly",
+    surname: "Barnes",
+    jobtitle: "Head Of Kelly",
+    company: "KellyKelly",
+    email: "kelly@barnes.com",
+    biography: "gfdhgfjhgjkgjvkgjhljkghkjhljgjlgjljh",
+    socials: {
+      linkedin: "kelly@linkin",
+    },
+    location: "Ipswich",
+    photourl: null,
+    tagline: "vbb",
+    skills: ["frontend", "fullstack"],
+    relationships: null,
   },
 ];
 

@@ -27,28 +27,30 @@ export default function Profile() {
     return (
       <Row>
         <Col span={2}>col-6</Col>
-        <Col span={13}>
-          <img
-            className={css.profileImage}
-            src={
-              "https://lumiere-a.akamaihd.net/v1/images/ct_mickeymouseandfriends_mickey_ddt-16970_4e99445d.jpeg"
-            }
-          ></img>
-          <div className={css.socialsArea}>
-            <div className={css.socialLink}>Social</div>
-            <div className={css.socialLink}>Social</div>
-          </div>
-          <div className="biographyArea">
-            <h3>Biography</h3>
-            <p>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </p>
+        <Col span={13} className={css.profileMainArea}>
+          <div className={css.profileLeft}>
+            <img
+              className={css.profileImage}
+              src={
+                "https://lumiere-a.akamaihd.net/v1/images/ct_mickeymouseandfriends_mickey_ddt-16970_4e99445d.jpeg"
+              }
+            ></img>
+            <div className={css.socialsArea}>
+              <div className={css.socialLink}>Social</div>
+              <div className={css.socialLink}>Social</div>
+            </div>
+            <div className="biographyArea">
+              <h3>Biography</h3>
+              <p>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum."
+              </p>
+            </div>
           </div>
           <div className={css.profileRight}>
             <h1>{currentMentor.firstname}</h1>

@@ -1,7 +1,22 @@
+.profileMainArea {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .profileImage {
   width: 10em;
   border-radius: 50%;
 }
+
+.socialsArea {
+  display: flex;
+  justify-content: center;
+}
+
+.socialLink {
+  margin: 0 2em;
+}
+
 .sideDisplay {
   border: 1px solid black;
 }
