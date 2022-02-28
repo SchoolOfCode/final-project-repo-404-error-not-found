@@ -3,7 +3,7 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import firebase from '../../firebase/clientApp'
 
 const uiConfig = {
-  signInSuccessUrl: '/setup-profile/mentor',
+  signInSuccessUrl: '/path/setpath',
 
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
