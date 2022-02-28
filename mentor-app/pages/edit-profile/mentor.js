@@ -13,21 +13,30 @@ function EditMentor() {
   const router = useRouter()
   const [user, loading, error] = useAuthState(firebase.auth())
   const [mentor, setMentor] = useState(null)
-  const [currentMentor, setCurrentMentor] = useState({
-    firstname: '',
-    surname: '',
-    email: '',
-    jobtitle: '',
-    company: '',
-    location: '',
-    biography: '',
-    tagline: '',
-    skills: [],
-    socialMediaType: '',
-    socialMediaUserName: '',
-    socials: {},
-  })
+  const [skills, setSkills] = useState([]) //
+  const [socialMediaType, setSocialMediaType] = useState('') //
+  const [socialMediaUserName, setSocialMediaUserName] = useState('') //
+  const [socials, setSocials] = useState({}) //
 
+  function handleChange(e) {
+    const name = e.target.name
+    const value = e.target.value
+    setMentor({ ...mentor, [name]: value })
+  }
+  //update social media object whenever the type or username changes
+  useEffect(() => {
+    setSocials({ [socialMediaType]: socialMediaUserName })
+    setMentor({ ...mentor, socials: socials })
+  }, [socialMediaType, socialMediaUserName])
+
+  function updateSkills(e) {
+    if (e.target.checked) {
+      setSkills([...skills, e.target.id])
+      setMentor({ ...mentor, skills: skills })
+    } else if (e.target.checked === false) {
+      setSkills([...skills.filter((item) => item !== e.target.id)])
+    }
+  }
   //GET USER DATA
   useEffect(async () => {
     if (user !== null) {
@@ -52,7 +61,6 @@ function EditMentor() {
     })
     router.push('/profile/mentor')
   }
-
   //RENDER PAGE
   if (mentor === null) {
     return <h2>...Loading</h2>
@@ -69,8 +77,9 @@ function EditMentor() {
                 <input
                   id='first-name'
                   type='text'
+                  name='firstname'
                   value={mentor.firstname}
-                  onChange={(e) => setFirstname(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
@@ -79,8 +88,9 @@ function EditMentor() {
                 <input
                   id='surname'
                   type='text'
+                  name='surname'
                   value={mentor.surname}
-                  onChange={(e) => setSurname(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
@@ -90,7 +100,8 @@ function EditMentor() {
                   id='email'
                   type='text'
                   value={mentor.email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  name='email'
+                  onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
@@ -99,8 +110,9 @@ function EditMentor() {
                 <input
                   id='jobtitle'
                   type='text'
+                  name='jobtitle'
                   value={mentor.jobtitle}
-                  onChange={(e) => setJobtitle(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
@@ -109,8 +121,9 @@ function EditMentor() {
                 <input
                   id='company'
                   type='text'
+                  name='company'
                   value={mentor.company}
-                  onChange={(e) => setCompany(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
@@ -119,8 +132,9 @@ function EditMentor() {
                 <input
                   id='location'
                   type='text'
+                  name='location'
                   value={mentor.location}
-                  onChange={(e) => setLocation(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
@@ -129,9 +143,20 @@ function EditMentor() {
                 <input
                   id='biography'
                   type='text'
+                  name='biography'
                   value={mentor.biography}
-                  onChange={(e) => setBiography(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                   required
+                />
+              </div>
+              <div className={css.photourl}>
+                <label htmlFor='photourl'>Profile photo URL</label>
+                <input
+                  id='photourl'
+                  type='text'
+                  name='photourl'
+                  value={mentor.photourl}
+                  onChange={(e) => setPhotourl(e.target.value)}
                 />
               </div>
               <div className={css.tagline}>
@@ -139,8 +164,9 @@ function EditMentor() {
                 <input
                   id='tagline'
                   type='text'
+                  name='tagline'
                   value={mentor.tagline}
-                  onChange={(e) => setTagline(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
