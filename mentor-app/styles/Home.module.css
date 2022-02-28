@@ -123,6 +123,16 @@
   overflow: hidden;
   position: fixed;
 }
+.navbar a{
+  display: inline;
+  list-style: none;
+  float: left;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-decoration: none;
+  color: black;
+  padding: 1rem;
+  display: block; 
+}
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
 
 .headerTitle {
