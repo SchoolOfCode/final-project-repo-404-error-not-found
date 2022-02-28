@@ -1,10 +1,13 @@
 import Link from "next/link";
-
+import { Link as LinkS } from "react-scroll";
 import { useRouter } from "next/router";
 import firebase from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth, signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
+// import styles from "../styles/globals.css";
+import styles from "../styles/Home.module.css";
+import Image from "../public/mentoree_home_logo.jpg";
 
 const auth = getAuth();
 
@@ -33,25 +36,40 @@ const Navbar = () => {
   return (
     <nav>
       <div className="logo">
-
-        <h1>Mentor||ee</h1>
-
+        <img src={Image}></img>
       </div>
       <Link href="/">
         <a>Home</a>
       </Link>
 
-      <Link href="/#about">
+      <LinkS
+        to="#about"
+        smooth={true}
+        className="#about"
+        duration={500}
+        offset={500}
+      >
         <a>About</a>
-      </Link>
-      <Link href="/#contact">
+      </LinkS>
 
+      <LinkS
+        to={"#contact"}
+        smooth={true}
+        className="#contact"
+        duration={500}
+        offset={1000}
+      >
         <a>Contact</a>
-      </Link>
+      </LinkS>
+
       <Link href="/allMentors">
         <a>Find a Mentor</a>
       </Link>
-      {isLogIn && <button onClick={handleLogout}>Logout</button>}
+      {isLogIn && (
+        <button className={styles.logoutbtn} onClick={handleLogout}>
+          Logout
+        </button>
+      )}
       {/* if is not null, render the button */}
     </nav>
   );

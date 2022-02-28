@@ -9,3 +9,34 @@
   --tw-border-opacity: 1;
   border: 3px solid rgb(229 231 235 / var(--tw-border-opacity));
 }
+
+.profileLeft {
+  margin: auto;
+}
+
+.socials {
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.cardTextArea h3 {
+  font-size: x-large;
+}
+
+.skills {
+  display: flex;
+  padding: auto;
+  margin: auto;
+}
+
+.skill {
+  display: grid;
+}
+
+.profileRight {
+  display: flex;
+}
+
+.profileRight p {
+  margin-right: 50em;
+}

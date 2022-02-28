@@ -1,7 +1,7 @@
-import React from 'react'
-import { Row, Col, Form, Input, InputNumber, Button } from 'antd'
-import styles from '../styles/Contact.module.css'
-import 'antd/dist/antd.css' // or 'antd/dist/antd.less'
+import React from "react";
+import { Row, Col, Form, Input, InputNumber, Button } from "antd";
+import styles from "../styles/Contact.module.css";
+import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
 export default function Contact() {
   const layout = {
@@ -11,39 +11,39 @@ export default function Contact() {
     wrapperCol: {
       span: 16,
     },
-  }
+  };
   const validateMessages = {
-    required: '${label} is required!',
+    required: "${label} is required!",
     types: {
-      email: '${label} is not a valid email!',
-      number: '${label} is not a valid number!',
+      email: "${label} is not a valid email!",
+      number: "${label} is not a valid number!",
     },
     number: {
-      range: '${label} must be between ${min} and ${max}',
+      range: "${label} must be between ${min} and ${max}",
     },
-  }
+  };
 
   const onFinish = (values) => {
-    console.log(values)
-  }
+    console.log(values);
+  };
   return (
     <>
-      {' '}
+      {" "}
       <Row>
         <Col span={12} className={styles.contact}>
-          <h2>Get in Touch</h2>
+          <h2 className={styles.contact}>Get in Touch</h2>
         </Col>
 
         <Col span={8}>
           <Form
             {...layout}
-            name='nest-messages'
+            name="nest-messages"
             onFinish={onFinish}
             validateMessages={validateMessages}
           >
             <Form.Item
-              name={['user', 'name']}
-              label='Name'
+              name={["user", "name"]}
+              label="Name"
               rules={[
                 {
                   required: true,
@@ -53,22 +53,22 @@ export default function Contact() {
               <Input />
             </Form.Item>
             <Form.Item
-              name={['user', 'email']}
-              label='Email'
+              name={["user", "email"]}
+              label="Email"
               rules={[
                 {
-                  type: 'email',
+                  type: "email",
                 },
               ]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              name={['user', 'age']}
-              label='Age'
+              name={["user", "age"]}
+              label="Age"
               rules={[
                 {
-                  type: 'number',
+                  type: "number",
                   min: 0,
                   max: 99,
                 },
@@ -76,14 +76,18 @@ export default function Contact() {
             >
               <InputNumber />
             </Form.Item>
-            <Form.Item name={['user', 'website']} label='Website'>
+            <Form.Item name={["user", "website"]} label="Website">
               <Input />
             </Form.Item>
-            <Form.Item name={['user', 'introduction']} label='Introduction'>
+            <Form.Item name={["user", "introduction"]} label="Introduction">
               <Input.TextArea />
             </Form.Item>
             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-              <Button type='primary' htmlType='submit'>
+              <Button
+                type="primary"
+                htmlType="submit"
+                style={{ borderRaduis: "45px" }}
+              >
                 Submit
               </Button>
             </Form.Item>
@@ -92,5 +96,5 @@ export default function Contact() {
         <Col span={4}></Col>
       </Row>
     </>
-  )
+  );
 }

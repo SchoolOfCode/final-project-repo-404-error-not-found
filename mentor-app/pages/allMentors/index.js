@@ -18,6 +18,7 @@ const AllMentors = ({ mentors }) => {
         const {
           biography,
           firstname,
+          surname,
           email,
           socials,
           photourl,
@@ -28,21 +29,31 @@ const AllMentors = ({ mentors }) => {
         return (
           <div key={userid}>
             <a className={styles.mentorCard}>
-              <img
-                src={photourl}
-                style={{ width: 100, height: 100, borderRadius: "50%" }}
-              ></img>
-              <div className={styles.cardTextArea}>
-                <h3>{firstname}</h3>
-                <h4>{location}</h4>
-                <p>{email}</p>
-                <p>{biography}</p>
-                <p>
+              <div className={styles.profileLeft}>
+                <img
+                  src={photourl}
+                  style={{ width: 100, height: 100, borderRadius: "50%" }}
+                ></img>
+                <p className={styles.socials}>
                   {socials.name} {socials.userName}
                 </p>
-                {skills.map((skill, index) => (
-                  <p key={index}>{skill}</p>
-                ))}
+              </div>
+              <div className={styles.cardTextArea}>
+                <div className={styles.profileRight}>
+                  <h3>
+                    {firstname} {surname}
+                  </h3>
+                  <h4>{location}</h4>
+                </div>
+                <p>Email: {email}</p>
+                <p>{biography}</p>
+                <div className={styles.skills}>
+                  {skills.map((skill, index) => (
+                    <p className={styles.skill} key={index}>
+                      {skill}
+                    </p>
+                  ))}
+                </div>
               </div>
             </a>
           </div>

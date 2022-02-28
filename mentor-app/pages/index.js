@@ -20,25 +20,27 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className={styles.title}>
-        Bringing the joy of programming to everyone, everywhere
-      </h1>
-      <h2 className={styles.title}> Join as a...</h2>
-      {/* <div className={styles.homeButtons}> */}
-      <div className={styles.homeButtonWrap}>
-        <Link href="/login/mentor">
-          <a onClick={(e) => handleClick(e, "/login/mentor")}>
-            {" "}
-            <button className={styles.mentor_btn}> Mentor </button>{" "}
-          </a>
-        </Link>
+      <div className={styles.homeContainer}>
+        <h1 className={styles.headerTitle}>
+          Bringing the joy of programming to everyone, everywhere
+        </h1>
+        <h2 className={styles.title}> Join as a...</h2>
+        {/* <div className={styles.homeButtons}> */}
+        <div className={styles.homeButtonWrap}>
+          <Link href="/login/mentor">
+            <a onClick={(e) => handleClick(e, "/login/mentor")}>
+              {" "}
+              <button className={styles.mentor_btn}> Mentor </button>{" "}
+            </a>
+          </Link>
 
-        <Link href="/login/mentee" className={styles.btn}>
-          <a onClick={(e) => handleClick(e, "/login/mentee")}>
-            {" "}
-            <button className={styles.mentee_btn}> Mentee </button>{" "}
-          </a>
-        </Link>
+          <Link href="/login/mentee" className={styles.btn}>
+            <a onClick={(e) => handleClick(e, "/login/mentee")}>
+              {" "}
+              <button className={styles.mentee_btn}> Mentee </button>{" "}
+            </a>
+          </Link>
+        </div>
       </div>
 
       <div className={styles.about}>

@@ -114,14 +114,38 @@
     flex-direction: column;
   }
 } */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+
+.headerTitle {
+  color: #333;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 2.5em;
+  font-family: "Nunito";
+  font-weight: 625;
+  margin-top: 1em;
+}
 
 .title {
   color: #333;
-  padding-bottom: 20px;
   text-align: center;
+  margin-top: 20px;
+  font-size: 2.3em;
+  font-weight: 700;
+  font-family: "Nunito";
 }
+
 .text {
   color: #777;
+}
+
+.homeContainer {
+  padding: 3rem;
+  /* width: 1080px;
+  height: 560px; */
+  margin: auto;
+  background-color: rgba(98, 45, 182, 0.185);
+  border-radius: 45px;
 }
 
 .mentor_btn {
@@ -175,21 +199,25 @@
 .homeButtonWrap {
   display: flex;
   justify-content: center;
+  margin: 50px;
 }
 
 .about {
   color: #333;
   padding-bottom: 20px;
   padding-top: 40px;
-  margin: 80px auto;
+  margin: 350px auto;
   text-align: center;
   background-color: rgb(127, 255, 238);
 }
 
-.contact {
-  color: #333;
-  padding-bottom: 20px;
-  padding-top: 40px;
-  margin: 80px auto;
-  text-align: center;
+.logoutbtn {
+  border-radius: 15px;
+  font-family: "Nunito";
+  text-decoration: none;
+  background-color: rgba(11, 241, 153, 0.623);
+  margin-left: 12px;
+  color: white;
+  border-color: white;
+  box-shadow: white;
 }
