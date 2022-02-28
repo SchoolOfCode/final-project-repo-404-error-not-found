@@ -26,7 +26,7 @@ const AllMentors = ({ mentors }) => {
           userid,
           skills,
         } = mentor;
-        return (
+        return firstname ? (
           <div key={userid}>
             <a className={styles.mentorCard}>
               <div className={styles.profileLeft}>
@@ -34,9 +34,12 @@ const AllMentors = ({ mentors }) => {
                   src={photourl}
                   style={{ width: 100, height: 100, borderRadius: "50%" }}
                 ></img>
-                <p className={styles.socials}>
-                  {socials.name} {socials.userName}
-                </p>
+
+                {socials ? (
+                  <p className={styles.socials}>
+                    {socials.name} {socials.userName}
+                  </p>
+                ) : null}
               </div>
               <div className={styles.cardTextArea}>
                 <div className={styles.profileRight}>
@@ -47,17 +50,19 @@ const AllMentors = ({ mentors }) => {
                 </div>
                 <p>Email: {email}</p>
                 <p>{biography}</p>
-                <div className={styles.skills}>
-                  {skills.map((skill, index) => (
-                    <p className={styles.skill} key={index}>
-                      {skill}
-                    </p>
-                  ))}
-                </div>
+                {skills ? (
+                  <div className={styles.skills}>
+                    {skills.map((skill, index) => (
+                      <p className={styles.skill} key={index}>
+                        {skill}
+                      </p>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             </a>
           </div>
-        );
+        ) : null;
       })}
     </div>
   );
