@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import firebase from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
+import SocialIcon from "../components/socialIcon.js";
 
 export default function Home() {
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -24,6 +25,7 @@ export default function Home() {
         <h1 className={styles.headerTitle}>
           Bringing the joy of programming to everyone, everywhere
         </h1>
+
         <h2 className={styles.title}> Join as a...</h2>
         {/* <div className={styles.homeButtons}> */}
         <div className={styles.homeButtonWrap}>

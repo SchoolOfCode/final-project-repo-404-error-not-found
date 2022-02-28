@@ -1,5 +1,8 @@
 // import css from "./index.module.css";
 import styles from "../../styles/AllMentors.module.css";
+import TwitterIcon from "../../components/TwitterIcon";
+import GithubIcon from "../../components/GithubIcon";
+import LinkedinIcon from "../../components/LinkedinIcon";
 
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:3000/api/mentors");
@@ -36,9 +39,17 @@ const AllMentors = ({ mentors }) => {
                 ></img>
 
                 {socials ? (
-                  <p className={styles.socials}>
-                    {socials.name} {socials.userName}
-                  </p>
+                  <div className={styles.socials}>
+                    {Object.keys(socials)[0] === "linkedin" ? (
+                      <LinkedinIcon handle={Object.values(socials)[0]} />
+                    ) : null}
+                    {Object.keys(socials)[0] === "github" ? (
+                      <GithubIcon handle={Object.values(socials)[0]} />
+                    ) : null}
+                    {Object.keys(socials)[0] === "twitter" ? (
+                      <TwitterIcon handle={Object.values(socials)[0]} />
+                    ) : null}
+                  </div>
                 ) : null}
               </div>
               <div className={styles.cardTextArea}>

@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
-import { Row, Col } from "antd";
 import css from "./mentor.module.css";
-import {
-  AiFillGithub,
-  AiFillLinkedin,
-  AiFillTwitterCircle,
-} from "react-icons/ai";
+import SocialIcon from "../../components/socialIcon";
+import TwitterIcon from "../../components/TwitterIcon";
+import GithubIcon from "../../components/GithubIcon";
+import LinkedinIcon from "../../components/LinkedinIcon";
 
 export default function Profile() {
   //currentMentor is the mentor pulled from our database
@@ -30,7 +28,7 @@ export default function Profile() {
 
   //render page only if currentMentor is loaded, otherwise show loading text
   if (currentMentor !== null) {
-    let socialsKey = Object.keys(currentMentor.socials);
+    // let socialsKey = Object.keys(currentMentor.socials);
     return (
       <div className={css.profileFullArea}>
         <div className={css.profileMainArea}>
@@ -40,9 +38,17 @@ export default function Profile() {
               src={currentMentor.photourl}
             ></img>
             <div className={css.socialsArea}>
-              <AiFillGithub className={css.socialIcon} />
-              <AiFillLinkedin className={css.socialIcon} />
-              <AiFillTwitterCircle className={css.socialIcon} />
+              {Object.keys(currentMentor.socials)[0] === "linkedin" ? (
+                <LinkedinIcon
+                  handle={Object.values(currentMentor.socials)[0]}
+                />
+              ) : null}
+              {Object.keys(currentMentor.socials)[0] === "github" ? (
+                <GithubIcon handle={Object.values(currentMentor.socials)[0]} />
+              ) : null}
+              {Object.keys(currentMentor.socials)[0] === "twitter" ? (
+                <TwitterIcon handle={Object.values(currentMentor.socials)[0]} />
+              ) : null}
             </div>
           </div>
           <div className={css.profileRight}>
