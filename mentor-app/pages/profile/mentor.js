@@ -32,9 +32,8 @@ export default function Profile() {
   if (currentMentor !== null) {
     let socialsKey = Object.keys(currentMentor.socials);
     return (
-      <Row>
-        <Col span={2}></Col>
-        <Col span={13} className={css.profileMainArea}>
+      <div className={css.profileFullArea}>
+        <div className={css.profileMainArea}>
           <div className={css.profileLeft}>
             <img
               className={css.profileImage}
@@ -61,14 +60,14 @@ export default function Profile() {
               {/* <div className={css.skill}>skill</div> */}
             </div>
           </div>
-          <div className="biographyArea">
+          <div className={css.biographyArea}>
             <h3>Biography</h3>
 
             <p className={css.bio}>{currentMentor.biography}</p>
           </div>
-        </Col>
+        </div>
 
-        <Col span={7} className={css.sideDisplay}>
+        <div className={css.sideDisplay}>
           <div className={css.rightSquare}>
             <div className={css.topSquare}>
               <p>Description of what is offered</p>
@@ -77,9 +76,8 @@ export default function Profile() {
               <button>Edit Profile</button>
             </div>
           </div>
-        </Col>
-        <Col span={2}></Col>
-      </Row>
+        </div>
+      </div>
     );
   } else return <p>loading data...</p>;
 }
