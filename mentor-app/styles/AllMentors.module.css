@@ -1,3 +1,7 @@
+.mentorList h1 {
+  text-align: center;
+}
+
 .mentorCard {
   /* border: 3px solid blue; */
   padding: 2em;
@@ -8,10 +12,23 @@
   border-radius: 1rem;
   --tw-border-opacity: 1;
   border: 3px solid rgb(229 231 235 / var(--tw-border-opacity));
+  max-width: 800px;
+  margin: 2em auto;
+  -webkit-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
+  -moz-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
+  box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
 }
 
 .profileLeft {
   margin: auto;
+  padding: 1em;
+}
+
+.profilePic {
+  width: 9em;
+  height: 9em;
+  margin: 1em 2em;
+  border-radius: 50%;
 }
 
 .socials {
@@ -22,22 +39,43 @@
 
 .cardTextArea h3 {
   font-size: x-large;
+  margin-bottom: 0;
+}
+
+.cardTextArea {
+  margin: 0em 4em;
+}
+
+.jobtitle {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 4em;
+  font-weight: 600;
 }
 
 .skills {
   display: flex;
   padding: auto;
   margin: auto;
+  justify-content: left;
 }
 
 .skill {
-  display: grid;
-}
-
-.profileRight {
-  display: flex;
+  margin-right: 1em;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  padding: 0.3em 0.8em;
 }
 
 .profileRight p {
-  margin-right: 50em;
+  margin: 0;
+}
+
+.profileRight .location {
+  margin-top: 1.4em;
+}
+
+.profileRight .bio {
+  margin-top: 1em;
 }
