@@ -221,3 +221,16 @@
   border-color: white;
   box-shadow: white;
 }
+
+/* .card {
+  display: grid; 
+  grid-template: 1fr 1fr 1fr/ 1fr 1fr 1fr / 1fr 1fr 1fr;
+justify-content: space-around;
+} */
+
+.card {
+  display: flex;
+  flex-direction: rows;
+  row-gap: 50px;
+
+}
