@@ -14,8 +14,8 @@ export default function Profile() {
   //takes the firebase uid and fetches the corresponding mentor from database, then assigns it to currentMentor
   useEffect(async () => {
     if (user !== null) {
-      // const loginid = user.uid;
-      const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
+      const loginid = user.uid
+      // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
       console.log('about to send GET request!')
       const res = await fetch(`http://localhost:3000/api/mentors/${loginid}`)
       const data = await res.json()
