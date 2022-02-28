@@ -25,6 +25,7 @@ export default function Profile() {
 
   //render page only if currentMentor is loaded, otherwise show loading text
   if (currentMentor !== null) {
+    let socialsKey = Object.keys(currentMentor.socials)
     return (
       <Row>
         <Col span={2}>col-6</Col>
@@ -37,32 +38,25 @@ export default function Profile() {
               }
             ></img>
             <div className={css.socialsArea}>
-              <div className={css.socialLink}>Social</div>
+              <div className={css.socialLink}>
+                {currentMentor.socials[socialsKey[0]]}
+              </div>
               <div className={css.socialLink}>Social</div>
             </div>
           </div>
           <div className={css.profileRight}>
             <h1>{currentMentor.firstname}</h1>
-            <h3>Location</h3>
-            <h3>Response Time</h3>
+            <h3>{currentMentor.location}</h3>
+            <h3>{currentMentor.jobtitle}</h3>
             <div className={css.skills}>
-              <div className={css.skill}>skill</div>
-              <div className={css.skill}>skill</div>
-              <div className={css.skill}>skill</div>
-              <div className={css.skill}>skill</div>
+              {currentMentor.skills.map(function (each) {
+                return <div className={css.skill}>{each}</div>
+              })}
             </div>
           </div>
           <div className='biographyArea'>
             <h3>Biography</h3>
-            <p>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </p>
+            <p>{currentMentor.biography}</p>
           </div>
         </Col>
 
