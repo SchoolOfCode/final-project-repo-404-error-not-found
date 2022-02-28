@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import firebase from '../../firebase/clientApp'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import 'antd/dist/antd.css' // or 'antd/dist/antd.less'
-import { Row, Col } from 'antd'
-import css from './mentor.module.css'
+
+import React, { useEffect, useState } from "react";
+import firebase from "../../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import { Row, Col } from "antd";
+import css from "./mentor.module.css";
+import {
+  AiFillGithub,
+  AiFillLinkedin,
+  AiFillTwitterCircle,
+} from "react-icons/ai";
+
 
 export default function Profile() {
   //currentMentor is the mentor pulled from our database
@@ -28,7 +35,7 @@ export default function Profile() {
     let socialsKey = Object.keys(currentMentor.socials)
     return (
       <Row>
-        <Col span={2}>col-6</Col>
+        <Col span={2}></Col>
         <Col span={13} className={css.profileMainArea}>
           <div className={css.profileLeft}>
             <img
@@ -38,25 +45,33 @@ export default function Profile() {
               }
             ></img>
             <div className={css.socialsArea}>
-              <div className={css.socialLink}>
-                {currentMentor.socials[socialsKey[0]]}
-              </div>
-              <div className={css.socialLink}>Social</div>
+
+              <AiFillGithub className={css.socialIcon} />
+              <AiFillLinkedin className={css.socialIcon} />
+              <AiFillTwitterCircle className={css.socialIcon} />
             </div>
           </div>
           <div className={css.profileRight}>
-            <h1>{currentMentor.firstname}</h1>
+            <h1>
+              {currentMentor.firstname} {currentMentor.surname}
+            </h1>
             <h3>{currentMentor.location}</h3>
-            <h3>{currentMentor.jobtitle}</h3>
+            <h3>{currentMentor.tagline}</h3>
             <div className={css.skills}>
-              {currentMentor.skills.map(function (each) {
-                return <div className={css.skill}>{each}</div>
-              })}
+              {currentMentor.skills.length > 0
+                ? currentMentor.skills.map((item) => (
+                    <div className={css.skill}>{item}</div>
+                  ))
+                : null}
+              {/* <div className={css.skill}>skill</div> */}
+
             </div>
           </div>
           <div className='biographyArea'>
             <h3>Biography</h3>
-            <p>{currentMentor.biography}</p>
+
+            <p className={css.bio}>{currentMentor.biography}</p>
+
           </div>
         </Col>
 
@@ -70,7 +85,7 @@ export default function Profile() {
             </div>
           </div>
         </Col>
-        <Col span={2}>col-6</Col>
+        <Col span={2}></Col>
       </Row>
     )
   } else return <p>loading data...</p>
