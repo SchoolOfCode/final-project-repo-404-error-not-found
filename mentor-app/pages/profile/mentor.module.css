@@ -1,3 +1,9 @@
+.profileFullArea {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 80%;
+  margin: auto;
+}
 .profileMainArea {
   display: grid;
   text-align: center;
@@ -44,6 +50,7 @@
 }
 
 .biographyArea {
+  text-align: center;
   grid-column-start: 1;
   grid-column-end: 3;
 }
