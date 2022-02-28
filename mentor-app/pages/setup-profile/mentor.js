@@ -40,6 +40,7 @@ function Mentor() {
   //   setLogIn(user);
   // }, [user]);
 
+
   useEffect(async () => {
     if (user !== null) {
       const data = { loginid: user.uid };
@@ -55,6 +56,7 @@ function Mentor() {
       const response = await res.json();
     }
   }, [user]);
+
 
   //log skills array whenever it changes
   useEffect(() => {
