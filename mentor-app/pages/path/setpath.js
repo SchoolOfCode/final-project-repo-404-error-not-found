@@ -21,8 +21,8 @@ export default function Setpath() {
             },
             body: JSON.stringify(data),
           })
-          router.push('/setup-profile/mentor')
           const response = await res.json()
+          router.push('/setup-profile/mentor')
           console.log('response', response)
           //   setCurrentMentor(response)
         }
