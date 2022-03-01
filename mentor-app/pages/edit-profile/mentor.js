@@ -156,7 +156,7 @@ function EditMentor() {
                   type='text'
                   name='photourl'
                   value={mentor.photourl}
-                  onChange={(e) => setPhotourl(e.target.value)}
+                  onChange={(e) => handleChange(e)}
                 />
               </div>
               <div className={css.tagline}>

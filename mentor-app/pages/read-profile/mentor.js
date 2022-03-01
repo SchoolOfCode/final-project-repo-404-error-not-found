@@ -34,7 +34,7 @@ export default function Profile() {
 
     return (
       <div className={css.profileFullArea}>
-        <h1>Your profile</h1>
+        <h1>Mentor profile</h1>
         <br />
         <div className={css.profileMainArea}>
           <div className={css.profileLeft}>
@@ -88,9 +88,9 @@ export default function Profile() {
               <p>Description of what is offered</p>
             </div>
             <div className={css.lowSquare}>
-              <Link href='/edit-profile/mentor'>
-                <button>Edit Profile</button>
-              </Link>
+              {/* <Link href='/edit-profile/mentor'> */}
+              <button>Send a Message</button>
+              {/* </Link> */}
             </div>
           </div>
         </div>
