@@ -13,6 +13,7 @@ export default function Setpath() {
       try {
         if (user !== null) {
           const data = { loginid: user.uid };
+
           const res = await fetch(`${server}/api/mentors`, {
             method: "POST",
             headers: {
@@ -21,6 +22,7 @@ export default function Setpath() {
             },
             body: JSON.stringify(data),
           });
+
           const response = await res.json();
           router.push("/setup-profile/mentor");
           console.log("response", response);

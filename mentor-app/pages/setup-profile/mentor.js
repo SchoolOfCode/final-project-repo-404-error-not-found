@@ -1,25 +1,25 @@
+
 import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
-// const Mentor = () => {
-//   return (
 
-//for test purposes
-// const id = 2;
 import { server } from "../../config";
+
 
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
-const url = process.env.REACT_APP_BACKEND_URL;
+
 
 //add location and profile pic url fields
 
 function Mentor() {
   const [user, loading, error] = useAuthState(firebase.auth());
+
   const loginid = user ? user.uid : "";
+
   const router = useRouter();
 
   const [firstname, setFirstname] = useState("");
@@ -35,7 +35,9 @@ function Mentor() {
   const [socialMediaType, setSocialMediaType] = useState("");
   const [socialMediaUserName, setSocialMediaUserName] = useState("");
   const [socials, setSocials] = useState({});
+
   const [isLogIn, setLogIn] = useState(null);
+
 
   // useEffect(() => {
   //   setLogIn(user);
@@ -45,6 +47,7 @@ function Mentor() {
     if (user !== null) {
       const data = { loginid: user.uid };
       console.log("about to send post request!");
+
       const res = await fetch(`${server}/api/mentors`, {
         method: "POST",
         headers: {
@@ -53,6 +56,7 @@ function Mentor() {
         },
         body: JSON.stringify(data),
       });
+
       const response = await res.json();
     }
   }, [user]);
@@ -97,6 +101,7 @@ function Mentor() {
     // const data = { loginid: user.uid };
     const loginid = user.uid;
 
+
     const response = await fetch(`${server}/api/mentors/${loginid}`, {
       method: "PATCH",
 
@@ -105,6 +110,7 @@ function Mentor() {
       },
       body: JSON.stringify(body),
     });
+
     console.log(JSON.stringify(body));
     router.push("/profile/mentor");
   };
@@ -259,15 +265,3 @@ function Mentor() {
 
 export default Mentor;
 
-//
-// {
-//   "firstname":"Bob",
-//   "surname":"Bobbits",
-//   "email":"bob@bobbits.com",
-//   "jobTitle":"Chief Bob",
-//   "company":"All The Bobs",
-//   "biography":"Bob first started coding in the original dot.com boom of 1952, and has led the field in Bobness for nearly seven decades now - continually pushing the boundaries of bobness, and taking in multiple shifts in direction.  He has two cats and lives in the Algarve.",
-//   "profileTagLine":"The best Bob in bob world.",
-//   "technology":"Figma, Next.js, React, Git.",
-//   "socialMedia":"bob@github.com"
-// }
