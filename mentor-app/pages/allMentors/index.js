@@ -4,6 +4,7 @@ import GithubIcon from "../../components/GithubIcon";
 import LinkedinIcon from "../../components/LinkedinIcon";
 import Link from "next/link";
 
+
 export const getServerSideProps = async () => {
   const res = await fetch(
     "https://modest-mcnulty-376d20.netlify.app/api/mentors"
@@ -21,6 +22,7 @@ const AllMentors = ({ mentors }) => {
       <h1>Mentors</h1>
       {mentors.map((mentor) => {
         const {
+          loginid,
           biography,
           firstname,
           surname,
@@ -82,7 +84,16 @@ const AllMentors = ({ mentors }) => {
                   </div>
                 ) : null}
               </div>
-              <Link href="/read-profile/mentor">
+
+              <Link
+                href={{
+                  pathname: '/read-profile/mentor',
+                  query: {
+                    loginid: loginid,
+                  },
+                }}
+              >
+
                 <button>View Profile</button>
               </Link>
             </a>
