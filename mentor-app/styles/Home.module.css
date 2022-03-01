@@ -208,7 +208,7 @@
   padding-top: 40px;
   margin: 350px auto;
   text-align: center;
-  background-color: rgb(127, 255, 238);
+  background-color: rgb(250, 250, 250);
 }
 
 .logoutbtn {
@@ -230,7 +230,36 @@ justify-content: space-around;
 
 .card {
   display: flex;
+  justify-content: space-evenly;
   flex-direction: rows;
   row-gap: 50px;
 
+}
+
+.aboutmain{
+  align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 48px;
+    color: var(--textColor1);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 140%;
+    
+}
+
+.abouttitle {
+  color: var(--textColor1);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 150%;
+  margin-bottom: 8px;
+}
+
+.aboutpara {
+  color: var(--textColor5);
+  font-size: 16px;
+    line-height: 160%;
+    display: block;
+    text-align: center;
 }
