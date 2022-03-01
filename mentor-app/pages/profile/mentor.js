@@ -22,7 +22,9 @@ export default function Profile() {
       const loginid = user.uid;
       // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
       console.log("about to send GET request!");
-      const res = await fetch(`/api/mentors/${loginid}`);
+      const res = await fetch(
+        `https://modest-mcnulty-376d20.netlify.app/api/mentors/${loginid}`
+      );
       const data = await res.json();
       setCurrentMentor(data[0]);
     }

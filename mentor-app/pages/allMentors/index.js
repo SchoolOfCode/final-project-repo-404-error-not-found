@@ -5,7 +5,9 @@ import LinkedinIcon from "../../components/LinkedinIcon";
 import Link from "next/link";
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:3000/api/mentors");
+  const res = await fetch(
+    "https://modest-mcnulty-376d20.netlify.app/api/mentors"
+  );
   const data = await res.json();
 
   return {

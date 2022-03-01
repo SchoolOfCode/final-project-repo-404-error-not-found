@@ -34,14 +34,17 @@ function Mentor() {
     if (user !== null) {
       const data = { loginid: user.uid };
       console.log("about to send post request!");
-      const res = await fetch("http://localhost:3000/api/mentors", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "",
-        },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch(
+        "https://modest-mcnulty-376d20.netlify.app/api/mentors",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       const response = await res.json();
     }
   }, [user]);
@@ -87,7 +90,7 @@ function Mentor() {
     const loginid = user.uid;
 
     const response = await fetch(
-      `http://localhost:3000/api/mentors/${loginid}`,
+      `https://modest-mcnulty-376d20.netlify.app/api/mentors/${loginid}`,
       {
         method: "PATCH",
 
