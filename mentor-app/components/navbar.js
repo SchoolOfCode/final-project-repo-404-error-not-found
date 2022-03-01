@@ -7,7 +7,8 @@ import { getAuth, signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
 // import styles from "../styles/globals.css";
 import styles from "../styles/Home.module.css";
-import Image from "../public/mentoree_home_logo.jpg";
+import Image from "next/image";
+import logo from "../Images/mentoree_logo.png";
 import { Button } from "@chakra-ui/react";
 
 const auth = getAuth();
@@ -37,7 +38,7 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className="logo">
-        <img src={Image}></img>
+        <Image src={logo}></Image>
       </div>
       <Link href="/">
         <a>Home</a>

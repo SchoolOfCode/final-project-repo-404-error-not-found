@@ -66,6 +66,7 @@ nav .logo {
   margin-right: auto;
   width: 220px;
   height: 125px;
+  justify-content: center;
 }
 
 footer {
