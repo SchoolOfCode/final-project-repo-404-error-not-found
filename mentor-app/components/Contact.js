@@ -2,6 +2,8 @@ import React from "react";
 import { Row, Col, Form, Input, InputNumber, Button } from "antd";
 import styles from "../styles/Contact.module.css";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import Image from "next/image";
+import contactImage from "../Images/contactPic.jpg";
 
 export default function Contact() {
   const layout = {
@@ -30,10 +32,9 @@ export default function Contact() {
     <>
       {" "}
       <Row>
-        <Col span={12} className={styles.contact}>
-          <h2 className={styles.contact}>Get in Touch</h2>
-        </Col>
-
+        <div>
+          <Image src={contactImage}></Image>
+        </div>
         <Col span={8}>
           <Form
             {...layout}
