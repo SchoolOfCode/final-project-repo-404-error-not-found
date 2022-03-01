@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import firebase from '../../firebase/clientApp'
@@ -10,6 +11,16 @@ import {
   AiFillLinkedin,
   AiFillTwitterCircle,
 } from 'react-icons/ai'
+=======
+import React, { useEffect, useState } from "react";
+import firebase from "../../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import css from "./mentor.module.css";
+import TwitterIcon from "../../components/TwitterIcon";
+import GithubIcon from "../../components/GithubIcon";
+import LinkedinIcon from "../../components/LinkedinIcon";
+>>>>>>> b3b4df2c91fb475ac636fbd089ab2e44b9f8fcaf
 
 export default function Profile() {
   //currentMentor is the mentor pulled from our database
@@ -31,9 +42,15 @@ export default function Profile() {
 
   //render page only if currentMentor is loaded, otherwise show loading text
   if (currentMentor !== null) {
+<<<<<<< HEAD
     let socialsKey = Object.keys(currentMentor.socials)
+=======
+    // let socialsKey = Object.keys(currentMentor.socials);
+>>>>>>> b3b4df2c91fb475ac636fbd089ab2e44b9f8fcaf
     return (
       <div className={css.profileFullArea}>
+        <h1>Your profile</h1>
+        <br />
         <div className={css.profileMainArea}>
           <div className={css.profileLeft}>
             <img
@@ -41,9 +58,17 @@ export default function Profile() {
               src={currentMentor.photourl}
             ></img>
             <div className={css.socialsArea}>
-              <AiFillGithub className={css.socialIcon} />
-              <AiFillLinkedin className={css.socialIcon} />
-              <AiFillTwitterCircle className={css.socialIcon} />
+              {Object.keys(currentMentor.socials)[0] === "linkedin" ? (
+                <LinkedinIcon
+                  handle={Object.values(currentMentor.socials)[0]}
+                />
+              ) : null}
+              {Object.keys(currentMentor.socials)[0] === "github" ? (
+                <GithubIcon handle={Object.values(currentMentor.socials)[0]} />
+              ) : null}
+              {Object.keys(currentMentor.socials)[0] === "twitter" ? (
+                <TwitterIcon handle={Object.values(currentMentor.socials)[0]} />
+              ) : null}
             </div>
           </div>
           <div className={css.profileRight}>
@@ -52,6 +77,10 @@ export default function Profile() {
             </h1>
             <h3>{currentMentor.location}</h3>
             <h3>{currentMentor.tagline}</h3>
+            <span>
+              <h4 className={css.jobtitle}>{currentMentor.jobtitle} </h4>
+              at <em>{currentMentor.company}</em>
+            </span>
             <div className={css.skills}>
               {currentMentor.skills.length > 0
                 ? currentMentor.skills.map((item) => (

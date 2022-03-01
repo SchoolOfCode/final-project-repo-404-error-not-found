@@ -1,5 +1,8 @@
 // import css from "./index.module.css";
 import styles from "../../styles/AllMentors.module.css";
+import TwitterIcon from "../../components/TwitterIcon";
+import GithubIcon from "../../components/GithubIcon";
+import LinkedinIcon from "../../components/LinkedinIcon";
 
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:3000/api/mentors");
@@ -12,7 +15,7 @@ export const getStaticProps = async () => {
 
 const AllMentors = ({ mentors }) => {
   return (
-    <div>
+    <div className={styles.mentorList}>
       <h1>Mentors</h1>
       {mentors.map((mentor) => {
         const {
@@ -25,20 +28,31 @@ const AllMentors = ({ mentors }) => {
           location,
           userid,
           skills,
+          jobtitle,
+          company,
         } = mentor;
         return firstname ? (
           <div key={userid}>
             <a className={styles.mentorCard}>
               <div className={styles.profileLeft}>
                 <img
+                  className={styles.profilePic}
                   src={photourl}
-                  style={{ width: 100, height: 100, borderRadius: "50%" }}
+                  // style={{ width: 100, height: 100, borderRadius: "50%" }}
                 ></img>
 
                 {socials ? (
-                  <p className={styles.socials}>
-                    {socials.name} {socials.userName}
-                  </p>
+                  <div className={styles.socials}>
+                    {Object.keys(socials)[0] === "linkedin" ? (
+                      <LinkedinIcon handle={Object.values(socials)[0]} />
+                    ) : null}
+                    {Object.keys(socials)[0] === "github" ? (
+                      <GithubIcon handle={Object.values(socials)[0]} />
+                    ) : null}
+                    {Object.keys(socials)[0] === "twitter" ? (
+                      <TwitterIcon handle={Object.values(socials)[0]} />
+                    ) : null}
+                  </div>
                 ) : null}
               </div>
               <div className={styles.cardTextArea}>
@@ -46,10 +60,16 @@ const AllMentors = ({ mentors }) => {
                   <h3>
                     {firstname} {surname}
                   </h3>
-                  <h4>{location}</h4>
+                  <span>
+                    <h4 className={styles.jobtitle}>{jobtitle} </h4>
+                    at <em>{company}</em>
+                  </span>
+
+                  <p className={styles.location}>{location}</p>
+                  <p>Email: {email}</p>
+                  <p className={styles.bio}>{biography}</p>
                 </div>
-                <p>Email: {email}</p>
-                <p>{biography}</p>
+
                 {skills ? (
                   <div className={styles.skills}>
                     {skills.map((skill, index) => (
