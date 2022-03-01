@@ -8,7 +8,6 @@ import Link from 'next/link'
 export const getStaticProps = async () => {
   const res = await fetch('http://localhost:3000/api/mentors')
   const data = await res.json()
-
   return {
     props: { mentors: data },
   }
@@ -20,6 +19,7 @@ const AllMentors = ({ mentors }) => {
       <h1>Mentors</h1>
       {mentors.map((mentor) => {
         const {
+          loginid,
           biography,
           firstname,
           surname,
@@ -81,7 +81,14 @@ const AllMentors = ({ mentors }) => {
                   </div>
                 ) : null}
               </div>
-              <Link href='/read-profile/mentor'>
+              <Link
+                href={{
+                  pathname: '/read-profile/mentor',
+                  query: {
+                    loginid: loginid,
+                  },
+                }}
+              >
                 <button>View Profile</button>
               </Link>
             </a>
