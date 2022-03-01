@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import firebase from "../../firebase/clientApp";
@@ -10,7 +9,6 @@ import css from "./mentor.module.css";
 import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";
 import LinkedinIcon from "../../components/LinkedinIcon";
-
 
 export default function Profile() {
   //currentMentor is the mentor pulled from our database
@@ -24,7 +22,7 @@ export default function Profile() {
       const loginid = user.uid;
       // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
       console.log("about to send GET request!");
-      const res = await fetch(`http://localhost:3000/api/mentors/${loginid}`);
+      const res = await fetch(`/api/mentors/${loginid}`);
       const data = await res.json();
       setCurrentMentor(data[0]);
     }
@@ -45,15 +43,15 @@ export default function Profile() {
               src={currentMentor.photourl}
             ></img>
             <div className={css.socialsArea}>
-              {Object.keys(currentMentor.socials)[0] === 'linkedin' ? (
+              {Object.keys(currentMentor.socials)[0] === "linkedin" ? (
                 <LinkedinIcon
                   handle={Object.values(currentMentor.socials)[0]}
                 />
               ) : null}
-              {Object.keys(currentMentor.socials)[0] === 'github' ? (
+              {Object.keys(currentMentor.socials)[0] === "github" ? (
                 <GithubIcon handle={Object.values(currentMentor.socials)[0]} />
               ) : null}
-              {Object.keys(currentMentor.socials)[0] === 'twitter' ? (
+              {Object.keys(currentMentor.socials)[0] === "twitter" ? (
                 <TwitterIcon handle={Object.values(currentMentor.socials)[0]} />
               ) : null}
             </div>
