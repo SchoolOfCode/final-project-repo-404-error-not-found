@@ -10,10 +10,22 @@
   background-color: beige;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 1fr;
+  border-radius: 20px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  -webkit-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
+  -moz-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
+  box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
 }
 
 .sideDisplay {
   background-color: beige;
+  border-radius: 20px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  -webkit-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
+  -moz-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
+  box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
 }
 .profileLeft {
   padding: 2em;
@@ -67,25 +79,32 @@
 }
 
 .skill {
-  background-color: lightgrey;
+  /* background-color: lightgrey;
   border-radius: 10px;
   text-align: center;
   width: 8em;
   margin: 0.2em;
-  justify-self: center;
+  justify-self: center; */
+  margin: 0.5em;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  padding: 0.3em 0.8em;
 }
 
 .rightSquare {
   width: 100%;
-  height: 370px;
+  /* height: 370px; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2rem;
+  padding-top: 5rem;
+  justify-content: center;
 }
 
 .topSquare {
   border: 1px solid black;
+  border-radius: 10px;
   height: 140px;
   width: 13rem;
   display: flex;
@@ -95,6 +114,8 @@
 .lowSquare {
   margin-top: 3rem;
   border: 1px solid black;
+  border-radius: 10px;
+
   height: 100px;
   width: 13rem;
   display: flex;

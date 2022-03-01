@@ -56,7 +56,7 @@
 .skills {
   display: flex;
   padding: auto;
-  margin: auto;
+  margin: 1em auto;
   justify-content: left;
 }
 

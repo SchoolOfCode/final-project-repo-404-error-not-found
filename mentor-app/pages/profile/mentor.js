@@ -31,6 +31,8 @@ export default function Profile() {
     // let socialsKey = Object.keys(currentMentor.socials);
     return (
       <div className={css.profileFullArea}>
+        <h1>Your profile</h1>
+        <br />
         <div className={css.profileMainArea}>
           <div className={css.profileLeft}>
             <img
