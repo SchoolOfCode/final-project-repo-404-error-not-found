@@ -24,6 +24,7 @@ export default function Home() {
         <h1 className={styles.headerTitle}>
           Bringing the joy of programming to everyone, everywhere
         </h1>
+
         <h2 className={styles.title}> Join as a...</h2>
         {/* <div className={styles.homeButtons}> */}
         <div className={styles.homeButtonWrap}>
