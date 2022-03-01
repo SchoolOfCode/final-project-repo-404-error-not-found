@@ -1,52 +1,37 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
-import firebase from '../../firebase/clientApp'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import 'antd/dist/antd.css' // or 'antd/dist/antd.less'
-import { Row, Col } from 'antd'
-import css from './mentor.module.css'
-import {
-  AiFillGithub,
-  AiFillLinkedin,
-  AiFillTwitterCircle,
-} from 'react-icons/ai'
-=======
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+
 import css from "./mentor.module.css";
+
 import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";
 import LinkedinIcon from "../../components/LinkedinIcon";
->>>>>>> b3b4df2c91fb475ac636fbd089ab2e44b9f8fcaf
 
 export default function Profile() {
   //currentMentor is the mentor pulled from our database
-  const [currentMentor, setCurrentMentor] = useState(null)
+  const [currentMentor, setCurrentMentor] = useState(null);
   // user is the user provided by firebase
-  const [user, loading, error] = useAuthState(firebase.auth())
+  const [user, loading, error] = useAuthState(firebase.auth());
 
   //takes the firebase uid and fetches the corresponding mentor from database, then assigns it to currentMentor
   useEffect(async () => {
     if (user !== null) {
-      const loginid = user.uid
+      const loginid = user.uid;
       // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
-      console.log('about to send GET request!')
-      const res = await fetch(`http://localhost:3000/api/mentors/${loginid}`)
-      const data = await res.json()
-      setCurrentMentor(data[0])
+      console.log("about to send GET request!");
+      const res = await fetch(`http://localhost:3000/api/mentors/${loginid}`);
+      const data = await res.json();
+      setCurrentMentor(data[0]);
     }
-  }, [user])
+  }, [user]);
 
   //render page only if currentMentor is loaded, otherwise show loading text
   if (currentMentor !== null) {
-<<<<<<< HEAD
-    let socialsKey = Object.keys(currentMentor.socials)
-=======
     // let socialsKey = Object.keys(currentMentor.socials);
->>>>>>> b3b4df2c91fb475ac636fbd089ab2e44b9f8fcaf
+
     return (
       <div className={css.profileFullArea}>
         <h1>Your profile</h1>
@@ -103,13 +88,13 @@ export default function Profile() {
               <p>Description of what is offered</p>
             </div>
             <div className={css.lowSquare}>
-              <Link href='/edit-profile/mentor'>
+              <Link href="/edit-profile/mentor">
                 <button>Edit Profile</button>
               </Link>
             </div>
           </div>
         </div>
       </div>
-    )
-  } else return <p>loading data...</p>
+    );
+  } else return <p>loading data...</p>;
 }
