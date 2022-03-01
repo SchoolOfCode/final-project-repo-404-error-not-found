@@ -22,7 +22,7 @@ const About = () => {
           {
             <Image
               alt="example"
-              style={{ width: 150, height: 150 }}
+              // style={{ width: 150, height: 150 }}
               // src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
               src={svg1}
             />
@@ -42,7 +42,7 @@ const About = () => {
           {
             <Image
               alt="example"
-              style={{ width: 150, height: 150 }}
+              // style={{ width: 150, height: 150 }}
               src={svg2}
             />
           }
@@ -64,7 +64,7 @@ const About = () => {
           {
             <Image
               alt="example"
-              style={{ width: 150, height: 150 }}
+              // style={{ width: 150, height: 150 }}
               src={svg3}
             />
           }

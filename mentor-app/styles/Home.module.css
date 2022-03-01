@@ -230,14 +230,14 @@
 }
 
 .logoutbtn {
-  border-radius: 15px;
+  /* border-radius: 15px;
   font-family: "Nunito";
   text-decoration: none;
   background-color: rgba(11, 241, 153, 0.623);
   margin-left: 12px;
   color: white;
   border-color: white;
-  box-shadow: white;
+  box-shadow: white; */
 }
 
 /* .card {
