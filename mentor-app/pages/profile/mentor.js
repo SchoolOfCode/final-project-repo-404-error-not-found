@@ -3,6 +3,7 @@ import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import { server } from "../../config";
 
 import css from "./mentor.module.css";
 

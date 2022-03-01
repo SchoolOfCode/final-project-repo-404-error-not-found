@@ -2,6 +2,7 @@ import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+import { server } from "../../config";
 
 import React, { useEffect } from "react";
 import { useState } from "react";

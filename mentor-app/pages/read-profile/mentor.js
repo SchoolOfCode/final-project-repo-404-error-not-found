@@ -4,6 +4,7 @@ import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import css from "./mentor.module.css";
+import { server } from "../../config";
 
 import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";

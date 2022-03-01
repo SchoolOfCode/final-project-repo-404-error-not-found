@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 
 //for test purposes
 // const id = 2;
+import { server } from "../../config";
 
 import React, { useEffect } from "react";
 import { useState } from "react";
