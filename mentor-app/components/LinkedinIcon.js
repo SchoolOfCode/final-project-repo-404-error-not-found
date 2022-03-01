@@ -4,8 +4,8 @@ import css from "./socialIcon.module.css";
 export default function LinkedinIcon({ handle }) {
   let url = `https://www.linkedin.com/in/${handle}`;
   return (
-    <a href={url} className={css.socialIcon}>
-      <AiFillLinkedin handle={handle} />
+    <a href={url}>
+      <AiFillLinkedin handle={handle} className={css.socialIcon} />
     </a>
   );
 }

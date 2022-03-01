@@ -1,4 +1,11 @@
 .socialIcon {
   font-size: 4em;
   color: black;
+  transition: 0.33s ease all;
+}
+
+.socialIcon:hover {
+  color: navy;
+  transform: scale(1.05);
+  transition: 0.33s ease all;
 }

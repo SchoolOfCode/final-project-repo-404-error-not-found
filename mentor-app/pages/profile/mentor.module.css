@@ -5,6 +5,7 @@
   margin: auto;
 }
 .profileMainArea {
+  padding: 1em 2em;
   display: grid;
   text-align: center;
   background-color: beige;
@@ -16,6 +17,10 @@
   -webkit-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
   -moz-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
   box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
+}
+
+.profileMainArea h1 {
+  font-size: 3em;
 }
 
 .sideDisplay {
@@ -36,6 +41,7 @@
 }
 
 .profileImage {
+  margin: 2em 0;
   width: 10em;
   height: 10em;
   border-radius: 50%;
@@ -62,6 +68,13 @@
   background-color: lightgrey;
 }
 
+.jobtitle {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 4em;
+  font-weight: 600;
+}
+
 .biographyArea {
   text-align: center;
   grid-column-start: 1;
@@ -76,6 +89,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  font-size: 0.8em;
 }
 
 .skill {

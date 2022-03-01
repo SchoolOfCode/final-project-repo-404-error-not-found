@@ -1,5 +1,6 @@
 .mentorList h1 {
   text-align: center;
+  font-size: 3.5em;
 }
 
 .mentorCard {
@@ -14,9 +15,19 @@
   border: 3px solid rgb(229 231 235 / var(--tw-border-opacity));
   max-width: 800px;
   margin: 2em auto;
-  -webkit-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
-  -moz-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
-  box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
+  -webkit-box-shadow: 3px 3px 10px -4px rgba(110, 110, 110, 1);
+  -moz-box-shadow: 3px 3px 10px -4px rgba(110, 110, 110, 1);
+  box-shadow: 3px 3px 10px -4px rgba(110, 110, 110, 1);
+  color: black;
+  transition: ease 0.3s all;
+}
+
+.mentorCard:hover {
+  color: black;
+  -webkit-box-shadow: 5px 5px 13px -4px rgba(110, 110, 110, 1);
+  -moz-box-shadow: 5px 5px 13px -4px rgba(110, 110, 110, 1);
+  box-shadow: 5px 5px 13px -4px rgba(110, 110, 110, 1);
+  transition: ease 0.3s all;
 }
 
 .profileLeft {

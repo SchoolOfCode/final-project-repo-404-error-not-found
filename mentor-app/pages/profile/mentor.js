@@ -3,7 +3,6 @@ import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import css from "./mentor.module.css";
-import SocialIcon from "../../components/socialIcon";
 import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";
 import LinkedinIcon from "../../components/LinkedinIcon";
@@ -59,6 +58,10 @@ export default function Profile() {
             </h1>
             <h3>{currentMentor.location}</h3>
             <h3>{currentMentor.tagline}</h3>
+            <span>
+              <h4 className={css.jobtitle}>{currentMentor.jobtitle} </h4>
+              at <em>{currentMentor.company}</em>
+            </span>
             <div className={css.skills}>
               {currentMentor.skills.length > 0
                 ? currentMentor.skills.map((item) => (
