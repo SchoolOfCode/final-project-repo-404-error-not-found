@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import firebase from "../../firebase/clientApp"
+import firebase from "../../firebase/clientApp";
 
 // Configure FirebaseUI.
 const uiConfig = {
@@ -23,7 +23,6 @@ function SignInScreen() {
 }
 
 export default SignInScreen;
-
 
 // const Mentor = () => {
 //   return <h1>Mentor sign up page</h1>;

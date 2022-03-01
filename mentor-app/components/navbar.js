@@ -6,9 +6,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth, signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
-import Image from "next/image";
-import logo from "../Images/mentoree_home_logo.jpg";
-
+import Image from "../public/mentoree_home_logo.jpg";
+import { Button } from "@chakra-ui/react";
 
 const auth = getAuth();
 
@@ -37,7 +36,7 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className="logo">
-      <Image src={logo}></Image>
+        <img src={Image}></img>
       </div>
       <Link href="/">
         <a>Home</a>
@@ -67,9 +66,14 @@ const Navbar = () => {
         <a>Find a Mentor</a>
       </Link>
       {isLogIn && (
-        <button className={styles.logoutbtn} onClick={handleLogout}>
+        <Button
+          className={styles.logoutbtn}
+          onClick={handleLogout}
+          colorscheme="teal"
+          variant="outline"
+        >
           Logout
-        </button>
+        </Button>
       )}
       {/* if is not null, render the button */}
     </nav>

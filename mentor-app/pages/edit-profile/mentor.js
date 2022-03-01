@@ -1,11 +1,16 @@
+
+import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+import { server } from "../../config";
+
 
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
+
 
 function EditMentor() {
   const router = useRouter();
@@ -39,9 +44,9 @@ function EditMentor() {
   useEffect(async () => {
     if (user !== null) {
       const loginid = user.uid;
-      const res = await fetch(
-        `https://modest-mcnulty-376d20.netlify.app/api/mentors/${loginid}`
-      );
+
+      const res = await fetch(`${server}/api/mentors/${loginid}`);
+
       const data = await res.json();
       setMentor(data[0]);
     }
@@ -52,16 +57,15 @@ function EditMentor() {
     e.preventDefault();
     const body = mentor;
     const loginid = user.uid;
-    const res = await fetch(
-      `https://modest-mcnulty-376d20.netlify.app/api/mentors/${loginid}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      }
-    );
+
+    const res = await fetch(`${server}/api/mentors/${loginid}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
     router.push("/profile/mentor");
   };
   //RENDER PAGE

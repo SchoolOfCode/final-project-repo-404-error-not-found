@@ -13,17 +13,16 @@ export default function Setpath() {
       try {
         if (user !== null) {
           const data = { loginid: user.uid };
-          const res = await fetch(
-            "https://modest-mcnulty-376d20.netlify.app/api/mentors",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "",
-              },
-              body: JSON.stringify(data),
-            }
-          );
+
+          const res = await fetch(`${server}/api/mentors`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "",
+            },
+            body: JSON.stringify(data),
+          });
+
           const response = await res.json();
           router.push("/setup-profile/mentor");
           console.log("response", response);

@@ -1,15 +1,25 @@
+
+import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+
+import { server } from "../../config";
+
+
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
 
+
 //add location and profile pic url fields
 
 function Mentor() {
   const [user, loading, error] = useAuthState(firebase.auth());
+
+  const loginid = user ? user.uid : "";
+
   const router = useRouter();
 
   const [firstname, setFirstname] = useState("");
@@ -26,6 +36,9 @@ function Mentor() {
   const [socialMediaUserName, setSocialMediaUserName] = useState("");
   const [socials, setSocials] = useState({});
 
+  const [isLogIn, setLogIn] = useState(null);
+
+
   // useEffect(() => {
   //   setLogIn(user);
   // }, [user]);
@@ -34,17 +47,16 @@ function Mentor() {
     if (user !== null) {
       const data = { loginid: user.uid };
       console.log("about to send post request!");
-      const res = await fetch(
-        "https://modest-mcnulty-376d20.netlify.app/api/mentors",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+
+      const res = await fetch(`${server}/api/mentors`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "",
+        },
+        body: JSON.stringify(data),
+      });
+
       const response = await res.json();
     }
   }, [user]);
@@ -89,17 +101,16 @@ function Mentor() {
     // const data = { loginid: user.uid };
     const loginid = user.uid;
 
-    const response = await fetch(
-      `https://modest-mcnulty-376d20.netlify.app/api/mentors/${loginid}`,
-      {
-        method: "PATCH",
 
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      }
-    );
+    const response = await fetch(`${server}/api/mentors/${loginid}`, {
+      method: "PATCH",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
     console.log(JSON.stringify(body));
     router.push("/profile/mentor");
   };
@@ -253,3 +264,4 @@ function Mentor() {
 }
 
 export default Mentor;
+

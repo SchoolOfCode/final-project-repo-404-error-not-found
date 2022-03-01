@@ -3,6 +3,7 @@ import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import { server } from "../../config";
 
 import css from "./mentor.module.css";
 
@@ -22,9 +23,9 @@ export default function Profile() {
       const loginid = user.uid;
       // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
       console.log("about to send GET request!");
-      const res = await fetch(
-        `https://modest-mcnulty-376d20.netlify.app/api/mentors/${loginid}`
-      );
+
+      const res = await fetch(`${server}/api/mentors/${loginid}`);
+
       const data = await res.json();
       setCurrentMentor(data[0]);
     }

@@ -5,6 +5,17 @@ import Link from "next/link";
 import firebase from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+import { ChakraProvider } from "@chakra-ui/react";
+
+function App({ Component }) {
+  // 2. Use at the root of your app
+  return (
+    <ChakraProvider>
+      <Component />
+    </ChakraProvider>
+  );
+}
+
 export default function Home() {
   const [user, loading, error] = useAuthState(firebase.auth());
   console.log("Loading:", loading, "|", "Current user:", user); //delete later

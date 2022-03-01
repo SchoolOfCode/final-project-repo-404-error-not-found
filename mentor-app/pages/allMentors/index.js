@@ -1,14 +1,14 @@
+
 import styles from "../../styles/AllMentors.module.css";
 import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";
 import LinkedinIcon from "../../components/LinkedinIcon";
 import Link from "next/link";
 
+import { server } from "../../config";
 
 export const getServerSideProps = async () => {
-  const res = await fetch(
-    "https://modest-mcnulty-376d20.netlify.app/api/mentors"
-  );
+  const res = await fetch(`${server}/api/mentors`);
   const data = await res.json();
 
   return {
@@ -87,7 +87,7 @@ const AllMentors = ({ mentors }) => {
 
               <Link
                 href={{
-                  pathname: '/read-profile/mentor',
+                  pathname: "/read-profile/mentor",
                   query: {
                     loginid: loginid,
                   },

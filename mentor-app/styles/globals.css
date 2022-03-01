@@ -15,6 +15,7 @@ a {
 .content {
   max-width: 100vw;
   margin: 0 auto;
+  padding-top: 230px;
 }
 
 nav {
@@ -46,7 +47,7 @@ nav a {
   display: inline-block;
   font-size: 20px;
   margin-left: 12px;
-  
+
   /* margin-bottom: 6px; */
 }
 
