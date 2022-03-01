@@ -289,6 +289,7 @@ justify-content: space-around;
   font-size: 20px;
   font-weight: 600;
   line-height: 150%;
+  margin-top: 1rem;
   margin-bottom: 15px;
   display: flex;
   justify-content: center;
@@ -301,5 +302,5 @@ justify-content: space-around;
   line-height: 160%;
   display: block;
   text-align: justify;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
 }

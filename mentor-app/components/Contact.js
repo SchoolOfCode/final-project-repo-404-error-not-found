@@ -63,23 +63,8 @@ export default function Contact() {
             >
               <Input />
             </Form.Item>
-            <Form.Item
-              name={["user", "age"]}
-              label="Age"
-              rules={[
-                {
-                  type: "number",
-                  min: 0,
-                  max: 99,
-                },
-              ]}
-            >
-              <InputNumber />
-            </Form.Item>
-            <Form.Item name={["user", "website"]} label="Website">
-              <Input />
-            </Form.Item>
-            <Form.Item name={["user", "introduction"]} label="Introduction">
+
+            <Form.Item name={["user", "introduction"]} label="Message">
               <Input.TextArea />
             </Form.Item>
             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
