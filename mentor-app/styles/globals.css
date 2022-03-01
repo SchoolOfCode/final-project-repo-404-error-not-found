@@ -18,42 +18,53 @@ a {
 }
 
 nav {
-  margin: 10px auto 80px;
-  padding: 10px 0;
+  padding: 10px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   border-bottom: 3px solid #ddd;
   transition: border-bottom 0.5s;
   list-style-type: none;
+  top: 0;
   overflow: hidden;
   position: fixed;
-  right: 35px;
+  width: 100%;
+  margin-right: 3rem;
+  background-color: white;
+  align-items: center;
+  z-index: 100;
 }
 
-.navbar a {
+nav a {
   display: inline;
   list-style: none;
-  float: left;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  /* float: left; */
+  font-family: "Nunito";
   text-decoration: none;
   color: black;
   padding: 1rem;
-  display: block;
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 12px;
+  
+  /* margin-bottom: 6px; */
 }
 
 nav:hover {
   border-bottom: 1px solid black;
 }
-nav a {
+/* nav a {
   margin-left: 12px;
-}
+  margin-bottom: 6px;
+} */
 nav a:hover {
-  color: black;
+  color: green;
 }
 
 nav .logo {
   margin-right: auto;
+  width: 220px;
+  height: 125px;
 }
 
 footer {
@@ -72,7 +83,7 @@ footer {
   border-radius: 15px;
   font-family: "Nunito";
   text-decoration: none;
-  background-color: rgba(11, 241, 153, 0.623);
+  background-color: rgba(4, 92, 58, 0.623);
   margin-left: 12px;
   color: white;
   border-color: white;
