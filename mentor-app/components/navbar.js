@@ -5,7 +5,6 @@ import firebase from "../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth, signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
-// import styles from "../styles/globals.css";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import logo from "../Images/mentoree_home_logo.jpg";
