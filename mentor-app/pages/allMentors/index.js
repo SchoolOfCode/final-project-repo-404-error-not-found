@@ -1,17 +1,18 @@
-// import css from "./index.module.css";
-import styles from '../../styles/AllMentors.module.css'
-import TwitterIcon from '../../components/TwitterIcon'
-import GithubIcon from '../../components/GithubIcon'
-import LinkedinIcon from '../../components/LinkedinIcon'
-import Link from 'next/link'
+import styles from "../../styles/AllMentors.module.css";
+import TwitterIcon from "../../components/TwitterIcon";
+import GithubIcon from "../../components/GithubIcon";
+import LinkedinIcon from "../../components/LinkedinIcon";
+import Link from "next/link";
+import { server } from "../../config";
 
 export const getServerSideProps = async () => {
-  const res = await fetch('http://localhost:3000/api/mentors')
-  const data = await res.json()
+  const res = await fetch(`${server}/api/mentors`);
+  const data = await res.json();
+
   return {
     props: { mentors: data },
-  }
-}
+  };
+};
 
 const AllMentors = ({ mentors }) => {
   return (
@@ -31,7 +32,7 @@ const AllMentors = ({ mentors }) => {
           skills,
           jobtitle,
           company,
-        } = mentor
+        } = mentor;
         return firstname ? (
           <div key={userid}>
             <a className={styles.mentorCard}>
@@ -44,13 +45,13 @@ const AllMentors = ({ mentors }) => {
 
                 {socials ? (
                   <div className={styles.socials}>
-                    {Object.keys(socials)[0] === 'linkedin' ? (
+                    {Object.keys(socials)[0] === "linkedin" ? (
                       <LinkedinIcon handle={Object.values(socials)[0]} />
                     ) : null}
-                    {Object.keys(socials)[0] === 'github' ? (
+                    {Object.keys(socials)[0] === "github" ? (
                       <GithubIcon handle={Object.values(socials)[0]} />
                     ) : null}
-                    {Object.keys(socials)[0] === 'twitter' ? (
+                    {Object.keys(socials)[0] === "twitter" ? (
                       <TwitterIcon handle={Object.values(socials)[0]} />
                     ) : null}
                   </div>
@@ -81,22 +82,24 @@ const AllMentors = ({ mentors }) => {
                   </div>
                 ) : null}
               </div>
+
               <Link
                 href={{
-                  pathname: '/read-profile/mentor',
+                  pathname: "/read-profile/mentor",
                   query: {
                     loginid: loginid,
                   },
                 }}
               >
+
                 <button>View Profile</button>
               </Link>
             </a>
           </div>
-        ) : null
+        ) : null;
       })}
     </div>
-  )
-}
+  );
+};
 
-export default AllMentors
+export default AllMentors;
