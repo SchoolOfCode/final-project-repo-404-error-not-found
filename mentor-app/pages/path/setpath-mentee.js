@@ -13,7 +13,7 @@ export default function Setpath() {
       //change for mentee
       try {
         if (user !== null) {
-          const data = { loginid: user.uid }
+          const data = { loginid: user.uid, socials:{}, skills: [] }
           const res = await fetch('http://localhost:3000/api/mentees', {
             //mentee
             method: 'POST',

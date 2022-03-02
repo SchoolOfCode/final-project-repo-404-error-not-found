@@ -10,7 +10,7 @@ import css from './mentor.module.css'
 
 //add location and profile pic url fields
 
-function Mentor() {
+function Mentee() {
   const [user, loading, error] = useAuthState(firebase.auth())
   const loginid = user ? user.uid : ''
   const router = useRouter()
@@ -107,7 +107,7 @@ function Mentor() {
   return (
     <>
       <div className={css.UpdateMentorProfileFormContainer}>
-        <h1>Setup your mentor profile</h1>
+        <h1>Setup your mentee profile</h1>
         <h2>Add or edit your information below</h2>
         <div>
           <form onSubmit={submitForm} className={css.UpdateMentorProfileForm}>
@@ -253,4 +253,4 @@ function Mentor() {
   )
 }
 
-export default Mentor
+export default Mentee

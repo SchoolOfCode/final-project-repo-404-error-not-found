@@ -88,7 +88,7 @@ export default function Profile() {
               <p>Description of what is offered</p>
             </div>
             <div className={css.lowSquare}>
-              <Link href='/edit-profile/mentor'>
+              <Link href='/edit-profile/mentee'>
                 <button>Edit Profile</button>
               </Link>
             </div>
