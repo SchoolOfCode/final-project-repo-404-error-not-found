@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import logo from "../Images/mentoree_home_logo.jpg";
-import { Button } from "@chakra-ui/react";
+import { Button } from 'react-bootstrap';
 
 const auth = getAuth();
 
@@ -69,14 +69,13 @@ const Navbar = () => {
         <a>Find a Mentor</a>
       </Link>
       {isLogIn && (
-        <Button
-          className={styles.logoutbtn}
+         <Button variant="outline-success"
           onClick={handleLogout}
-          colorscheme="teal"
-          variant="outline"
+          // colorscheme="teal"
+         
         >
           Logout
-        </Button>
+       </Button>
       )}
       {/* if is not null, render the button */}
     </nav>
