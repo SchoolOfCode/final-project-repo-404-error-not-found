@@ -1,10 +1,8 @@
-
 import styles from "../../styles/AllMentors.module.css";
 import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";
 import LinkedinIcon from "../../components/LinkedinIcon";
 import Link from "next/link";
-
 import { server } from "../../config";
 
 export const getServerSideProps = async () => {
