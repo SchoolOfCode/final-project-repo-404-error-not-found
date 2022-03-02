@@ -158,12 +158,31 @@
   color: #777;
 }
 
-.homeContainer {
-  padding: 3rem;
+.homeContent {
+  /* padding: 2rem; */
   /* width: 1080px;
   height: 560px; */
-  margin: auto;
-  border-radius: 45px;
+  /* margin: auto; */
+  /* border-radius: 45px; */
+
+  /* z-index: -1000; */
+  position: relative;
+}
+.homeBGBanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1000;
+}
+
+.homeButtonWrap {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+  padding-top: 5rem;
 }
 
 .mentor_btn {
@@ -214,19 +233,23 @@
   background: #01a32ae1;
 }
 
-.homeButtonWrap {
-  display: flex;
-  justify-content: center;
-  margin: 50px;
-}
-
 .about {
   color: #333;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
   padding-top: 40px;
-  margin: 350px auto;
+  margin: 200px auto;
   text-align: center;
-  background-color: rgb(250, 250, 250);
+  /* background-color: rgb(250, 250, 250); */
+  z-index: 1000;
+  position: relative;
+}
+
+.aboutBGBanner {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1000;
 }
 
 .logoutbtn {
@@ -246,11 +269,6 @@
 justify-content: space-around;
 } */
 
-.aboutDescription {
-  font-size: 2em;
-  margin: 100px;
-}
-
 .heading {
   align-items: center;
   display: flex;
@@ -263,6 +281,10 @@ justify-content: space-around;
   line-height: 140%;
 }
 
+.aboutDescription {
+  font-size: 2em;
+  margin: 100px;
+}
 .card {
   display: flex;
   justify-content: space-evenly;
@@ -288,7 +310,7 @@ justify-content: space-around;
   font-size: 20px;
   font-weight: 600;
   line-height: 150%;
-  margin-top: 1rem;
+  margin-top: 3rem;
   margin-bottom: 15px;
   display: flex;
   justify-content: center;
