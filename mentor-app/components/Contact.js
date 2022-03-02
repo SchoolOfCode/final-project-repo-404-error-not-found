@@ -29,7 +29,7 @@ export default function Contact() {
     console.log(values);
   };
   return (
-    <>
+    <div className={styles.contactContainer}>
       {" "}
       <Row>
         <div>
@@ -79,8 +79,8 @@ export default function Contact() {
             </Form.Item>
           </Form>
         </Col>
-        <Col span={4}></Col>
+        {/* <Col span={4}></Col> */}
       </Row>
-    </>
+    </div>
   );
 }

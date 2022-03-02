@@ -23,7 +23,7 @@ nav {
   display: flex;
   justify-content: flex-end;
   /* align-items: flex-end; */
-  border-bottom: 3px solid #ddd;
+
   transition: border-bottom 0.5s;
   list-style-type: none;
   top: 0;
@@ -33,7 +33,7 @@ nav {
   margin-right: 3rem;
   background-color: white;
   align-items: center;
-  z-index: 100;
+  z-index: 2000;
 }
 
 nav a {
@@ -48,16 +48,17 @@ nav a {
   margin-left: 12px;
 }
 
-nav:hover {
+/* nav:hover {
   border-bottom: 2px solid black;
   transition: border-bottom 0.5s;
-}
+} */
 /* nav a {
   margin-left: 12px;
   margin-bottom: 6px;
 } */
 nav a:hover {
   color: green;
+  font-weight: bold;
 }
 
 nav .logo {
@@ -69,7 +70,7 @@ nav .logo {
   top: 0;
   left: 0;
   bottom: 0;
-  padding: 40px 40px;
+  /* padding: 40px 40px; */
   z-index: 1000;
   cursor: pointer;
 }
@@ -81,9 +82,6 @@ footer {
   margin-top: 60px;
   color: #777;
   border-top: 1px solid #eaeaea;
-}
-.nav .current {
-  color: red;
 }
 
 .logoutbtn {

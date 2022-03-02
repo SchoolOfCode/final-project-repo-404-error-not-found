@@ -1,8 +1,12 @@
-/* .contactContainer {
-  border-radius: 1rem;
+.contactContainer {
+  /* border-radius: 1rem;
   --tw-border-opacity: 1;
-  border: 5px solid rgb(229 231 235 / var(--tw-border-opacity));
-} */
+  border: 5px solid rgb(229 231 235 / var(--tw-border-opacity)); */
+  /* /* margin: 0 auto; */
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
 
 .contact {
   font-family: "Nunito";
