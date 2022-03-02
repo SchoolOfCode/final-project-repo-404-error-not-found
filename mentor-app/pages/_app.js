@@ -3,6 +3,9 @@ import "../styles/globals.css";
 import "../styles/AllMentors.module.css";
 import "../styles/Home.module.css";
 
+import { ChakraProvider } from "@chakra-ui/react";
+import App from ".";
+
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
