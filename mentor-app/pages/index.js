@@ -69,6 +69,7 @@ export default function Home() {
         </div>
         <About />
       </div>
+
       <div className={styles.contactContainer}>
         <Contact />
       </div>
