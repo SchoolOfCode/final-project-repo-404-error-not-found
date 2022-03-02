@@ -19,7 +19,8 @@ a {
 }
 
 nav {
-  padding: 15px;
+  padding: 30px;
+  padding-left: 60px;
   display: flex;
   justify-content: flex-end;
   /* align-items: flex-end; */
@@ -30,10 +31,11 @@ nav {
   overflow: hidden;
   position: fixed;
   width: 100%;
-  margin-right: 3rem;
+  margin-right: 7rem;
   background-color: white;
   align-items: center;
   z-index: 2000;
+
 }
 
 nav a {
@@ -45,7 +47,7 @@ nav a {
   padding: 1rem;
   display: inline-block;
   font-size: 20px;
-  margin-left: 12px;
+  margin-right: 12px;
 }
 
 /* nav:hover {
@@ -84,13 +86,14 @@ footer {
   border-top: 1px solid #eaeaea;
 }
 
-.logoutbtn {
-  /* border-radius: 15px;
+/* Button {
+  border-radius: 15px;
   font-family: "Nunito";
   text-decoration: none;
   background-color: rgba(4, 92, 58, 0.623);
   margin-left: 12px;
   color: white;
   border-color: white;
-  box-shadow: white; */
-}
+  box-shadow: white;
+  padding-left: 30px;
+} */

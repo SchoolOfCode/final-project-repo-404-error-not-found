@@ -7,7 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
 import homeBG from "../Images/homeBG.png";
 import aboutBG from "../Images/aboutBG.png";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import { ChakraProvider } from "@chakra-ui/react";
 
 // export default function App({ Component }) {
