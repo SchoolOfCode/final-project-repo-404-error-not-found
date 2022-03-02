@@ -8,6 +8,7 @@ import Image from "next/image";
 import homeBG from "../Images/homeBG.png";
 import aboutBG from "../Images/aboutBG.png";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 // import { ChakraProvider } from "@chakra-ui/react";
 
 // export default function App({ Component }) {
@@ -49,14 +50,22 @@ export default function Home() {
             <Link href="/login/mentor">
               <a onClick={(e) => handleClick(e, "/login/mentor")}>
                 {" "}
-                <button className={styles.mentor_btn}> Mentor </button>{" "}
+                <Button variant="outline-success"
+                className={styles.mentor_btn}
+                  >
+                      Mentor
+                  </Button>
               </a>
             </Link>
 
             <Link href="/login/mentee" className={styles.btn}>
               <a onClick={(e) => handleClick(e, "/login/mentee")}>
                 {" "}
-                <button className={styles.mentee_btn}> Mentee </button>{" "}
+                <Button variant="outline-success"
+                className={styles.mentee_btn}
+                  >
+                      Mentee
+                  </Button>
               </a>
             </Link>
           </div>
