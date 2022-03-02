@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "createDB": "node -r dotenv/config database/scripts/createMentorsTable.js",
+    "createMenteeDB": "node -r dotenv/config database/scripts/createMenteeTable.js",
     "populateDB": "node -r dotenv/config database/scripts/populateMentorsTable.js",
     "clearDB": "node -r dotenv/config database/scripts/resetMentorsTable.js",
     "test": "jest"

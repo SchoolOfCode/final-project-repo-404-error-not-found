@@ -5,7 +5,7 @@ import GithubIcon from '../../components/GithubIcon'
 import LinkedinIcon from '../../components/LinkedinIcon'
 import Link from 'next/link'
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch('http://localhost:3000/api/mentors')
   const data = await res.json()
   return {
