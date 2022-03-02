@@ -1,69 +1,76 @@
-import Link from 'next/link'
-import firebase from '../../firebase/clientApp'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { useRouter } from 'next/router'
 
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import { Checkbox } from 'antd'
-import css from './mentor.module.css'
-const url = process.env.REACT_APP_BACKEND_URL
+import Link from "next/link";
+import firebase from "../../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/router";
+import { server } from "../../config";
+
+
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { Checkbox } from "antd";
+import css from "./mentor.module.css";
+
 
 function EditMentor() {
-  const router = useRouter()
-  const [user, loading, error] = useAuthState(firebase.auth())
-  const [mentor, setMentor] = useState(null)
-  const [skills, setSkills] = useState([]) //
-  const [socialMediaType, setSocialMediaType] = useState('') //
-  const [socialMediaUserName, setSocialMediaUserName] = useState('') //
-  const [socials, setSocials] = useState({}) //
+  const router = useRouter();
+  const [user, loading, error] = useAuthState(firebase.auth());
+  const [mentor, setMentor] = useState(null);
+  const [skills, setSkills] = useState([]); //
+  const [socialMediaType, setSocialMediaType] = useState(""); //
+  const [socialMediaUserName, setSocialMediaUserName] = useState(""); //
+  const [socials, setSocials] = useState({}); //
 
   function handleChange(e) {
-    const name = e.target.name
-    const value = e.target.value
-    setMentor({ ...mentor, [name]: value })
+    const name = e.target.name;
+    const value = e.target.value;
+    setMentor({ ...mentor, [name]: value });
   }
   //update social media object whenever the type or username changes
   useEffect(() => {
-    setSocials({ [socialMediaType]: socialMediaUserName })
-    setMentor({ ...mentor, socials: socials })
-  }, [socialMediaType, socialMediaUserName])
+    setSocials({ [socialMediaType]: socialMediaUserName });
+    setMentor({ ...mentor, socials: socials });
+  }, [socialMediaType, socialMediaUserName]);
 
   function updateSkills(e) {
     if (e.target.checked) {
-      setSkills([...skills, e.target.id])
-      setMentor({ ...mentor, skills: skills })
+      setSkills([...skills, e.target.id]);
+      setMentor({ ...mentor, skills: skills });
     } else if (e.target.checked === false) {
-      setSkills([...skills.filter((item) => item !== e.target.id)])
+      setSkills([...skills.filter((item) => item !== e.target.id)]);
     }
   }
   //GET USER DATA
   useEffect(async () => {
     if (user !== null) {
-      const loginid = user.uid
-      const res = await fetch(`http://localhost:3000/api/mentors/${loginid}`)
-      const data = await res.json()
-      setMentor(data[0])
+      const loginid = user.uid;
+
+      const res = await fetch(`${server}/api/mentors/${loginid}`);
+
+      const data = await res.json();
+      setMentor(data[0]);
     }
-  }, [user])
+  }, [user]);
 
   //SEND EDIT MENTOR DATA
   const submitForm = async (e) => {
-    e.preventDefault()
-    const body = mentor
-    const loginid = user.uid
-    const res = await fetch(`http://localhost:3000/api/mentors/${loginid}`, {
-      method: 'PATCH',
+    e.preventDefault();
+    const body = mentor;
+    const loginid = user.uid;
+
+    const res = await fetch(`${server}/api/mentors/${loginid}`, {
+      method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-    })
-    router.push('/profile/mentor')
-  }
+    });
+
+    router.push("/profile/mentor");
+  };
   //RENDER PAGE
   if (mentor === null) {
-    return <h2>...Loading</h2>
+    return <h2>...Loading</h2>;
   } else {
     return (
       <>
@@ -73,98 +80,98 @@ function EditMentor() {
           <div>
             <form onSubmit={submitForm} className={css.UpdateMentorProfileForm}>
               <div className={css.firstname}>
-                <label htmlFor='first-name'>First Name</label>
+                <label htmlFor="first-name">First Name</label>
                 <input
-                  id='first-name'
-                  type='text'
-                  name='firstname'
+                  id="first-name"
+                  type="text"
+                  name="firstname"
                   value={mentor.firstname}
                   onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
               <div className={css.surname}>
-                <label htmlFor='surname'>Surname</label>
+                <label htmlFor="surname">Surname</label>
                 <input
-                  id='surname'
-                  type='text'
-                  name='surname'
+                  id="surname"
+                  type="text"
+                  name="surname"
                   value={mentor.surname}
                   onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
               <div className={css.email}>
-                <label htmlFor='email'>Email</label>
+                <label htmlFor="email">Email</label>
                 <input
-                  id='email'
-                  type='text'
+                  id="email"
+                  type="text"
                   value={mentor.email}
-                  name='email'
+                  name="email"
                   onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
               <div className={css.jobtitle}>
-                <label htmlFor='jobtitle'>Job Title</label>
+                <label htmlFor="jobtitle">Job Title</label>
                 <input
-                  id='jobtitle'
-                  type='text'
-                  name='jobtitle'
+                  id="jobtitle"
+                  type="text"
+                  name="jobtitle"
                   value={mentor.jobtitle}
                   onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
               <div className={css.company}>
-                <label htmlFor='company'>Company</label>
+                <label htmlFor="company">Company</label>
                 <input
-                  id='company'
-                  type='text'
-                  name='company'
+                  id="company"
+                  type="text"
+                  name="company"
                   value={mentor.company}
                   onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
               <div className={css.location}>
-                <label htmlFor='location'>Location</label>
+                <label htmlFor="location">Location</label>
                 <input
-                  id='location'
-                  type='text'
-                  name='location'
+                  id="location"
+                  type="text"
+                  name="location"
                   value={mentor.location}
                   onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
               <div className={css.biography}>
-                <label htmlFor='biography'>Biography</label>
+                <label htmlFor="biography">Biography</label>
                 <input
-                  id='biography'
-                  type='text'
-                  name='biography'
+                  id="biography"
+                  type="text"
+                  name="biography"
                   value={mentor.biography}
                   onChange={(e) => handleChange(e)}
                   required
                 />
               </div>
               <div className={css.photourl}>
-                <label htmlFor='photourl'>Profile photo URL</label>
+                <label htmlFor="photourl">Profile photo URL</label>
                 <input
-                  id='photourl'
-                  type='text'
-                  name='photourl'
+                  id="photourl"
+                  type="text"
+                  name="photourl"
                   value={mentor.photourl}
                   onChange={(e) => handleChange(e)}
                 />
               </div>
               <div className={css.tagline}>
-                <label htmlFor='tagline'>Profile Tagline</label>
+                <label htmlFor="tagline">Profile Tagline</label>
                 <input
-                  id='tagline'
-                  type='text'
-                  name='tagline'
+                  id="tagline"
+                  type="text"
+                  name="tagline"
                   value={mentor.tagline}
                   onChange={(e) => handleChange(e)}
                   required
@@ -172,42 +179,42 @@ function EditMentor() {
               </div>
               <div className={css.skills}>
                 <h4>
-                  <label htmlFor='skills'>Skills</label>
+                  <label htmlFor="skills">Skills</label>
                 </h4>
                 <div className={css.checkboxes}>
-                  <Checkbox id='frontend' onChange={updateSkills}>
+                  <Checkbox id="frontend" onChange={updateSkills}>
                     Frontend
                   </Checkbox>
-                  <Checkbox id='fullstack' onChange={updateSkills}>
+                  <Checkbox id="fullstack" onChange={updateSkills}>
                     Fullstack
                   </Checkbox>
-                  <Checkbox id='backend' onChange={updateSkills}>
+                  <Checkbox id="backend" onChange={updateSkills}>
                     Backend
                   </Checkbox>
-                  <Checkbox id='ux-ui' onChange={updateSkills}>
+                  <Checkbox id="ux-ui" onChange={updateSkills}>
                     UX/UI
                   </Checkbox>
                 </div>
               </div>
               {/* break into two inputs - social media type, social media name/handle  */}
               <div className={css.socials}>
-                <label htmlFor='socialmediatype'>Social Media Type</label>
+                <label htmlFor="socialmediatype">Social Media Type</label>
                 <select
-                  name='socialMediaType'
+                  name="socialMediaType"
                   className={css.dropdown}
-                  id='socialmediatype'
+                  id="socialmediatype"
                   onChange={(e) => setSocialMediaType(e.target.value)}
                 >
-                  <option value=''>--Please choose an option--</option>
-                  <option value='github'>GitHub</option>
-                  <option value='linkedin'>LinkedIn</option>
-                  <option value='twitter'>Twitter</option>
+                  <option value="">--Please choose an option--</option>
+                  <option value="github">GitHub</option>
+                  <option value="linkedin">LinkedIn</option>
+                  <option value="twitter">Twitter</option>
                 </select>
                 <br />
-                <label htmlFor='socialmediausername'>Social Media Handle</label>
+                <label htmlFor="socialmediausername">Social Media Handle</label>
                 <input
-                  id='socialmediausername'
-                  type='text'
+                  id="socialmediausername"
+                  type="text"
                   value={mentor.socialMediaUserName}
                   onChange={(e) => setSocialMediaUserName(e.target.value)}
                   required
@@ -220,8 +227,8 @@ function EditMentor() {
           </div>
         </div>
       </>
-    )
+    );
   }
 }
 
-export default EditMentor
+export default EditMentor;
