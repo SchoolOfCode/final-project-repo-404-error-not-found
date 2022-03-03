@@ -4,6 +4,7 @@ import GithubIcon from "../../components/GithubIcon";
 import LinkedinIcon from "../../components/LinkedinIcon";
 import Link from "next/link";
 import { server } from "../../config";
+import { Button } from "react-bootstrap";
 
 export const getServerSideProps = async () => {
   const res = await fetch(`${server}/api/mentors`);
@@ -91,8 +92,7 @@ const AllMentors = ({ mentors }) => {
                   },
                 }}
               >
-
-                <button>View Profile</button>
+                <Button variant="outline-success">View Profile</Button>
               </Link>
             </a>
           </div>

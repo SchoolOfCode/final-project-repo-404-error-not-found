@@ -8,7 +8,14 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import logo from "../Images/mentoree_home_logo.jpg";
-import { Button } from 'react-bootstrap';
+import { Button } from "react-bootstrap";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+} from "@chakra-ui/react";
 
 const auth = getAuth();
 
@@ -68,15 +75,26 @@ const Navbar = () => {
       <Link href="/allMentors">
         <a>Find a Mentor</a>
       </Link>
-      {isLogIn && (
-         <Button variant="outline-success"
-          onClick={handleLogout}
-          // colorscheme="teal"
-         
-        >
+
+      <Menu>
+        <MenuButton as={Button}>Profile</MenuButton>
+        <MenuList>
+          <MenuItem>Edit profile</MenuItem>
+          <MenuItem>Dashboard </MenuItem>
+          <MenuDivider />
+          {isLogIn && (
+            <MenuItem variant="outline-success" onClick={handleLogout}>
+              Logout
+            </MenuItem>
+          )}
+        </MenuList>
+      </Menu>
+
+      {/* {isLogIn && (
+        <Button variant="outline-success" onClick={handleLogout}>
           Logout
-       </Button>
-      )}
+        </Button>
+      )} */}
       {/* if is not null, render the button */}
     </nav>
   );

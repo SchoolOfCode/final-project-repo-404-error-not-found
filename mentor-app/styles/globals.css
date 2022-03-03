@@ -35,7 +35,6 @@ nav {
   background-color: white;
   align-items: center;
   z-index: 2000;
-
 }
 
 nav a {
@@ -59,7 +58,7 @@ nav a {
   margin-bottom: 6px;
 } */
 nav a:hover {
-  color: green;
+  color: #247ba0;
   font-weight: bold;
 }
 
@@ -78,12 +77,15 @@ nav .logo {
 }
 
 footer {
-  display: block;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 30px 0;
   margin-top: 60px;
   color: #777;
   border-top: 1px solid #eaeaea;
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 60px;
 }
 
 /* Button {
