@@ -1,0 +1,44 @@
+.title {
+  font-size: 2.1rem;
+  margin-bottom: 5px;
+}
+.subtitle {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+.container {
+  min-height: 5rem;
+  padding: 20px 50px;
+}
+.card2 {
+  display: flex;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100px;
+  padding: 5px 10px;
+}
+.card {
+  display: flex;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100px;
+  padding: 5px 10px;
+}
+.picture {
+  margin: 2em 0;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+}
+.cardName {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.subContainer {
+  width: 100%;
+  text-align: center;
+}
