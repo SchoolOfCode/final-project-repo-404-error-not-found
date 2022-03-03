@@ -33,7 +33,7 @@ export default function Contact() {
       {" "}
       <Row>
         <div>
-          <Image src={contactImage}></Image>
+          <Image src={contactImage} height="450" width="450"></Image>
         </div>
         <Col span={8}>
           <Form
@@ -72,7 +72,7 @@ export default function Contact() {
               <Button
                 type="primary"
                 htmlType="submit"
-                style={{ borderRaduis: "45px" }}
+                style={{ borderRadius: "45px" }}
               >
                 Submit
               </Button>
