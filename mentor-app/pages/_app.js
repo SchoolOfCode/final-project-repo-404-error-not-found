@@ -9,11 +9,12 @@ import App from ".";
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
-      <ChakraProvider>
+      <ChakraProvider >
         <Component {...pageProps} />
       </ChakraProvider>
     </Layout>
   );
 }
+
 
 export default MyApp;
