@@ -3,9 +3,12 @@
   --tw-border-opacity: 1;
   border: 5px solid rgb(229 231 235 / var(--tw-border-opacity)); */
   /* /* margin: 0 auto; */
-  display: flex;
-  justify-content: center;
+  /*display: flex;
+  justify-content: center;*/
   /* align-items: center; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 }
 
 .contact {
@@ -20,4 +23,10 @@
   text-align: center;
   font-weight: 700;
   font-size: xx-large;
+}
+.textarea {
+  resize: none;
+}
+.contactImg {
+  margin-left: 170px;
 }
