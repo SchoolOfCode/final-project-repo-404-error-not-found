@@ -7,6 +7,9 @@ import svg3 from "../Images/undraw_programming_re_kg9v.svg";
 const About = () => {
   return (
     <div>
+      <br></br>
+      <br></br>
+      <br></br>
       <h1 className={styles.heading} id="#about">
         About
       </h1>
