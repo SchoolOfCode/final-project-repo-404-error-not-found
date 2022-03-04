@@ -49,26 +49,30 @@ const Navbar = () => {
       <Link href='/'>
         <a>Home</a>
       </Link>
-
+      
+      <Link href="/">
       <LinkS
         to='#about'
         smooth={true}
         className='#about'
-        duration={500}
-        offset={500}
+        // duration={500}
+        // offset={150}
       >
         <a>About</a>
       </LinkS>
+      </Link>
 
+      <Link href="/">
       <LinkS
         to={'#contact'}
         smooth={true}
         className='#contact'
-        duration={500}
-        offset={1000}
+        // duration={500}
+        // offset={2000}
       >
         <a>Contact</a>
       </LinkS>
+      </Link>
 
       <Link href='/allMentors'>
         <a>Find a Mentor</a>
