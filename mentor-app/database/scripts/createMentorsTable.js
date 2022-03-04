@@ -15,7 +15,8 @@ async function createMentors() {
        photourl TEXT,
        tagline TEXT,
        skills TEXT[],
-       relationships jsonb
+       relationships jsonb,
+       role TEXT DEFAULT 'mentor'
         );`);
   console.log("Created mentors table: ", res);
 }

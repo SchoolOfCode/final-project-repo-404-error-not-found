@@ -5,7 +5,7 @@
 }
 
 .socialIcon:hover {
-  color: rgb(2, 77, 2);
+  color: #247ba0;
   transform: scale(1.05);
   transition: 0.33s ease all;
 }

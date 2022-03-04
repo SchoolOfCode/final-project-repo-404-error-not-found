@@ -8,7 +8,14 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import logo from "../Images/mentoree_home_logo.jpg";
-import { Button } from 'react-bootstrap';
+import { Button } from "react-bootstrap";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+} from "@chakra-ui/react";
 
 const auth = getAuth();
 
@@ -34,6 +41,7 @@ const Navbar = () => {
         console.log("error");
       });
   }
+
   return (
     <nav className={styles.navbar}>
       <div className="logo">
@@ -68,15 +76,34 @@ const Navbar = () => {
       <Link href="/allMentors">
         <a>Find a Mentor</a>
       </Link>
-      {isLogIn && (
-         <Button variant="outline-success"
-          onClick={handleLogout}
-          // colorscheme="teal"
-         
-        >
+
+      <Menu className={styles.navProfile}>
+        <MenuButton as={Button}>Profile</MenuButton>
+        <MenuList>
+          <MenuItem>
+            <Link href="/edit-profile/mentor">
+              <a>Edit profile</a>
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="/dashboard/mentor">
+              <a>Dashboard</a>
+            </Link>
+          </MenuItem>
+          <MenuDivider />
+          {isLogIn && (
+            <MenuItem variant="outline-success" onClick={handleLogout}>
+              <a>Logout</a>
+            </MenuItem>
+          )}
+        </MenuList>
+      </Menu>
+
+      {/* {isLogIn && (
+        <Button variant="outline-success" onClick={handleLogout}>
           Logout
-       </Button>
-      )}
+        </Button>
+      )} */}
       {/* if is not null, render the button */}
     </nav>
   );
