@@ -11,11 +11,16 @@ let year = d.getFullYear();
 export function Footer() {
   return (
     <footer>
-      <LinkedinIcon />
-      <GithubIcon />
-      <TwitterIcon />
+      <di>
+        <p>{year}</p>
+      </di>
 
-      <p>{year}</p>
+      <div className="socials">
+        <LinkedinIcon />
+        <GithubIcon />
+        <TwitterIcon />
+      </div>
+
     </footer>
   );
 }
