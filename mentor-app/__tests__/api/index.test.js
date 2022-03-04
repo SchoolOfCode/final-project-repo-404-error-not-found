@@ -1,24 +1,18 @@
 import handler from "../../pages/api/mentors";
+import { createMocks } from "node-mocks-http";
 import { render, screen } from "@testing-library/react";
 
-describe("Return a list of mentors", () => {
-  it("Returns a list of mentors", () => {
-    const req = {
+describe("Request handler", () => {
+  it("Will throw an error if method is not GET or POST", async () => {
+    // let req = { method: "DELETE" };
+    // let res = { status: jest.fn(), setHeader: jest.fn(), end: jest.fn() };
+
+    const { req, res } = createMocks({
       method: "GET",
-    };
-
-    const json = jest.fn();
-    const status = jest.fn(() => {
-      return {
-        json,
-      };
+      query: {},
     });
-    const res = {
-      status,
-    };
-
-    const actual = handler(req, res);
-    console.log(json.mock.calls);
-    // expect(actual).not.toBeNull;
+    await handler(req, res);
+    expect(res.status).toHaveBeenCalledWith(405);
+    expect(res.end).toHaveBeenCalledWith(expect.any(String));
   });
 });

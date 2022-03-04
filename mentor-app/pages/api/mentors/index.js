@@ -6,8 +6,12 @@ export default async function handler(req, res) {
   switch (HTTPMethod) {
     case "GET":
       //call some imported function that handles logic/sql queries
+      // try {
       const mentors = await getAllMentors();
       res.status(200).json(mentors);
+      // } catch {
+      //   res.status(405);
+      // }
       break;
     case "POST":
       //call some imported function that handles logic/sql queries
@@ -16,10 +20,8 @@ export default async function handler(req, res) {
       break;
     default:
       res.setHeader("Allow", ["GET", "POST"]);
-      res.status(405).end(`Method ${HTTPMethod} not Allowed`);
+      res
+        .status(405)
+        .end(JSON.stringify({ message: `Method ${HTTPMethod} not Allowed` }));
   }
 }
-
-// export default function handler(req, res) {
-//   res.status(200).json({ name: 'John Doe' })
-// }
