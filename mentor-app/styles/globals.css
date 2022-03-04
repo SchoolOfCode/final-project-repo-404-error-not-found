@@ -28,7 +28,7 @@ nav {
   transition: border-bottom 0.5s;
   list-style-type: none;
   top: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: sticky;
   width: 100%;
   margin-right: 8rem;
@@ -82,6 +82,7 @@ nav .logo {
 
 footer {
   display: flex;
+  flex-direction:column;
   justify-content: center;
   padding: 30px 0;
   margin-top: 60px;
@@ -92,11 +93,19 @@ footer {
   margin-top: 60px;
 }
 
-.footer p {
+footer p {
   display: flex;
-  margin-top: 5rem;
-  font-size: 60em;
+  margin-top: 3px;
+  font-size: 20px;
+  justify-content: center;
 }
+
+.socials{
+  display: flex;
+  justify-content: center;
+}
+
+
 
 /* Button {
   border-radius: 15px;
