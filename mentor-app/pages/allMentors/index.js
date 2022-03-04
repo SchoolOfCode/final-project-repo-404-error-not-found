@@ -103,9 +103,11 @@ const AllMentors = ({ mentors }) => {
                     textAlign={'center'}
                     color={useColorModeValue('gray.700', 'gray.400')}
                     px={3}
-                    // overflow={"hidden"}
-                    text-overflow={'ellipsis'}
-                    max-width={'13ch'}
+
+                    //overflow={"hidden"}
+                    text-overflow={"ellipsis"}
+                    max-width={"13ch"}
+
                   >
                     {biography}
                   </Text>
