@@ -3,6 +3,8 @@ import { Link as LinkS } from "react-scroll";
 import LinkedinIcon from "./LinkedinIcon";
 import GithubIcon from "./GithubIcon";
 import TwitterIcon from "./TwitterIcon";
+import { StylesProvider } from "@chakra-ui/react";
+
 const d = new Date();
 let year = d.getFullYear();
 
@@ -12,6 +14,7 @@ export function Footer() {
       <LinkedinIcon />
       <GithubIcon />
       <TwitterIcon />
+
       <p>{year}</p>
     </footer>
   );
