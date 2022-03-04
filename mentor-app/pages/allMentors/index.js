@@ -74,7 +74,6 @@ const AllMentors = ({ mentors }) => {
                 >
                   <Heading fontSize={"2xl"} fontFamily={"body"}>
                     {firstname} {surname}
-
                   </Heading>
                   <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
                     {jobtitle} at {company}
@@ -104,7 +103,7 @@ const AllMentors = ({ mentors }) => {
                     textAlign={"center"}
                     color={useColorModeValue("gray.700", "gray.400")}
                     px={3}
-                    // overflow={"hidden"}
+                    overflow={"hidden"}
                     text-overflow={"ellipsis"}
                     max-width={"13ch"}
                   >
@@ -158,7 +157,6 @@ const AllMentors = ({ mentors }) => {
                 </Stack>
               </Stack>
             </Center>
-
           </div>
         ) : null;
       })}
