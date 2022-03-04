@@ -1,43 +1,35 @@
 import React from 'react'
 import { Row, Col } from 'antd'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import css from './mentor.module.css'
+import CardDashboard from '../../components/CardDashboard'
+import CardDashboardLong from '../../components/CardDasboardLong'
 
-export default function mentor() {
+export default function Mentor() {
   return (
-    <Row>
-      <Col span={2}></Col>
+    <Row className={css.main}>
+      <Col></Col>
       <Col span={18}>
         <h1 className={css.title}>Name's Dashboard</h1>
-        <u>
-          <a>View Profile</a>
-        </u>
+        <Button
+          colorScheme='teal'
+          variant='outline'
+          style={{ margin: '10px 0' }}
+        >
+          Edit Profile
+        </Button>
+
         <h2 className={css.subtitle}>Your Mentees are...</h2>
         <div className={css.container}>
-          <div className={css.card}>
-            <img
-              src='https://static.wikia.nocookie.net/disney/images/7/7b/Pluto.PNG/revision/latest/top-crop/width/360/height/360?cb=20170628205507'
-              alt=''
-              className={css.picture}
-            />
-            <h4 className={css.cardName}>Name Surname</h4>
-            <button>View Profile</button>
-          </div>
+          <CardDashboard />
+          <CardDashboard />
         </div>
         <h2 className={css.subtitle}>
           These mentees have requested mentorship from you...
         </h2>
         <div className={css.container}>
-          <div className={css.card2}>
-            <img
-              src='https://static.wikia.nocookie.net/disney/images/7/7b/Pluto.PNG/revision/latest/top-crop/width/360/height/360?cb=20170628205507'
-              alt=''
-              className={css.picture}
-            />
-            <h4 className={css.cardName}>Name Surname</h4>
-            <a href=''>View Profile</a>
-            <button>Accept</button>
-            <button>Decline</button>
-          </div>
+          <CardDashboardLong />
+          <CardDashboardLong />
         </div>
       </Col>
       <Col span={2}></Col>
