@@ -78,7 +78,9 @@ const Navbar = () => {
       </Link>
 
       <Menu className={styles.navProfile}>
-        <MenuButton as={Button}>Profile</MenuButton>
+        <MenuButton as={Button} position="relative">
+          Profile
+        </MenuButton>
         <MenuList>
           <MenuItem>
             <Link href="/edit-profile/mentor">
