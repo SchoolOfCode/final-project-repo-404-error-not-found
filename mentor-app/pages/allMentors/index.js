@@ -1,10 +1,10 @@
-import styles from "../../styles/AllMentors.module.css";
-import TwitterIcon from "../../components/TwitterIcon";
-import GithubIcon from "../../components/GithubIcon";
-import LinkedinIcon from "../../components/LinkedinIcon";
-import Link from "next/link";
-import { server } from "../../config";
-import { Button } from "react-bootstrap";
+import styles from '../../styles/AllMentors.module.css'
+import TwitterIcon from '../../components/TwitterIcon'
+import GithubIcon from '../../components/GithubIcon'
+import LinkedinIcon from '../../components/LinkedinIcon'
+import Link from 'next/link'
+import { server } from '../../config'
+import { Button } from 'react-bootstrap'
 
 import {
   Badge,
@@ -17,16 +17,16 @@ import {
   Stack,
   Text,
   useColorModeValue,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react'
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`${server}/api/mentors`);
-  const data = await res.json();
+  const res = await fetch(`${server}/api/mentors`)
+  const data = await res.json()
 
   return {
     props: { mentors: data },
-  };
-};
+  }
+}
 
 const AllMentors = ({ mentors }) => {
   return (
@@ -46,75 +46,74 @@ const AllMentors = ({ mentors }) => {
           skills,
           jobtitle,
           company,
-        } = mentor;
+        } = mentor
         return firstname ? (
           <div key={userid}>
             <Center py={6}>
               <Stack
-                borderWidth="1px"
-                borderRadius="lg"
-                w={{ sm: "100%", md: "540px" }}
-                height={{ sm: "476px", md: "20rem" }}
-                direction={{ base: "column", md: "row" }}
-                bg={useColorModeValue("white", "gray.900")}
-                boxShadow={"2xl"}
+                borderWidth='1px'
+                borderRadius='lg'
+                w={{ sm: '100%', md: '540px' }}
+                height={{ sm: '476px', md: '20rem' }}
+                direction={{ base: 'column', md: 'row' }}
+                bg={useColorModeValue('white', 'gray.900')}
+                boxShadow={'2xl'}
                 padding={4}
               >
-                <Flex flex={1} bg="blue.200">
+                <Flex flex={1} bg='blue.200'>
                   <Image src={photourl} />
                 </Flex>
 
                 <Stack
                   flex={1}
-                  flexDirection="column"
-                  justifyContent="center"
-                  alignItems="center"
+                  flexDirection='column'
+                  justifyContent='center'
+                  alignItems='center'
                   p={1}
                   pt={2}
                 >
-                  <Heading fontSize={"2xl"} fontFamily={"body"}>
+                  <Heading fontSize={'2xl'} fontFamily={'body'}>
                     {firstname} {surname}
-
                   </Heading>
-                  <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                  <Text fontWeight={600} color={'gray.500'} size='sm' mb={4}>
                     {jobtitle} at {company}
                   </Text>
-                  <Text fontWeight={600} color={"gray.600"} size="sm" mb={4}>
+                  <Text fontWeight={600} color={'gray.600'} size='sm' mb={4}>
                     {email}
                   </Text>
-                  <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                  <Text fontWeight={600} color={'gray.500'} size='sm' mb={4}>
                     {location}
                   </Text>
-                  <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                  <Text fontWeight={600} color={'gray.500'} size='sm' mb={4}>
                     {socials ? (
                       <div className={styles.socials}>
-                        {Object.keys(socials)[0] === "linkedin" ? (
+                        {Object.keys(socials)[0] === 'linkedin' ? (
                           <LinkedinIcon handle={Object.values(socials)[0]} />
                         ) : null}
-                        {Object.keys(socials)[0] === "github" ? (
+                        {Object.keys(socials)[0] === 'github' ? (
                           <GithubIcon handle={Object.values(socials)[0]} />
                         ) : null}
-                        {Object.keys(socials)[0] === "twitter" ? (
+                        {Object.keys(socials)[0] === 'twitter' ? (
                           <TwitterIcon handle={Object.values(socials)[0]} />
                         ) : null}
                       </div>
                     ) : null}
                   </Text>
                   <Text
-                    textAlign={"center"}
-                    color={useColorModeValue("gray.700", "gray.400")}
+                    textAlign={'center'}
+                    color={useColorModeValue('gray.700', 'gray.400')}
                     px={3}
                     // overflow={"hidden"}
-                    text-overflow={"ellipsis"}
-                    max-width={"13ch"}
+                    text-overflow={'ellipsis'}
+                    max-width={'13ch'}
                   >
                     {biography}
                   </Text>
 
                   <Stack
-                    align={"center"}
-                    justify={"center"}
-                    direction={"row"}
+                    align={'center'}
+                    justify={'center'}
+                    direction={'row'}
                     mt={6}
                   >
                     {skills ? (
@@ -128,16 +127,16 @@ const AllMentors = ({ mentors }) => {
                     ) : null}
                   </Stack>
                   <Stack
-                    width={"100%"}
-                    mt={"2rem"}
-                    direction={"row"}
+                    width={'100%'}
+                    mt={'2rem'}
+                    direction={'row'}
                     padding={2}
-                    justifyContent={"space-between"}
-                    alignItems={"center"}
+                    justifyContent={'space-between'}
+                    alignItems={'center'}
                   >
                     <Link
                       href={{
-                        pathname: "/read-profile/mentor",
+                        pathname: '/read-profile/mentor',
                         query: {
                           loginid: loginid,
                         },
@@ -145,10 +144,10 @@ const AllMentors = ({ mentors }) => {
                     >
                       <Button
                         flex={1}
-                        fontSize={"sm"}
-                        rounded={"full"}
+                        fontSize={'sm'}
+                        rounded={'full'}
                         _focus={{
-                          bg: "gray.200",
+                          bg: 'gray.200',
                         }}
                       >
                         View Profile
@@ -158,13 +157,12 @@ const AllMentors = ({ mentors }) => {
                 </Stack>
               </Stack>
             </Center>
-
           </div>
-        ) : null;
+        ) : null
       })}
     </div>
-  );
-};
+  )
+}
 
 //             <a className={styles.mentorCard}>
 //               {/* <div className={styles.profileLeft}> */}
@@ -232,4 +230,4 @@ const AllMentors = ({ mentors }) => {
 //   );
 // };
 
-export default AllMentors;
+export default AllMentors
