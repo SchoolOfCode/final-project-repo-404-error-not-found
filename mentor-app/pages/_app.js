@@ -8,11 +8,11 @@ import App from ".";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <ChakraProvider>
+    <ChakraProvider>
+      <Layout>
         <Component {...pageProps} />
-      </ChakraProvider>
-    </Layout>
+      </Layout>
+    </ChakraProvider>
   );
 }
 

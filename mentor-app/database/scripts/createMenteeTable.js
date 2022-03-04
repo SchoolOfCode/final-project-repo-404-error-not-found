@@ -1,4 +1,4 @@
-import query from '../index.js'
+import query from "../index.js";
 
 async function createMentee() {
   let res = await query(`CREATE TABLE IF NOT EXISTS mentees (
@@ -15,9 +15,10 @@ async function createMentee() {
        photourl TEXT,
        tagline TEXT,
        skills TEXT[],
-       relationships jsonb
-        );`)
-  console.log('Created mentees table: ', res)
+       relationships jsonb,
+       role TEXT DEFAULT 'mentee'
+        );`);
+  console.log("Created mentees table: ", res);
 }
 
-createMentee()
+createMentee();

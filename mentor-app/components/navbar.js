@@ -41,6 +41,7 @@ const Navbar = () => {
         console.log("error");
       });
   }
+
   return (
     <nav className={styles.navbar}>
       <div className="logo">
@@ -76,15 +77,23 @@ const Navbar = () => {
         <a>Find a Mentor</a>
       </Link>
 
-      <Menu>
+      <Menu className={styles.navProfile}>
         <MenuButton as={Button}>Profile</MenuButton>
         <MenuList>
-          <MenuItem>Edit profile</MenuItem>
-          <MenuItem>Dashboard </MenuItem>
+          <MenuItem>
+            <Link href="/edit-profile/mentor">
+              <a>Edit profile</a>
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="/dashboard/mentor">
+              <a>Dashboard</a>
+            </Link>
+          </MenuItem>
           <MenuDivider />
           {isLogIn && (
             <MenuItem variant="outline-success" onClick={handleLogout}>
-              Logout
+              <a>Logout</a>
             </MenuItem>
           )}
         </MenuList>
