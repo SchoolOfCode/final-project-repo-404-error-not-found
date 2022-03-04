@@ -58,13 +58,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.about}>
+      <div id="about" className={styles.about}>
         <div className={styles.aboutBGBanner}>
           <Image src={aboutBG}></Image>
         </div>
         <About />
       </div>
-      <div className={styles.contactContainer}>
+      <div id="contact" className={styles.contactContainer}>
         <Contact />
       </div>
     </div>
