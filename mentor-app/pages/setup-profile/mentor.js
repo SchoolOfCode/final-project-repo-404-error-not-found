@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -6,12 +5,11 @@ import { useRouter } from "next/router";
 
 import { server } from "../../config";
 
-
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
-import { Button } from 'react-bootstrap';
+import { Button } from "react-bootstrap";
 
 //add location and profile pic url fields
 
@@ -37,7 +35,6 @@ function Mentor() {
   const [socials, setSocials] = useState({});
 
   const [isLogIn, setLogIn] = useState(null);
-
 
   // useEffect(() => {
   //   setLogIn(user);
@@ -100,7 +97,6 @@ function Mentor() {
     //patch request to update mentor at id
     // const data = { loginid: user.uid };
     const loginid = user.uid;
-
 
     const response = await fetch(`${server}/api/mentors/${loginid}`, {
       method: "PATCH",
@@ -183,12 +179,13 @@ function Mentor() {
             </div>
             <div className={css.biography}>
               <label htmlFor="biography">Biography</label>
-              <input
+              <textArea
                 id="biography"
                 type="text"
                 value={biography}
                 onChange={(e) => setBiography(e.target.value)}
                 required
+                maxlength="500ch"
               />
               <div className={css.photourl}>
                 <label htmlFor="photourl">Profile photo URL</label>
@@ -230,7 +227,7 @@ function Mentor() {
               </div>
             </div>
             {/* break into two inputs - social media type, social media name/handle  */}
-            <div className={css.socials}>
+            <div className={css.socialType}>
               <label htmlFor="socialmediatype">Social Media Type</label>
               <select
                 name="socialMediaType"
@@ -243,7 +240,8 @@ function Mentor() {
                 <option value="linkedin">LinkedIn</option>
                 <option value="twitter">Twitter</option>
               </select>
-              <br />
+            </div>
+            <div className={css.socialName}>
               <label htmlFor="socialmediausername">Social Media Handle</label>
               <input
                 id="socialmediausername"
@@ -253,7 +251,11 @@ function Mentor() {
                 required
               />
             </div>
-            <Button variant="outline-success" className={css.submitButton} onClick={submitForm}>
+            <Button
+              variant="outline-success"
+              className={css.submitButton}
+              onClick={submitForm}
+            >
               Submit
             </Button>
           </form>
@@ -264,4 +266,3 @@ function Mentor() {
 }
 
 export default Mentor;
-

@@ -5,9 +5,14 @@
 .UpdateMentorProfileForm {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   text-align: left;
-  padding: 1em;
+  padding: 3em;
+  width: 60%;
+  margin: 2em auto;
+  border-radius: 8px;
+  justify-items: center;
+  background-color: #247ba0;
 }
 
 .UpdateMentorProfileForm .firstname,
@@ -30,29 +35,55 @@
 
 .UpdateMentorProfileForm .biography {
   grid-row-start: 1;
-}
-.UpdateMentorProfileForm .tagline {
-  grid-row-start: 3;
-}
-.UpdateMentorProfileForm .skills {
-  grid-row-start: 4;
-  grid-row-end: 6;
+  grid-row-end: 4;
 }
 
-.UpdateMentorProfileForm .socials {
-  grid-row-start: 7;
-  grid-row-end: 8;
+.UpdateMentorProfileForm textArea {
+  border: 1px solid gray;
+  height: 14em;
+  width: 20em;
+  border-radius: 6px;
+  resize: none;
+  display: block;
+  margin-top: 0.5em;
+}
+.UpdateMentorProfileForm .tagline {
+  grid-row-start: 4;
+  /* padding-top: 2em; */
+}
+.UpdateMentorProfileForm .skills {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  text-align: left;
+  align-self: center;
+  width: 20em;
+  /* padding: 1em 0em;
+  margin-top: 1em; */
 }
 
 .UpdateMentorProfileForm input[type="text"] {
   display: block;
-  border-radius: 20px;
-  margin: 0 0em 1em;
+  border-radius: 6px;
+  margin: 0.5em 0em 1em;
   width: 20em;
+  border: 1px solid gray;
+  padding: 0.5em 2em;
 }
 
+.UpdateMentorProfileForm label {
+  font-weight: 600;
+  color: white;
+}
+
+.UpdateMentorProfileForm .socialType {
+  margin: auto;
+  width: 20em;
+}
 .dropdown {
-  margin-left: 1em;
+  border: 1px solid gray;
+  border-radius: 6px;
+  width: 20em;
+  margin-top: 0.5em;
 }
 
 .submitButton {
@@ -62,7 +93,7 @@
   background-color: green;
   color: white;
   margin: 2em auto;
-  border-radius: 20px;
+  border-radius: 6px;
   padding: 1em;
 }
 
@@ -70,4 +101,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
+  margin-top: 0.3em;
+}
+
+.checkboxes label {
+  font-weight: 400;
+  padding: 0.1em;
 }
