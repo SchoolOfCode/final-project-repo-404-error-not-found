@@ -13,6 +13,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
+import { server } from "../../config";
 const url = process.env.REACT_APP_BACKEND_URL;
 
 function EditMentee() {
@@ -47,7 +48,7 @@ function EditMentee() {
   useEffect(async () => {
     if (user !== null) {
       const loginid = user.uid;
-      const res = await fetch(`http://localhost:3000/api/mentees/${loginid}`);
+      const res = await fetch(`${server}/api/mentees/${loginid}`);
       const data = await res.json();
       setMentee(data[0]);
     }
@@ -58,7 +59,7 @@ function EditMentee() {
     e.preventDefault();
     const body = mentee;
     const loginid = user.uid;
-    const res = await fetch(`http://localhost:3000/api/mentees/${loginid}`, {
+    const res = await fetch(`${server}/api/mentees/${loginid}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
