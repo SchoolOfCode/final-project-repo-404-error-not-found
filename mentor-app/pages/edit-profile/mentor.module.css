@@ -5,13 +5,14 @@
 .UpdateMentorProfileForm {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   text-align: left;
   padding: 3em;
   width: 60%;
   margin: 2em auto;
   border-radius: 8px;
   justify-items: center;
+  background-color: rgb(38, 101, 131);
 }
 
 .UpdateMentorProfileForm .firstname,
@@ -39,11 +40,12 @@
 
 .UpdateMentorProfileForm textArea {
   border: 1px solid gray;
-  height: 15em;
+  height: 14em;
   width: 20em;
   border-radius: 6px;
   resize: none;
   display: block;
+  margin-top: 0.5em;
 }
 .UpdateMentorProfileForm .tagline {
   grid-row-start: 4;
@@ -66,6 +68,11 @@
   width: 20em;
   border: 1px solid gray;
   padding: 0.5em 2em;
+}
+
+.UpdateMentorProfileForm label {
+  font-weight: 600;
+  color: white;
 }
 
 .UpdateMentorProfileForm .socialType {
@@ -98,4 +105,9 @@
   height: 100%;
   justify-content: space-evenly;
   margin-top: 0.3em;
+}
+
+.checkboxes label {
+  font-weight: 400;
+  padding: 0.1em;
 }
