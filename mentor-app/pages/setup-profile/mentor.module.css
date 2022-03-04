@@ -90,13 +90,23 @@
   grid-column-start: 1;
   grid-column-end: 3;
   width: 50%;
-  background-color: green;
+  background-color: #70c1b3;
   color: white;
   margin: 2em auto;
   border-radius: 6px;
   padding: 1em;
+  font-weight: 600;
+  font-size: 1.2em;
+  transition: ease 0.3s all;
 }
 
+.submitButton:hover {
+  transform: scale(1.1);
+  transition: ease 0.3s all;
+  -webkit-box-shadow: 5px 5px 13px -4px rgb(34, 33, 33);
+  -moz-box-shadow: 5px 5px 13px -4px rgba(34, 33, 33, 1);
+  box-shadow: 5px 5px 13px -4px rgba(34, 33, 33, 1);
+}
 .checkboxes {
   display: grid;
   grid-template-columns: 1fr 1fr;
