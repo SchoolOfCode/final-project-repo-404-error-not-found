@@ -74,6 +74,7 @@ const AllMentors = ({ mentors }) => {
                 >
                   <Heading fontSize={"2xl"} fontFamily={"body"}>
                     {firstname} {surname}
+
                   </Heading>
                   <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
                     {jobtitle} at {company}
@@ -157,6 +158,7 @@ const AllMentors = ({ mentors }) => {
                 </Stack>
               </Stack>
             </Center>
+
           </div>
         ) : null;
       })}
