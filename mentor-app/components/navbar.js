@@ -1,62 +1,59 @@
-import Link from "next/link";
-import { Link as LinkS } from "react-scroll";
-import { useRouter } from "next/router";
-import firebase from "../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth, signOut } from "firebase/auth";
-import { useState, useEffect } from "react";
-import styles from "../styles/Home.module.css";
-import Image from "next/image";
-import logo from "../Images/mentoree_home_logo.jpg";
-import { Button } from "react-bootstrap";
+import Link from 'next/link'
+import { Link as LinkS } from 'react-scroll'
+import { useRouter } from 'next/router'
+import firebase from '../firebase/clientApp'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { getAuth, signOut } from 'firebase/auth'
+import { useState, useEffect } from 'react'
+import styles from '../styles/Home.module.css'
+import Image from 'next/image'
+import logo from '../Images/mentoree_home_logo.jpg'
+import { Button } from 'react-bootstrap'
 import {
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
   MenuDivider,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react'
 
-const auth = getAuth();
+const auth = getAuth()
 
 const Navbar = () => {
-  const [user, loading, error] = useAuthState(firebase.auth());
-  const [isLogIn, setLogIn] = useState(null); //state check if user is logged in
-
-  // console.log("Loading:", loading, "|", "Current user:", user.uid); //delete later
-
-  const router = useRouter();
+  const [user, loading, error] = useAuthState(firebase.auth())
+  const [isLogIn, setLogIn] = useState(null) //state check if user is logged in
+  const router = useRouter()
 
   useEffect(() => {
-    setLogIn(user);
-  }, [user]);
+    setLogIn(user)
+  }, [user])
 
   function handleLogout() {
     signOut(auth)
       .then(() => {
-        console.log("Logged out");
-        router.push("/");
+        console.log('Logged out')
+        router.push('/')
       })
       .catch((error) => {
-        console.log("error");
-      });
+        console.log('error')
+      })
   }
 
   return (
     <nav className={styles.navbar}>
-      <div className="logo">
-        <Link href="/">
+      <div className='logo'>
+        <Link href='/'>
           <Image src={logo}></Image>
         </Link>
       </div>
-      <Link href="/">
+      <Link href='/'>
         <a>Home</a>
       </Link>
 
       <LinkS
-        to="#about"
+        to='#about'
         smooth={true}
-        className="#about"
+        className='#about'
         duration={500}
         offset={500}
       >
@@ -64,48 +61,45 @@ const Navbar = () => {
       </LinkS>
 
       <LinkS
-        to={"#contact"}
+        to={'#contact'}
         smooth={true}
-        className="#contact"
+        className='#contact'
         duration={500}
         offset={1000}
       >
         <a>Contact</a>
       </LinkS>
 
-      <Link href="/allMentors">
+      <Link href='/allMentors'>
         <a>Find a Mentor</a>
       </Link>
-
-      <Menu className={styles.navProfile}>
-        <MenuButton as={Button}>Profile</MenuButton>
-        <MenuList>
-          <MenuItem>
-            <Link href="/edit-profile/mentor">
-              <a>Edit profile</a>
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link href="/dashboard/mentor">
-              <a>Dashboard</a>
-            </Link>
-          </MenuItem>
-          <MenuDivider />
-          {isLogIn && (
-            <MenuItem variant="outline-success" onClick={handleLogout}>
+      {isLogIn && (
+        <Menu className={styles.navProfile}>
+          <MenuButton as={Button}>Profile</MenuButton>
+          <MenuList>
+            <MenuItem>
+              <Link href='/edit-profile/mentor'>
+                <a>Edit profile</a>
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link href='/dashboard/mentor'>
+                <a>Dashboard</a>
+              </Link>
+            </MenuItem>
+            <MenuDivider />
+            <MenuItem variant='outline-success' onClick={handleLogout}>
               <a>Logout</a>
             </MenuItem>
-          )}
-        </MenuList>
-      </Menu>
-
+          </MenuList>
+        </Menu>
+      )}
       {/* {isLogIn && (
         <Button variant="outline-success" onClick={handleLogout}>
           Logout
         </Button>
       )} */}
-      {/* if is not null, render the button */}
     </nav>
-  );
-};
-export default Navbar;
+  )
+}
+export default Navbar
