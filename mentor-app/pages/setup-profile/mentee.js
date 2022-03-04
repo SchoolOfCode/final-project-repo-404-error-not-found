@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { Checkbox } from 'antd'
 import css from './mentor.module.css'
 
+
 //add location and profile pic url fields
 
 function Mentee() {
@@ -240,9 +241,9 @@ function Mentee() {
                 required
               />
             </div>
-            <button className={css.submitButton} onClick={submitForm}>
+            <Button variant="outline-success" className={css.submitButton} onClick={submitForm}>
               Submit
-            </button>
+            </Button>
           </form>
         </div>
       </div>

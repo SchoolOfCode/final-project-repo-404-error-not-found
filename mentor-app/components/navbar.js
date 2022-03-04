@@ -102,6 +102,7 @@ const Navbar = () => {
       <Link href='/allMentors'>
         <a>Find a Mentor</a>
       </Link>
+
       {currentUser && (
         <Menu>
           <MenuButton as={Button}>Profile</MenuButton>
@@ -118,6 +119,7 @@ const Navbar = () => {
             </MenuItem>
             <MenuDivider />
             <MenuItem variant='outline-success' onClick={handleLogout}>
+
               <a>Logout</a>
             </MenuItem>
           </MenuList>
