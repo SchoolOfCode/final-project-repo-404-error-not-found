@@ -6,6 +6,19 @@ import Link from "next/link";
 import { server } from "../../config";
 import { Button } from "react-bootstrap";
 
+import {
+  Badge,
+  Button as ButtonCh,
+  Center,
+  Flex,
+  Heading,
+  Image,
+  Link as LinkCh,
+  Stack,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
+
 export const getServerSideProps = async () => {
   const res = await fetch(`${server}/api/mentors`);
   const data = await res.json();
@@ -17,7 +30,7 @@ export const getServerSideProps = async () => {
 
 const AllMentors = ({ mentors }) => {
   return (
-    <div className={styles.mentorList}>
+    <div>
       <h1>Mentors</h1>
       {mentors.map((mentor) => {
         const {
@@ -36,70 +49,185 @@ const AllMentors = ({ mentors }) => {
         } = mentor;
         return firstname ? (
           <div key={userid}>
-            <a className={styles.mentorCard}>
-              <div className={styles.profileLeft}>
-                <img
-                  className={styles.profilePic}
-                  src={photourl}
-                  // style={{ width: 100, height: 100, borderRadius: "50%" }}
-                ></img>
-
-                {socials ? (
-                  <div className={styles.socials}>
-                    {Object.keys(socials)[0] === "linkedin" ? (
-                      <LinkedinIcon handle={Object.values(socials)[0]} />
-                    ) : null}
-                    {Object.keys(socials)[0] === "github" ? (
-                      <GithubIcon handle={Object.values(socials)[0]} />
-                    ) : null}
-                    {Object.keys(socials)[0] === "twitter" ? (
-                      <TwitterIcon handle={Object.values(socials)[0]} />
-                    ) : null}
-                  </div>
-                ) : null}
-              </div>
-              <div className={styles.cardTextArea}>
-                <div className={styles.profileRight}>
-                  <h3>
-                    {firstname} {surname}
-                  </h3>
-                  <span>
-                    <h4 className={styles.jobtitle}>{jobtitle} </h4>
-                    at <em>{company}</em>
-                  </span>
-
-                  <p className={styles.location}>{location}</p>
-                  <p>Email: {email}</p>
-                  <p className={styles.bio}>{biography}</p>
-                </div>
-
-                {skills ? (
-                  <div className={styles.skills}>
-                    {skills.map((skill, index) => (
-                      <p className={styles.skill} key={index}>
-                        {skill}
-                      </p>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
-
-              <Link
-                href={{
-                  pathname: "/read-profile/mentor",
-                  query: {
-                    loginid: loginid,
-                  },
-                }}
+            <Center py={6}>
+              <Stack
+                borderWidth="1px"
+                borderRadius="lg"
+                w={{ sm: "100%", md: "540px" }}
+                height={{ sm: "476px", md: "20rem" }}
+                direction={{ base: "column", md: "row" }}
+                bg={useColorModeValue("white", "gray.900")}
+                boxShadow={"2xl"}
+                padding={4}
               >
-                <Button variant="outline-success">View Profile</Button>
-              </Link>
-            </a>
+                <Flex flex={1} bg="blue.200">
+                  <Image src={photourl} />
+                </Flex>
+
+                <Stack
+                  flex={1}
+                  flexDirection="column"
+                  justifyContent="center"
+                  alignItems="center"
+                  p={1}
+                  pt={2}
+                >
+                  <Heading fontSize={"2xl"} fontFamily={"body"}>
+                    {firstname} {surname}
+                  </Heading>
+                  <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                    {jobtitle} at {company}
+                  </Text>
+                  <Text fontWeight={600} color={"gray.600"} size="sm" mb={4}>
+                    {email}
+                  </Text>
+                  <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                    {location}
+                  </Text>
+                  <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                    {socials ? (
+                      <div className={styles.socials}>
+                        {Object.keys(socials)[0] === "linkedin" ? (
+                          <LinkedinIcon handle={Object.values(socials)[0]} />
+                        ) : null}
+                        {Object.keys(socials)[0] === "github" ? (
+                          <GithubIcon handle={Object.values(socials)[0]} />
+                        ) : null}
+                        {Object.keys(socials)[0] === "twitter" ? (
+                          <TwitterIcon handle={Object.values(socials)[0]} />
+                        ) : null}
+                      </div>
+                    ) : null}
+                  </Text>
+                  <Text
+                    textAlign={"center"}
+                    color={useColorModeValue("gray.700", "gray.400")}
+                    px={3}
+                    // overflow={"hidden"}
+                    text-overflow={"ellipsis"}
+                    max-width={"13ch"}
+                  >
+                    {biography}
+                  </Text>
+
+                  <Stack
+                    align={"center"}
+                    justify={"center"}
+                    direction={"row"}
+                    mt={6}
+                  >
+                    {skills ? (
+                      <div className={styles.skills}>
+                        {skills.map((skill, index) => (
+                          <p className={styles.skill} key={index}>
+                            {skill}
+                          </p>
+                        ))}
+                      </div>
+                    ) : null}
+                  </Stack>
+                  <Stack
+                    width={"100%"}
+                    mt={"2rem"}
+                    direction={"row"}
+                    padding={2}
+                    justifyContent={"space-between"}
+                    alignItems={"center"}
+                  >
+                    <Link
+                      href={{
+                        pathname: "/read-profile/mentor",
+                        query: {
+                          loginid: loginid,
+                        },
+                      }}
+                    >
+                      <Button
+                        flex={1}
+                        fontSize={"sm"}
+                        rounded={"full"}
+                        _focus={{
+                          bg: "gray.200",
+                        }}
+                      >
+                        View Profile
+                      </Button>
+                    </Link>
+                  </Stack>
+                </Stack>
+              </Stack>
+            </Center>
           </div>
         ) : null;
       })}
     </div>
   );
 };
+
+//             <a className={styles.mentorCard}>
+//               {/* <div className={styles.profileLeft}> */}
+//                 {/* <img
+//                   className={styles.profilePic}
+//                   src={photourl}
+//                   // style={{ width: 100, height: 100, borderRadius: "50%" }}
+//                 ></img> */}
+
+//                 {/* {socials ? (
+//                   <div className={styles.socials}>
+//                     {Object.keys(socials)[0] === "linkedin" ? (
+//                       <LinkedinIcon handle={Object.values(socials)[0]} />
+//                     ) : null}
+//                     {Object.keys(socials)[0] === "github" ? (
+//                       <GithubIcon handle={Object.values(socials)[0]} />
+//                     ) : null}
+//                     {Object.keys(socials)[0] === "twitter" ? (
+//                       <TwitterIcon handle={Object.values(socials)[0]} />
+//                     ) : null}
+//                   </div>
+//                 ) : null} */}
+//               </div>
+//               <div className={styles.cardTextArea}>
+//                 <div className={styles.profileRight}>
+//                   <h3>
+//                     {firstname} {surname}
+//                   </h3>
+//                   <span>
+//                     <h4 className={styles.jobtitle}>{jobtitle} </h4>
+//                     at <em>{company}</em>
+//                   </span>
+
+//                   <p className={styles.location}>{location}</p>
+//                   <p>Email: {email}</p>
+//                   {/* <p className={styles.bio}>{biography}</p> */}
+//                 </div>
+
+//                 {skills ? (
+//                   <div className={styles.skills}>
+//                     {skills.map((skill, index) => (
+//                       <p className={styles.skill} key={index}>
+//                         {skill}
+//                       </p>
+//                     ))}
+//                   </div>
+//                 ) : null}
+//               </div>
+
+//               {/* <Link
+//                 href={{
+//                   pathname: "/read-profile/mentor",
+//                   query: {
+//                     loginid: loginid,
+//                   },
+//                 }}
+//               >
+//                 <Button variant="outline-success">View Profile</Button>
+//               </Link> */}
+//             {/* </a> */}
+//           {/* </div> */}
+//         {/* ) : null; */}
+//       })}
+//     </div>
+//   );
+// };
 
 export default AllMentors;
