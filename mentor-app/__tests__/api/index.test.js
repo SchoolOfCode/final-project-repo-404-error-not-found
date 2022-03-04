@@ -6,13 +6,19 @@ describe("Return a list of mentors", () => {
     const req = {
       method: "GET",
     };
+
+    const json = jest.fn();
+    const status = jest.fn(() => {
+      return {
+        json,
+      };
+    });
     const res = {
-      status: "",
-      json: "",
+      status,
     };
 
     const actual = handler(req, res);
-
-    expect(actual).not.toBeNull;
+    console.log(json.mock.calls);
+    // expect(actual).not.toBeNull;
   });
 });
