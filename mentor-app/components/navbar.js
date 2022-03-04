@@ -7,6 +7,7 @@ import { getAuth, signOut } from 'firebase/auth'
 import { useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
+import { server } from '../config'
 import logo from '../Images/mentoree_home_logo.jpg'
 import { Button } from 'react-bootstrap'
 import {
@@ -20,9 +21,36 @@ import {
 const auth = getAuth()
 
 const Navbar = () => {
+  const [currentUser, setCurrentUser] = useState(null)
   const [user, loading, error] = useAuthState(firebase.auth())
   const [isLogIn, setLogIn] = useState(null) //state check if user is logged in
   const router = useRouter()
+
+  useEffect(async () => {
+    if (user !== null) {
+      setTimeout(async () => {
+        const loginid = user.uid
+        const res = await fetch(`${server}/api/mentors/${loginid}`)
+        const data = await res.json()
+        if (data[0]) {
+          setCurrentUser(data[0].role)
+        }
+      }, 2000)
+    }
+  }, [user])
+
+  useEffect(async () => {
+    if (user !== null) {
+      setTimeout(async () => {
+        const loginid = user.uid
+        const res = await fetch(`${server}/api/mentees/${loginid}`)
+        const data = await res.json()
+        if (data[0]) {
+          setCurrentUser(data[0].role)
+        }
+      }, 2000)
+    }
+  }, [user])
 
   useEffect(() => {
     setLogIn(user)
@@ -31,6 +59,7 @@ const Navbar = () => {
   function handleLogout() {
     signOut(auth)
       .then(() => {
+        setCurrentUser(null)
         console.log('Logged out')
         router.push('/')
       })
@@ -73,17 +102,17 @@ const Navbar = () => {
       <Link href='/allMentors'>
         <a>Find a Mentor</a>
       </Link>
-      {isLogIn && (
-        <Menu className={styles.navProfile}>
+      {currentUser && (
+        <Menu>
           <MenuButton as={Button}>Profile</MenuButton>
           <MenuList>
             <MenuItem>
-              <Link href='/edit-profile/mentor'>
+              <Link href={`/edit-profile/${currentUser}`}>
                 <a>Edit profile</a>
               </Link>
             </MenuItem>
             <MenuItem>
-              <Link href='/dashboard/mentor'>
+              <Link href={`/dashboard/${currentUser}`}>
                 <a>Dashboard</a>
               </Link>
             </MenuItem>

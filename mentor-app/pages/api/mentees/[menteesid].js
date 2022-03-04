@@ -5,8 +5,6 @@ export default async function (req, res) {
   let id = req.query.menteesid
   let objectToUpdate = req.body
 
-  // {email: simon@prato}
-
   switch (HTTPMethod) {
     case 'GET':
       const mentee = await getMentee(id)

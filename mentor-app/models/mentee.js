@@ -1,4 +1,4 @@
-//will need to import db query function
+0.0 //will need to import db query function
 import query from '../database/index.js'
 
 //get all users
