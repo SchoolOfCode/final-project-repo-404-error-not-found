@@ -76,9 +76,11 @@ const AllMentors = ({ mentors }) => {
                 {skills ? (
                   <div className={styles.skills}>
                     {skills.map((skill, index) => (
+                      
                       <p className={styles.skill} key={index}>
                         {skill}
                       </p>
+                     
                     ))}
                   </div>
                 ) : null}
@@ -91,7 +93,7 @@ const AllMentors = ({ mentors }) => {
                     loginid: loginid,
                   },
                 }}
-              >
+  
                 <Button variant="outline-success">View Profile</Button>
               </Link>
             </a>

@@ -11,7 +11,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
-
+import { Button } from 'react-bootstrap';
 
 //add location and profile pic url fields
 
@@ -253,9 +253,9 @@ function Mentor() {
                 required
               />
             </div>
-            <button className={css.submitButton} onClick={submitForm}>
+            <Button variant="outline-success" className={css.submitButton} onClick={submitForm}>
               Submit
-            </button>
+            </Button>
           </form>
         </div>
       </div>
