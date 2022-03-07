@@ -1,0 +1,48 @@
+.hamburger{
+    display: none;
+    width: 2rem;
+    height: 2rem;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+    z-index: 2100;
+}
+
+
+.line1{
+    width: 2rem;
+    height: 0.20rem;
+    display: flex;
+    border-radius: 12px;
+    background-color: #333;
+    transform-origin: all 0.5s linear;
+    margin-bottom: 4px;
+}
+
+.line2{
+    width: 2rem;
+    height: 0.20rem;
+    display: flex;
+    border-radius: 12px;
+    background-color: #333;
+    transform-origin: all 0.5s linear;
+    margin-bottom: 4px;
+}
+
+.line3{
+    width: 2rem;
+    height: 0.20rem;
+    display: flex;
+    border-radius: 12px;
+    background-color: #333;
+    transform-origin: all 0.5s linear;
+    margin-bottom: 4px;
+}
+
+@media only screen and (max-width: 767px){
+    .hamburger{
+        display: fixed;
+        padding-top: 10px;
+        margin-left: 10px;
+        z-index: 2100;
+    }
+}
