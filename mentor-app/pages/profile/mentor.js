@@ -15,7 +15,7 @@ export default function Profile() {
   const [currentMentor, setCurrentMentor] = useState(null);
   // user is the user provided by firebase
   const [user, loading, error] = useAuthState(firebase.auth());
-
+  // console.log("testing: " + { ...firebase });
   //takes the firebase uid and fetches the corresponding mentor from database, then assigns it to currentMentor
   useEffect(async () => {
     if (user !== null) {
@@ -57,7 +57,7 @@ export default function Profile() {
             </div>
           </div>
           <div className={css.profileRight}>
-            <h1>
+            <h1 data-testid="profileName">
               {currentMentor.firstname} {currentMentor.surname}
             </h1>
             <h3>{currentMentor.location}</h3>

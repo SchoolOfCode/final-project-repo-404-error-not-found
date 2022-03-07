@@ -4,6 +4,9 @@
 .env.test.local
 .env.test
 .jest/setEnvVars.js
+
+testingJSONstuff.js
+
 # dependencies
 /node_modules
 /.pnp
