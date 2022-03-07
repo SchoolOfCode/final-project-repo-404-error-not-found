@@ -60,15 +60,16 @@ export default function Profile() {
             </div>
           </div>
           <div className={css.profileRight}>
-            <h1>
+            <h1 className={css.profileName}>
               {currentMentor.firstname} {currentMentor.surname}
             </h1>
-            <h3>{currentMentor.location}</h3>
-            <h3>{currentMentor.tagline}</h3>
-            <span>
+            <span className={css.jobandcompany}>
               <h4 className={css.jobtitle}>{currentMentor.jobtitle} </h4>
               at <em>{currentMentor.company}</em>
             </span>
+            <h3>{currentMentor.location}</h3>
+            <h3>{currentMentor.tagline}</h3>
+
             <div className={css.skills}>
               {currentMentor.skills.length > 0
                 ? currentMentor.skills.map((item) => (
