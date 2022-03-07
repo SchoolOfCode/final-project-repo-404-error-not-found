@@ -5,7 +5,7 @@ import {
 
 export default async function (req, res) {
   const HTTPMethod = req.method
-  let id = req.query.getConnectionMentor
+  let id = req.query.connectionMentor
 
   switch (HTTPMethod) {
     case 'GET':

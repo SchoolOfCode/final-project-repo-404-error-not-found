@@ -6,8 +6,8 @@ export default async function (req, res) {
   switch (HTTPMethod) {
     case 'POST':
       // create new connection between both DB
-      const createConnection = await createConnection(req.body)
-      res.status(200).json(createConnection)
+      const createRelation = await createConnection(req.body)
+      res.status(200).json(createRelation)
       break
     case 'PUT':
       // updating status

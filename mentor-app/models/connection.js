@@ -21,7 +21,7 @@ export async function createConnection(data) {
   const { mentee_id, mentor_id } = data
   const status = 'pending'
   const res = await query(
-    'INSERT INTO connection (mentee_id, mentor_id, status) VALUES ($1, $2, $3)',
+    'INSERT INTO connection (mentee_id, mentor_id, status) VALUES ($1, $2, $3) RETURNING *',
     [mentee_id, mentor_id, status]
   )
   return res.rows
@@ -34,10 +34,10 @@ export async function deleteConnection(id) {
 }
 
 export async function updateStatus(data) {
-  const {id} = data
+  const { id } = data
   const status = 'accepted'
   const response = await query(
-    `UPDATE connection SET status = ($1) WHERE id = ($2);`,
+    `UPDATE connection SET status = ($1) WHERE id = ($2) RETURNING *;`,
     [status, id]
   )
   return response
