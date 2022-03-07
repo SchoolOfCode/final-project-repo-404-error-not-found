@@ -90,3 +90,14 @@
 .profileRight .bio {
   margin-top: 1em;
 }
+#button {
+  justify-content: space-between;
+}
+.button {
+  display: flex;
+}
+.ImgContainer {
+  object-fit: fill;
+  border-radius: 10px;
+  border-width: 10px;
+}

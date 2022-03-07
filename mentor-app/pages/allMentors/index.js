@@ -7,6 +7,7 @@ import { server } from "../../config";
 import { Button } from "react-bootstrap";
 
 import {
+  HStack,
   Badge,
   Button as ButtonCh,
   Center,
@@ -53,17 +54,18 @@ const AllMentors = ({ mentors }) => {
               <Stack
                 borderWidth="1px"
                 borderRadius="lg"
-                w={{ sm: "100%", md: "540px" }}
-                height={{ sm: "476px", md: "20rem" }}
+                w={{ sm: "100%", md: "55%" }}
+                minHeight={{ sm: "480px", md: "20rem" }}
                 direction={{ base: "column", md: "row" }}
                 bg={useColorModeValue("white", "gray.900")}
                 boxShadow={"2xl"}
                 padding={4}
               >
-                <Flex flex={1} bg="blue.200">
-                  <Image src={photourl} />
-                </Flex>
-
+                <Stack flex={1}>
+                  <div className={styles.ImgContainer}>
+                    <Image boxSize="480px" src={photourl} alt="" />
+                  </div>
+                </Stack>
                 <Stack
                   flex={1}
                   flexDirection="column"
@@ -100,6 +102,7 @@ const AllMentors = ({ mentors }) => {
                     ) : null}
                   </Text>
                   <Text
+                    noOfLines={10}
                     textAlign={"center"}
                     color={useColorModeValue("gray.700", "gray.400")}
                     px={3}
@@ -126,34 +129,36 @@ const AllMentors = ({ mentors }) => {
                       </div>
                     ) : null}
                   </Stack>
-                  <Stack
-                    width={"100%"}
-                    mt={"2rem"}
-                    direction={"row"}
-                    padding={2}
-                    justifyContent={"space-between"}
-                    alignItems={"center"}
-                  >
-                    <Link
-                      href={{
-                        pathname: "/read-profile/mentor",
-                        query: {
-                          loginid: loginid,
-                        },
-                      }}
+                  <div>
+                    <Stack
+                      width={"100%"}
+                      mt={"2rem"}
+                      direction={"row"}
+                      padding={2}
+                      justifyContent={"space-between"}
+                      alignItems={"center"}
                     >
-                      <Button
-                        flex={1}
-                        fontSize={"sm"}
-                        rounded={"full"}
-                        _focus={{
-                          bg: "gray.200",
+                      <Link
+                        href={{
+                          pathname: "/read-profile/mentor",
+                          query: {
+                            loginid: loginid,
+                          },
                         }}
                       >
-                        View Profile
-                      </Button>
-                    </Link>
-                  </Stack>
+                        <Button
+                          flex={1}
+                          fontSize={"sm"}
+                          rounded={"full"}
+                          _focus={{
+                            bg: "gray.200",
+                          }}
+                        >
+                          View Profile
+                        </Button>
+                      </Link>
+                    </Stack>
+                  </div>
                 </Stack>
               </Stack>
             </Center>
