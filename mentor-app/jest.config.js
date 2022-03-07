@@ -18,6 +18,10 @@ const customJestConfig = {
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 // module.exports = createJestConfig(customJestConfig);
 
+// module.exports = {
+//   setupFiles: ["<rootDir>/.jest/setEnvVars.js"]
+// };
+
 //try another setup
 module.exports = {
   collectCoverageFrom: [
@@ -49,4 +53,5 @@ module.exports = {
     "/node_modules/",
     "^.+\\.module\\.(css|sass|scss)$",
   ],
+  setupFiles: ["<rootDir>/.jest/setEnvVars.js"],
 };
