@@ -19,7 +19,10 @@ export default function CardDashboardLong(props) {
   }, [info])
 
   async function acceptRequest () {
+console.log("acceptRequest")
+    const data = info.id
     const res = await fetch(`${server}/api/connection`, {
+      
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -28,6 +31,7 @@ export default function CardDashboardLong(props) {
       body: JSON.stringify(data),
     })
     const response = await res.json()
+    console.log(response)
   }
 
   return (
@@ -49,7 +53,7 @@ export default function CardDashboardLong(props) {
         <Button colorScheme='blue' variant='ghost'>
           View Profile
         </Button>
-        <Button colorScheme='teal'>Accept</Button>
+        <Button colorScheme='teal' onClick={()=> acceptRequest()}>Accept</Button>
         <Button colorScheme='red'>Decline</Button>
       </div>
     </>
