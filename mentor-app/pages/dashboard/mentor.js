@@ -15,15 +15,17 @@ export default function Mentor() {
 
   function filterData(data) {
     const pendingData = data.filter((each) => {
-      return each.status === "pending"
+      return each.status === 'pending'
     })
-
+    if (pendingData.length !== 0) {
+      setConnectionPending(pendingData)
+    }
     const acceptedData = data.filter((each) => {
-      return each.status === "accepted"
+      return each.status === 'accepted'
     })
-    
-    setConnectionPending (pendingData)
-    setConnectionAccepted (acceptedData)
+    if (acceptedData.length !== 0) {
+      setConnectionAccepted(acceptedData)
+    }
   }
 
   useEffect(async () => {
