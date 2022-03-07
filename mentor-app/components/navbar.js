@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth, signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
+// import styles from "../styles/hamburgermenu.module.css";
 import Image from "next/image";
 import { server } from "../config";
 import logo from "../Images/mentoree_home_logo.jpg";
@@ -16,6 +17,8 @@ import {
   MenuItem,
   MenuDivider,
 } from "@chakra-ui/react";
+// import styles from "../styles/hamburgermenu.module.css";
+import Hamburger from "./hamburger.js"
 
 const auth = getAuth();
 
@@ -23,6 +26,7 @@ const Navbar = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [user, loading, error] = useAuthState(firebase.auth());
   const [isLogIn, setLogIn] = useState(null); //state check if user is logged in
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const router = useRouter();
 
   useEffect(async () => {
@@ -67,6 +71,14 @@ const Navbar = () => {
       });
   }
 
+
+
+  const toggleHamburger = () => {
+    setHamburgerOpen(!hamburgerOpen)
+  }
+
+
+
   return (
     <nav className={styles.navbar}>
       <div className="logo">
@@ -89,6 +101,9 @@ const Navbar = () => {
       <Link href="/allMentors">
         <a>Find a Mentor</a>
       </Link>
+      <div className="hamburgers" onClick={toggleHamburger}>
+          <Hamburger />
+      </div>
 
       {currentUser && (
         <Menu>
