@@ -33,7 +33,8 @@ export async function deleteConnection(id) {
   return response
 }
 
-export async function updateStatus(id) {
+export async function updateStatus(data) {
+  const {id} = data
   const status = 'accepted'
   const response = await query(
     `UPDATE connection SET status = ($1) WHERE id = ($2);`,

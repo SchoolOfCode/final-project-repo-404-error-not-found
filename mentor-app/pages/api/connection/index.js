@@ -1,21 +1,21 @@
-import { getAllMentees, createMentee } from '../../../models/mentee'
+import { createConnection, updateStatus } from "../../../models/connection";
 
 export default async function (req, res) {
   const HTTPMethod = req.method
 
   switch (HTTPMethod) {
-    case 'GET':
-      //call some imported function that handles logic/sql queries
-      const mentees = await getAllMentees()
-      res.status(200).json(mentees)
-      break
     case 'POST':
-      //call some imported function that handles logic/sql queries
-      const mentee = await createMentee(req.body)
-      res.status(200).json(mentee)
+      // create new connection between both DB
+      const response = await createConnection(req.body)
+      res.status(200).json(response)
+      break
+    case 'PUT':
+      // updating status 
+      const response = await updateStatus(req.body)
+      res.status(200).json(response)
       break
     default:
-      res.setHeader('Allow', ['GET', 'POST'])
+      res.setHeader('Allow', ['POST', 'PUT'])
       res.status(405).end(`Method ${HTTPMethod} not Allowed`)
   }
 }
