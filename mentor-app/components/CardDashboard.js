@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@chakra-ui/react'
 import styles from '../styles/CardDashboard.module.css'
-import css from '../pages/dashboard/mentor.module.css'
+import css from '../pages/dashboard/dashboard.module.css'
 
 export default function CardDashboard() {
   return (

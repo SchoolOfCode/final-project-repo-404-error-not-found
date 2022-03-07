@@ -61,3 +61,15 @@
   width: 100%;
   text-align: center;
 }
+
+.acceptedRequest,
+.pendingRequest {
+  min-height: 110px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  color: green;
+}
+.pendingRequest {
+  color: red;
+}
