@@ -15,8 +15,15 @@ export default function Mentor() {
 
   function filterData(data) {
     const pendingData = data.filter((each) => {
-      return each.status !== pending
+      return each.status === "pending"
     })
+
+    const acceptedData = data.filter((each) => {
+      return each.status === "accepted"
+    })
+    
+    setConnectionPending (pendingData)
+    setConnectionAccepted (acceptedData)
   }
 
   useEffect(async () => {
@@ -25,6 +32,7 @@ export default function Mentor() {
       const res = await fetch(`${server}/api/connectionMentor/${loginid}`)
       const data = await res.json()
       console.log(data)
+      filterData(data)
     }
   }, [user])
 
@@ -60,7 +68,7 @@ export default function Mentor() {
         </h2>
         <div className={css.container}>
           {connectionPending ? (
-            <CardDashboardLong />
+            <CardDashboardLong info={connectionPending} />
           ) : (
             <div className={css.pendingRequest}>
               <p>You dont have any pending request! </p>
