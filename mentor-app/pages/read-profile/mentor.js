@@ -23,8 +23,12 @@ export default function Profile(props) {
   const [currentMentor, setCurrentMentor] = useState(null)
   const [user, loading, error] = useAuthState(firebase.auth())
 
+  const [apply, setApply] = useState(true)
+
+
   async function handleApply() {
-    console.log(currentMentor)
+  
+    setApply(false)
     const data = { mentor_id: currentMentor.loginid, mentee_id: user.uid }
     const res = await fetch(`${server}/api/connection`, {
       method: 'POST',
@@ -103,9 +107,8 @@ export default function Profile(props) {
               <p>Description of what is offered</p>
             </div>
             <div className={css.lowSquare}>
-              {/* <Link href='/edit-profile/mentor'> */}
-              <Button onClick={() => handleApply()}>Apply Now</Button>
-              {/* </Link> */}
+              {apply ? <Button onClick={() => handleApply()}>Apply Now</Button>:
+              <p> Thank you for applying, {currentMentor.firstname} {currentMentor.surname} will reply back witihn 48 hours </p>}
             </div>
             <Link href='/allMentors'>
               <Button>Back to Main</Button>
