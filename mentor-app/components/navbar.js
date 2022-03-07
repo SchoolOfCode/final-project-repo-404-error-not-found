@@ -101,9 +101,6 @@ const Navbar = () => {
       <Link href="/allMentors">
         <a>Find a Mentor</a>
       </Link>
-      <div className="hamburgers" onClick={toggleHamburger}>
-          <Hamburger />
-      </div>
 
       {currentUser && (
         <Menu>
@@ -131,6 +128,9 @@ const Navbar = () => {
           Logout
         </Button>
       )} */}
+            <div className="hamburgers" onClick={toggleHamburger}>
+          <Hamburger />
+      </div>
     </nav>
   );
 };
