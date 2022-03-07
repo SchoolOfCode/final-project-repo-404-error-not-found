@@ -16,7 +16,6 @@ const uiConfig = {
 const Login = () => {
   return (
     <div className={styles.container}>
-      <p>Please sign-in:</p>
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </div>
   )
