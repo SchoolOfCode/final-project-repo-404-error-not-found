@@ -20,7 +20,7 @@ export default function CardDashboardLong(props) {
 
   async function acceptRequest () {
 console.log("acceptRequest")
-    const data = info.id
+    const data = {id: info.id}
     const res = await fetch(`${server}/api/connection`, {
       
       method: 'PUT',
