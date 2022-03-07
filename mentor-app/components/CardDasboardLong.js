@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react'
 export default function CardDashboardLong(props) {
   const { info } = props
   const [infoRender, setInfoRender] = useState(null)
-  console.log('props', props)
   useEffect(async () => {
     if (info !== null) {
       const loginid = info.mentee_id
@@ -27,7 +26,13 @@ export default function CardDashboardLong(props) {
           alt=''
           className={css.picture}
         />
-       {infoRender &&  <h4 className={css.cardName}> {infoRender.firstName} {infoRender.surname}</h4>}
+        {infoRender ? (
+          <h4 className={css.cardName}>
+            {infoRender.firstName} {infoRender.surname}
+          </h4>
+        ) : (
+          'Name Surname'
+        )}
         <Button colorScheme='blue' variant='ghost'>
           View Profile
         </Button>
