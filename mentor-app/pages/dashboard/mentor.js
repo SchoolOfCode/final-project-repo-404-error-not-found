@@ -70,7 +70,10 @@ export default function Mentor() {
         </h2>
         <div className={css.container}>
           {connectionPending ? (
-            <CardDashboardLong info={connectionPending} />
+          connectionPending.map((each) => {
+            return <CardDashboardLong info={each} />
+          })
+           
           ) : (
             <div className={css.pendingRequest}>
               <p>You dont have any pending request! </p>

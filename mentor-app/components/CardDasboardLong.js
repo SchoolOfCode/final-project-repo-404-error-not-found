@@ -3,10 +3,11 @@ import { Button } from '@chakra-ui/react'
 import styles from '../styles/CardDashboard.module.css'
 import css from '../pages/dashboard/dashboard.module.css'
 import { server } from '../config'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function CardDashboardLong(props) {
   const { info } = props
+  const [infoRender, setInfoRender] = useState(null)
   console.log('props', props)
   useEffect(async () => {
     if (info !== null) {
@@ -14,6 +15,7 @@ export default function CardDashboardLong(props) {
       const res = await fetch(`${server}/api/mentees/${loginid}`)
       const data = await res.json()
       console.log(data)
+      setInfoRender(data)
     }
   }, [info])
 
@@ -25,7 +27,7 @@ export default function CardDashboardLong(props) {
           alt=''
           className={css.picture}
         />
-        <h4 className={css.cardName}>Name Surname</h4>
+       {infoRender &&  <h4 className={css.cardName}> {infoRender.firstName} {infoRender.surname}</h4>}
         <Button colorScheme='blue' variant='ghost'>
           View Profile
         </Button>
