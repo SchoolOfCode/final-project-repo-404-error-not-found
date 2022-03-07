@@ -18,17 +18,30 @@ export default function CardDashboardLong(props) {
     }
   }, [info])
 
+  async function acceptRequest () {
+    const res = await fetch(`${server}/api/connection`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '',
+      },
+      body: JSON.stringify(data),
+    })
+    const response = await res.json()
+  }
+
   return (
     <>
       <div className={css.card2}>
-        <img
-          src='https://static.wikia.nocookie.net/disney/images/7/7b/Pluto.PNG/revision/latest/top-crop/width/360/height/360?cb=20170628205507'
+      
+       { infoRender && <img
+          src={infoRender[0].url}
           alt=''
           className={css.picture}
-        />
+        />}
         {infoRender ? (
           <h4 className={css.cardName}>
-            {infoRender.firstName} {infoRender.surname}
+            {infoRender[0].firstname} {infoRender[0].surname}
           </h4>
         ) : (
           'Name Surname'
