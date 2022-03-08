@@ -133,14 +133,14 @@
   padding: 1rem;
   display: block; 
 } */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 
 .headerTitle {
   color: #333;
   padding-bottom: 10px;
   text-align: center;
   font-size: 2.5em;
-  font-family: "Nunito";
+  font-family: 'Nunito';
   font-weight: 625;
   margin-top: 1em;
 }
@@ -151,7 +151,7 @@
   margin-top: 20px;
   font-size: 2.3em;
   font-weight: 700;
-  font-family: "Nunito";
+  font-family: 'Nunito';
 }
 
 .text {
@@ -194,7 +194,7 @@
   border-radius: 20px;
   color: white;
   text-align: center;
-  font-family: "Nunito";
+  font-family: 'Nunito';
   font-weight: bolder;
   justify-content: center;
   cursor: pointer;
@@ -218,7 +218,7 @@
   border-radius: 20px;
   color: white;
   text-align: center;
-  font-family: "Nunito";
+  font-family: 'Nunito';
   font-weight: bolder;
   justify-content: center;
   cursor: pointer;
@@ -252,22 +252,7 @@
   z-index: -1000;
 }
 
-.logoutbtn {
-  /* border-radius: 15px;
-  font-family: "Nunito";
-  text-decoration: none;
-  background-color: rgba(11, 241, 153, 0.623);
-  margin-left: 12px;
-  color: white;
-  border-color: white;
-  box-shadow: white; */
-}
 
-/* .card {
-  display: grid; 
-  grid-template: 1fr 1fr 1fr/ 1fr 1fr 1fr / 1fr 1fr 1fr;
-justify-content: space-around;
-} */
 
 .heading {
   align-items: center;
@@ -324,4 +309,54 @@ justify-content: space-around;
   display: block;
   text-align: justify;
   padding-bottom: 0.5rem;
+}
+
+@media only screen and (max-width: 768px){
+  .headerTitle{
+    font-size: 1.5em;
+  }
+
+  .title{
+    font-size: 1.5em;
+  }
+
+  .homeBGBanner{
+    width: 45%;
+    height: 45%;
+  }
+
+  .about{
+    padding-top: 40px;
+    margin: 75px auto;
+  }
+
+  .heading{
+    font-size: 25px;
+  }
+
+  .aboutDescription {
+    font-size: 1.2em;
+    margin: 45px;
+  }
+
+  .card {
+    row-gap: 3px;
+    margin: 1.2rem;
+  }
+
+  .abouttitle {
+    font-size: 17px;
+    font-weight: 600;
+    line-height:70%;
+    margin-top: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .aboutpara {
+    font-size: 13px;
+    line-height: 75%;
+  }
+  
+
+
 }

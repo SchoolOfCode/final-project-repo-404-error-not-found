@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import firebase from "../../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useRouter } from "next/router";
-import { server } from "../../config";
+
+import React, { useEffect, useState } from 'react'
+import firebase from '../../firebase/clientApp'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { useRouter } from 'next/router'
+import { server } from '../../config'
 
 export default function Setpath() {
   const [currentMentor, setCurrentMentee] = useState(null);
@@ -14,20 +15,22 @@ export default function Setpath() {
       //change for mentee
       try {
         if (user !== null) {
-          const data = { loginid: user.uid };
-          const res = await fetch(`${server}/api/mentors/api/mentees`, {
-            //mentee
-            method: "POST",
+
+          const data = { loginid: user.uid, socials: {}, skills: [] }
+          const res = await fetch(`${server}/api/mentees`, {
+            method: 'POST',
+
             headers: {
               "Content-Type": "application/json",
               "Access-Control-Allow-Origin": "",
             },
             body: JSON.stringify(data),
-          });
-          const response = await res.json();
-          router.push("/setup-profile/mentee");
-          console.log("response", response);
-          //   setCurrentMentee(response)
+
+          })
+          const response = await res.json()
+          router.push('/setup-profile/mentee')
+          console.log('response', response)
+
         }
       } catch (error) {
         router.push("/profile/mentee");

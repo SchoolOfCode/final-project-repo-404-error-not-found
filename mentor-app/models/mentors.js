@@ -1,5 +1,4 @@
 //will need to import db query function
-import mentors from "../database/mock-data";
 import query from "../database/index.js";
 
 //get all users

@@ -1,6 +1,7 @@
 import React from 'react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
 import firebase from '../../firebase/clientApp'
+import styles from './login.module.css'
 
 const uiConfig = {
   signInSuccessUrl: '/path/setpath-mentee',
@@ -14,9 +15,7 @@ const uiConfig = {
 
 const Login = () => {
   return (
-    <div>
-      <h1>Mentee Login</h1>
-      <p>Please sign-in:</p>
+    <div className={styles.container}>
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </div>
   )

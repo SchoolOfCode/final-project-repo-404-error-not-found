@@ -2,20 +2,30 @@ import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+
+
 import { server } from "../../config";
 
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
+
+import { Button } from "react-bootstrap";
+
 const url = process.env.REACT_APP_BACKEND_URL;
+
 
 //add location and profile pic url fields
 
 function Mentor() {
   const [user, loading, error] = useAuthState(firebase.auth());
+
+
   const loginid = user ? user.uid : "";
+
   const router = useRouter();
+
 
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
@@ -30,6 +40,7 @@ function Mentor() {
   const [socialMediaType, setSocialMediaType] = useState("");
   const [socialMediaUserName, setSocialMediaUserName] = useState("");
   const [socials, setSocials] = useState({});
+
   const [isLogIn, setLogIn] = useState(null);
 
   // useEffect(() => {
@@ -40,6 +51,7 @@ function Mentor() {
     if (user !== null) {
       const data = { loginid: user.uid };
       console.log("about to send post request!");
+
       const res = await fetch(`${server}/api/mentors`, {
         method: "POST",
         headers: {
@@ -48,6 +60,7 @@ function Mentor() {
         },
         body: JSON.stringify(data),
       });
+
       const response = await res.json();
     }
   }, [user]);
@@ -100,6 +113,7 @@ function Mentor() {
       },
       body: JSON.stringify(body),
     });
+
     console.log(JSON.stringify(body));
     router.push("/profile/mentor");
   };
@@ -172,12 +186,15 @@ function Mentor() {
             </div>
             <div className={css.biography}>
               <label htmlFor="biography">Biography</label>
-              <input
+
+              <textArea
+
                 id="biography"
                 type="text"
                 value={biography}
                 onChange={(e) => setBiography(e.target.value)}
                 required
+                maxlength="500ch"
               />
               <div className={css.photourl}>
                 <label htmlFor="photourl">Profile photo URL</label>
@@ -219,7 +236,9 @@ function Mentor() {
               </div>
             </div>
             {/* break into two inputs - social media type, social media name/handle  */}
-            <div className={css.socials}>
+
+            <div className={css.socialType}>
+
               <label htmlFor="socialmediatype">Social Media Type</label>
               <select
                 name="socialMediaType"
@@ -232,7 +251,10 @@ function Mentor() {
                 <option value="linkedin">LinkedIn</option>
                 <option value="twitter">Twitter</option>
               </select>
-              <br />
+
+            </div>
+            <div className={css.socialName}>
+
               <label htmlFor="socialmediausername">Social Media Handle</label>
               <input
                 id="socialmediausername"
@@ -242,9 +264,13 @@ function Mentor() {
                 required
               />
             </div>
-            <button className={css.submitButton} onClick={submitForm}>
+            <Button
+              variant="outline-success"
+              className={css.submitButton}
+              onClick={submitForm}
+            >
               Submit
-            </button>
+            </Button>
           </form>
         </div>
       </div>

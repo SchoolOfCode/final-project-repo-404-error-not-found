@@ -10,7 +10,9 @@ import css from "./mentor.module.css";
 
 //add location and profile pic url fields
 
-function Mentor() {
+
+function Mentee() {
+
   const [user, loading, error] = useAuthState(firebase.auth());
   const loginid = user ? user.uid : "";
   const router = useRouter();
@@ -104,7 +106,7 @@ function Mentor() {
   return (
     <>
       <div className={css.UpdateMentorProfileFormContainer}>
-        <h1>Setup your mentor profile</h1>
+        <h1>Setup your mentee profile</h1>
         <h2>Add or edit your information below</h2>
         <div>
           <form onSubmit={submitForm} className={css.UpdateMentorProfileForm}>
@@ -170,12 +172,15 @@ function Mentor() {
             </div>
             <div className={css.biography}>
               <label htmlFor="biography">Biography</label>
-              <input
+
+              <textArea
+
                 id="biography"
                 type="text"
                 value={biography}
                 onChange={(e) => setBiography(e.target.value)}
                 required
+                maxlength="500ch"
               />
               <div className={css.photourl}>
                 <label htmlFor="photourl">Profile photo URL</label>
@@ -217,7 +222,9 @@ function Mentor() {
               </div>
             </div>
             {/* break into two inputs - social media type, social media name/handle  */}
-            <div className={css.socials}>
+
+            <div className={css.socialType}>
+
               <label htmlFor="socialmediatype">Social Media Type</label>
               <select
                 name="socialMediaType"
@@ -230,7 +237,10 @@ function Mentor() {
                 <option value="linkedin">LinkedIn</option>
                 <option value="twitter">Twitter</option>
               </select>
-              <br />
+
+            </div>
+            <div className={css.socialName}>
+
               <label htmlFor="socialmediausername">Social Media Handle</label>
               <input
                 id="socialmediausername"
@@ -240,7 +250,11 @@ function Mentor() {
                 required
               />
             </div>
-            <button className={css.submitButton} onClick={submitForm}>
+            <button
+              variant="outline-success"
+              className={css.submitButton}
+              onClick={submitForm}
+            >
               Submit
             </button>
           </form>
@@ -250,4 +264,6 @@ function Mentor() {
   );
 }
 
-export default Mentor;
+
+export default Mentee;
+

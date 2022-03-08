@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+.main {
+  padding: 0 50px;
+  font-family: 'Nunito';
+}
+.column {
+  width: 5vw;
+}
+.title {
+  font-size: 2.1rem;
+  margin-bottom: 5px;
+}
+.subtitle {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+.container {
+  min-height: 5rem;
+  padding: 20px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.card2 {
+  display: flex;
+  align-items: center;
+  border-radius: 7px;
+  width: 65rem;
+  justify-content: space-evenly;
+  height: 100px;
+  padding: 20px 30px;
+  box-shadow: 6px 8px 12px 8px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+}
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 45rem;
+  border-radius: 7px;
+  height: 100px;
+  padding: 30px 30px;
+  box-shadow: 6px 8px 12px 8px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
+}
+.picture {
+  margin: 2em 2em;
+  width: 7em;
+  height: 5em;
+}
+.cardName {
+  font-size: 1.8rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-around;
+}
+
+.subContainer {
+  width: 100%;
+  text-align: center;
+}
+
+.acceptedRequest,
+.pendingRequest {
+  min-height: 110px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  color: green;
+}
+.pendingRequest {
+  color: red;
+}
