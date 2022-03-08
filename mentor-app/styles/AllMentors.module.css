@@ -111,3 +111,9 @@
   align-items: center;
   border-radius: 10px;
 }
+
+.centerH1 {
+  font-size: 3.5em;
+  justify-content: center;
+  text-align: center;
+}

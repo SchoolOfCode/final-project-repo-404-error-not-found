@@ -19,6 +19,7 @@ a {
 }
 
 nav {
+  /* display: {hamburgerOpen ? 'inline' : 'none'}; */
   padding: 30px;
   padding-left: 60px;
   display: flex;
@@ -97,6 +98,11 @@ footer p {
 .socials {
   display: flex;
   justify-content: center;
+}
+
+
+@media only screen and (max-width: 768px){
+  
 }
 
 /* Button {

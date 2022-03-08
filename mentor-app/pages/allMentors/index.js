@@ -32,7 +32,9 @@ export const getServerSideProps = async () => {
 const AllMentors = ({ mentors }) => {
   return (
     <div>
-      <h1 className={styles.allMentorsHeading}>Mentors</h1>
+
+      <h1 className = {styles.centerH1}>Mentors</h1>
+
       {mentors.map((mentor) => {
         const {
           loginid,
