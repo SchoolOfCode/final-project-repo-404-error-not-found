@@ -12,6 +12,7 @@ export default function Mentor() {
   const [user, loading, error] = useAuthState(firebase.auth());
   const [connectionAccepted, setConnectionAccepted] = useState(null);
   const [connectionPending, setConnectionPending] = useState(null);
+  const [status, setStatus] = useState(false);
 
   function filterData(data) {
     const pendingData = data.filter((each) => {
@@ -36,7 +37,7 @@ export default function Mentor() {
       console.log(data);
       filterData(data);
     }
-  }, [user]);
+  }, [user, status]);
 
   async function acceptRequest(currentId) {
     const data = { id: currentId };
@@ -49,6 +50,7 @@ export default function Mentor() {
       body: JSON.stringify(data),
     });
     const response = await res.json();
+    setStatus(!status);
   }
   async function deleteRequest(id) {
     const res = await fetch(`${server}/api/connectionMentor/${id}`, {
@@ -59,6 +61,8 @@ export default function Mentor() {
       },
     });
     const response = await res.json();
+    // if status is true, set status to false
+    setStatus(!status);
   }
 
   return (
