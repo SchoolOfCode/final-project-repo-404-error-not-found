@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import { server } from "../../config";
 
-import css from "./mentor.module.css";
+import styles from "./mentor.module.css";
 
 import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";
@@ -36,16 +36,16 @@ export default function Profile() {
     // let socialsKey = Object.keys(currentMentor.socials);
 
     return (
-      <div className={css.profileFullArea}>
+      <div className={styles.profileFullArea}>
         <h1>Your profile</h1>
         <br />
-        <div className={css.profileMainArea}>
-          <div className={css.profileLeft}>
+        <div className={styles.profileMainArea}>
+          <div className={styles.profileLeft}>
             <img
-              className={css.profileImage}
+              className={styles.profileImage}
               src={currentMentor.photourl}
             ></img>
-            <div className={css.socialsArea}>
+            <div className={styles.socialsArea}>
               {Object.keys(currentMentor.socials)[0] === "linkedin" ? (
                 <LinkedinIcon
                   handle={Object.values(currentMentor.socials)[0]}
@@ -59,38 +59,38 @@ export default function Profile() {
               ) : null}
             </div>
           </div>
-          <div className={css.profileRight}>
+          <div className={styles.profileRight}>
             <h1>
               {currentMentor.firstname} {currentMentor.surname}
             </h1>
             <h3>{currentMentor.location}</h3>
             <h3>{currentMentor.tagline}</h3>
             <span>
-              <h4 className={css.jobtitle}>{currentMentor.jobtitle} </h4>
+              <h4 className={styles.jobtitle}>{currentMentor.jobtitle} </h4>
               at <em>{currentMentor.company}</em>
             </span>
-            <div className={css.skills}>
+            <div className={styles.skills}>
               {currentMentor.skills.length > 0
                 ? currentMentor.skills.map((item) => (
-                    <div className={css.skill}>{item}</div>
+                    <div className={styles.skill}>{item}</div>
                   ))
                 : null}
               {/* <div className={css.skill}>skill</div> */}
             </div>
           </div>
-          <div className={css.biographyArea}>
+          <div className={styles.biographyArea}>
             <h3>Biography</h3>
 
-            <p className={css.bio}>{currentMentor.biography}</p>
+            <p className={styles.bio}>{currentMentor.biography}</p>
           </div>
         </div>
 
-        <div className={css.sideDisplay}>
-          <div className={css.rightSquare}>
-            <div className={css.topSquare}>
+        <div className={styles.sideDisplay}>
+          <div className={styles.rightSquare}>
+            <div className={styles.topSquare}>
               <p>Description of what is offered</p>
             </div>
-            <div className={css.lowSquare}>
+            <div className={styles.lowSquare}>
               <Link href="/edit-profile/mentor">
                 <button>Edit Profile</button>
               </Link>

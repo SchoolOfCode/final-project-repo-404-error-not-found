@@ -9,6 +9,7 @@ import homeBG from "../Images/homeBG.png";
 import aboutBG from "../Images/aboutBG.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -24,7 +25,11 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <motion.div
+      exit={{ opacity: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <div className={styles.homeContainer}>
         <div className={styles.homeBGBanner}>
           <Image src={homeBG}></Image>
@@ -67,6 +72,6 @@ export default function Home() {
       <div id="contact" className={styles.contactContainer}>
         <Contact />
       </div>
-    </div>
+    </motion.div>
   );
 }

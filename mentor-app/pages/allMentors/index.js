@@ -5,6 +5,7 @@ import LinkedinIcon from "../../components/LinkedinIcon";
 import Link from "next/link";
 import { server } from "../../config";
 import { Button } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 import {
   HStack,
@@ -31,8 +32,12 @@ export const getServerSideProps = async () => {
 
 const AllMentors = ({ mentors }) => {
   return (
-    <div>
-      <h1>Mentors</h1>
+    <motion.div
+      className={styles.body}
+      exit={{ opacity: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       {mentors.map((mentor) => {
         const {
           loginid,
@@ -165,7 +170,7 @@ const AllMentors = ({ mentors }) => {
           </div>
         ) : null;
       })}
-    </div>
+    </motion.div>
   );
 };
 

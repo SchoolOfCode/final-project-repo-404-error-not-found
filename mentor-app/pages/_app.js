@@ -5,14 +5,16 @@ import "../styles/Home.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import App from ".";
-
+import { AnimatePresence } from "framer-motion";
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ChakraProvider>
+    <AnimatePresence exitBeforeEnter>
+      <ChakraProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
+    </AnimatePresence>
   );
 }
 
