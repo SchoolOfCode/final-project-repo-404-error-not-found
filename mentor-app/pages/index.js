@@ -49,14 +49,20 @@ export default function Home() {
             <Link href="/login/mentor">
               <a onClick={(e) => handleClick(e, "/login/mentor")}>
                 {" "}
-                <button className={styles.mentor_btn}> Mentor </button>{" "}
+                <button className={styles.mentor_btn} data-cy="mentor_btn">
+                  {" "}
+                  Mentor{" "}
+                </button>
               </a>
             </Link>
 
             <Link href="/login/mentee" className={styles.btn}>
               <a onClick={(e) => handleClick(e, "/login/mentee")}>
                 {" "}
-                <button className={styles.mentee_btn}> Mentee </button>{" "}
+                <button className={styles.mentee_btn} data-cy="mentee_btn">
+                  {" "}
+                  Mentee{" "}
+                </button>{" "}
               </a>
             </Link>
           </div>

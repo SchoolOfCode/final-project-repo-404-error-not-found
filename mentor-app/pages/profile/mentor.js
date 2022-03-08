@@ -25,13 +25,15 @@ export default function Profile() {
       const res = await fetch(`${server}/api/mentors/${loginid}`);
       const data = await res.json();
       setCurrentMentor(data[0]);
+      console.log(user);
     }
   }, [user]);
 
   //render page only if currentMentor is loaded, otherwise show loading text
+
   if (currentMentor !== null) {
     // let socialsKey = Object.keys(currentMentor.socials);
-
+    console.log(currentMentor);
     return (
       <div className={css.profileFullArea}>
         <h1>Your profile</h1>

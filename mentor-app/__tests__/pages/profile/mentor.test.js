@@ -11,9 +11,8 @@ jest.mock("react-firebase-hooks/auth", () => {
   });
 });
 
-const mockFirebase = jest.fn(() => {
-  auth: jest.fn();
-});
+firebase.auth = jest.fn();
+const mockFirebase = jest.fn();
 jest.mock("../../../firebase/clientApp", () => {
   return jest.fn().mockImplementation(() => {
     return { firebase: mockFirebase };
