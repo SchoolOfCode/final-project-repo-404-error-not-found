@@ -6,7 +6,7 @@ import { server } from '../config'
 import { useEffect, useState } from 'react'
 
 export default function CardDashboardLong(props) {
-  const { info, acceptRequest } = props
+  const { info, acceptRequest, deleteRequest } = props
   const [infoRender, setInfoRender] = useState(null)
   useEffect(async () => {
     if (info !== null) {
@@ -21,9 +21,11 @@ export default function CardDashboardLong(props) {
   return (
     <>
       <div className={css.card2}>
+        {/* if infoRender is true render img, if not dont do anything */}
         {infoRender && (
           <img src={infoRender[0].photourl} alt='' className={css.picture} />
         )}
+        {/* if inforender is true render h4, if is not render line 33 'Name Surname'*/}
         {infoRender ? (
           <h4 className={css.cardName}>
             {infoRender[0].firstname} {infoRender[0].surname}
@@ -37,7 +39,9 @@ export default function CardDashboardLong(props) {
         <Button colorScheme='teal' onClick={() => acceptRequest(info.id)}>
           Accept
         </Button>
-        <Button colorScheme='red'>Decline</Button>
+        <Button colorScheme='red' onClick={() => deleteRequest(info.id)}>
+          Decline
+        </Button>
       </div>
     </>
   )

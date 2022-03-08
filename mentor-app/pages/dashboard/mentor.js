@@ -50,6 +50,16 @@ export default function Mentor() {
     })
     const response = await res.json()
   }
+  async function deleteRequest(id) {
+    const res = await fetch(`${server}/api/connectionMentor/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '',
+      },
+    })
+    const response = await res.json()
+  }
 
   return (
     <div className={css.main}>
@@ -68,6 +78,7 @@ export default function Mentor() {
           <h2 className={css.subtitle}>Your Mentees are...</h2>
         </div>
         <div className={css.container}>
+          {/* if connectionAccepted is true render CardDashboard for each accepted connection, if not render <p>you dont have mentees</p> */}
           {connectionAccepted ? (
             <CardDashboard />
           ) : (
@@ -82,6 +93,7 @@ export default function Mentor() {
           </div>
         </h2>
         <div className={css.container}>
+          {/* if connectionPending is true render CardDashboardLong [{satus: pending, idmentee, id mentor}, {status:pending}] */}
           {connectionPending ? (
             connectionPending.map((each, index) => {
               return (
@@ -89,6 +101,7 @@ export default function Mentor() {
                   info={each}
                   key={index}
                   acceptRequest={acceptRequest}
+                  deleteRequest={deleteRequest}
                 />
               )
             })
