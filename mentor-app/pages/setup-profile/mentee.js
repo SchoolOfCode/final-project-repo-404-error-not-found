@@ -10,7 +10,9 @@ import css from "./mentor.module.css";
 
 //add location and profile pic url fields
 
+
 function Mentee() {
+
   const [user, loading, error] = useAuthState(firebase.auth());
   const loginid = user ? user.uid : "";
   const router = useRouter();
@@ -170,7 +172,9 @@ function Mentee() {
             </div>
             <div className={css.biography}>
               <label htmlFor="biography">Biography</label>
+
               <textArea
+
                 id="biography"
                 type="text"
                 value={biography}
@@ -218,7 +222,9 @@ function Mentee() {
               </div>
             </div>
             {/* break into two inputs - social media type, social media name/handle  */}
+
             <div className={css.socialType}>
+
               <label htmlFor="socialmediatype">Social Media Type</label>
               <select
                 name="socialMediaType"
@@ -231,8 +237,10 @@ function Mentee() {
                 <option value="linkedin">LinkedIn</option>
                 <option value="twitter">Twitter</option>
               </select>
+
             </div>
             <div className={css.socialName}>
+
               <label htmlFor="socialmediausername">Social Media Handle</label>
               <input
                 id="socialmediausername"
@@ -256,4 +264,6 @@ function Mentee() {
   );
 }
 
+
 export default Mentee;
+

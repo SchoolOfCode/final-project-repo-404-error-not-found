@@ -8,8 +8,12 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
+
+const url = process.env.REACT_APP_BACKEND_URL;
+
 
 function EditMentor() {
   const router = useRouter();
@@ -44,7 +48,9 @@ function EditMentor() {
     if (user !== null) {
       const loginid = user.uid;
 
+
       const res = await fetch(`${server}/api/mentors/${loginid}`);
+
 
       const data = await res.json();
       setMentor(data[0]);
@@ -146,7 +152,9 @@ function EditMentor() {
               </div>
               <div className={css.biography}>
                 <label htmlFor="biography">Biography</label>
+
                 <textArea
+
                   id="biography"
                   type="text"
                   name="biography"
@@ -199,7 +207,9 @@ function EditMentor() {
               </div>
               {/* break into two inputs - social media type, social media name/handle  */}
 
+
               <div className={css.socialType}>
+
                 <label htmlFor="socialmediatype">Social Media Type</label>
                 <select
                   name="socialMediaType"
@@ -212,8 +222,10 @@ function EditMentor() {
                   <option value="linkedin">LinkedIn</option>
                   <option value="twitter">Twitter</option>
                 </select>
+
               </div>
               <div className={css.socialName}>
+
                 <label htmlFor="socialmediausername">Social Media Handle</label>
                 <input
                   id="socialmediausername"

@@ -35,6 +35,7 @@ import { BsGithub, BsTwitter, BsPerson } from "react-icons/bs";
 
 export default function contact() {
   return (
+
     <Container bg="#70C1B3" maxW="full" mt={0} centerContent overflow="hidden">
       <Flex>
         <Box
@@ -175,6 +176,7 @@ export default function contact() {
         </Box>
       </Flex>
     </Container>
+
   );
 }
 

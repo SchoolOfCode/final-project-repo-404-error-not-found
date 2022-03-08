@@ -1,8 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 .env
 .env.local
-testingJSONstuff.js
+.env.test.local
+.env.test
 .jest/setEnvVars.js
+testingJSONstuff.js
+
+
 # dependencies
 /node_modules
 /.pnp

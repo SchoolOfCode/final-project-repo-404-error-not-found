@@ -16,7 +16,7 @@ export default function Profile() {
   const [currentMentor, setCurrentMentor] = useState(null);
   // user is the user provided by firebase
   const [user, loading, error] = useAuthState(firebase.auth());
-
+  // console.log("testing: " + { ...firebase });
   //takes the firebase uid and fetches the corresponding mentor from database, then assigns it to currentMentor
   useEffect(async () => {
     if (user !== null) {
@@ -24,18 +24,23 @@ export default function Profile() {
       // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
       console.log("about to send GET request!");
 
+
       const res = await fetch(`${server}/api/mentors/${loginid}`);
+
 
       const data = await res.json();
       setCurrentMentor(data[0]);
+      console.log(user);
     }
   }, [user]);
-
+  console.log("testing: ", currentMentor);
   //render page only if currentMentor is loaded, otherwise show loading text
+
   if (currentMentor !== null) {
     // let socialsKey = Object.keys(currentMentor.socials);
-
+    console.log(currentMentor);
     return (
+
       <>
         <h1 className={css.pageTitle}>Your profile</h1>
         <div className={css.profileFullArea}>
@@ -45,6 +50,7 @@ export default function Profile() {
                 className={css.profileImage}
                 src={currentMentor.photourl}
               ></img>
+
               <div className={css.socialsArea}>
                 {Object.keys(currentMentor.socials)[0] === "linkedin" ? (
                   <LinkedinIcon
@@ -62,6 +68,7 @@ export default function Profile() {
                   />
                 ) : null}
               </div>
+
             </div>
             <div className={css.profileRight}>
               <h1 className={css.profileName}>
@@ -74,6 +81,7 @@ export default function Profile() {
               <h3>{currentMentor.location}</h3>
               <h3>{currentMentor.tagline}</h3>
 
+
               <div className={css.skills}>
                 {currentMentor.skills.length > 0
                   ? currentMentor.skills.map((item) => (
@@ -82,9 +90,11 @@ export default function Profile() {
                   : null}
                 {/* <div className={css.skill}>skill</div> */}
               </div>
+
             </div>
             <div className={css.biographyArea}>
               <h3>Biography</h3>
+
 
               <p className={css.bio}>{currentMentor.biography}</p>
             </div>
