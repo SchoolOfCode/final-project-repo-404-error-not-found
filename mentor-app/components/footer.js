@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <footer>
       <di>
-        <p>{year}</p>
+        <p> © {year}</p>
       </di>
 
       <div className="socials">
