@@ -25,8 +25,7 @@ const auth = getAuth();
 const Navbar = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [user, loading, error] = useAuthState(firebase.auth());
-  const [isLogIn, setLogIn] = useState(null); //state check if user is logged in
-  const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const [isLogIn, setLogIn] = useState(null); //state check if
   const router = useRouter();
 
   useEffect(async () => {
@@ -73,11 +72,6 @@ const Navbar = () => {
 
 
 
-  const toggleHamburger = () => {
-    setHamburgerOpen(!hamburgerOpen)
-  }
-
-
 
   return (
     <nav className={styles.navbar}>
@@ -86,6 +80,10 @@ const Navbar = () => {
           <Image src={logo}></Image>
         </Link>
       </div>
+
+    <div className={styles.main}>
+     <div className={styles.mains}>
+    
       <Link href="/">
         <a>Home</a>
       </Link>
@@ -101,6 +99,8 @@ const Navbar = () => {
       <Link href="/allMentors">
         <a>Find a Mentor</a>
       </Link>
+      </div>
+    </div>
 
       {currentUser && (
         <Menu>
@@ -128,7 +128,7 @@ const Navbar = () => {
           Logout
         </Button>
       )} */}
-            <div className="hamburgers" onClick={toggleHamburger}>
+      <div className="hamburgers" >
           <Hamburger />
       </div>
     </nav>
