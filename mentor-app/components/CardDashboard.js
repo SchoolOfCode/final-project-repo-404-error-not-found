@@ -10,18 +10,6 @@ export default function CardDashboard(props) {
   const { info, roleUrl } = props;
   const [infoRender, setInfoRender] = useState(null);
 
-  useEffect(async () => {
-    if (info !== null) {
-      const loginid = info.mentor_id;
-      const res = await fetch(`${server}/api/${roleUrl}/${loginid}`);
-      const data = await res.json();
-      console.log(data);
-      setInfoRender(data);
-    }
-  }, [info]);
-
-  const viewMentor = info.mentor_id;
-
   let viewId;
 
   if (roleUrl === "mentees") {
@@ -29,6 +17,15 @@ export default function CardDashboard(props) {
   } else {
     viewId = info.mentor_id;
   }
+  useEffect(async () => {
+    if (info !== null) {
+      const loginid = viewId;
+      const res = await fetch(`${server}/api/${roleUrl}/${loginid}`);
+      const data = await res.json();
+      console.log(data);
+      setInfoRender(data);
+    }
+  }, [info]);
 
   return (
     <>
