@@ -36,69 +36,74 @@ export default function Profile() {
     // let socialsKey = Object.keys(currentMentor.socials);
 
     return (
-      <div className={css.profileFullArea}>
-        <h1>Your profile</h1>
-        <br />
-        <div className={css.profileMainArea}>
-          <div className={css.profileLeft}>
-            <img
-              className={css.profileImage}
-              src={currentMentor.photourl}
-            ></img>
-            <div className={css.socialsArea}>
-              {Object.keys(currentMentor.socials)[0] === "linkedin" ? (
-                <LinkedinIcon
-                  handle={Object.values(currentMentor.socials)[0]}
-                />
-              ) : null}
-              {Object.keys(currentMentor.socials)[0] === "github" ? (
-                <GithubIcon handle={Object.values(currentMentor.socials)[0]} />
-              ) : null}
-              {Object.keys(currentMentor.socials)[0] === "twitter" ? (
-                <TwitterIcon handle={Object.values(currentMentor.socials)[0]} />
-              ) : null}
+      <>
+        <h1 className={css.pageTitle}>Your profile</h1>
+        <div className={css.profileFullArea}>
+          <div className={css.profileMainArea}>
+            <div className={css.profileLeft}>
+              <img
+                className={css.profileImage}
+                src={currentMentor.photourl}
+              ></img>
+              <div className={css.socialsArea}>
+                {Object.keys(currentMentor.socials)[0] === "linkedin" ? (
+                  <LinkedinIcon
+                    handle={Object.values(currentMentor.socials)[0]}
+                  />
+                ) : null}
+                {Object.keys(currentMentor.socials)[0] === "github" ? (
+                  <GithubIcon
+                    handle={Object.values(currentMentor.socials)[0]}
+                  />
+                ) : null}
+                {Object.keys(currentMentor.socials)[0] === "twitter" ? (
+                  <TwitterIcon
+                    handle={Object.values(currentMentor.socials)[0]}
+                  />
+                ) : null}
+              </div>
+            </div>
+            <div className={css.profileRight}>
+              <h1 className={css.profileName}>
+                {currentMentor.firstname} {currentMentor.surname}
+              </h1>
+              <span className={css.jobandcompany}>
+                <h4 className={css.jobtitle}>{currentMentor.jobtitle} </h4>
+                at <em>{currentMentor.company}</em>
+              </span>
+              <h3>{currentMentor.location}</h3>
+              <h3>{currentMentor.tagline}</h3>
+
+              <div className={css.skills}>
+                {currentMentor.skills.length > 0
+                  ? currentMentor.skills.map((item) => (
+                      <div className={css.skill}>{item}</div>
+                    ))
+                  : null}
+                {/* <div className={css.skill}>skill</div> */}
+              </div>
+            </div>
+            <div className={css.biographyArea}>
+              <h3>Biography</h3>
+
+              <p className={css.bio}>{currentMentor.biography}</p>
             </div>
           </div>
-          <div className={css.profileRight}>
-            <h1 className={css.profileName}>
-              {currentMentor.firstname} {currentMentor.surname}
-            </h1>
-            <span className={css.jobandcompany}>
-              <h4 className={css.jobtitle}>{currentMentor.jobtitle} </h4>
-              at <em>{currentMentor.company}</em>
-            </span>
-            <h3>{currentMentor.location}</h3>
-            <h3>{currentMentor.tagline}</h3>
 
-            <div className={css.skills}>
-              {currentMentor.skills.length > 0
-                ? currentMentor.skills.map((item) => (
-                    <div className={css.skill}>{item}</div>
-                  ))
-                : null}
-              {/* <div className={css.skill}>skill</div> */}
+          <div className={css.sideDisplay}>
+            <div className={css.rightSquare}>
+              <div className={css.topSquare}>
+                <p>Description of what is offered</p>
+              </div>
+              <div className={css.lowSquare}>
+                <Link href="/edit-profile/mentor">
+                  <button>Edit Profile</button>
+                </Link>
+              </div>
             </div>
-          </div>
-          <div className={css.biographyArea}>
-            <h3>Biography</h3>
-
-            <p className={css.bio}>{currentMentor.biography}</p>
           </div>
         </div>
-
-        <div className={css.sideDisplay}>
-          <div className={css.rightSquare}>
-            <div className={css.topSquare}>
-              <p>Description of what is offered</p>
-            </div>
-            <div className={css.lowSquare}>
-              <Link href="/edit-profile/mentor">
-                <button>Edit Profile</button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+      </>
     );
   } else return <p>loading data...</p>;
 }
