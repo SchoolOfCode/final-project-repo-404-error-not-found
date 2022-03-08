@@ -4,7 +4,7 @@ import styles from "../styles/CardDashboard.module.css";
 import css from "../pages/dashboard/dashboard.module.css";
 import { server } from "../config";
 import { useEffect, useState } from "react";
-import { Link } from "next/link";
+import Link from "next/link";
 
 export default function CardDashboardLong(props) {
   const { info, acceptRequest, deleteRequest } = props;
@@ -35,8 +35,10 @@ export default function CardDashboardLong(props) {
           "Name Surname"
         )}
         <Link
+          // when view profile button is clicked, line 41
           href={{
             pathname: "/read-profile/mentee",
+            // return the mentee information
             query: {
               loginid: info.mentee_id,
             },
