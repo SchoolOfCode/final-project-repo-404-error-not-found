@@ -1,4 +1,3 @@
-
 import styles from "../../styles/AllMentors.module.css";
 import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";
@@ -22,7 +21,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-
 export const getServerSideProps = async () => {
   const res = await fetch(`${server}/api/mentors`);
   const data = await res.json();
@@ -35,7 +33,7 @@ export const getServerSideProps = async () => {
 const AllMentors = ({ mentors }) => {
   return (
     <div>
-      <h1 className = {styles.centerH1}>Mentors</h1>
+      <h1 className={styles.centerH1}>Mentors</h1>
       {mentors.map((mentor) => {
         const {
           loginid,
@@ -52,8 +50,11 @@ const AllMentors = ({ mentors }) => {
           company,
         } = mentor;
         return firstname ? (
-          <div key={userid}>
-
+          <div
+            key={userid}
+            className={styles.mentorDisplayCard}
+            data-cy={`mentorDisplayCard`}
+          >
             <Center py={6}>
               <Stack
                 borderWidth="1px"
@@ -68,7 +69,6 @@ const AllMentors = ({ mentors }) => {
                 <Stack flex={1}>
                   <div className={styles.ImgContainer}>
                     <Image boxSize="480px" src={photourl} alt="" />
-
                   </div>
                 </Stack>
                 <Stack
@@ -164,17 +164,14 @@ const AllMentors = ({ mentors }) => {
                       </Link>
                     </Stack>
                   </div>
-
                 </Stack>
               </Stack>
             </Center>
-
           </div>
         ) : null;
       })}
     </div>
   );
 };
-
 
 export default AllMentors;
