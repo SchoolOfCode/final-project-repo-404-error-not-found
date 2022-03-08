@@ -36,6 +36,7 @@ export default function Profile() {
     // let socialsKey = Object.keys(currentMentor.socials);
 
     return (
+
       <div className={styles.profileFullArea}>
         <h1>Your profile</h1>
         <br />
@@ -82,8 +83,10 @@ export default function Profile() {
             <h3>Biography</h3>
 
             <p className={styles.bio}>{currentMentor.biography}</p>
+
+   
           </div>
-        </div>
+
 
         <div className={styles.sideDisplay}>
           <div className={styles.rightSquare}>
@@ -94,10 +97,11 @@ export default function Profile() {
               <Link href="/edit-profile/mentor">
                 <button>Edit Profile</button>
               </Link>
+
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   } else return <p>loading data...</p>;
 }

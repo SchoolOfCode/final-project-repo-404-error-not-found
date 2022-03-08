@@ -9,7 +9,9 @@ import homeBG from "../Images/homeBG.png";
 import aboutBG from "../Images/aboutBG.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
+
 import { motion } from "framer-motion";
+
 
 export default function Home() {
   const [user, loading, error] = useAuthState(firebase.auth());

@@ -32,12 +32,14 @@ export const getServerSideProps = async () => {
 
 const AllMentors = ({ mentors }) => {
   return (
+
     <motion.div
       className={styles.body}
       exit={{ opacity: 0 }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
+
       {mentors.map((mentor) => {
         const {
           loginid,
@@ -68,7 +70,7 @@ const AllMentors = ({ mentors }) => {
               >
                 <Stack flex={1}>
                   <div className={styles.ImgContainer}>
-                    <Image boxSize="480px" src={photourl} alt="" />
+                    <Image boxSize="280px" src={photourl} alt="" />
                   </div>
                 </Stack>
                 <Stack
@@ -79,15 +81,17 @@ const AllMentors = ({ mentors }) => {
                   p={1}
                   pt={2}
                 >
-                  <Heading fontSize={"2xl"} fontFamily={"body"}>
-                    {firstname} {surname}
-                  </Heading>
-                  <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
-                    {jobtitle} at {company}
-                  </Text>
-                  <Text fontWeight={600} color={"gray.600"} size="sm" mb={4}>
+                  <HStack spacing="24px">
+                    <Heading fontSize={"3xl"} fontFamily={"body"}>
+                      {firstname} {surname}
+                    </Heading>
+                    <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                      {jobtitle} at {company}
+                    </Text>
+                  </HStack>
+                  {/* <Text fontWeight={600} color={"gray.600"} size="sm" mb={4}>
                     {email}
-                  </Text>
+                  </Text> */}
                   <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
                     {location}
                   </Text>
