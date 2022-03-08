@@ -28,7 +28,7 @@ export default function Profile() {
       console.log(user);
     }
   }, [user]);
-
+  console.log("testing: ", currentMentor);
   //render page only if currentMentor is loaded, otherwise show loading text
 
   if (currentMentor !== null) {
@@ -44,19 +44,25 @@ export default function Profile() {
               className={css.profileImage}
               src={currentMentor.photourl}
             ></img>
-            <div className={css.socialsArea}>
-              {Object.keys(currentMentor.socials)[0] === "linkedin" ? (
-                <LinkedinIcon
-                  handle={Object.values(currentMentor.socials)[0]}
-                />
-              ) : null}
-              {Object.keys(currentMentor.socials)[0] === "github" ? (
-                <GithubIcon handle={Object.values(currentMentor.socials)[0]} />
-              ) : null}
-              {Object.keys(currentMentor.socials)[0] === "twitter" ? (
-                <TwitterIcon handle={Object.values(currentMentor.socials)[0]} />
-              ) : null}
-            </div>
+            {currentMentor.socials !== {} && currentMentor.socials !== null ? (
+              <div className={css.socialsArea}>
+                {Object.keys(currentMentor.socials)[0] === "linkedin" ? (
+                  <LinkedinIcon
+                    handle={Object.values(currentMentor.socials)[0]}
+                  />
+                ) : null}
+                {Object.keys(currentMentor.socials)[0] === "github" ? (
+                  <GithubIcon
+                    handle={Object.values(currentMentor.socials)[0]}
+                  />
+                ) : null}
+                {Object.keys(currentMentor.socials)[0] === "twitter" ? (
+                  <TwitterIcon
+                    handle={Object.values(currentMentor.socials)[0]}
+                  />
+                ) : null}
+              </div>
+            ) : null}
           </div>
           <div className={css.profileRight}>
             <h1 data-testid="profileName">
@@ -68,14 +74,17 @@ export default function Profile() {
               <h4 className={css.jobtitle}>{currentMentor.jobtitle} </h4>
               at <em>{currentMentor.company}</em>
             </span>
-            <div className={css.skills}>
-              {currentMentor.skills.length > 0
-                ? currentMentor.skills.map((item) => (
-                    <div className={css.skill}>{item}</div>
-                  ))
-                : null}
-              {/* <div className={css.skill}>skill</div> */}
-            </div>
+
+            {currentMentor.skills !== null ? (
+              <div className={css.skills}>
+                {currentMentor.skills.length > 0
+                  ? currentMentor.skills.map((item) => (
+                      <div className={css.skill}>{item}</div>
+                    ))
+                  : null}
+                {/* <div className={css.skill}>skill</div> */}
+              </div>
+            ) : null}
           </div>
           <div className={css.biographyArea}>
             <h3>Biography</h3>

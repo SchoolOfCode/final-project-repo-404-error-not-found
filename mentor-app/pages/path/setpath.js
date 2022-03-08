@@ -12,7 +12,12 @@ export default function Setpath() {
     async function getUser() {
       try {
         if (user !== null) {
-          const data = { loginid: user.uid };
+          const data = {
+            loginid: user.uid,
+            socials: {},
+            skills: [],
+            photourl: "",
+          };
           const res = await fetch(`${server}/api/mentors/api/mentors`, {
             method: "POST",
             headers: {
