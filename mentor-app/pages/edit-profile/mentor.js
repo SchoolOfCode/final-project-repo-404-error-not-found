@@ -72,12 +72,11 @@ function EditMentor() {
     return <h2>...Loading</h2>;
   } else {
     return (
-      <>
-        <div className={css.body}>
-          <div className={css.UpdateMentorProfileFormContainer}>
-            <h1>Setup your mentor profile</h1>
-            <h2>Add or edit your information below</h2>
-
+      <div className={css.body}>
+        <div className={css.UpdateMentorProfileFormContainer}>
+          <h1>Setup your mentor profile</h1>
+          <h2>Add or edit your information below</h2>
+          <div>
             <form onSubmit={submitForm} className={css.UpdateMentorProfileForm}>
               <div className={css.firstname}>
                 <label htmlFor="first-name">First Name</label>
@@ -235,7 +234,7 @@ function EditMentor() {
             </form>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
