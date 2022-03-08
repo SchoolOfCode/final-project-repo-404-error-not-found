@@ -9,9 +9,10 @@ import { useEffect, useState } from 'react'
 export default function CardDashboard(props) {
   const { info, roleUrl } = props
   const [infoRender, setInfoRender] = useState(null)
+
   useEffect(async () => {
     if (info !== null) {
-      const loginid = info.mentee_id
+      const loginid = info.mentor_id
       const res = await fetch(`${server}/api/${roleUrl}/${loginid}`)
       const data = await res.json()
       console.log(data)
@@ -39,7 +40,7 @@ export default function CardDashboard(props) {
             pathname: `/read-profile/${roleUrl.slice(0, roleUrl.length - 1)}`,
             // return the mentee information
             query: {
-              loginid: info.mentee_id,
+              loginid: info.mentor_id,
             },
           }}
         >
