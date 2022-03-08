@@ -6,7 +6,7 @@ import { server } from '../config'
 import { useEffect, useState } from 'react'
 
 export default function CardDashboardLong(props) {
-  const { info } = props
+  const { info, acceptRequest } = props
   const [infoRender, setInfoRender] = useState(null)
   useEffect(async () => {
     if (info !== null) {
@@ -18,31 +18,12 @@ export default function CardDashboardLong(props) {
     }
   }, [info])
 
-  async function acceptRequest () {
-console.log("acceptRequest")
-    const data = {id: info.id}
-    const res = await fetch(`${server}/api/connection`, {
-      
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '',
-      },
-      body: JSON.stringify(data),
-    })
-    const response = await res.json()
-    console.log(response)
-  }
-
   return (
     <>
       <div className={css.card2}>
-      
-       { infoRender && <img
-          src={infoRender[0].url}
-          alt=''
-          className={css.picture}
-        />}
+        {infoRender && (
+          <img src={infoRender[0].photourl} alt='' className={css.picture} />
+        )}
         {infoRender ? (
           <h4 className={css.cardName}>
             {infoRender[0].firstname} {infoRender[0].surname}
@@ -53,21 +34,11 @@ console.log("acceptRequest")
         <Button colorScheme='blue' variant='ghost'>
           View Profile
         </Button>
-        <Button colorScheme='teal' onClick={()=> acceptRequest()}>Accept</Button>
+        <Button colorScheme='teal' onClick={() => acceptRequest(info.id)}>
+          Accept
+        </Button>
         <Button colorScheme='red'>Decline</Button>
       </div>
     </>
   )
 }
-
-// ;<div className={css.card2}>
-//   <img
-//     src='https://static.wikia.nocookie.net/disney/images/7/7b/Pluto.PNG/revision/latest/top-crop/width/360/height/360?cb=20170628205507'
-//     alt=''
-//     className={css.picture}
-//   />
-//   <h4 className={css.cardName}>Name Surname</h4>
-//   <a href=''>View Profile</a>
-//   <button>Accept</button>
-//   <button>Decline</button>
-// </div>

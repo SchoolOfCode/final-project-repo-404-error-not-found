@@ -38,6 +38,19 @@ export default function Mentor() {
     }
   }, [user])
 
+  async function acceptRequest(currentId) {
+    const data = { id: currentId }
+    const res = await fetch(`${server}/api/connection`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '',
+      },
+      body: JSON.stringify(data),
+    })
+    const response = await res.json()
+  }
+
   return (
     <div className={css.main}>
       <div span={18}>
@@ -70,10 +83,15 @@ export default function Mentor() {
         </h2>
         <div className={css.container}>
           {connectionPending ? (
-          connectionPending.map((each) => {
-            return <CardDashboardLong info={each} />
-          })
-           
+            connectionPending.map((each, index) => {
+              return (
+                <CardDashboardLong
+                  info={each}
+                  key={index}
+                  acceptRequest={acceptRequest}
+                />
+              )
+            })
           ) : (
             <div className={css.pendingRequest}>
               <p>You dont have any pending request! </p>
