@@ -17,10 +17,12 @@
   padding: 1em 2em;
   display: grid;
   text-align: center;
-  background-color: white;
+
+  background-color: whitesmoke;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  border-radius: 20px;
+  grid-template-rows: 2fr 1fr;
+  border-radius: 50px;
+
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   /* -webkit-box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);
@@ -28,12 +30,15 @@
   box-shadow: 3px 3px 13px -4px rgba(110, 110, 110, 1);  */
 }
 
-.profileMainArea h1 {
+.profileFullArea h1 {
   font-size: 3em;
+  color: rgb(212, 48, 7);
 }
 
 .sideDisplay {
-  background-color: white;
+
+  background-color: #4979ff;
+
   border-radius: 20px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;

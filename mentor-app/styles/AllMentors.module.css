@@ -110,6 +110,12 @@
   overflow: hidden;
   align-items: center;
   border-radius: 10px;
+
+  border-width: 6px;
+}
+.body {
+  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(2, 27, 38) 100%);
+
 }
 
 .centerH1 {
