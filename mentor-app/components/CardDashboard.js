@@ -1,37 +1,37 @@
-import React from "react";
-import { Button } from "@chakra-ui/react";
-import styles from "../styles/CardDashboard.module.css";
-import css from "../pages/dashboard/dashboard.module.css";
-import Link from "next/link";
-import { server } from "../config";
-import { useEffect, useState } from "react";
+import React from 'react'
+import { Button } from '@chakra-ui/react'
+import styles from '../styles/CardDashboard.module.css'
+import css from '../pages/dashboard/dashboard.module.css'
+import Link from 'next/link'
+import { server } from '../config'
+import { useEffect, useState } from 'react'
 
 export default function CardDashboard(props) {
-  const { info, roleUrl } = props;
-  const [infoRender, setInfoRender] = useState(null);
+  const { info, roleUrl } = props
+  const [infoRender, setInfoRender] = useState(null)
 
-  let viewId;
+  let viewId
 
-  if (roleUrl === "mentees") {
-    viewId = info.mentee_id;
+  if (roleUrl === 'mentees') {
+    viewId = info.mentee_id
   } else {
-    viewId = info.mentor_id;
+    viewId = info.mentor_id
   }
   useEffect(async () => {
     if (info !== null) {
-      const loginid = viewId;
-      const res = await fetch(`${server}/api/${roleUrl}/${loginid}`);
-      const data = await res.json();
-      console.log(data);
-      setInfoRender(data);
+      const loginid = viewId
+      const res = await fetch(`${server}/api/${roleUrl}/${loginid}`)
+      const data = await res.json()
+      console.log(data)
+      setInfoRender(data)
     }
-  }, [info]);
+  }, [info])
 
   return (
     <>
       <div className={css.card}>
         {infoRender && (
-          <img src={infoRender[0].photourl} alt="" className={css.picture} />
+          <img src={infoRender[0].photourl} alt='' className={css.picture} />
         )}
 
         {infoRender ? (
@@ -39,7 +39,7 @@ export default function CardDashboard(props) {
             {infoRender[0].firstname} {infoRender[0].surname}
           </h4>
         ) : (
-          "Name Surname"
+          'Name Surname'
         )}
         <Link
           // when view profile button is clicked, line 41
@@ -51,11 +51,11 @@ export default function CardDashboard(props) {
             },
           }}
         >
-          <Button colorScheme="blue" variant="ghost">
+          <Button colorScheme='blue' variant='ghost'>
             View Profile
           </Button>
         </Link>
       </div>
     </>
-  );
+  )
 }

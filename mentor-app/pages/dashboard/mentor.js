@@ -7,6 +7,7 @@ import CardDashboardLong from '../../components/CardDasboardLong'
 import firebase from '../../firebase/clientApp'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { server } from '../../config'
+import CardDetail from '../../components/CardDetail'
 
 export default function Mentor() {
   const [user, loading, error] = useAuthState(firebase.auth())
@@ -85,9 +86,7 @@ export default function Mentor() {
           {/* if connectionAccepted is true render CardDashboard for each accepted connection, if not render <p>you dont have mentees</p> */}
           {connectionAccepted ? (
             connectionAccepted.map((each, index) => {
-              return (
-                <CardDashboard info={each} key={index} roleUrl={'mentees'} />
-              )
+              return <CardDetail info={each} key={index} roleUrl={'mentees'} />
             })
           ) : (
             <div className={css.acceptedRequest}>
