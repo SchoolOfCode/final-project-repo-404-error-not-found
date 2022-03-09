@@ -3,22 +3,29 @@ import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 
+
 import { server } from "../../config";
 
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
+
 import { Button } from "react-bootstrap";
+
+const url = process.env.REACT_APP_BACKEND_URL;
+
 
 //add location and profile pic url fields
 
 function Mentor() {
   const [user, loading, error] = useAuthState(firebase.auth());
 
+
   const loginid = user ? user.uid : "";
 
   const router = useRouter();
+
 
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
@@ -179,7 +186,9 @@ function Mentor() {
             </div>
             <div className={css.biography}>
               <label htmlFor="biography">Biography</label>
+
               <textArea
+
                 id="biography"
                 type="text"
                 value={biography}
@@ -227,7 +236,9 @@ function Mentor() {
               </div>
             </div>
             {/* break into two inputs - social media type, social media name/handle  */}
+
             <div className={css.socialType}>
+
               <label htmlFor="socialmediatype">Social Media Type</label>
               <select
                 name="socialMediaType"
@@ -240,8 +251,10 @@ function Mentor() {
                 <option value="linkedin">LinkedIn</option>
                 <option value="twitter">Twitter</option>
               </select>
+
             </div>
             <div className={css.socialName}>
+
               <label htmlFor="socialmediausername">Social Media Handle</label>
               <input
                 id="socialmediausername"

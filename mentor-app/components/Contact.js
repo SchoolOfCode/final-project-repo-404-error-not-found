@@ -35,6 +35,7 @@ import { BsGithub, BsTwitter, BsPerson } from "react-icons/bs";
 
 export default function contact() {
   return (
+
     <Container bg="#70C1B3" maxW="full" mt={0} centerContent overflow="hidden">
       <Flex>
         <Box
@@ -63,7 +64,7 @@ export default function contact() {
                         _hover={{ border: "2px solid #247BA0" }}
                         leftIcon={<MdPhone color="#F25F5C" size="20px" />}
                       >
-                        +91-988888888
+                        +44-799424429
                       </Button>
                       <Button
                         size="md"
@@ -85,7 +86,7 @@ export default function contact() {
                         _hover={{ border: "2px solid #247BA0" }}
                         leftIcon={<MdLocationOn color="#F25F5C" size="20px" />}
                       >
-                        Karnavati, India
+                        London, UK
                       </Button>
                     </VStack>
                   </Box>
@@ -175,6 +176,7 @@ export default function contact() {
         </Box>
       </Flex>
     </Container>
+
   );
 }
 

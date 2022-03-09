@@ -22,14 +22,18 @@ const About = () => {
 
       <div className={styles.card}>
         <div className={styles.stepCard}>
-          {
-            <Image
-              alt="example"
-              // style={{ width: 150, height: 150 }}
-              // src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-              src={svg1}
-            />
-          }
+          <Image
+            alt="example"
+            // style={{ width: 150, height: 150 }}
+            width="150"
+            height="150"
+            // src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+            src={svg1}
+            // src={"/" + svg1} //works only for testing
+            // src="/../Images/undraw_pair_programming_re_or4x.svg"
+            // priority={true}
+          />
+
           <div className={styles.stepContent}>
             <h3 className={styles.abouttitle}> Challenge your knowledge </h3>
             <p className={styles.aboutpara}>
@@ -42,13 +46,14 @@ const About = () => {
         </div>
 
         <div className={styles.stepCard}>
-          {
-            <Image
-              alt="example"
-              // style={{ width: 150, height: 150 }}
-              src={svg2}
-            />
-          }
+          <Image
+            alt="example"
+            // style={{ width: 150, height: 150 }}
+            width="150"
+            height="150"
+            src={svg2}
+          />
+
           <div className={styles.stepContent}>
             <h3 className={styles.abouttitle}>
               {" "}
@@ -64,17 +69,17 @@ const About = () => {
         </div>
 
         <div className={styles.stepCard}>
-          {
-            <Image
-              alt="example"
-              // style={{ width: 150, height: 150 }}
-              src={svg3}
-            />
-          }
+          <Image
+            alt="example"
+            // style={{ width: 150, height: 150 }}
+            width="150"
+            height="150"
+            src={svg3}
+          />
+
           <div className={styles.stepContent}>
             <h3 className={styles.abouttitle}> Develop your "soft skills" </h3>
             <p className={styles.aboutpara}>
-              {" "}
               Soft skills like communication and being able to take feedback are
               paramount in progressing in any field or profession.
             </p>

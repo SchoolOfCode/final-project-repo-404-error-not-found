@@ -22,6 +22,7 @@ export default function Profile() {
     if (user !== null) {
       const loginid = user.uid
       // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
+
       console.log('about to send GET request!')
       const res = await fetch(`${server}/api/mentees/${loginid}`)
       const data = await res.json()
@@ -89,7 +90,7 @@ export default function Profile() {
               <p>Description of what is offered</p>
             </div>
             <div className={css.lowSquare}>
-              <Link href='/edit-profile/mentee'>
+              <Link>
                 <button>Edit Profile</button>
               </Link>
             </div>

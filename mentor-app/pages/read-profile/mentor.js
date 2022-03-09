@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import firebase from "../../firebase/clientApp";
-import { useAuthState } from "react-firebase-hooks/auth";
-import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
-import css from "./mentor.module.css";
-import { server } from "../../config";
-import { Button } from "react-bootstrap";
 
-import TwitterIcon from "../../components/TwitterIcon";
-import GithubIcon from "../../components/GithubIcon";
-import LinkedinIcon from "../../components/LinkedinIcon";
+import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
+import firebase from '../../firebase/clientApp'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import 'antd/dist/antd.css' // or 'antd/dist/antd.less'
+import css from './mentor.module.css'
+import { server } from '../../config'
+import { Button } from 'react-bootstrap'
+import TwitterIcon from '../../components/TwitterIcon'
+import GithubIcon from '../../components/GithubIcon'
+import LinkedinIcon from '../../components/LinkedinIcon'
+
 
 export async function getServerSideProps(context) {
   return {
@@ -20,17 +21,39 @@ export async function getServerSideProps(context) {
 }
 
 export default function Profile(props) {
-  const { currentId } = props;
-  const [currentMentor, setCurrentMentor] = useState(null);
-  const [user, loading, error] = useAuthState(firebase.auth());
+
+  const { currentId } = props
+  const [currentMentor, setCurrentMentor] = useState(null)
+  const [user, loading, error] = useAuthState(firebase.auth())
+
+  const [apply, setApply] = useState(true)
+
+
+  async function handleApply() {
+  
+    setApply(false)
+    const data = { mentor_id: currentMentor.loginid, mentee_id: user.uid }
+    const res = await fetch(`${server}/api/connection`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '',
+      },
+      body: JSON.stringify(data),
+    })
+    const response = await res.json()
+    console.log(response)
+  }
 
   useEffect(async () => {
-    const loginid = await currentId;
-    console.log("about to send GET request!");
-    const res = await fetch(`${server}/api/mentors/${loginid}`);
-    const data = await res.json();
-    setCurrentMentor(data[0]);
-  }, []);
+
+    const loginid = await currentId
+    console.log('about to send GET request!')
+    const res = await fetch(`${server}/api/mentors/${loginid}`)
+    const data = await res.json()
+    setCurrentMentor(data[0])
+  }, [])
+
 
   if (currentMentor !== null) {
     return (
@@ -89,12 +112,13 @@ export default function Profile(props) {
               <p>Description of what is offered</p>
             </div>
             <div className={css.lowSquare}>
-              {/* <Link href='/edit-profile/mentor'> */}
-              <button>Send a Message</button>
-              {/* </Link> */}
+              {apply ? <Button onClick={() => handleApply()}>Apply Now</Button>:
+              <p> Thank you for applying, {currentMentor.firstname} {currentMentor.surname} will reply back witihn 48 hours </p>}
             </div>
-            <Link href="/allMentors">
+
+            <Link href='/allMentors'>
               <Button>Back to Main</Button>
+
             </Link>
           </div>
         </div>

@@ -9,6 +9,12 @@ import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
+
+const url = process.env.REACT_APP_BACKEND_URL;
+
+
 function EditMentor() {
   const router = useRouter();
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -42,7 +48,9 @@ function EditMentor() {
     if (user !== null) {
       const loginid = user.uid;
 
+
       const res = await fetch(`${server}/api/mentors/${loginid}`);
+
 
       const data = await res.json();
       setMentor(data[0]);
@@ -70,7 +78,7 @@ function EditMentor() {
     return <h2>...Loading</h2>;
   } else {
     return (
-      <>
+      <div className={css.body}>
         <div className={css.UpdateMentorProfileFormContainer}>
           <h1>Setup your mentor profile</h1>
           <h2>Add or edit your information below</h2>
@@ -144,7 +152,9 @@ function EditMentor() {
               </div>
               <div className={css.biography}>
                 <label htmlFor="biography">Biography</label>
+
                 <textArea
+
                   id="biography"
                   type="text"
                   name="biography"
@@ -197,7 +207,9 @@ function EditMentor() {
               </div>
               {/* break into two inputs - social media type, social media name/handle  */}
 
+
               <div className={css.socialType}>
+
                 <label htmlFor="socialmediatype">Social Media Type</label>
                 <select
                   name="socialMediaType"
@@ -210,8 +222,10 @@ function EditMentor() {
                   <option value="linkedin">LinkedIn</option>
                   <option value="twitter">Twitter</option>
                 </select>
+
               </div>
               <div className={css.socialName}>
+
                 <label htmlFor="socialmediausername">Social Media Handle</label>
                 <input
                   id="socialmediausername"
@@ -222,13 +236,17 @@ function EditMentor() {
                 />
               </div>
 
-              <button className={css.submitButton} onClick={submitForm}>
+              <Button
+                variant="outline-success"
+                className={css.submitButton}
+                onClick={submitForm}
+              >
                 Submit
-              </button>
+              </Button>
             </form>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

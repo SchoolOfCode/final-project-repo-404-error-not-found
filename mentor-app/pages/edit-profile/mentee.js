@@ -14,6 +14,7 @@ import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
 import { server } from "../../config";
+import { StylesProvider } from "@chakra-ui/react";
 const url = process.env.REACT_APP_BACKEND_URL;
 
 function EditMentee() {
@@ -74,158 +75,165 @@ function EditMentee() {
   } else {
     return (
       <>
-        <div className={css.UpdateMentorProfileFormContainer}>
-          <h1>Setup your mentee profile</h1>
-          <h2>Add or edit your information below</h2>
-          <div>
-            <form onSubmit={submitForm} className={css.UpdateMentorProfileForm}>
-              <div className={css.firstname}>
-                <label htmlFor="first-name">First Name</label>
-                <input
-                  id="first-name"
-                  type="text"
-                  name="firstname"
-                  value={mentee.firstname}
-                  onChange={(e) => handleChange(e)}
-                  required
-                />
-              </div>
-              <div className={css.surname}>
-                <label htmlFor="surname">Surname</label>
-                <input
-                  id="surname"
-                  type="text"
-                  name="surname"
-                  value={mentee.surname}
-                  onChange={(e) => handleChange(e)}
-                  required
-                />
-              </div>
-              <div className={css.email}>
-                <label htmlFor="email">Email</label>
-                <input
-                  id="email"
-                  type="text"
-                  value={mentee.email}
-                  name="email"
-                  onChange={(e) => handleChange(e)}
-                  required
-                />
-              </div>
-              <div className={css.jobtitle}>
-                <label htmlFor="jobtitle">Job Title</label>
-                <input
-                  id="jobtitle"
-                  type="text"
-                  name="jobtitle"
-                  value={mentee.jobtitle}
-                  onChange={(e) => handleChange(e)}
-                  required
-                />
-              </div>
-              <div className={css.company}>
-                <label htmlFor="aims">Aims</label>
-                <input
-                  id="aims"
-                  type="text"
-                  name="aims"
-                  value={mentee.aims}
-                  onChange={(e) => handleChange(e)}
-                  required
-                />
-              </div>
-              <div className={css.location}>
-                <label htmlFor="location">Location</label>
-                <input
-                  id="location"
-                  type="text"
-                  name="location"
-                  value={mentee.location}
-                  onChange={(e) => handleChange(e)}
-                  required
-                />
-              </div>
-              <div className={css.biography}>
-                <label htmlFor="biography">Biography</label>
-                <textArea
-                  id="biography"
-                  type="text"
-                  name="biography"
-                  value={mentee.biography}
-                  onChange={(e) => handleChange(e)}
-                  required
-                  maxlength="500ch"
-                />
-              </div>
-              <div className={css.photourl}>
-                <label htmlFor="photourl">Profile photo URL</label>
-                <input
-                  id="photourl"
-                  type="text"
-                  name="photourl"
-                  value={mentee.photourl}
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
-              <div className={css.tagline}>
-                <label htmlFor="tagline">Profile Tagline</label>
-                <input
-                  id="tagline"
-                  type="text"
-                  name="tagline"
-                  value={mentee.tagline}
-                  onChange={(e) => handleChange(e)}
-                  required
-                />
-              </div>
-              <div className={css.skills}>
-                <h4>
-                  <label htmlFor="skills">Skills</label>
-                </h4>
-                <div className={css.checkboxes}>
-                  <Checkbox id="frontend" onChange={updateSkills}>
-                    Frontend
-                  </Checkbox>
-                  <Checkbox id="fullstack" onChange={updateSkills}>
-                    Fullstack
-                  </Checkbox>
-                  <Checkbox id="backend" onChange={updateSkills}>
-                    Backend
-                  </Checkbox>
-                  <Checkbox id="ux-ui" onChange={updateSkills}>
-                    UX/UI
-                  </Checkbox>
+        <div className={css.body}>
+          <div className={css.UpdateMentorProfileFormContainer}>
+            <h1>Setup your mentee profile</h1>
+            <h2>Add or edit your information below</h2>
+            <div>
+              <form
+                onSubmit={submitForm}
+                className={css.UpdateMentorProfileForm}
+              >
+                <div className={css.firstname}>
+                  <label htmlFor="first-name">First Name</label>
+                  <input
+                    id="first-name"
+                    type="text"
+                    name="firstname"
+                    value={mentee.firstname}
+                    onChange={(e) => handleChange(e)}
+                    required
+                  />
                 </div>
-              </div>
-              {/* break into two inputs - social media type, social media name/handle  */}
-              <div className={css.socialType}>
-                <label htmlFor="socialmediatype">Social Media Type</label>
-                <select
-                  name="socialMediaType"
-                  className={css.dropdown}
-                  id="socialmediatype"
-                  onChange={(e) => setSocialMediaType(e.target.value)}
-                >
-                  <option value="">--Please choose an option--</option>
-                  <option value="github">GitHub</option>
-                  <option value="linkedin">LinkedIn</option>
-                  <option value="twitter">Twitter</option>
-                </select>
-              </div>
-              <div className={css.socialName}>
-                <label htmlFor="socialmediausername">Social Media Handle</label>
-                <input
-                  id="socialmediausername"
-                  type="text"
-                  value={mentee.socialMediaUserName}
-                  onChange={(e) => setSocialMediaUserName(e.target.value)}
-                  required
-                />
-              </div>
-              <button className={css.submitButton} onClick={submitForm}>
-                Submit
-              </button>
-            </form>
+                <div className={css.surname}>
+                  <label htmlFor="surname">Surname</label>
+                  <input
+                    id="surname"
+                    type="text"
+                    name="surname"
+                    value={mentee.surname}
+                    onChange={(e) => handleChange(e)}
+                    required
+                  />
+                </div>
+                <div className={css.email}>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    id="email"
+                    type="text"
+                    value={mentee.email}
+                    name="email"
+                    onChange={(e) => handleChange(e)}
+                    required
+                  />
+                </div>
+                <div className={css.jobtitle}>
+                  <label htmlFor="jobtitle">Job Title</label>
+                  <input
+                    id="jobtitle"
+                    type="text"
+                    name="jobtitle"
+                    value={mentee.jobtitle}
+                    onChange={(e) => handleChange(e)}
+                    required
+                  />
+                </div>
+                <div className={css.company}>
+                  <label htmlFor="aims">Aims</label>
+                  <input
+                    id="aims"
+                    type="text"
+                    name="aims"
+                    value={mentee.aims}
+                    onChange={(e) => handleChange(e)}
+                    required
+                  />
+                </div>
+                <div className={css.location}>
+                  <label htmlFor="location">Location</label>
+                  <input
+                    id="location"
+                    type="text"
+                    name="location"
+                    value={mentee.location}
+                    onChange={(e) => handleChange(e)}
+                    required
+                  />
+                </div>
+                <div className={css.biography}>
+                  <label htmlFor="biography">Biography</label>
+                  <textArea
+                    id="biography"
+                    type="text"
+                    name="biography"
+                    value={mentee.biography}
+                    onChange={(e) => handleChange(e)}
+                    required
+                    maxlength="500ch"
+                  />
+                </div>
+                <div className={css.photourl}>
+                  <label htmlFor="photourl">Profile photo URL</label>
+                  <input
+                    id="photourl"
+                    type="text"
+                    name="photourl"
+                    value={mentee.photourl}
+                    onChange={(e) => handleChange(e)}
+                  />
+                </div>
+                <div className={css.tagline}>
+                  <label htmlFor="tagline">Profile Tagline</label>
+                  <input
+                    id="tagline"
+                    type="text"
+                    name="tagline"
+                    value={mentee.tagline}
+                    onChange={(e) => handleChange(e)}
+                    required
+                  />
+                </div>
+                <div className={css.skills}>
+                  <h4>
+                    <label htmlFor="skills">Skills</label>
+                  </h4>
+                  <div className={css.checkboxes}>
+                    <Checkbox id="frontend" onChange={updateSkills}>
+                      Frontend
+                    </Checkbox>
+                    <Checkbox id="fullstack" onChange={updateSkills}>
+                      Fullstack
+                    </Checkbox>
+                    <Checkbox id="backend" onChange={updateSkills}>
+                      Backend
+                    </Checkbox>
+                    <Checkbox id="ux-ui" onChange={updateSkills}>
+                      UX/UI
+                    </Checkbox>
+                  </div>
+                </div>
+                {/* break into two inputs - social media type, social media name/handle  */}
+                <div className={css.socialType}>
+                  <label htmlFor="socialmediatype">Social Media Type</label>
+                  <select
+                    name="socialMediaType"
+                    className={css.dropdown}
+                    id="socialmediatype"
+                    onChange={(e) => setSocialMediaType(e.target.value)}
+                  >
+                    <option value="">--Please choose an option--</option>
+                    <option value="github">GitHub</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="twitter">Twitter</option>
+                  </select>
+                </div>
+                <div className={css.socialName}>
+                  <label htmlFor="socialmediausername">
+                    Social Media Handle
+                  </label>
+                  <input
+                    id="socialmediausername"
+                    type="text"
+                    value={mentee.socialMediaUserName}
+                    onChange={(e) => setSocialMediaUserName(e.target.value)}
+                    required
+                  />
+                </div>
+                <button className={css.submitButton} onClick={submitForm}>
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </>
