@@ -10,6 +10,7 @@ import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";
 import LinkedinIcon from "../../components/LinkedinIcon";
 import styles from "../../styles/AllMentors.module.css";
+import { Icon } from "@chakra-ui/react";
 import { IoLocationSharp } from "react-icons/io5";
 import {
   Box,
@@ -69,8 +70,8 @@ export default function Profile(props) {
       <div className={css.profileFullArea}>
         <h1>Mentor profile</h1>
         <br />
-        <Center p={20}>
-          <Box p={4} display={{ md: "flex" }}>
+        <Center p={15}>
+          <Box justifyContent={"center"} display={{ md: "flex" }}>
             <Stack
               borderWidth="1px"
               borderRadius="lg"
@@ -80,7 +81,7 @@ export default function Profile(props) {
               direction={{ base: "column", md: "row" }}
               bg={useColorModeValue("white", "gray.900")}
               boxShadow={"2xl"}
-              padding={3}
+              padding={9}
               overflow={"hidden"}
               alignContent={"center"}
               alignItems={"center"}
@@ -139,38 +140,35 @@ export default function Profile(props) {
                   flexDirection="column"
                   justifyContent="center left"
                   alignItems="center left"
-                  p={1}
+                  p={15}
                   pt={2}
                 >
-                  <Heading
-                    fontSize={"3xl"}
-                    fontFamily={"body"}
-                    alignText={"center left"}
-                  >
-                    {currentMentor.firstname} {currentMentor.surname}
-                  </Heading>
-                  <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
-                    {currentMentor.jobtitle} at {currentMentor.company}
-                  </Text>
                   <HStack>
-                    <Image boxSize="30px" icon={<IoLocationSharp />} alt="" />
+                    <Heading
+                      fontSize={"4xl"}
+                      fontFamily={"body"}
+                      alignText={"center left"}
+                    >
+                      {currentMentor.firstname} {currentMentor.surname}
+                    </Heading>
+                    <Text
+                      fontWeight={600}
+                      color={"gray.500"}
+                      fontSize="lg"
+                      mb={4}
+                      pt={4}
+                      pl={3}
+                    >
+                      {currentMentor.jobtitle} at {currentMentor.company}
+                    </Text>
+                  </HStack>
+
+                  <HStack pt={2}>
+                    <Icon as={IoLocationSharp} />
                     <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
                       {currentMentor.location}
                     </Text>
                   </HStack>
-
-                  <Text
-                    textAlign={"center left"}
-                    color={useColorModeValue("gray.700", "gray.400")}
-                    // px={3}
-                    overflow={"hidden"}
-                    pr={6}
-                    // maxWidth={"9ch"}
-                  >
-                    <h2>Biography</h2>
-                    {currentMentor.biography}
-                  </Text>
-
                   <Stack
                     alignItems={"center left"}
                     justifyContent={"center left"}
@@ -189,36 +187,79 @@ export default function Profile(props) {
                     ) : null}
                   </Stack>
 
-                  <Stack
-                    flex={1}
-                    flexDirection="column"
-                    justifyContent="center left"
-                    alignItems="center left"
-                    p={1}
-                    pt={2}
+                  <Text
+                    textAlign={"center left"}
+                    color={useColorModeValue("gray.700", "gray.400")}
+                    overflow={"hidden"}
+                    pr={6}
+                    pt={3}
+                    fontSize={"1.3em"}
                   >
-                    <div className={css.topSquare}>
-                      <p>Description of what is offered</p>
-                    </div>
-                    <div className={css.lowSquare}>
-                      {apply ? (
-                        <Button onClick={() => handleApply()}>Apply Now</Button>
-                      ) : (
-                        <p>
-                          {" "}
-                          Thank you for applying, {currentMentor.firstname}{" "}
-                          {currentMentor.surname} will reply back witihn 48
-                          hours{" "}
-                        </p>
-                      )}
-                    </div>
-
-                    <Link href="/allMentors">
-                      <Button>Back to Main</Button>
-                    </Link>
-                  </Stack>
+                    {/* <Heading
+                      fontSize={"2xl"}
+                      fontFamily={"body"}
+                      alignText={"center left"}
+                      fontWeight={500}
+                      py={4}
+                    >
+                      Biography
+                    </Heading> */}
+                    {currentMentor.biography}
+                  </Text>
                 </Stack>
               </Box>
+
+              <Stack
+                flex={1}
+                flexDirection="column"
+                justifyContent="center left"
+                alignItems="center left"
+                p={1}
+                pt={2}
+              >
+                <div className={css.topSquare}>
+                  <p>Description of what is offered</p>
+                </div>
+                <div className={css.lowSquare}>
+                  {apply ? (
+                    <Button onClick={() => handleApply()}>Apply Now</Button>
+                  ) : (
+                    <p>
+                      Thank you for applying, {currentMentor.firstname}{" "}
+                      {currentMentor.surname} will reply back witihn 48 hours{" "}
+                    </p>
+                  )}
+                </div>
+
+                <Link href="/allMentors">
+                  <ButtonCh
+                    flex={1}
+                    fontSize={"lg"}
+                    size={"md"}
+                    height="48px"
+                    width="200px"
+                    border="2px"
+                    colorScheme="teal"
+                    variant="ghost"
+                    // rounded={"full"}
+                    // bg={"gray.500"}
+                    // color={"white"}
+                    boxShadow={
+                      "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                    }
+                    _hover={{
+                      bg: "blue.500",
+                      borderColor: "blue.500",
+                      color: "white",
+                    }}
+                    _focus={{
+                      bg: "blue.500",
+                    }}
+                  >
+                    View all Mentors
+                  </ButtonCh>
+                </Link>
+              </Stack>
             </Stack>
           </Box>
         </Center>

@@ -7,6 +7,7 @@ import { server } from "../../config";
 
 import { Button } from "react-bootstrap";
 import { motion } from "framer-motion";
+import { Icon } from "@chakra-ui/react";
 import { IoLocationSharp } from "react-icons/io5";
 
 import {
@@ -128,7 +129,7 @@ const AllMentors = ({ mentors }) => {
                     {email}
                   </Text> */}
                   <HStack>
-                    <Image boxSize="30px" icon={<IoLocationSharp />} alt="" />
+                    <Icon as={IoLocationSharp} />
                     <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
                       {location}
                     </Text>
