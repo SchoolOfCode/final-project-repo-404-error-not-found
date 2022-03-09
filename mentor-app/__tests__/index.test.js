@@ -27,16 +27,16 @@ describe("About", () => {
   });
 });
 
-describe("Contact", () => {
-  it("renders a submit button", () => {
-    render(<Contact />);
-    const submitButton = screen.getByRole("button");
-    expect(submitButton).toBeInTheDocument;
-  });
+// describe("Contact", () => {
+//   it("renders a submit button", () => {
+//     render(<Contact />);
+//     const submitButton = screen.getByRole("button");
+//     expect(submitButton).toBeInTheDocument;
+//   });
 
-  it("renders an image", () => {
-    render(<Contact />);
-    const img = screen.getByRole("img");
-    expect(img).toBeInTheDocument;
-  });
-});
+//   it("renders an image", () => {
+//     render(<Contact />);
+//     const img = screen.getByRole("img");
+//     expect(img).toBeInTheDocument;
+//   });
+// });
