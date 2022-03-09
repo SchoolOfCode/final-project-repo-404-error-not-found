@@ -34,14 +34,12 @@ export const getServerSideProps = async () => {
 
 const AllMentors = ({ mentors }) => {
   return (
-
     <motion.div
       className={styles.body}
       exit={{ opacity: 0 }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-
       {mentors.map((mentor) => {
         const {
           loginid,

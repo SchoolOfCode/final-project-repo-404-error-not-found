@@ -1,13 +1,16 @@
 .profileFullArea {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  width: 80%;
-  margin: auto;
+  /* display: grid;
+  grid-template-columns: 2fr 1fr; */
+  /* width: 50%; */
+  /* margin: auto; */
 }
 .profileFullArea h1 {
-  font-size: 2em;
-  padding-bottom: 2rem;
-  margin: auto;
+  font-size: 3em;
+  padding-top: 5rem;
+  /* padding-bottom: 0.5rem; */
+  /* margin: auto; */
+  display: flex;
+  justify-content: center;
 }
 
 .profileMainArea {
