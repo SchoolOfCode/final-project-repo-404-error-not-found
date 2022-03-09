@@ -133,14 +133,14 @@
   padding: 1rem;
   display: block; 
 } */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
 
 .headerTitle {
   color: #333;
   padding-bottom: 10px;
   text-align: center;
   font-size: 2.5em;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-weight: 625;
   margin-top: 1em;
 }
@@ -151,7 +151,7 @@
   margin-top: 20px;
   font-size: 2.3em;
   font-weight: 700;
-  font-family: 'Nunito';
+  font-family: "Nunito";
 }
 
 .text {
@@ -187,14 +187,14 @@
 
 .mentor_btn {
   display: flex;
-  width: 180px;
-  padding: 11px 93px;
-  margin-right: 50px;
-  background: #4979ff;
+  width: 12em;
+  padding: 1em 4em;
+  /* margin-right: 50px; */
+  background-color: #4979ff;
   border-radius: 20px;
   color: white;
   text-align: center;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-weight: bolder;
   justify-content: center;
   cursor: pointer;
@@ -211,14 +211,14 @@
 
 .mentee_btn {
   display: flex;
-  width: 180px;
-  padding: 11px 93px;
-  margin: auto;
+  width: 12em;
+  padding: 1em 4em;
+  /* margin: auto; */
   background: #4979ff;
   border-radius: 20px;
   color: white;
   text-align: center;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-weight: bolder;
   justify-content: center;
   cursor: pointer;
@@ -252,8 +252,6 @@
   z-index: -1000;
 }
 
-
-
 .heading {
   align-items: center;
   display: flex;
@@ -273,8 +271,7 @@
 .card {
   display: flex;
   justify-content: space-evenly;
-  flex-direction: rows;
-  row-gap: 50px;
+  flex-direction: row;
   margin: 8rem;
   align-items: center;
 }
@@ -311,26 +308,39 @@
   padding-bottom: 0.5rem;
 }
 
-@media only screen and (max-width: 768px){
-  .headerTitle{
+@media only screen and (max-width: 768px) {
+  .headerTitle {
+    font-size: 1.5em;
+    margin-left: 0.6em;
+    margin-right: 0.6em;
+  }
+
+  .title {
     font-size: 1.5em;
   }
 
-  .title{
-    font-size: 1.5em;
-  }
-
-  .homeBGBanner{
+  .homeBGBanner {
     width: 45%;
     height: 45%;
   }
 
-  .about{
+  .homeButtonWrap {
+    margin: 10px;
+    padding-top: 5rem;
+  }
+
+  .mentor_btn,
+  .mentee_btn {
+    margin: 1em;
+    width: 8em;
+  }
+
+  .about {
     padding-top: 40px;
     margin: 75px auto;
   }
 
-  .heading{
+  .heading {
     font-size: 25px;
   }
 
@@ -340,23 +350,20 @@
   }
 
   .card {
-    row-gap: 3px;
-    margin: 1.2rem;
+    margin: 0rem;
+    flex-direction: column;
   }
 
   .abouttitle {
     font-size: 17px;
     font-weight: 600;
-    line-height:70%;
+    line-height: 70%;
     margin-top: 1rem;
     margin-bottom: 15px;
   }
 
   .aboutpara {
     font-size: 13px;
-    line-height: 75%;
+    /* line-height: 75%; */
   }
-  
-
-
 }
