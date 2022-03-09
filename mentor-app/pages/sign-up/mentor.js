@@ -1,3 +1,4 @@
+import { StylesProvider } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -14,7 +15,7 @@ const uiConfig = {
 
 function SignInScreen() {
   return (
-    <div>
+    <div className={styles.signIn}>
       <h1>Mentoree Login</h1>
       <p>Please sign-in:</p>
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
