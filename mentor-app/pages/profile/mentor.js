@@ -16,7 +16,7 @@ export default function Profile() {
   const [currentMentor, setCurrentMentor] = useState(null);
   // user is the user provided by firebase
   const [user, loading, error] = useAuthState(firebase.auth());
-
+  // console.log("testing: " + { ...firebase });
   //takes the firebase uid and fetches the corresponding mentor from database, then assigns it to currentMentor
   useEffect(async () => {
     if (user !== null) {
@@ -24,18 +24,23 @@ export default function Profile() {
       // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
       console.log("about to send GET request!");
 
+
       const res = await fetch(`${server}/api/mentors/${loginid}`);
+
 
       const data = await res.json();
       setCurrentMentor(data[0]);
+      console.log(user);
     }
   }, [user]);
-
+  console.log("testing: ", currentMentor);
   //render page only if currentMentor is loaded, otherwise show loading text
+
   if (currentMentor !== null) {
     // let socialsKey = Object.keys(currentMentor.socials);
-
+    console.log(currentMentor);
     return (
+
       <div className={styles.profileFullArea}>
         <h1>Your profile</h1>
         <br />
@@ -76,6 +81,7 @@ export default function Profile() {
                   ))
                 : null}
               {/* <div className={css.skill}>skill</div> */}
+
             </div>
           </div>
           <div className={styles.biographyArea}>

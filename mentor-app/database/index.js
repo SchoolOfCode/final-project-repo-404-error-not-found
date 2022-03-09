@@ -1,7 +1,7 @@
 import pg from "pg";
 import dbconfig from "./config.js";
 
-const pool = new pg.Pool({
+export const pool = new pg.Pool({
   connectionString: dbconfig.uri,
   ssl: { rejectUnauthorized: false },
 });

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { server } from "../../config";
@@ -6,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
 import css from "./mentor.module.css";
+
 
 import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";
@@ -22,10 +24,12 @@ export default function Profile() {
     if (user !== null) {
       const loginid = user.uid;
       // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
+
       console.log("about to send GET request!");
       const res = await fetch(`${server}/api/mentees/${loginid}`);
       const data = await res.json();
       setCurrentMentee(data[0]);
+
     }
   }, [user]);
 
@@ -89,7 +93,8 @@ export default function Profile() {
               <p>Description of what is offered</p>
             </div>
             <div className={css.lowSquare}>
-              <Link href="/edit-profile/mentee">
+
+
                 <button>Edit Profile</button>
               </Link>
             </div>
