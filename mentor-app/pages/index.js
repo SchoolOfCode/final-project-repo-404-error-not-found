@@ -12,7 +12,6 @@ import { Button } from "react-bootstrap";
 
 import { motion } from "framer-motion";
 
-
 export default function Home() {
   const [user, loading, error] = useAuthState(firebase.auth());
   console.log("Loading:", loading, "|", "Current user:", user); //delete later
@@ -47,22 +46,26 @@ export default function Home() {
             <Link href="/login/mentor">
               <a onClick={(e) => handleClick(e, "/login/mentor")}>
                 {" "}
-
-                <Button variant="outline-success" className={styles.mentor_btn} data-cy="mentor_btn">
+                <Button
+                  variant="outline-success"
+                  className={styles.mentor_btn}
+                  data-cy="mentor_btn"
+                >
                   Mentor
                 </Button>
-
               </a>
             </Link>
 
             <Link href="/login/mentee" className={styles.btn}>
               <a onClick={(e) => handleClick(e, "/login/mentee")}>
                 {" "}
-
-                <Button variant="outline-success" className={styles.mentee_btn} data-cy="mentee_btn">
+                <Button
+                  variant="outline-success"
+                  className={styles.mentee_btn}
+                  data-cy="mentee_btn"
+                >
                   Mentee
                 </Button>
-
               </a>
             </Link>
           </div>
