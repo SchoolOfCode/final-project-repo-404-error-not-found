@@ -52,7 +52,16 @@ export default function contact() {
           p={{ sm: 5, md: 5, lg: 16 }}
           maxW="full"
         >
-          <Box p={4} maxW="full">
+          <Flex
+            p={4}
+            maxW="full"
+            direction={{
+              base: "column",
+              sm: "column",
+              md: "column",
+              lg: "row",
+            }}
+          >
             {/* <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }} maxW="full"> */}
             <WrapItem
               width="100%"
@@ -186,7 +195,7 @@ export default function contact() {
               </Box>
             </WrapItem>
             {/* </Wrap> */}
-          </Box>
+          </Flex>
         </Box>
       </Flex>
     </Container>
