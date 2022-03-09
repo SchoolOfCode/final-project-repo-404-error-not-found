@@ -12,6 +12,7 @@ import LinkedinIcon from "../../components/LinkedinIcon";
 import styles from "../../styles/AllMentors.module.css";
 import { IoLocationSharp } from "react-icons/io5";
 import {
+  Box,
   HStack,
   Badge,
   Button as ButtonCh,
@@ -69,139 +70,157 @@ export default function Profile(props) {
         <h1>Mentor profile</h1>
         <br />
         <Center p={20}>
-          <Stack
-            borderWidth="1px"
-            borderRadius="lg"
-            w={{ sm: "100%", md: "55%" }}
-            minHeight={{ sm: "480px", md: "20rem" }}
-            minWidth={{ sm: "480px", md: "70rem" }}
-            direction={{ base: "column", md: "row" }}
-            bg={useColorModeValue("white", "gray.900")}
-            boxShadow={"2xl"}
-            padding={3}
-            overflow={"hidden"}
-            alignContent={"center"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            justifyItems={"center"}
-          >
+          <Box p={4} display={{ md: "flex" }}>
             <Stack
-              flex={1}
-              justifyContent={"center"}
+              borderWidth="1px"
+              borderRadius="lg"
+              w={{ sm: "100%", md: "55%" }}
+              minHeight={{ sm: "480px", md: "20rem" }}
+              minWidth={{ sm: "480px", md: "70rem" }}
+              direction={{ base: "column", md: "row" }}
+              bg={useColorModeValue("white", "gray.900")}
+              boxShadow={"2xl"}
+              padding={3}
+              overflow={"hidden"}
+              alignContent={"center"}
               alignItems={"center"}
-              mt={"1rem"}
+              justifyContent={"center"}
+              justifyItems={"center"}
             >
-              <div className={styles.ImgContainer}>
-                <Image boxSize="280px" src={currentMentor.photourl} alt="" />
-              </div>
-
-              <Text fontWeight={600} color={"gray.500"} size="sm" mb={4} pb={4}>
-                {currentMentor.socials ? (
-                  <div className={styles.socials}>
-                    {Object.keys(currentMentor.socials)[0] === "linkedin" ? (
-                      <LinkedinIcon
-                        handle={Object.values(currentMentor.socials)[0]}
-                      />
-                    ) : null}
-                    {Object.keys(currentMentor.socials)[0] === "github" ? (
-                      <GithubIcon
-                        handle={Object.values(currentMentor.socials)[0]}
-                      />
-                    ) : null}
-                    {Object.keys(currentMentor.socials)[0] === "twitter" ? (
-                      <TwitterIcon
-                        handle={Object.values(currentMentor.socials)[0]}
-                      />
-                    ) : null}
+              <Box flexShrink="0">
+                <Stack
+                  flex={1}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                  mt={"1rem"}
+                >
+                  <div className={styles.ImgContainer}>
+                    <Image
+                      boxSize="280px"
+                      src={currentMentor.photourl}
+                      alt=""
+                    />
                   </div>
-                ) : null}
-              </Text>
+
+                  <Text
+                    fontWeight={600}
+                    color={"gray.500"}
+                    size="sm"
+                    mb={4}
+                    pb={4}
+                  >
+                    {currentMentor.socials ? (
+                      <div className={styles.socials}>
+                        {Object.keys(currentMentor.socials)[0] ===
+                        "linkedin" ? (
+                          <LinkedinIcon
+                            handle={Object.values(currentMentor.socials)[0]}
+                          />
+                        ) : null}
+                        {Object.keys(currentMentor.socials)[0] === "github" ? (
+                          <GithubIcon
+                            handle={Object.values(currentMentor.socials)[0]}
+                          />
+                        ) : null}
+                        {Object.keys(currentMentor.socials)[0] === "twitter" ? (
+                          <TwitterIcon
+                            handle={Object.values(currentMentor.socials)[0]}
+                          />
+                        ) : null}
+                      </div>
+                    ) : null}
+                  </Text>
+                </Stack>
+              </Box>
+
+              <Box>
+                <Stack
+                  flex={1}
+                  flexDirection="column"
+                  justifyContent="center left"
+                  alignItems="center left"
+                  p={1}
+                  pt={2}
+                >
+                  <Heading
+                    fontSize={"3xl"}
+                    fontFamily={"body"}
+                    alignText={"center left"}
+                  >
+                    {currentMentor.firstname} {currentMentor.surname}
+                  </Heading>
+                  <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                    {currentMentor.jobtitle} at {currentMentor.company}
+                  </Text>
+                  <HStack>
+                    <Image boxSize="30px" icon={<IoLocationSharp />} alt="" />
+                    <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                      {currentMentor.location}
+                    </Text>
+                  </HStack>
+
+                  <Text
+                    textAlign={"center left"}
+                    color={useColorModeValue("gray.700", "gray.400")}
+                    // px={3}
+                    overflow={"hidden"}
+                    pr={6}
+                    // maxWidth={"9ch"}
+                  >
+                    <h2>Biography</h2>
+                    {currentMentor.biography}
+                  </Text>
+
+                  <Stack
+                    alignItems={"center left"}
+                    justifyContent={"center left"}
+                    direction={"row"}
+
+                    // mt={3}
+                  >
+                    {currentMentor.skills ? (
+                      <div className={styles.skills}>
+                        {currentMentor.skills.map((skill, index) => (
+                          <p className={styles.skill} key={index}>
+                            {skill}
+                          </p>
+                        ))}
+                      </div>
+                    ) : null}
+                  </Stack>
+
+                  <Stack
+                    flex={1}
+                    flexDirection="column"
+                    justifyContent="center left"
+                    alignItems="center left"
+                    p={1}
+                    pt={2}
+                  >
+                    <div className={css.topSquare}>
+                      <p>Description of what is offered</p>
+                    </div>
+                    <div className={css.lowSquare}>
+                      {apply ? (
+                        <Button onClick={() => handleApply()}>Apply Now</Button>
+                      ) : (
+                        <p>
+                          {" "}
+                          Thank you for applying, {currentMentor.firstname}{" "}
+                          {currentMentor.surname} will reply back witihn 48
+                          hours{" "}
+                        </p>
+                      )}
+                    </div>
+
+                    <Link href="/allMentors">
+                      <Button>Back to Main</Button>
+                    </Link>
+                  </Stack>
+                </Stack>
+              </Box>
             </Stack>
-
-            <Stack
-              flex={1}
-              flexDirection="column"
-              justifyContent="center left"
-              alignItems="center left"
-              p={1}
-              pt={2}
-            >
-              <Heading
-                fontSize={"3xl"}
-                fontFamily={"body"}
-                alignText={"center left"}
-              >
-                {currentMentor.firstname} {currentMentor.surname}
-              </Heading>
-              <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
-                {currentMentor.jobtitle} at {currentMentor.company}
-              </Text>
-              <HStack>
-                <Image boxSize="30px" icon={<IoLocationSharp />} alt="" />
-                <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
-                  {currentMentor.location}
-                </Text>
-              </HStack>
-
-              <Text
-                textAlign={"center left"}
-                color={useColorModeValue("gray.700", "gray.400")}
-                // px={3}
-                overflow={"hidden"}
-                pr={6}
-                // maxWidth={"9ch"}
-              >
-                <h2>Biography</h2>
-                {currentMentor.biography}
-              </Text>
-
-              <Stack
-                alignItems={"center left"}
-                justifyContent={"center left"}
-                direction={"row"}
-
-                // mt={3}
-              >
-                {currentMentor.skills ? (
-                  <div className={styles.skills}>
-                    {currentMentor.skills.map((skill, index) => (
-                      <p className={styles.skill} key={index}>
-                        {skill}
-                      </p>
-                    ))}
-                  </div>
-                ) : null}
-              </Stack>
-
-              <Stack
-                flex={1}
-                flexDirection="column"
-                justifyContent="center left"
-                alignItems="center left"
-                p={1}
-                pt={2}
-              >
-                <div className={css.topSquare}>
-                  <p>Description of what is offered</p>
-                </div>
-                <div className={css.lowSquare}>
-                  {apply ? (
-                    <Button onClick={() => handleApply()}>Apply Now</Button>
-                  ) : (
-                    <p>
-                      {" "}
-                      Thank you for applying, {currentMentor.firstname}{" "}
-                      {currentMentor.surname} will reply back witihn 48 hours{" "}
-                    </p>
-                  )}
-                </div>
-
-                <Link href="/allMentors">
-                  <Button>Back to Main</Button>
-                </Link>
-              </Stack>
-            </Stack>
-          </Stack>
+          </Box>
         </Center>
       </div>
     );
