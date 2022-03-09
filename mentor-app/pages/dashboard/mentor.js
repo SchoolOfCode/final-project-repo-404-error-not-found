@@ -12,6 +12,7 @@ export default function Mentor() {
   const [user, loading, error] = useAuthState(firebase.auth())
   const [connectionAccepted, setConnectionAccepted] = useState(null)
   const [connectionPending, setConnectionPending] = useState(null)
+  const [status, setStatus] = useState(false)
 
   function filterData(data) {
     const pendingData = data.filter((each) => {
@@ -36,7 +37,33 @@ export default function Mentor() {
       console.log(data)
       filterData(data)
     }
-  }, [user])
+  }, [user, status])
+
+  async function acceptRequest(currentId) {
+    const data = { id: currentId }
+    const res = await fetch(`${server}/api/connection`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '',
+      },
+      body: JSON.stringify(data),
+    })
+    const response = await res.json()
+    setStatus(!status)
+  }
+  async function deleteRequest(id) {
+    const res = await fetch(`${server}/api/connectionMentor/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '',
+      },
+    })
+    const response = await res.json()
+    // if status is true, set status to false
+    setStatus(!status)
+  }
 
   return (
     <div className={css.main}>
@@ -55,8 +82,13 @@ export default function Mentor() {
           <h2 className={css.subtitle}>Your Mentees are...</h2>
         </div>
         <div className={css.container}>
+          {/* if connectionAccepted is true render CardDashboard for each accepted connection, if not render <p>you dont have mentees</p> */}
           {connectionAccepted ? (
-            <CardDashboard />
+            connectionAccepted.map((each, index) => {
+              return (
+                <CardDashboard info={each} key={index} roleUrl={'mentees'} />
+              )
+            })
           ) : (
             <div className={css.acceptedRequest}>
               <p>You dont have any mentee yet! </p>
@@ -69,11 +101,19 @@ export default function Mentor() {
           </div>
         </h2>
         <div className={css.container}>
+          {/* if connectionPending is true render CardDashboardLong [{satus: pending, idmentee, id mentor}, {status:pending}] */}
           {connectionPending ? (
-          connectionPending.map((each) => {
-            return <CardDashboardLong info={each} />
-          })
-           
+            connectionPending.map((each, index) => {
+              return (
+                <CardDashboardLong
+                  info={each}
+                  key={index}
+                  acceptRequest={acceptRequest}
+                  deleteRequest={deleteRequest}
+                  roleUrl={'mentees'}
+                />
+              )
+            })
           ) : (
             <div className={css.pendingRequest}>
               <p>You dont have any pending request! </p>

@@ -1,4 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+
 .mentorList h1 {
+  text-align: center;
+  font-size: 3.5em;
+}
+
+.centerH1 {
+  font-size: 3.5em;
+  justify-content: center;
+  text-align: center;
+}
+
+.allMentorsHeading {
   text-align: center;
   font-size: 3.5em;
 }
@@ -67,7 +80,7 @@
 .skills {
   display: flex;
   padding: auto;
-  margin: 1em auto;
+  margin-top: 1em;
   justify-content: left;
 }
 
@@ -77,6 +90,7 @@
   color: white;
   border-radius: 5px;
   padding: 0.3em 0.8em;
+  text-align: center;
 }
 
 .profileRight p {
@@ -97,13 +111,15 @@
   display: flex;
 }
 .ImgContainer {
-  object-fit: fill;
-  border-radius: 10px;
-  border-width: 10px;
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 50%;
+  /* box-shadow: 5px 5px 13px -4px rgba(110, 110, 110, 1); */
 }
 
-.centerH1 {
-  font-size: 3.5em;
-  justify-content: center;
-  text-align: center;
-}
+/* .body {
+  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(2, 27, 38) 100%);
+} */

@@ -14,9 +14,9 @@ export default async function (req, res) {
       res.status(200).json(actionMentor)
       break
     case 'DELETE':
-      const deleteConnection = await deleteConnection(id)
+      const deleteRelation = await deleteConnection(id)
       // request to delete that connection
-      res.status(200).json(deleteConnection)
+      res.status(200).json(deleteRelation)
       break
 
     default:
