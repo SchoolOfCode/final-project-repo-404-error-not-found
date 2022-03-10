@@ -17,12 +17,17 @@ import {
   MenuItem,
   MenuDivider,
 } from "@chakra-ui/react";
-// import styles from "../styles/hamburgermenu.module.css";
-import Hamburger from "./hamburger.js"
+import { IconButton } from '@chakra-ui/react'
+import { HamburgerIcon,} from '@chakra-ui/icons'
+
+import { createBreakpoints } from '@chakra-ui/theme-tools'
+import { Show, Hide } from '@chakra-ui/react'
+
+
 
 const auth = getAuth();
 
-const Navbar = () => {
+const NavbarS = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [user, loading, error] = useAuthState(firebase.auth());
   const [isLogIn, setLogIn] = useState(null); //state check if
@@ -70,6 +75,14 @@ const Navbar = () => {
       });
   }
 
+  const breakpoints = createBreakpoints({
+    sm: '30em',
+    md: '48em',
+    lg: '62em',
+    xl: '80em',
+    '2xl': '96em',
+  })
+
 
 
 
@@ -103,6 +116,80 @@ const Navbar = () => {
     </div>
 
       {currentUser && (
+        <Show breakpoint='(min-width: 48em)'>
+        <Menu 
+        display='none'
+        >
+          <MenuButton as={Button}>Profile</MenuButton>
+          <MenuList>
+            <MenuItem>
+              <Link href={`/edit-profile/${currentUser}`}>
+                <a>Edit profile</a>
+              </Link>
+            </MenuItem>
+            <MenuItem>
+              <Link href={`/dashboard/${currentUser}`}>
+                <a>Dashboard</a>
+              </Link>
+            </MenuItem>
+            <MenuDivider />
+            <MenuItem variant="outline-success" onClick={handleLogout}>
+              <a>Logout</a>
+            </MenuItem>
+          </MenuList>
+        </Menu>
+        </Show>
+      )}
+
+      {/* {isLogIn && (
+        <Button variant="outline-success" onClick={handleLogout}>
+          Logout
+        </Button>
+      )} */}
+       <Hide above='md'>
+         
+        <Menu
+        >
+        <MenuButton
+          as={IconButton}
+          aria-label='Options'
+          icon={<HamburgerIcon />}
+          variant='outline'
+            />
+          <MenuList
+          height='300px'
+          width='100px'
+          zIndex={2000}
+          color='blackAlpha.50'
+          fontSize={20}
+          
+          >
+            <MenuItem
+            >
+              <Link href="/">
+              <a>Home</a>
+            </Link>
+            </MenuItem>
+
+            <MenuItem>
+              <Link href="/#about">
+              <a>About</a>
+              </Link>
+            </MenuItem>
+
+            <MenuItem>
+              <Link href="/#contact">
+              <a>Contact</a>
+              </Link>
+            </MenuItem>
+            
+            <MenuItem>
+              <Link href="/allMentors">
+              <a>Find a Mentor</a>
+            </Link>
+            </MenuItem>
+
+            {currentUser && (
         <Menu>
           <MenuButton as={Button}>Profile</MenuButton>
           <MenuList>
@@ -123,15 +210,14 @@ const Navbar = () => {
           </MenuList>
         </Menu>
       )}
-      {/* {isLogIn && (
-        <Button variant="outline-success" onClick={handleLogout}>
-          Logout
-        </Button>
-      )} */}
-      <div className="hamburgers" >
-          <Hamburger />
-      </div>
+
+
+          </MenuList>
+        </Menu>
+      </Hide>
+
+
     </nav>
   );
 };
-export default Navbar;
+export default NavbarS;
