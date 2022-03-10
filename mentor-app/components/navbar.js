@@ -161,7 +161,7 @@ const NavbarS = () => {
           width='100px'
           zIndex={2000}
           color='blackAlpha.50'
-          fontSize={20}
+          // fontSize={20}
           
           >
             <MenuItem
