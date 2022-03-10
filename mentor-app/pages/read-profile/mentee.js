@@ -16,6 +16,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import {
   Box,
   HStack,
+  VStack,
   Badge,
   Button as ButtonCh,
   Center,
@@ -211,55 +212,69 @@ export default function Profile(props) {
                 <Stack
                   flex={1}
                   flexDirection="column"
-                  justifyContent="center left"
-                  alignItems="center left"
+                  justifyContent="center"
+                  alignItems="center"
                   p={1}
                   pt={2}
                 >
-                  <div className={css.topSquare}>
-                    <p>Description of what is offered</p>
-                  </div>
-                  <div className={css.lowSquare}>
-                    <Text
-                      fontWeight={600}
-                      color={"gray.500"}
-                      fontSize="lg"
-                      mb={4}
-                      pt={4}
-                      pl={3}
-                    >
-                      {currentMentee.aims}
-                    </Text>
-                  </div>
+                  <VStack>
+                    <div>
+                      <Heading
+                        flex={1}
+                        fontSize={"2xl"}
+                        fontFamily="body"
+                        alignText="center"
+                        alignItems="center"
+                        justifyContent="center"
+                        justifyItems="center"
+                        fontWeight={500}
+                        py={4}
+                        color="gray.500"
+                      >
+                        Aims
+                      </Heading>
+                      <br />
+                      <Text
+                        fontWeight={600}
+                        color={"gray.500"}
+                        fontSize="lg"
+                        mb={4}
+                        pb={20}
+                        pl={3}
+                      >
+                        {currentMentee.aims}
+                      </Text>
+                    </div>
 
-                  <Link href="/allMentors">
-                    <ButtonCh
-                      flex={1}
-                      fontSize={"lg"}
-                      size={"md"}
-                      height="48px"
-                      width="200px"
-                      border="2px"
-                      colorScheme="teal"
-                      variant="ghost"
-                      // rounded={"full"}
-                      // bg={"gray.500"}
-                      // color={"white"}
-                      boxShadow={
-                        "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
-                      }
-                      _hover={{
-                        bg: "blue.500",
-                        borderColor: "blue.500",
-                        color: "white",
-                      }}
-                      _focus={{
-                        bg: "blue.500",
-                      }}
-                    >
-                      View all Mentors
-                    </ButtonCh>
-                  </Link>
+                    <Link href="/allMentors">
+                      <ButtonCh
+                        flex={1}
+                        fontSize={"lg"}
+                        size={"md"}
+                        height="48px"
+                        width="200px"
+                        border="2px"
+                        colorScheme="teal"
+                        variant="ghost"
+                        // rounded={"full"}
+                        // bg={"gray.500"}
+                        // color={"white"}
+                        boxShadow={
+                          "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                        }
+                        _hover={{
+                          bg: "blue.500",
+                          borderColor: "blue.500",
+                          color: "white",
+                        }}
+                        _focus={{
+                          bg: "blue.500",
+                        }}
+                      >
+                        View all Mentors
+                      </ButtonCh>
+                    </Link>
+                  </VStack>
                 </Stack>
               </Box>
             </Stack>
