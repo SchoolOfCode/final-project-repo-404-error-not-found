@@ -156,7 +156,7 @@ export default function Profile(props) {
                   flexDirection="column"
                   justifyContent="center left"
                   alignItems="center left"
-                  p={15}
+                  p={9}
                   pt={2}
                 >
                   <HStack>
