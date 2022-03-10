@@ -240,7 +240,6 @@ export default function Profile(props) {
                         fontSize="lg"
                         mb={4}
                         pb={20}
-                        pl={3}
                       >
                         {currentMentee.aims}
                       </Text>
