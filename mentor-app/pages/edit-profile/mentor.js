@@ -89,13 +89,13 @@ function EditMentor() {
   const validate = (values) => {
     const errors ={};
     const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!values.firstname) {
+    if (!value.firstname) {
       errors.firstname = "Name is required"
     }
-    if (!values.surnamename) {
+    if (!value.surnamename) {
       errors.surname = "Surname is required"
     }
-    if (!values.email) {
+    if (!value.email) {
       errors.email = "Email is required"
     } else if(!regex.test(values.email)) {
       errors.email = "Email invalid"
@@ -114,7 +114,7 @@ function EditMentor() {
   } else {
     return (
       <div className={css.body}>
-        {/* {Object.keys(formErrors).length === 0 && isSubmit ? (<div className="ui message success">Complete</div>)} */}
+        {Object.keys(formErrors).length === 0 && isSubmit ? (<div className="ui message success">Complete</div>)}
         <div className={css.UpdateMentorProfileFormContainer}>
           <h1>Setup your mentor profile</h1>
           <h2>Add or edit your information below</h2>
