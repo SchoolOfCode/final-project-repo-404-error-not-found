@@ -17,13 +17,12 @@ import {
   MenuItem,
   MenuDivider,
 } from "@chakra-ui/react";
-import { IconButton } from '@chakra-ui/react'
-import { HamburgerIcon,} from '@chakra-ui/icons'
+import { IconButton } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 
-import { createBreakpoints } from '@chakra-ui/theme-tools'
-import { Show, Hide } from '@chakra-ui/react'
+import { createBreakpoints } from "@chakra-ui/theme-tools";
 
-
+import { Show, Hide, extendTheme } from "@chakra-ui/react";
 
 const auth = getAuth();
 
@@ -76,15 +75,12 @@ const NavbarS = () => {
   }
 
   const breakpoints = createBreakpoints({
-    sm: '30em',
-    md: '48em',
-    lg: '62em',
-    xl: '80em',
-    '2xl': '96em',
-  })
-
-
-
+    sm: "30em",
+    md: "48em",
+    lg: "62em",
+    xl: "80em",
+    "2xl": "96em",
+  });
 
   return (
     <nav className={styles.navbar}>
@@ -94,50 +90,47 @@ const NavbarS = () => {
         </Link>
       </div>
 
-    <div className={styles.main}>
-     <div className={styles.mains}>
-    
-      <Link href="/">
-        <a>Home</a>
-      </Link>
+      <div className={styles.main}>
+        <div className={styles.mains}>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
 
-      <Link href="/#about">
-        <a>About</a>
-      </Link>
+          <Link href="/#about">
+            <a>About</a>
+          </Link>
 
-      <Link href="/#contact">
-        <a>Contact</a>
-      </Link>
+          <Link href="/#contact">
+            <a>Contact</a>
+          </Link>
 
-      <Link href="/allMentors">
-        <a>Find a Mentor</a>
-      </Link>
+          <Link href="/allMentors">
+            <a>Find a Mentor</a>
+          </Link>
+        </div>
       </div>
-    </div>
 
       {currentUser && (
-        <Show breakpoint='(min-width: 48em)'>
-        <Menu 
-        display='none'
-        >
-          <MenuButton as={Button}>Profile</MenuButton>
-          <MenuList>
-            <MenuItem>
-              <Link href={`/edit-profile/${currentUser}`}>
-                <a>Edit profile</a>
-              </Link>
-            </MenuItem>
-            <MenuItem>
-              <Link href={`/dashboard/${currentUser}`}>
-                <a>Dashboard</a>
-              </Link>
-            </MenuItem>
-            <MenuDivider />
-            <MenuItem variant="outline-success" onClick={handleLogout}>
-              <a>Logout</a>
-            </MenuItem>
-          </MenuList>
-        </Menu>
+        <Show breakpoint="(min-width: 48em)">
+          <Menu display="none">
+            <MenuButton as={Button}>Profile</MenuButton>
+            <MenuList>
+              <MenuItem>
+                <Link href={`/edit-profile/${currentUser}`}>
+                  <a>Edit profile</a>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href={`/dashboard/${currentUser}`}>
+                  <a>Dashboard</a>
+                </Link>
+              </MenuItem>
+              <MenuDivider />
+              <MenuItem variant="outline-success" onClick={handleLogout}>
+                <a>Logout</a>
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </Show>
       )}
 
@@ -146,77 +139,69 @@ const NavbarS = () => {
           Logout
         </Button>
       )} */}
-       <Hide above='md'>
-         
-        <Menu
-        >
-        <MenuButton
-          as={IconButton}
-          aria-label='Options'
-          icon={<HamburgerIcon />}
-          variant='outline'
-            />
+      <Hide above="md">
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            aria-label="Options"
+            icon={<HamburgerIcon />}
+            variant="outline"
+          />
           <MenuList
-          height='300px'
-          width='100px'
-          zIndex={2000}
-          color='blackAlpha.50'
-          // fontSize={20}
-          
+            height="300px"
+            width="100px"
+            zIndex={2000}
+            color="blackAlpha.50"
+            // fontSize={20}
           >
-            <MenuItem
-            >
+            <MenuItem>
               <Link href="/">
-              <a>Home</a>
-            </Link>
+                <a>Home</a>
+              </Link>
             </MenuItem>
 
             <MenuItem>
               <Link href="/#about">
-              <a>About</a>
+                <a>About</a>
               </Link>
             </MenuItem>
 
             <MenuItem>
               <Link href="/#contact">
-              <a>Contact</a>
+                <a>Contact</a>
               </Link>
             </MenuItem>
-            
+
             <MenuItem>
               <Link href="/allMentors">
-              <a>Find a Mentor</a>
-            </Link>
+                <a>Find a Mentor</a>
+              </Link>
             </MenuItem>
 
             {currentUser && (
-        <Menu>
-          <MenuButton as={Button}>Profile</MenuButton>
-          <MenuList>
-            <MenuItem>
-              <Link href={`/edit-profile/${currentUser}`}>
-                <a>Edit profile</a>
-              </Link>
-            </MenuItem>
-            <MenuItem>
-              <Link href={`/dashboard/${currentUser}`}>
-                <a>Dashboard</a>
-              </Link>
-            </MenuItem>
-            <MenuDivider />
-            <MenuItem variant="outline-success" onClick={handleLogout}>
-              <a>Logout</a>
-            </MenuItem>
-          </MenuList>
-        </Menu>
-      )}
-
-
+              <Menu>
+                <MenuButton as={Button}>Profile</MenuButton>
+                <MenuList>
+                  <MenuItem>
+                    <Link href={`/edit-profile/${currentUser}`}>
+                      <a>Edit profile</a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link href={`/dashboard/${currentUser}`}>
+                      <a>Dashboard</a>
+                    </Link>
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem variant="outline-success" onClick={handleLogout}>
+                    <a>Logout</a>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            )}
           </MenuList>
         </Menu>
       </Hide>
-
-
     </nav>
   );
 };

@@ -10,6 +10,7 @@ import TwitterIcon from "../../components/TwitterIcon";
 import GithubIcon from "../../components/GithubIcon";
 import LinkedinIcon from "../../components/LinkedinIcon";
 import styles from "../../styles/AllMentors.module.css";
+import { createBreakpoints } from "@chakra-ui/theme-tools";
 import { Icon } from "@chakra-ui/react";
 import { IoLocationSharp } from "react-icons/io5";
 import {
@@ -25,7 +26,18 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  extendTheme,
 } from "@chakra-ui/react";
+
+const breakpoints = createBreakpoints({
+  sm: "320px",
+  md: "768px",
+  lg: "960px",
+  xl: "1200px",
+  "2xl": "1536px",
+});
+
+const theme = extendTheme({ breakpoints });
 
 export async function getServerSideProps(context) {
   return {
@@ -71,7 +83,11 @@ export default function Profile(props) {
         <h1>Mentor profile</h1>
         <br />
         <Center p={15}>
-          <Box justifyContent={"center"} display={{ md: "flex" }}>
+          <Box
+            justifyContent={"center"}
+            display={{ md: "flex" }}
+            width={{ base: "100%", sm: "50%", md: "25%" }}
+          >
             <Stack
               borderWidth="1px"
               borderRadius="lg"
@@ -209,57 +225,59 @@ export default function Profile(props) {
                 </Stack>
               </Box>
 
-              <Stack
-                flex={1}
-                flexDirection="column"
-                justifyContent="center left"
-                alignItems="center left"
-                p={1}
-                pt={2}
-              >
-                <div className={css.topSquare}>
-                  <p>Description of what is offered</p>
-                </div>
-                <div className={css.lowSquare}>
-                  {apply ? (
-                    <Button onClick={() => handleApply()}>Apply Now</Button>
-                  ) : (
-                    <p>
-                      Thank you for applying, {currentMentor.firstname}{" "}
-                      {currentMentor.surname} will reply back witihn 48 hours{" "}
-                    </p>
-                  )}
-                </div>
+              <Box>
+                <Stack
+                  flex={1}
+                  flexDirection="column"
+                  justifyContent="center left"
+                  alignItems="center left"
+                  p={1}
+                  pt={2}
+                >
+                  <div className={css.topSquare}>
+                    <p>Description of what is offered</p>
+                  </div>
+                  <div className={css.lowSquare}>
+                    {apply ? (
+                      <Button onClick={() => handleApply()}>Apply Now</Button>
+                    ) : (
+                      <p>
+                        Thank you for applying, {currentMentor.firstname}{" "}
+                        {currentMentor.surname} will reply back witihn 48 hours{" "}
+                      </p>
+                    )}
+                  </div>
 
-                <Link href="/allMentors">
-                  <ButtonCh
-                    flex={1}
-                    fontSize={"lg"}
-                    size={"md"}
-                    height="48px"
-                    width="200px"
-                    border="2px"
-                    colorScheme="teal"
-                    variant="ghost"
-                    // rounded={"full"}
-                    // bg={"gray.500"}
-                    // color={"white"}
-                    boxShadow={
-                      "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
-                    }
-                    _hover={{
-                      bg: "blue.500",
-                      borderColor: "blue.500",
-                      color: "white",
-                    }}
-                    _focus={{
-                      bg: "blue.500",
-                    }}
-                  >
-                    View all Mentors
-                  </ButtonCh>
-                </Link>
-              </Stack>
+                  <Link href="/allMentors">
+                    <ButtonCh
+                      flex={1}
+                      fontSize={"lg"}
+                      size={"md"}
+                      height="48px"
+                      width="200px"
+                      border="2px"
+                      colorScheme="teal"
+                      variant="ghost"
+                      // rounded={"full"}
+                      // bg={"gray.500"}
+                      // color={"white"}
+                      boxShadow={
+                        "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                      }
+                      _hover={{
+                        bg: "blue.500",
+                        borderColor: "blue.500",
+                        color: "white",
+                      }}
+                      _focus={{
+                        bg: "blue.500",
+                      }}
+                    >
+                      View all Mentors
+                    </ButtonCh>
+                  </Link>
+                </Stack>
+              </Box>
             </Stack>
           </Box>
         </Center>
