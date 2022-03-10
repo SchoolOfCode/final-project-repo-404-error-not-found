@@ -25,6 +25,7 @@ import { Show, Hide } from '@chakra-ui/react'
 
 const auth = getAuth()
 
+
 const NavbarS = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [user, loading, error] = useAuthState(firebase.auth())
@@ -74,6 +75,7 @@ const NavbarS = () => {
   }
 
   const breakpoints = createBreakpoints({
+
     sm: '30em',
     md: '48em',
     lg: '62em',
@@ -91,6 +93,7 @@ const NavbarS = () => {
 
       <div className={styles.main}>
         <div className={styles.mains}>
+
           <Link href='/'>
             <a>Home</a>
           </Link>
@@ -104,14 +107,17 @@ const NavbarS = () => {
           </Link>
 
           <Link href='/allMentors'>
+
             <a>Find a Mentor</a>
           </Link>
         </div>
       </div>
 
       {currentUser && (
+
         <Show breakpoint='(min-width: 48em)'>
           <Menu display='none'>
+
             <MenuButton as={Button}>Profile</MenuButton>
             <MenuList>
               <MenuItem>
@@ -125,7 +131,9 @@ const NavbarS = () => {
                 </Link>
               </MenuItem>
               <MenuDivider />
+
               <MenuItem variant='outline-success' onClick={handleLogout}>
+
                 <a>Logout</a>
               </MenuItem>
             </MenuList>
@@ -138,6 +146,7 @@ const NavbarS = () => {
           Logout
         </Button>
       )} */}
+
       <Hide above='md'>
         <Menu>
           <MenuButton
@@ -156,16 +165,19 @@ const NavbarS = () => {
             <MenuItem>
               <Link href='/'>
                 <a>Home</a>
+
               </Link>
             </MenuItem>
 
             <MenuItem>
+
               <Link href='/#about'>
                 <a>About</a>
               </Link>
             </MenuItem>
 
             <MenuItem>
+
               <Link href='/#contact'>
                 <a>Contact</a>
               </Link>
@@ -173,6 +185,7 @@ const NavbarS = () => {
 
             <MenuItem>
               <Link href='/allMentors'>
+
                 <a>Find a Mentor</a>
               </Link>
             </MenuItem>
@@ -192,7 +205,9 @@ const NavbarS = () => {
                     </Link>
                   </MenuItem>
                   <MenuDivider />
+
                   <MenuItem variant='outline-success' onClick={handleLogout}>
+
                     <a>Logout</a>
                   </MenuItem>
                 </MenuList>
