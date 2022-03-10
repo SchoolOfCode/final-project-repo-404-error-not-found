@@ -24,12 +24,15 @@ function EditMentor() {
   const [socialMediaType, setSocialMediaType] = useState(""); //
   const [socialMediaUserName, setSocialMediaUserName] = useState(""); //
   const [socials, setSocials] = useState({}); //
-  const { register, handleSubmit, watch, errors } = useForm();
+  const [formErrors, setFormErrors] = useState({}); //
+  const [isSubmit, setIsSubmit] = useState(false)
+  
 
   function handleChange(e) {
     const name = e.target.name;
     const value = e.target.value;
     setMentor({ ...mentor, [name]: value });
+    setIsSubmit(true)
   }
   //update social media object whenever the type or username changes
   useEffect(() => {
@@ -59,6 +62,12 @@ function EditMentor() {
     }
   }, [user]);
 
+  useEffect(() => {
+    if(Object.keys(formErrors).length === 0 && isSubmit) {
+
+    }
+  }, [formErrors])
+
   //SEND EDIT MENTOR DATA
   const submitForm = async (e) => {
     e.preventDefault();
@@ -74,13 +83,38 @@ function EditMentor() {
     });
 
     router.push("/profile/mentor");
+    setFormErrors(validate(mentor))
   };
+
+  const validate = (values) => {
+    const errors ={};
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!values.firstname) {
+      errors.firstname = "Name is required"
+    }
+    if (!values.surnamename) {
+      errors.surname = "Surname is required"
+    }
+    if (!values.email) {
+      errors.email = "Email is required"
+    } else if(!regex.test(values.email)) {
+      errors.email = "Email invalid"
+    }
+    return errors;
+  }
+
+
+
+
+
+  
   //RENDER PAGE
   if (mentor === null) {
     return <h2>...Loading</h2>;
   } else {
     return (
       <div className={css.body}>
+        {/* {Object.keys(formErrors).length === 0 && isSubmit ? (<div className="ui message success">Complete</div>)} */}
         <div className={css.UpdateMentorProfileFormContainer}>
           <h1>Setup your mentor profile</h1>
           <h2>Add or edit your information below</h2>
@@ -94,12 +128,10 @@ function EditMentor() {
                   name="firstname"
                   value={mentor.firstname}
                   onChange={(e) => handleChange(e)}
-                  {...register("first-name", {required: true})}
+                  required
                 />
-                 <br />
-                 {errors.firstname && <span>This field is required</span>}
-                 <br />
               </div>
+              <p> {formErrors.firstname} </p>
               <div className={css.surname}>
                 <label htmlFor="surname">Surname</label>
                 <input
@@ -108,13 +140,10 @@ function EditMentor() {
                   name="surname"
                   value={mentor.surname}
                   onChange={(e) => handleChange(e)}
-                                    required= {true}
-                  requiredTxt={"First Name is required"}
-                  />
-                  {/* <br />
-                  {errors.surname && <span>This field is required</span>}
-                  <br /> */}
+                  required
+                />
               </div>
+              <p> {formErrors.surname} </p>
               <div className={css.email}>
                 <label htmlFor="email">Email</label>
                 <input
@@ -122,14 +151,11 @@ function EditMentor() {
                   type="text"
                   value={mentor.email}
                   name="email"
-                  onChange={(e) => handleChange(e)}                 
-                  required= {true}
-                  requiredTxt={"First Name is required"}
-                  />
-                  {/* <br />
-                  {errors.email && <span>This field is required</span>}
-                  <br /> */}
+                  onChange={(e) => handleChange(e)}
+                  required
+                />
               </div>
+              <p> {formErrors.email} </p>
               <div className={css.jobtitle}>
                 <label htmlFor="jobtitle">Job Title</label>
                 <input
