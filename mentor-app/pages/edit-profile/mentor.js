@@ -8,6 +8,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
+import { useForm } from "react-hook-form";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
@@ -23,6 +24,7 @@ function EditMentor() {
   const [socialMediaType, setSocialMediaType] = useState(""); //
   const [socialMediaUserName, setSocialMediaUserName] = useState(""); //
   const [socials, setSocials] = useState({}); //
+  const { register, handleSubmit, watch, errors } = useForm();
 
   function handleChange(e) {
     const name = e.target.name;
@@ -92,8 +94,11 @@ function EditMentor() {
                   name="firstname"
                   value={mentor.firstname}
                   onChange={(e) => handleChange(e)}
-                  required
+                  {...register("first-name", {required: true})}
                 />
+                 <br />
+                 {errors.firstname && <span>This field is required</span>}
+                 <br />
               </div>
               <div className={css.surname}>
                 <label htmlFor="surname">Surname</label>
@@ -103,8 +108,12 @@ function EditMentor() {
                   name="surname"
                   value={mentor.surname}
                   onChange={(e) => handleChange(e)}
-                  required
-                />
+                                    required= {true}
+                  requiredTxt={"First Name is required"}
+                  />
+                  {/* <br />
+                  {errors.surname && <span>This field is required</span>}
+                  <br /> */}
               </div>
               <div className={css.email}>
                 <label htmlFor="email">Email</label>
@@ -113,9 +122,13 @@ function EditMentor() {
                   type="text"
                   value={mentor.email}
                   name="email"
-                  onChange={(e) => handleChange(e)}
-                  required
-                />
+                  onChange={(e) => handleChange(e)}                 
+                  required= {true}
+                  requiredTxt={"First Name is required"}
+                  />
+                  {/* <br />
+                  {errors.email && <span>This field is required</span>}
+                  <br /> */}
               </div>
               <div className={css.jobtitle}>
                 <label htmlFor="jobtitle">Job Title</label>
