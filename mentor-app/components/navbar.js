@@ -1,3 +1,4 @@
+
 import Link from 'next/link'
 import firebase from '../firebase/clientApp'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -9,12 +10,14 @@ import Image from 'next/image'
 import { server } from '../config'
 import logo from '../Images/mentoree_home_logo.jpg'
 import { Button } from 'react-bootstrap'
+
 import {
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
   MenuDivider,
+
 } from '@chakra-ui/react'
 import { IconButton } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
@@ -23,61 +26,64 @@ import { Show, Hide } from '@chakra-ui/react'
 
 const auth = getAuth()
 
+
 const NavbarS = () => {
-  const [currentUser, setCurrentUser] = useState(null)
-  const [user, loading, error] = useAuthState(firebase.auth())
-  const [isLogIn, setLogIn] = useState(null) //state check if
-  const router = useRouter()
+  const [currentUser, setCurrentUser] = useState(null);
+  const [user, loading, error] = useAuthState(firebase.auth());
+  const [isLogIn, setLogIn] = useState(null); //state check if
+  const router = useRouter();
 
   useEffect(async () => {
     if (user !== null) {
       setTimeout(async () => {
-        const loginid = user.uid
-        const res = await fetch(`${server}/api/mentors/${loginid}`)
-        const data = await res.json()
+        const loginid = user.uid;
+        const res = await fetch(`${server}/api/mentors/${loginid}`);
+        const data = await res.json();
         if (data[0]) {
-          setCurrentUser(data[0].role)
+          setCurrentUser(data[0].role);
         }
-      }, 2000)
+      }, 2000);
     }
-  }, [user])
+  }, [user]);
 
   useEffect(async () => {
     if (user !== null) {
       setTimeout(async () => {
-        const loginid = user.uid
-        const res = await fetch(`${server}/api/mentees/${loginid}`)
-        const data = await res.json()
+        const loginid = user.uid;
+        const res = await fetch(`${server}/api/mentees/${loginid}`);
+        const data = await res.json();
         if (data[0]) {
-          setCurrentUser(data[0].role)
+          setCurrentUser(data[0].role);
         }
-      }, 2000)
+      }, 2000);
     }
-  }, [user])
+  }, [user]);
 
   useEffect(() => {
-    setLogIn(user)
-  }, [user])
+    setLogIn(user);
+  }, [user]);
 
   function handleLogout() {
     signOut(auth)
       .then(() => {
-        setCurrentUser(null)
-        console.log('Logged out')
-        router.push('/')
+        setCurrentUser(null);
+        console.log("Logged out");
+        router.push("/");
       })
       .catch((error) => {
-        console.log('error')
-      })
+        console.log("error");
+      });
   }
 
   const breakpoints = createBreakpoints({
+
     sm: '30em',
     md: '48em',
     lg: '62em',
     xl: '80em',
     '2xl': '96em',
   })
+
 
   function handleClick(e) {
     e.preventDefault()
@@ -108,35 +114,41 @@ const NavbarS = () => {
 
   return (
     <nav className={styles.navbar}>
-      <div className='logo'>
-        <Link href='/'>
+      <div className="logo">
+        <Link href="/">
           <Image src={logo}></Image>
         </Link>
       </div>
 
       <div className={styles.main}>
         <div className={styles.mains}>
+
           <Link href='/'>
+
             <a>Home</a>
           </Link>
 
-          <Link href='/#about'>
+          <Link href="/#about">
             <a>About</a>
           </Link>
 
-          <Link href='/#contact'>
+          <Link href="/#contact">
             <a>Contact</a>
           </Link>
 
+
           <Link href='/allMentors'>
+
             <a>Find a Mentor</a>
           </Link>
         </div>
       </div>
 
       {currentUser && (
+
         <Show breakpoint='(min-width: 48em)'>
           <Menu display='none'>
+
             <MenuButton as={Button}>Profile</MenuButton>
             <MenuList>
               <MenuItem>
@@ -151,7 +163,9 @@ const NavbarS = () => {
               </MenuItem>
               <MenuDivider />
 
+
               <MenuItem variant='outline-success' onClick={handleLogout}>
+
                 <a>Logout</a>
               </MenuItem>
             </MenuList>
@@ -159,14 +173,17 @@ const NavbarS = () => {
         </Show>
       )}
 
+
       <Hide above='md'>
+
         <Menu>
           <MenuButton
             as={IconButton}
-            aria-label='Options'
+            aria-label="Options"
             icon={<HamburgerIcon />}
-            variant='outline'
+            variant="outline"
           />
+
           <MenuList>
             <MenuItem value={'home'} onClick={(e) => handleClick(e)}>
               Home
@@ -179,8 +196,10 @@ const NavbarS = () => {
             </MenuItem>
             <MenuItem value={'contact'} onClick={(e) => handleClick(e)}>
               Contact
+
             </MenuItem>
             {currentUser && (
+
               <>
                 <MenuItem value={'edit'} onClick={(e) => handleClick(e)}>
                   Edit Profile
@@ -192,11 +211,12 @@ const NavbarS = () => {
                   Logout
                 </MenuItem>
               </>
+
             )}
           </MenuList>
         </Menu>
       </Hide>
     </nav>
-  )
-}
-export default NavbarS
+  );
+};
+export default NavbarS;

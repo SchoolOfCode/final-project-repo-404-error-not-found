@@ -1,8 +1,10 @@
+
 import React, { useEffect, useState } from 'react'
 import firebase from '../../firebase/clientApp'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/router'
 import { server } from '../../config'
+
 
 export default function Setpath() {
   const [currentMentor, setCurrentMentor] = useState(null)
@@ -12,21 +14,25 @@ export default function Setpath() {
   useEffect(() => {
     async function getUser() {
       try {
+        // if new user , add their id to database, and send them to setup profile page to enter their details
         if (user !== null) {
+
           const data = {
             loginid: user.uid,
             photourl:
               'https://www.pngitem.com/pimgs/m/421-4212617_person-placeholder-image-transparent-hd-png-download.png',
           }
 
+
           const res = await fetch(`${server}/api/mentors`, {
-            method: 'POST',
+            method: "POST",
 
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '',
             },
             body: JSON.stringify(data),
+
           })
 
           const response = await res.json()
@@ -35,6 +41,7 @@ export default function Setpath() {
         }
       } catch (error) {
         router.push('/profile/mentor')
+
       }
     }
     getUser()

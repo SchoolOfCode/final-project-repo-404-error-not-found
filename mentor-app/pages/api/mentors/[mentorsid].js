@@ -29,6 +29,7 @@ export default async function (req, res) {
       res.status(200).json(mentorToDelete);
       break;
     default:
+      //only allows these methods on this route - handle others with error message
       res.setHeader("Allow", ["PATCH", "DELETE", "GET"]);
       res.status(405).end(`Method ${HTTPMethod} not Allowed`);
   }
