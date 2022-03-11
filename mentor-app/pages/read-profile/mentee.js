@@ -63,7 +63,7 @@ export default function Profile(props) {
   if (currentMentee !== null) {
     return (
       <div className={css.profileFullArea}>
-        <h1>Your profile</h1>
+        <h1>Mentee profile</h1>
         <br />
         <Center p={15}>
           <Box
@@ -245,7 +245,7 @@ export default function Profile(props) {
                       {currentMentee.aims}
                     </Text>
 
-                    <Link href="/allMentors">
+                    <Link href="/dashboard/mentor">
                       <ButtonCh
                         flex={1}
                         fontSize={"lg"}
@@ -271,7 +271,7 @@ export default function Profile(props) {
                           bg: "blue.500",
                         }}
                       >
-                        View all Mentors
+                        Back to dashboard
                       </ButtonCh>
                     </Link>
                   </VStack>

@@ -40,7 +40,7 @@ export default function contact() {
       maxW="full"
       mt={0}
       p={3}
-      // centerContent
+      centerContent
       overflow="hidden"
     >
       <Flex>
