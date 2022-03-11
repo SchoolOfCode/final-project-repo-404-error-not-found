@@ -54,6 +54,35 @@ export default function Profile(props) {
 
   const [apply, setApply] = useState(true);
 
+  const [userRole, setUserRole] = useState(null);
+
+  // async function getUserRole() {
+  //   if (user !== null) {
+  //     const res = await fetch(`${server}/api/mentor/${user.uid}`);
+  //     const response = await res.json();
+  //     console.log(response);
+  //     if (res.status === "200") {
+  //       userRole = "mentor";
+  //     } else {
+  //       userRole = "mentee";
+  //     }
+  //     console.log(userRole);
+  //   }
+  // }
+  useEffect(async () => {
+    if (user !== null) {
+      const res = await fetch(`${server}/api/mentor/${user.uid}`);
+      const response = await res.json();
+      console.log(response);
+      if (res.status === "200") {
+        setUserRole("mentor");
+      } else {
+        setUserRole("mentee");
+      }
+      console.log(userRole);
+    }
+  }, [user]);
+
   async function handleApply() {
     setApply(false);
     const data = { mentor_id: currentMentor.loginid, mentee_id: user.uid };
@@ -238,6 +267,7 @@ export default function Profile(props) {
                     <p>Description of what is offered</p>
                   </div>
                   <div className={css.lowSquare}>
+                    {}
                     {apply ? (
                       <Button onClick={() => handleApply()}>Apply Now</Button>
                     ) : (
