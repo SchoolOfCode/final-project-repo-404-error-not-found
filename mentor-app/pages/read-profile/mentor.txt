@@ -36,3 +36,33 @@
 <Button colorScheme='teal' variant='ghost'>
     Button
   </Button>
+
+
+  <Box>
+                <Stack
+                  flex={1}
+                  flexDirection="column"
+                  justifyContent="center left"
+                  alignItems="center left"
+                  p={9}
+                  pt={2}
+                >
+                  <HStack>
+                    <Heading
+                      fontSize={"4xl"}
+                      fontFamily={"body"}
+                      alignText={"center left"}
+                    >
+                      {currentMentee.firstname} {currentMentee.surname}
+                    </Heading>
+                    <Text
+                      fontWeight={600}
+                      color={"gray.500"}
+                      fontSize="lg"
+                      mb={4}
+                      pt={4}
+                      pl={3}
+                    >
+                      {currentMentee.jobtitle}
+                    </Text>
+                  </HStack>

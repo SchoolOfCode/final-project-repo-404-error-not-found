@@ -218,38 +218,39 @@ export default function Profile(props) {
                   pt={2}
                 >
                   <VStack>
-                    <div>
-                      <Heading
-                        flex={1}
-                        fontSize={"2xl"}
-                        fontFamily="body"
-                        alignText="center"
-                        alignItems="center"
-                        justifyContent="center"
-                        justifyItems="center"
-                        fontWeight={500}
-                        py={4}
-                        color="gray.500"
-                      >
-                        Aims
-                      </Heading>
-                      <br />
-                      <Text
-                        fontWeight={600}
-                        color={"gray.500"}
-                        fontSize="lg"
-                        mb={4}
-                        pb={20}
-                      >
-                        {currentMentee.aims}
-                      </Text>
-                    </div>
+                    <Heading
+                      flex={1}
+                      fontSize={"2xl"}
+                      fontFamily="body"
+                      alignText="center"
+                      alignItems="center"
+                      justifyContent="center"
+                      justifyItems="center"
+                      fontWeight={500}
+                      color="gray.500"
+                    >
+                      Aims
+                    </Heading>
+                    <br />
+                    <Text
+                      fontWeight={600}
+                      color={"gray.500"}
+                      fontSize="lg"
+                      mb={10}
+                      pb={20}
+                      border="2px"
+                      borderRadius={"15px"}
+                      p={"1rem"}
+                    >
+                      {currentMentee.aims}
+                    </Text>
 
                     <Link href="/allMentors">
                       <ButtonCh
                         flex={1}
                         fontSize={"lg"}
                         size={"md"}
+                        p={"0.5rem"}
                         height="48px"
                         width="200px"
                         border="2px"

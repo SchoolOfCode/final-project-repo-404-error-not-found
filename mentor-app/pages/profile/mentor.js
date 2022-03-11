@@ -24,9 +24,7 @@ export default function Profile() {
       // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
       console.log("about to send GET request!");
 
-
       const res = await fetch(`${server}/api/mentors/${loginid}`);
-
 
       const data = await res.json();
       setCurrentMentor(data[0]);
@@ -38,9 +36,9 @@ export default function Profile() {
 
   if (currentMentor !== null) {
     // let socialsKey = Object.keys(currentMentor.socials);
+    console.log("check here!");
     console.log(currentMentor);
     return (
-
       <div className={styles.profileFullArea}>
         <h1>Your profile</h1>
         <br />
@@ -81,7 +79,6 @@ export default function Profile() {
                   ))
                 : null}
               {/* <div className={css.skill}>skill</div> */}
-
             </div>
           </div>
           <div className={styles.biographyArea}>
