@@ -63,9 +63,10 @@ export default function Profile(props) {
   useEffect(async () => {
     if (user) {
       const res = await fetch(`${server}/api/mentors/${user.uid}`);
-      const response = await res;
+      const response = await res.json();
       console.log(response);
-      if (response.status === 200) {
+
+      if (response[0]) {
         setUserRole("mentor");
       } else {
         setUserRole("mentee");
