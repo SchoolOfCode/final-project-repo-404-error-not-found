@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -51,37 +51,28 @@ export default function Profile(props) {
   const { currentId } = props;
   const [currentMentor, setCurrentMentor] = useState(null);
   const [user, loading, error] = useAuthState(firebase.auth());
-
   const [apply, setApply] = useState(true);
+  const [userRole, setUserRole] = useState("default");
 
-  const [userRole, setUserRole] = useState(null);
+  // const [userIsLoaded, setUserIsLoaded] = useState(false);
 
-  // async function getUserRole() {
-  //   if (user !== null) {
-  //     const res = await fetch(`${server}/api/mentor/${user.uid}`);
-  //     const response = await res.json();
-  //     console.log(response);
-  //     if (res.status === "200") {
-  //       userRole = "mentor";
-  //     } else {
-  //       userRole = "mentee";
-  //     }
-  //     console.log(userRole);
-  //   }
-  // }
+  // useEffect(() => {
+  //   setUserIsLoaded(!userIsLoaded);
+  // }, [user]);
+
   useEffect(async () => {
-    if (user !== null) {
-      const res = await fetch(`${server}/api/mentor/${user.uid}`);
-      const response = await res.json();
+    if (user) {
+      const res = await fetch(`${server}/api/mentors/${user.uid}`);
+      const response = await res;
       console.log(response);
-      if (res.status === "200") {
+      if (response.status === 200) {
         setUserRole("mentor");
       } else {
         setUserRole("mentee");
       }
-      console.log(userRole);
+      console.log("User role is", userRole);
     }
-  }, [user]);
+  }, [loading, user]);
 
   async function handleApply() {
     setApply(false);
@@ -109,7 +100,9 @@ export default function Profile(props) {
   if (currentMentor !== null) {
     return (
       <div className={css.profileFullArea}>
-        <h1>Mentor profile</h1>
+        <h1>Mentor Profile</h1>
+        {/* <p>You are currently logged in as a {userRole}.</p> */}
+
         <br />
         <Center p={15}>
           <Box
@@ -267,8 +260,7 @@ export default function Profile(props) {
                     <p>Description of what is offered</p>
                   </div>
                   <div className={css.lowSquare}>
-                    {}
-                    {apply ? (
+                    {userRole === "mentor" ? null : apply ? (
                       <Button onClick={() => handleApply()}>Apply Now</Button>
                     ) : (
                       <p>
