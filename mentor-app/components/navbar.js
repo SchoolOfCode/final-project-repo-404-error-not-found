@@ -1,11 +1,10 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import firebase from '../firebase/clientApp'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { getAuth, signOut } from 'firebase/auth'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
-// import styles from "../styles/hamburgermenu.module.css";
 import Image from 'next/image'
 import { server } from '../config'
 import logo from '../Images/mentoree_home_logo.jpg'
@@ -19,12 +18,10 @@ import {
 } from '@chakra-ui/react'
 import { IconButton } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-
 import { createBreakpoints } from '@chakra-ui/theme-tools'
 import { Show, Hide } from '@chakra-ui/react'
 
 const auth = getAuth()
-
 
 const NavbarS = () => {
   const [currentUser, setCurrentUser] = useState(null)
@@ -75,13 +72,39 @@ const NavbarS = () => {
   }
 
   const breakpoints = createBreakpoints({
-
     sm: '30em',
     md: '48em',
     lg: '62em',
     xl: '80em',
     '2xl': '96em',
   })
+
+  function handleClick(e) {
+    e.preventDefault()
+    console.log(e.target.value)
+    switch (e.target.value) {
+      case 'home':
+        router.push('/')
+        break
+      case 'find':
+        router.push('/allMentors')
+        break
+      case 'edit':
+        router.push(`/edit-profile/${currentUser}`)
+        break
+      case 'dashboard':
+        router.push(`/dashboard/${currentUser}`)
+        break
+      case 'about':
+        router.push('/#about')
+        break
+      case 'dashboard':
+        router.push('/#contact')
+        break
+      default:
+        break
+    }
+  }
 
   return (
     <nav className={styles.navbar}>
@@ -93,7 +116,6 @@ const NavbarS = () => {
 
       <div className={styles.main}>
         <div className={styles.mains}>
-
           <Link href='/'>
             <a>Home</a>
           </Link>
@@ -107,17 +129,14 @@ const NavbarS = () => {
           </Link>
 
           <Link href='/allMentors'>
-
             <a>Find a Mentor</a>
           </Link>
         </div>
       </div>
 
       {currentUser && (
-
         <Show breakpoint='(min-width: 48em)'>
           <Menu display='none'>
-
             <MenuButton as={Button}>Profile</MenuButton>
             <MenuList>
               <MenuItem>
@@ -133,19 +152,12 @@ const NavbarS = () => {
               <MenuDivider />
 
               <MenuItem variant='outline-success' onClick={handleLogout}>
-
                 <a>Logout</a>
               </MenuItem>
             </MenuList>
           </Menu>
         </Show>
       )}
-
-      {/* {isLogIn && (
-        <Button variant="outline-success" onClick={handleLogout}>
-          Logout
-        </Button>
-      )} */}
 
       <Hide above='md'>
         <Menu>
@@ -155,63 +167,31 @@ const NavbarS = () => {
             icon={<HamburgerIcon />}
             variant='outline'
           />
-          <MenuList
-            height='300px'
-            width='100px'
-            zIndex={2000}
-            color='blackAlpha.50'
-            // fontSize={20}
-          >
-            <MenuItem>
-              <Link href='/'>
-                <a>Home</a>
-
-              </Link>
+          <MenuList>
+            <MenuItem value={'home'} onClick={(e) => handleClick(e)}>
+              Home
             </MenuItem>
-
-            <MenuItem>
-
-              <Link href='/#about'>
-                <a>About</a>
-              </Link>
+            <MenuItem value={'find'} onClick={(e) => handleClick(e)}>
+              Find a Mentor
             </MenuItem>
-
-            <MenuItem>
-
-              <Link href='/#contact'>
-                <a>Contact</a>
-              </Link>
+            <MenuItem value={'about'} onClick={(e) => handleClick(e)}>
+              About
             </MenuItem>
-
-            <MenuItem>
-              <Link href='/allMentors'>
-
-                <a>Find a Mentor</a>
-              </Link>
+            <MenuItem value={'contact'} onClick={(e) => handleClick(e)}>
+              Contact
             </MenuItem>
-
             {currentUser && (
-              <Menu>
-                <MenuButton as={Button}>Profile</MenuButton>
-                <MenuList>
-                  <MenuItem>
-                    <Link href={`/edit-profile/${currentUser}`}>
-                      <a>Edit profile</a>
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link href={`/dashboard/${currentUser}`}>
-                      <a>Dashboard</a>
-                    </Link>
-                  </MenuItem>
-                  <MenuDivider />
-
-                  <MenuItem variant='outline-success' onClick={handleLogout}>
-
-                    <a>Logout</a>
-                  </MenuItem>
-                </MenuList>
-              </Menu>
+              <>
+                <MenuItem value={'edit'} onClick={(e) => handleClick(e)}>
+                  Edit Profile
+                </MenuItem>
+                <MenuItem value={'dashboard'} onClick={(e) => handleClick(e)}>
+                  Dashboard
+                </MenuItem>
+                <MenuItem value={'logout'} onClick={handleLogout}>
+                  Logout
+                </MenuItem>
+              </>
             )}
           </MenuList>
         </Menu>
