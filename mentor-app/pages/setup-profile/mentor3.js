@@ -10,6 +10,10 @@ import { useState } from "react";
 import { Checkbox } from "antd";
 import css from "./mentor.module.css";
 
+import TwitterIcon from "../../components/TwitterIcon";
+import GithubIcon from "../../components/GithubIcon";
+import LinkedinIcon from "../../components/LinkedinIcon";
+
 import { Button } from "react-bootstrap";
 
 import {
