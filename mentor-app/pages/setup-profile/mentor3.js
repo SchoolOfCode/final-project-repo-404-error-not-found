@@ -1,43 +1,37 @@
-import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 
 import { server } from "../../config";
 
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Checkbox } from "antd";
-import css from "./mentor.module.css";
-
-import TwitterIcon from "../../components/TwitterIcon";
-import GithubIcon from "../../components/GithubIcon";
-import LinkedinIcon from "../../components/LinkedinIcon";
-
-import { Button } from "react-bootstrap";
+import * as Yup from "yup";
 
 import {
-  Container,
-  Stack,
-  Flex,
   Box,
-  Heading,
-  Text,
-  IconButton,
-  Button as ButtonCh,
-  VStack,
-  HStack,
-  Wrap,
-  WrapItem,
+  ButtonGroup,
+  CheckboxGroup,
+  Container,
+  Flex,
   FormControl,
   FormLabel,
+  Heading,
+  HStack,
   Input,
   InputGroup,
   InputLeftElement,
-  Textarea,
-  CheckboxGroup,
   Select,
+  Stack,
+  Textarea,
+  VStack,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
+
+import { Formik } from "formik";
+
+import { InputControl, SubmitButton } from "formik-chakra-ui";
 
 const url = process.env.REACT_APP_BACKEND_URL;
 
@@ -142,263 +136,295 @@ function Mentor() {
     console.log(JSON.stringify(body));
     router.push("/profile/mentor");
   };
+
+  const onSubmit = async () => {
+    const body = {
+      firstname,
+      surname,
+      email,
+      //no job title in db yet --DONE
+      jobtitle,
+      // no company in db yet --DONE
+      company,
+      location,
+      biography,
+      photourl,
+      tagline,
+      //skills array will neeed constructing --DONE
+      skills,
+      //social media object will need constructing --DONE (for single social media entry)
+      socials,
+    };
+    //patch request to update mentor at id
+    // const data = { loginid: user.uid };
+    const loginid = user.uid;
+
+    const response = await fetch(`${server}/api/mentors/${loginid}`, {
+      method: "PATCH",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    console.log(JSON.stringify(body));
+    router.push("/profile/mentor");
+  };
+
+  const initialValues = {
+    firstname: "",
+    surname: "",
+    email: "",
+  };
+
+  const validationSchema = Yup.object({
+    firstname: Yup.string().required(),
+    surname: Yup.string().required(),
+    email: Yup.string().email().required(),
+  });
+
   return (
     <>
-      <Container
-        bg="#9DC4FB"
-        maxW="full"
-        mt={0}
-        centerContent
-        overflow="hidden"
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
       >
-        <Flex>
-          <Box
-            bg="#02054B"
-            color="white"
-            borderRadius="lg"
-            m={{ sm: 4, md: 16, lg: 10 }}
-            p={{ sm: 5, md: 5, lg: 16 }}
+        {({ handleSubmit, values, errors }) => (
+          <Container
+            bg="#9DC4FB"
+            maxW="full"
+            mt={0}
+            centerContent
+            overflow="hidden"
+            as={"form"}
+            onSubmit={handleSubmit}
           >
-            <Box p={4}>
-              <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
-                <VStack>
-                  <WrapItem>
-                    <Box>
-                      <Heading mb={"1rem"}>Setup Profile</Heading>
-                      {/* <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
+            <Flex>
+              <Box
+                bg="#02054B"
+                color="white"
+                borderRadius="lg"
+                m={{ sm: 4, md: 16, lg: 10 }}
+                p={{ sm: 5, md: 5, lg: 16 }}
+              >
+                <Box p={4}>
+                  <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
+                    <VStack>
+                      <WrapItem>
+                        <Box>
+                          <Heading mb={"1rem"}>Setup Profile</Heading>
+                          {/* <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
                       <VStack
                         pl={0}
                         spacing={3}
                         alignItems="flex-start"
                       ></VStack>
                     </Box> */}
-                      {/* <HStack
+                          {/* <HStack
                       mt={{ lg: 10, md: 10 }}
                       spacing={5}
                       px={5}
                       alignItems="flex-start"
                     ></HStack> */}
-                    </Box>
-                  </WrapItem>
+                        </Box>
+                      </WrapItem>
 
-                  <WrapItem>
-                    <Box bg="white" borderRadius="lg">
-                      <Box m={8} color="#0B0E3F">
-                        <HStack>
-                          <Box mr={6}>
-                            <VStack spacing={5}>
-                              <FormControl id="name">
-                                <FormLabel>First Name</FormLabel>
-                                <InputGroup borderColor="#E0E1E7">
-                                  <InputLeftElement pointerEvents="none" />
-                                  <Input
-                                    id="first-name"
-                                    type="text"
-                                    size="md"
-                                    value={firstname}
+                      <WrapItem>
+                        <Box bg="white" borderRadius="lg">
+                          <Box m={8} color="#0B0E3F">
+                            <HStack>
+                              <Box mr={6}>
+                                <VStack spacing={5}>
+                                  <InputControl
+                                    name="firstname"
+                                    label="First Name"
                                     onChange={(e) =>
                                       setFirstname(e.target.value)
                                     }
                                   />
-                                </InputGroup>
-                              </FormControl>
-                              <FormControl id="name">
-                                <FormLabel>Surname</FormLabel>
-                                <InputGroup borderColor="#E0E1E7">
-                                  <InputLeftElement pointerEvents="none" />
-                                  <Input
-                                    type="text"
-                                    size="md"
-                                    id="surname"
-                                    value={surname}
+                                  <InputControl
+                                    name="surname"
+                                    label="Surname"
                                     onChange={(e) => setSurname(e.target.value)}
                                   />
-                                </InputGroup>
-                              </FormControl>
-                              <FormControl id="name">
-                                <FormLabel>Email</FormLabel>
-                                <InputGroup borderColor="#E0E1E7">
-                                  <InputLeftElement pointerEvents="none" />
-
-                                  <Input
-                                    type="text"
-                                    size="md"
-                                    id="email"
-                                    value={email}
+                                  <InputControl
+                                    name="email"
+                                    label="Email"
                                     onChange={(e) => setEmail(e.target.value)}
                                   />
-                                </InputGroup>
-                              </FormControl>
-                              <FormControl id="name">
-                                <FormLabel>Job Title</FormLabel>
-                                <InputGroup borderColor="#E0E1E7">
-                                  <InputLeftElement pointerEvents="none" />
 
-                                  <Input
-                                    type="text"
-                                    size="md"
-                                    id="jobtitle"
-                                    value={jobtitle}
-                                    onChange={(e) =>
-                                      setJobtitle(e.target.value)
-                                    }
-                                  />
-                                </InputGroup>
-                              </FormControl>
-                              <FormControl id="name">
-                                <FormLabel>Company</FormLabel>
-                                <InputGroup borderColor="#E0E1E7">
-                                  <InputLeftElement pointerEvents="none" />
+                                  <FormControl id="name">
+                                    <FormLabel>Job Title</FormLabel>
+                                    <InputGroup borderColor="#E0E1E7">
+                                      <InputLeftElement pointerEvents="none" />
 
-                                  <Input
-                                    type="text"
-                                    size="md"
-                                    id="company"
-                                    value={company}
-                                    onChange={(e) => setCompany(e.target.value)}
-                                  />
-                                </InputGroup>
-                              </FormControl>
-                              <FormControl id="name">
-                                <FormLabel>Location</FormLabel>
-                                <InputGroup borderColor="#E0E1E7">
-                                  <InputLeftElement pointerEvents="none" />
+                                      <Input
+                                        type="text"
+                                        size="md"
+                                        id="jobtitle"
+                                        value={jobtitle}
+                                        onChange={(e) =>
+                                          setJobtitle(e.target.value)
+                                        }
+                                      />
+                                    </InputGroup>
+                                  </FormControl>
+                                  <FormControl id="name">
+                                    <FormLabel>Company</FormLabel>
+                                    <InputGroup borderColor="#E0E1E7">
+                                      <InputLeftElement pointerEvents="none" />
 
-                                  <Input
-                                    type="text"
-                                    size="md"
-                                    id="location"
-                                    value={location}
-                                    placeholder="City"
-                                    onChange={(e) =>
-                                      setLocation(e.target.value)
-                                    }
-                                  />
-                                </InputGroup>
-                              </FormControl>
-                            </VStack>
+                                      <Input
+                                        type="text"
+                                        size="md"
+                                        id="company"
+                                        value={company}
+                                        onChange={(e) =>
+                                          setCompany(e.target.value)
+                                        }
+                                      />
+                                    </InputGroup>
+                                  </FormControl>
+                                  <FormControl id="name">
+                                    <FormLabel>Location</FormLabel>
+                                    <InputGroup borderColor="#E0E1E7">
+                                      <InputLeftElement pointerEvents="none" />
+
+                                      <Input
+                                        type="text"
+                                        size="md"
+                                        id="location"
+                                        value={location}
+                                        placeholder="City"
+                                        onChange={(e) =>
+                                          setLocation(e.target.value)
+                                        }
+                                      />
+                                    </InputGroup>
+                                  </FormControl>
+                                </VStack>
+                              </Box>
+
+                              <Box ml={6}>
+                                <VStack spacing={5}>
+                                  <FormControl id="name">
+                                    <FormLabel>Biography</FormLabel>
+                                    <Textarea
+                                      id="biography"
+                                      value={biography}
+                                      onChange={(e) =>
+                                        setBiography(e.target.value)
+                                      }
+                                      maxLength="600ch"
+                                      borderColor="gray.300"
+                                      _hover={{
+                                        borderRadius: "gray.300",
+                                      }}
+                                    />
+                                  </FormControl>
+                                  <FormControl id="name">
+                                    <FormLabel>Tagline</FormLabel>
+                                    <InputGroup borderColor="#E0E1E7">
+                                      <InputLeftElement pointerEvents="none" />
+
+                                      <Input
+                                        type="text"
+                                        size="md"
+                                        id="tagline"
+                                        placeholder="One sentence about yourself"
+                                        value={tagline}
+                                        onChange={(e) =>
+                                          setTagline(e.target.value)
+                                        }
+                                      />
+                                    </InputGroup>
+                                  </FormControl>
+
+                                  <FormControl id="name">
+                                    <FormLabel>Skills</FormLabel>
+                                    <CheckboxGroup>
+                                      <Stack
+                                        spacing={[1, 5]}
+                                        direction={["column", "row"]}
+                                      >
+                                        <Checkbox
+                                          id="frontend"
+                                          value="frontend"
+                                          onChange={updateSkills}
+                                          spacing="3em"
+                                        >
+                                          Frontend
+                                        </Checkbox>
+                                        <Checkbox
+                                          id="fullstack"
+                                          value="fullstack"
+                                          onChange={updateSkills}
+                                        >
+                                          Fullstack
+                                        </Checkbox>
+                                        <Checkbox
+                                          id="backend"
+                                          value="backend"
+                                          onChange={updateSkills}
+                                        >
+                                          Backend
+                                        </Checkbox>
+                                        <Checkbox
+                                          id="ux-ui"
+                                          value="ux-ui"
+                                          onChange={updateSkills}
+                                        >
+                                          UX/UI
+                                        </Checkbox>
+                                      </Stack>
+                                    </CheckboxGroup>
+                                  </FormControl>
+
+                                  <FormControl id="name">
+                                    <FormLabel>Social Media Handle</FormLabel>
+                                    <InputGroup borderColor="#E0E1E7">
+                                      <InputLeftElement pointerEvents="none" />
+
+                                      <Input
+                                        type="text"
+                                        size="md"
+                                        id="socialmediausername"
+                                        placeholder="@"
+                                        value={socialMediaUserName}
+                                        onChange={(e) =>
+                                          setSocialMediaUserName(e.target.value)
+                                        }
+                                      />
+                                    </InputGroup>
+                                  </FormControl>
+
+                                  <FormControl id="name">
+                                    <Select placeholder="Select Social Media Type">
+                                      <option value="github">Github</option>
+                                      <option value="linkedin">LinkedIn</option>
+                                      <option value="twitter">Twitter</option>
+                                    </Select>
+                                  </FormControl>
+
+                                  <ButtonGroup>
+                                    <SubmitButton>Submit</SubmitButton>
+                                  </ButtonGroup>
+                                </VStack>
+                              </Box>
+                            </HStack>
                           </Box>
-
-                          <Box ml={6}>
-                            <VStack spacing={5}>
-                              <FormControl id="name">
-                                <FormLabel>Biography</FormLabel>
-                                <Textarea
-                                  id="biography"
-                                  value={biography}
-                                  onChange={(e) => setBiography(e.target.value)}
-                                  maxLength="600ch"
-                                  borderColor="gray.300"
-                                  _hover={{
-                                    borderRadius: "gray.300",
-                                  }}
-                                />
-                              </FormControl>
-                              <FormControl id="name">
-                                <FormLabel>Tagline</FormLabel>
-                                <InputGroup borderColor="#E0E1E7">
-                                  <InputLeftElement pointerEvents="none" />
-
-                                  <Input
-                                    type="text"
-                                    size="md"
-                                    id="tagline"
-                                    placeholder="One sentence about yourself"
-                                    value={tagline}
-                                    onChange={(e) => setTagline(e.target.value)}
-                                  />
-                                </InputGroup>
-                              </FormControl>
-
-                              <FormControl id="name">
-                                <FormLabel>Skills</FormLabel>
-                                <CheckboxGroup>
-                                  <Stack
-                                    spacing={[1, 5]}
-                                    direction={["column", "row"]}
-                                  >
-                                    <Checkbox
-                                      id="frontend"
-                                      value="frontend"
-                                      onChange={updateSkills}
-                                      spacing="3em"
-                                    >
-                                      Frontend
-                                    </Checkbox>
-                                    <Checkbox
-                                      id="fullstack"
-                                      value="fullstack"
-                                      onChange={updateSkills}
-                                    >
-                                      Fullstack
-                                    </Checkbox>
-                                    <Checkbox
-                                      id="backend"
-                                      value="backend"
-                                      onChange={updateSkills}
-                                    >
-                                      Backend
-                                    </Checkbox>
-                                    <Checkbox
-                                      id="ux-ui"
-                                      value="ux-ui"
-                                      onChange={updateSkills}
-                                    >
-                                      UX/UI
-                                    </Checkbox>
-                                  </Stack>
-                                </CheckboxGroup>
-                              </FormControl>
-
-                              <FormControl id="name">
-                                <FormLabel>Social Media Handle</FormLabel>
-                                <InputGroup borderColor="#E0E1E7">
-                                  <InputLeftElement pointerEvents="none" />
-
-                                  <Input
-                                    type="text"
-                                    size="md"
-                                    id="socialmediausername"
-                                    placeholder="@"
-                                    value={socialMediaUserName}
-                                    onChange={(e) =>
-                                      setSocialMediaUserName(e.target.value)
-                                    }
-                                  />
-                                </InputGroup>
-                              </FormControl>
-
-                              <FormControl id="name">
-                                <Select placeholder="Select Social Media Type">
-                                  <option value="github">Github</option>
-                                  <option value="linkedin">LinkedIn</option>
-                                  <option value="twitter">Twitter</option>
-                                </Select>
-                              </FormControl>
-
-                              <FormControl id="name" float="right">
-                                <ButtonCh
-                                  variant="solid"
-                                  onClick={submitForm}
-                                  bg="#0D74FF"
-                                  color="white"
-                                  _hover={{}}
-                                >
-                                  Submit
-                                </ButtonCh>
-                              </FormControl>
-                            </VStack>
-                          </Box>
-                        </HStack>
-                      </Box>
-                    </Box>
-                  </WrapItem>
-                </VStack>
-              </Wrap>
-            </Box>
-          </Box>
-        </Flex>
-      </Container>
+                        </Box>
+                      </WrapItem>
+                    </VStack>
+                  </Wrap>
+                </Box>
+              </Box>
+            </Flex>
+          </Container>
+        )}
+      </Formik>
     </>
   );
 }
