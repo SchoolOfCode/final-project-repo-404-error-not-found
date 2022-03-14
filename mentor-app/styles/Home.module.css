@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
 
 .headerTitle {
   color: #333;
   padding-bottom: 10px;
   text-align: center;
   font-size: 2.5em;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-weight: 625;
   margin-top: 1em;
 }
@@ -16,7 +16,7 @@
   margin-top: 20px;
   font-size: 2.3em;
   font-weight: 700;
-  font-family: 'Nunito';
+  font-family: "Nunito";
 }
 
 .text {
@@ -59,7 +59,7 @@
   border-radius: 20px;
   color: white;
   text-align: center;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-weight: bolder;
   justify-content: center;
   cursor: pointer;
@@ -83,7 +83,7 @@
   border-radius: 20px;
   color: white;
   text-align: center;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-weight: bolder;
   justify-content: center;
   cursor: pointer;
@@ -111,7 +111,7 @@
 
 .aboutBGBanner {
   position: absolute;
-  width: 100vw;
+  max-width: 100vw;
   height: 100vh;
   object-fit: cover;
   z-index: -1000;
