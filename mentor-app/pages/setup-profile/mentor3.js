@@ -173,15 +173,15 @@ function Mentor() {
   };
 
   const initialValues = {
-    firstname: "",
-    surname: "",
-    email: "",
+    Firstname: "",
+    Surname: "",
+    Email: "",
   };
 
   const validationSchema = Yup.object({
-    firstname: Yup.string().required(),
-    surname: Yup.string().required(),
-    email: Yup.string().email().required(),
+    Firstname: Yup.string().required("First Name required"),
+    Surname: Yup.string().required("Surname required"),
+    Email: Yup.string().email("Invalid Email").required("Email required"),
   });
 
   return (
@@ -238,19 +238,19 @@ function Mentor() {
                               <Box mr={6}>
                                 <VStack spacing={5}>
                                   <InputControl
-                                    name="firstname"
+                                    name="Firstname"
                                     label="First Name"
                                     onChange={(e) =>
                                       setFirstname(e.target.value)
                                     }
                                   />
                                   <InputControl
-                                    name="surname"
+                                    name="Surname"
                                     label="Surname"
                                     onChange={(e) => setSurname(e.target.value)}
                                   />
                                   <InputControl
-                                    name="email"
+                                    name="Email"
                                     label="Email"
                                     onChange={(e) => setEmail(e.target.value)}
                                   />
