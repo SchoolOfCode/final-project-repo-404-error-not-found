@@ -5,6 +5,7 @@ import css from '../pages/dashboard/dashboard.module.css'
 import Link from 'next/link'
 import { server } from '../config'
 import { useEffect, useState } from 'react'
+import { IconButton, EmailIcon } from '@chakra-ui/react'
 
 export default function CardDetail(props) {
   const { info, roleUrl } = props
@@ -57,6 +58,7 @@ export default function CardDetail(props) {
               View Profile
             </Button>
           </Link>
+
           <Button
             onClick={() =>
               (window.location.href = `mailto:${infoRender[0].email}`)

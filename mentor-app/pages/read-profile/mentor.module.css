@@ -1,13 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+
 .profileFullArea {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  width: 80%;
-  margin: auto;
+  /* display: grid;
+  grid-template-columns: 2fr 1fr; */
+  /* width: 50%; */
+  /* margin: auto; */
 }
 .profileFullArea h1 {
-  font-size: 2em;
-  padding-bottom: 2rem;
-  margin: auto;
+  font-size: 3em;
+  padding-top: 3rem;
+  /* padding-bottom: 0.5rem; */
+  /* margin: auto; */
+  display: flex;
+  justify-content: center;
+  font-family: "Nunito";
 }
 
 .profileMainArea {
@@ -125,17 +131,17 @@
 .topSquare {
   border: 1px solid black;
   border-radius: 10px;
-  height: 140px;
+  height: 200px;
   width: 13rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .lowSquare {
   margin-top: 3rem;
-  border: 1px solid black;
-  border-radius: 10px;
-
+  /* border: 1px solid black; */
+  /* border-radius: 10px; */
   height: 100px;
   width: 13rem;
   display: flex;
