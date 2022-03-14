@@ -28,7 +28,7 @@ import {
   InputGroup,
   InputLeftElement,
   Textarea,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 export default function contact() {
   return (
@@ -39,29 +39,25 @@ export default function contact() {
           color="white"
           borderRadius="lg"
           m={{ sm: 4, md: 16, lg: 10 }}
-          p={{ sm: 5, md: 5, lg: 16 }}>
+          p={{ sm: 5, md: 5, lg: 16 }}
+        >
           <Box p={4}>
             <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
               <WrapItem>
                 <Box>
                   <Heading>Setup Profile</Heading>
                   <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
-                    <VStack pl={0} spacing={3} alignItems="flex-start">
-                     
-                  
-                    </VStack>
+                    <VStack pl={0} spacing={3} alignItems="flex-start"></VStack>
                   </Box>
                   <HStack
                     mt={{ lg: 10, md: 10 }}
                     spacing={5}
                     px={5}
-                    alignItems="flex-start">
-                    
-                  </HStack>
+                    alignItems="flex-start"
+                  ></HStack>
                 </Box>
               </WrapItem>
-              
-              
+
               <WrapItem>
                 <Box bg="white" borderRadius="lg">
                   <Box m={8} color="#0B0E3F">
@@ -69,63 +65,45 @@ export default function contact() {
                       <FormControl id="name">
                         <FormLabel>First Name</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
-                          <InputLeftElement
-                            pointerEvents="none"
-                            
-                          />
+                          <InputLeftElement pointerEvents="none" />
                           <Input type="text" size="md" />
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
                         <FormLabel>Surname</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
-                          <InputLeftElement
-                            pointerEvents="none"
-                          
-                          />
-                        <Input type="text" size="md" />
+                          <InputLeftElement pointerEvents="none" />
+                          <Input type="text" size="md" />
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
                         <FormLabel>Email</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
-                          <InputLeftElement
-                            pointerEvents="none"
-                          
-                          />
+                          <InputLeftElement pointerEvents="none" />
 
-                        <Input type="text" size="md" />
+                          <Input type="text" size="md" />
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
                         <FormLabel>Job Title</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
-                          <InputLeftElement
-                            pointerEvents="none"
-                          
-                          />
+                          <InputLeftElement pointerEvents="none" />
 
-                      <Input type="text" size="md" />
+                          <Input type="text" size="md" />
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
                         <FormLabel>Company</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
-                          <InputLeftElement
-                            pointerEvents="none"
-                          
-                          />
+                          <InputLeftElement pointerEvents="none" />
 
-                      <Input type="text" size="md" />
+                          <Input type="text" size="md" />
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
                         <FormLabel>Location</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
-                          <InputLeftElement
-                            pointerEvents="none"
-                          
-                          />
+                          <InputLeftElement pointerEvents="none" />
 
                           <Input type="text" size="md" />
                         </InputGroup>
@@ -135,25 +113,24 @@ export default function contact() {
                         <Textarea
                           borderColor="gray.300"
                           _hover={{
-                            borderRadius: 'gray.300',
+                            borderRadius: "gray.300",
                           }}
-                  
                         />
-
                       </FormControl>
                       <FormControl id="name" float="right">
                         <Button
                           variant="solid"
                           bg="#0D74FF"
                           color="white"
-                          _hover={{}}>
-                          Submit  </Button>
+                          _hover={{}}
+                        >
+                          Submit{" "}
+                        </Button>
                       </FormControl>
                     </VStack>
                   </Box>
                 </Box>
               </WrapItem>
-
             </Wrap>
           </Box>
         </Box>
@@ -162,23 +139,18 @@ export default function contact() {
   );
 }
 
-
-
 // import { Button } from "react-bootstrap";
 
 // const url = process.env.REACT_APP_BACKEND_URL;
-
 
 // //add location and profile pic url fields
 
 // function Mentor() {
 //   const [user, loading, error] = useAuthState(firebase.auth());
 
-
 //   const loginid = user ? user.uid : "";
 
 //   const router = useRouter();
-
 
 //   const [firstname, setFirstname] = useState("");
 //   const [surname, setSurname] = useState("");
