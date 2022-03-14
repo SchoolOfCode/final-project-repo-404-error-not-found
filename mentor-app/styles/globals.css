@@ -43,24 +43,17 @@ nav a {
   list-style: none;
   font-family: "Nunito";
   text-decoration: none;
-  color: black;
+  color: grey;
   padding: 1rem;
   display: inline-block;
   font-size: 20px;
-  margin-right: 1px;
+  margin-right: 10px;
 }
 
-/* nav:hover {
-  border-bottom: 2px solid black;
-  transition: border-bottom 0.5s;
-} */
-/* nav a {
-  margin-left: 12px;
-  margin-bottom: 6px;
-} */
 nav a:hover {
   color: #247ba0;
-  font-weight: bold;
+
+  text-shadow: 1px 0 black;
 }
 
 nav .logo {
@@ -79,7 +72,6 @@ nav .logo {
 nav .profile {
   display: flex;
 }
-
 
 footer {
   display: flex;
@@ -104,8 +96,6 @@ footer p {
   justify-content: center;
 }
 
-
-
 @media only screen and (max-width: 768px) {
   nav {
     display: flex;
@@ -125,9 +115,7 @@ footer p {
     padding-left: 17%;
   }
 
-
-.signIn h1 {
-  justify-items: center;
-}
-
+  .signIn h1 {
+    justify-items: center;
+  }
 }
