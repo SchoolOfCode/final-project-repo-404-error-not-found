@@ -9,30 +9,29 @@ import { Checkbox } from "antd";
 import css from "./mentor.module.css";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import TextField from "../../components/TextField";
+
 import {
-  Container,
-  Stack,
-  Flex,
   Box,
-  Heading,
-  Text,
-  IconButton,
-  Button as ButtonCh,
-  VStack,
-  HStack,
-  Wrap,
-  WrapItem,
+  ButtonGroup,
+  CheckboxGroup,
+  Container,
+  Flex,
   FormControl,
   FormLabel,
+  Heading,
+  HStack,
   Input,
   InputGroup,
   InputLeftElement,
-  Textarea,
-  CheckboxGroup,
   Select,
-  FormErrorMessage,
+  Stack,
+  Textarea,
+  VStack,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
+
+import { InputControl, SubmitButton } from "formik-chakra-ui";
 
 //add location and profile pic url fields
 
@@ -129,27 +128,70 @@ function Mentee() {
     console.log(JSON.stringify(body));
     router.push("/profile/mentee");
   };
+
+  const onSubmit = async () => {
+    const body = {
+      firstname,
+      surname,
+      email,
+      //no job title in db yet --DONE
+      jobtitle,
+      // no company in db yet --DONE
+      company,
+      location,
+      biography,
+      photourl,
+      tagline,
+      //skills array will neeed constructing --DONE
+      skills,
+      //social media object will need constructing --DONE (for single social media entry)
+      socials,
+    };
+    //patch request to update mentor at id
+    // const data = { loginid: user.uid };
+    const loginid = user.uid;
+
+    const response = await fetch(`${server}/api/mentees/${loginid}`, {
+      method: "PATCH",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    console.log(JSON.stringify(body));
+    router.push("/profile/mentee");
+  };
+
+  const initialValues = {
+    Firstname: "",
+    Surname: "",
+    Email: "",
+  };
+
+  const validationSchema = Yup.object({
+    Firstname: Yup.string().required("First Name required"),
+    Surname: Yup.string().required("Surname required"),
+    Email: Yup.string().email("Invalid Email").required("Email required"),
+  });
+
   return (
     <>
       <Formik
-        initialValues={{ firstName: "", surname: "", email: "" }}
-        validationSchema={Yup.object({
-          firstName: Yup.string().required("First name required"),
-          surname: Yup.string().required("Surname required"),
-          email: Yup.string().email("invalid email").required("email required"),
-        })}
-        onSubmit={(values, actions) => {
-          alert(JSON.stringify(values, null, 2));
-          actions.resetForm();
-        }}
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
       >
-        {(formik) => (
+        {({ handleSubmit, values, errors }) => (
           <Container
             bg="#9DC4FB"
             maxW="full"
             mt={0}
             centerContent
             overflow="hidden"
+            as={"form"}
+            onSubmit={handleSubmit}
           >
             <Flex>
               <Box
@@ -184,54 +226,43 @@ function Mentee() {
                       <WrapItem>
                         <Box bg="white" borderRadius="lg">
                           <Box m={8} color="#0B0E3F">
-                            <HStack
-                              as="form"
-                              // mx="auto"
-                              // w={{ base: "90%", md: 500 }}
-                              // h="100vh"
-                              justifyContent="center"
-                              onSubmit={formik.handleSubmit}
-                            >
+                            <HStack>
                               <Box mr={6}>
                                 <VStack spacing={5}>
-                                  <TextField
-                                    label={"First Name"}
-                                    name="firstName"
-                                    type="text"
-                                    size="md"
-                                    value={firstname}
+                                  <InputControl
+                                    name="Firstname"
+                                    label="First Name"
                                     onChange={(e) =>
                                       setFirstname(e.target.value)
                                     }
                                   />
-                                  <TextField
-                                    label={"Surname"}
-                                    name="surname"
-                                    type="text"
-                                    size="md"
-                                    value={surname}
+                                  <InputControl
+                                    name="Surname"
+                                    label="Surname"
                                     onChange={(e) => setSurname(e.target.value)}
                                   />
-
-                                  <TextField
-                                    label={"Email"}
-                                    name="email"
-                                    type="email"
-                                    size="md"
-                                    value={email}
+                                  <InputControl
+                                    name="Email"
+                                    label="Email"
                                     onChange={(e) => setEmail(e.target.value)}
                                   />
 
-                                  <TextField
-                                    label={"Job Title"}
-                                    name="jobtitle"
-                                    type="text"
-                                    size="md"
-                                    value={jobtitle}
-                                    onChange={(e) =>
-                                      setJobtitle(e.target.value)
-                                    }
-                                  />
+                                  <FormControl id="name">
+                                    <FormLabel>Job Title</FormLabel>
+                                    <InputGroup borderColor="#E0E1E7">
+                                      <InputLeftElement pointerEvents="none" />
+
+                                      <Input
+                                        type="text"
+                                        size="md"
+                                        id="jobtitle"
+                                        value={jobtitle}
+                                        onChange={(e) =>
+                                          setJobtitle(e.target.value)
+                                        }
+                                      />
+                                    </InputGroup>
+                                  </FormControl>
 
                                   <FormControl id="name">
                                     <FormLabel>Location</FormLabel>
@@ -289,46 +320,59 @@ function Mentee() {
                                   </FormControl>
 
                                   <FormControl id="name">
+                                    <FormLabel>Aims</FormLabel>
+                                    <InputGroup borderColor="#E0E1E7">
+                                      <InputLeftElement pointerEvents="none" />
+
+                                      <Textarea
+                                        size="md"
+                                        id="aims"
+                                        placeholder="What are your aims and objectives through connecting with a mentor?"
+                                        value={aims}
+                                        onChange={(e) =>
+                                          setAims(e.target.value)
+                                        }
+                                        maxLength="400ch"
+                                      />
+                                    </InputGroup>
+                                  </FormControl>
+
+                                  <FormControl id="name">
                                     <FormLabel>Skills</FormLabel>
                                     <CheckboxGroup>
                                       <Stack
                                         spacing={[1, 5]}
                                         direction={["column", "row"]}
                                       >
-                                        <VStack>
-                                          <Box spacing={"4em"}>
-                                            <Checkbox
-                                              id="frontend"
-                                              value="frontend"
-                                              onChange={updateSkills}
-                                            >
-                                              Frontend
-                                            </Checkbox>
-                                            <Checkbox
-                                              id="fullstack"
-                                              value="fullstack"
-                                              onChange={updateSkills}
-                                            >
-                                              Fullstack
-                                            </Checkbox>
-                                          </Box>
-                                          <Box>
-                                            <Checkbox
-                                              id="backend"
-                                              value="backend"
-                                              onChange={updateSkills}
-                                            >
-                                              Backend
-                                            </Checkbox>
-                                            <Checkbox
-                                              id="ux-ui"
-                                              value="ux-ui"
-                                              onChange={updateSkills}
-                                            >
-                                              UX/UI
-                                            </Checkbox>
-                                          </Box>
-                                        </VStack>
+                                        <Checkbox
+                                          id="frontend"
+                                          value="frontend"
+                                          onChange={updateSkills}
+                                          spacing="3em"
+                                        >
+                                          Frontend
+                                        </Checkbox>
+                                        <Checkbox
+                                          id="fullstack"
+                                          value="fullstack"
+                                          onChange={updateSkills}
+                                        >
+                                          Fullstack
+                                        </Checkbox>
+                                        <Checkbox
+                                          id="backend"
+                                          value="backend"
+                                          onChange={updateSkills}
+                                        >
+                                          Backend
+                                        </Checkbox>
+                                        <Checkbox
+                                          id="ux-ui"
+                                          value="ux-ui"
+                                          onChange={updateSkills}
+                                        >
+                                          UX/UI
+                                        </Checkbox>
                                       </Stack>
                                     </CheckboxGroup>
                                   </FormControl>
@@ -359,18 +403,9 @@ function Mentee() {
                                     </Select>
                                   </FormControl>
 
-                                  <FormControl id="name" float="right">
-                                    <ButtonCh
-                                      variant="solid"
-                                      onClick={submitForm}
-                                      type="submit"
-                                      bg="#0D74FF"
-                                      color="white"
-                                      _hover={{}}
-                                    >
-                                      Submit
-                                    </ButtonCh>
-                                  </FormControl>
+                                  <ButtonGroup>
+                                    <SubmitButton>Submit</SubmitButton>
+                                  </ButtonGroup>
                                 </VStack>
                               </Box>
                             </HStack>
