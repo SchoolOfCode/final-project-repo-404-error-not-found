@@ -4,7 +4,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import { server } from "../../config";
 
-
 export default function Setpath() {
   const [currentMentor, setCurrentMentor] = useState(null)
   const [user, loading, error] = useAuthState(firebase.auth())
@@ -15,6 +14,7 @@ export default function Setpath() {
       try {
         // if new user , add their id to database, and send them to setup profile page to enter their details
         if (user !== null) {
+
 
           const data = {
             loginid: user.uid,
@@ -31,13 +31,11 @@ export default function Setpath() {
               'Access-Control-Allow-Origin': '',
             },
             body: JSON.stringify(data),
+          });
 
-          })
-
-          const response = await res.json()
-          router.push('/setup-profile/mentor')
-          console.log('response', response)
-
+          const response = await res.json();
+          router.push("/setup-profile/mentor");
+          console.log("response", response);
         }
 
         //otherwise go to set-up profile mentor page

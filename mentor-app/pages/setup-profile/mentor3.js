@@ -1,13 +1,11 @@
-import Link from "next/link";
 import firebase from "../../firebase/clientApp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
+
 import { server } from "../../config";
-import React, { useEffect } from "react";
-import { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import { Checkbox } from "antd";
-import css from "./mentor.module.css";
-import { Formik } from "formik";
 import * as Yup from "yup";
 
 import {
@@ -31,30 +29,35 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
+import { Formik } from "formik";
+
 import { InputControl, SubmitButton } from "formik-chakra-ui";
+
+const url = process.env.REACT_APP_BACKEND_URL;
 
 //add location and profile pic url fields
 
-function Mentee() {
+function Mentor() {
   const [user, loading, error] = useAuthState(firebase.auth());
+
   const loginid = user ? user.uid : "";
+
   const router = useRouter();
 
   const [firstname, setFirstname] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [jobtitle, setJobtitle] = useState("");
-  const [aims, setAims] = useState("");
+  const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
   const [biography, setBiography] = useState("");
-  const [photourl, setPhotourl] = useState(
-    "https://www.pngitem.com/pimgs/m/421-4212617_person-placeholder-image-transparent-hd-png-download.png"
-  );
+  const [photourl, setPhotourl] = useState("");
   const [tagline, setTagline] = useState("");
   const [skills, setSkills] = useState([]);
   const [socialMediaType, setSocialMediaType] = useState("");
   const [socialMediaUserName, setSocialMediaUserName] = useState("");
   const [socials, setSocials] = useState({});
+
   const [isLogIn, setLogIn] = useState(null);
 
   // useEffect(() => {
@@ -63,9 +66,12 @@ function Mentee() {
 
   useEffect(async () => {
     if (user !== null) {
+      //create 1 page for set up
+      //create one page for sign in
       const data = { loginid: user.uid };
       console.log("about to send post request!");
-      const res = await fetch(`${server}/api/mentees`, {
+
+      const res = await fetch(`${server}/api/mentors`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,6 +79,7 @@ function Mentee() {
         },
         body: JSON.stringify(data),
       });
+
       const response = await res.json();
     }
   }, [user]);
@@ -103,7 +110,7 @@ function Mentee() {
       //no job title in db yet --DONE
       jobtitle,
       // no company in db yet --DONE
-      aims,
+      company,
       location,
       biography,
       photourl,
@@ -117,7 +124,7 @@ function Mentee() {
     // const data = { loginid: user.uid };
     const loginid = user.uid;
 
-    const response = await fetch(`${server}/api/mentees/${loginid}`, {
+    const response = await fetch(`${server}/api/mentors/${loginid}`, {
       method: "PATCH",
 
       headers: {
@@ -125,8 +132,9 @@ function Mentee() {
       },
       body: JSON.stringify(body),
     });
+
     console.log(JSON.stringify(body));
-    router.push("/profile/mentee");
+    router.push("/profile/mentor");
   };
 
   const onSubmit = async () => {
@@ -151,7 +159,7 @@ function Mentee() {
     // const data = { loginid: user.uid };
     const loginid = user.uid;
 
-    const response = await fetch(`${server}/api/mentees/${loginid}`, {
+    const response = await fetch(`${server}/api/mentors/${loginid}`, {
       method: "PATCH",
 
       headers: {
@@ -161,7 +169,7 @@ function Mentee() {
     });
 
     console.log(JSON.stringify(body));
-    router.push("/profile/mentee");
+    router.push("/profile/mentor");
   };
 
   const initialValues = {
@@ -263,7 +271,22 @@ function Mentee() {
                                       />
                                     </InputGroup>
                                   </FormControl>
+                                  <FormControl id="name">
+                                    <FormLabel>Company</FormLabel>
+                                    <InputGroup borderColor="#E0E1E7">
+                                      <InputLeftElement pointerEvents="none" />
 
+                                      <Input
+                                        type="text"
+                                        size="md"
+                                        id="company"
+                                        value={company}
+                                        onChange={(e) =>
+                                          setCompany(e.target.value)
+                                        }
+                                      />
+                                    </InputGroup>
+                                  </FormControl>
                                   <FormControl id="name">
                                     <FormLabel>Location</FormLabel>
                                     <InputGroup borderColor="#E0E1E7">
@@ -315,24 +338,6 @@ function Mentee() {
                                         onChange={(e) =>
                                           setTagline(e.target.value)
                                         }
-                                      />
-                                    </InputGroup>
-                                  </FormControl>
-
-                                  <FormControl id="name">
-                                    <FormLabel>Aims</FormLabel>
-                                    <InputGroup borderColor="#E0E1E7">
-                                      <InputLeftElement pointerEvents="none" />
-
-                                      <Textarea
-                                        size="md"
-                                        id="aims"
-                                        placeholder="What are your aims and objectives through connecting with a mentor?"
-                                        value={aims}
-                                        onChange={(e) =>
-                                          setAims(e.target.value)
-                                        }
-                                        maxLength="400ch"
                                       />
                                     </InputGroup>
                                   </FormControl>
@@ -424,163 +429,4 @@ function Mentee() {
   );
 }
 
-{
-  /* <div className={css.UpdateMentorProfileFormContainer}>
-        <h1>Setup your mentee profile</h1>
-        <h2>Add or edit your information below</h2>
-        <div>
-          <form onSubmit={submitForm} className={css.UpdateMentorProfileForm}>
-            <div className={css.firstname}>
-              <label htmlFor='first-name'>First Name</label>
-              <input
-                id='first-name'
-                type='text'
-                value={firstname}
-                onChange={(e) => setFirstname(e.target.value)}
-                required
-              />
-            </div>
-            <div className={css.surname}>
-              <label htmlFor='surname'>Surname</label>
-              <input
-                id='surname'
-                type='text'
-                value={surname}
-                onChange={(e) => setSurname(e.target.value)}
-                required
-              />
-            </div>
-            <div className={css.email}>
-              <label htmlFor='email'>Email</label>
-              <input
-                id='email'
-                type='text'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className={css.jobtitle}>
-              <label htmlFor='jobtitle'>Job Title</label>
-              <input
-                id='jobtitle'
-                type='text'
-                value={jobtitle}
-                onChange={(e) => setJobtitle(e.target.value)}
-                required
-              />
-            </div>
-            <div className={css.company}>
-              <label htmlFor='aims'>Aims</label>
-              <input
-                id='aims'
-                type='text'
-                value={aims}
-                onChange={(e) => setAims(e.target.value)}
-                required
-              />
-            </div>
-            <div className={css.location}>
-              <label htmlFor='location'>Location</label>
-              <input
-                id='location'
-                type='text'
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                required
-              />
-            </div>
-            <div className={css.biography}>
-              <label htmlFor='biography'>Biography</label>
-
-              <textArea
-                id='biography'
-                type='text'
-                value={biography}
-                onChange={(e) => setBiography(e.target.value)}
-                required
-                maxlength='500ch'
-              />
-              <div className={css.photourl}>
-                <label htmlFor='photourl'>Profile photo URL</label>
-                <input
-                  id='photourl'
-                  type='text'
-                  value={photourl}
-                  onChange={(e) => setPhotourl(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className={css.tagline}>
-              <label htmlFor='tagline'>Profile Tagline</label>
-              <input
-                id='tagline'
-                type='text'
-                value={tagline}
-                onChange={(e) => setTagline(e.target.value)}
-                required
-              />
-            </div>
-            <div className={css.skills}>
-              <h4>
-                <label htmlFor='skills'>Skills</label>
-              </h4>
-              <div className={css.checkboxes}>
-                <Checkbox id='frontend' onChange={updateSkills}>
-                  Frontend
-                </Checkbox>
-                <Checkbox id='fullstack' onChange={updateSkills}>
-                  Fullstack
-                </Checkbox>
-                <Checkbox id='backend' onChange={updateSkills}>
-                  Backend
-                </Checkbox>
-                <Checkbox id='ux-ui' onChange={updateSkills}>
-                  UX/UI
-                </Checkbox>
-              </div>
-            </div>
-            {/* break into two inputs - social media type, social media name/handle  */
-}
-
-{
-  /* <div className={css.socialType}>
-              <label htmlFor='socialmediatype'>Social Media Type</label>
-              <select
-                name='socialMediaType'
-                className={css.dropdown}
-                id='socialmediatype'
-                onChange={(e) => setSocialMediaType(e.target.value)}
-              >
-                <option value=''>--Please choose an option--</option>
-                <option value='github'>GitHub</option>
-                <option value='linkedin'>LinkedIn</option>
-                <option value='twitter'>Twitter</option>
-              </select>
-            </div>
-            <div className={css.socialName}>
-              <label htmlFor='socialmediausername'>Social Media Handle</label>
-              <input
-                id='socialmediausername'
-                type='text'
-                value={socialMediaUserName}
-                onChange={(e) => setSocialMediaUserName(e.target.value)}
-                required
-              />
-            </div>
-            <button
-              variant='outline-success'
-              className={css.submitButton}
-              onClick={submitForm}
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-      </div> */
-}
-//     </>
-//   )
-// }
-
-export default Mentee;
+export default Mentor;
