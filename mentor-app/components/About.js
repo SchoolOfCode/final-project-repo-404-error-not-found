@@ -10,7 +10,7 @@ const About = () => {
       <br></br>
       <br></br>
       <br></br>
-      <h1 className={styles.heading} id="#about">
+      <h1 className={styles.aboutHeading} id="#about">
         About
       </h1>
       <p className={styles.aboutDescription}>
@@ -18,7 +18,7 @@ const About = () => {
         to provide a safe platform to connect people who are interested in tech
         or already in industry to share and exchange knowledge.
       </p>
-      <h1 className={styles.heading}>How does it work</h1>
+      <h1 className={styles.aboutHowHeading}>How does it work</h1>
 
       <div className={styles.card}>
         <div className={styles.stepCard}>

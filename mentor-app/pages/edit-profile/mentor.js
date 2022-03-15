@@ -37,8 +37,6 @@ import { Formik } from "formik";
 
 import { InputControl, SubmitButton } from "formik-chakra-ui";
 
-const url = process.env.REACT_APP_BACKEND_URL;
-
 function EditMentor() {
   const router = useRouter();
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -95,22 +93,21 @@ function EditMentor() {
     router.push("/profile/mentor");
   };
 
-  const initialValues = {
-    Firstname: "",
-    Surname: "",
-    Email: "",
-  };
-
-  const validationSchema = Yup.object({
-    Firstname: Yup.string().required("First Name required"),
-    Surname: Yup.string().required("Surname required"),
-    Email: Yup.string().email("Invalid Email").required("Email required"),
-  });
-
   //RENDER PAGE
   if (mentor === null) {
     return <h2>...Loading</h2>;
   } else {
+    const initialValues = {
+      Firstname: mentor.firstname,
+      Surname: "",
+      Email: "",
+    };
+
+    const validationSchema = Yup.object({
+      Firstname: Yup.string().required("First Name required"),
+      Surname: Yup.string().required("Surname required"),
+      Email: Yup.string().email("Invalid Email").required("Email required"),
+    });
     return (
       <>
         <Formik
@@ -141,7 +138,9 @@ function EditMentor() {
                       <VStack>
                         <WrapItem>
                           <Box>
-                            <Heading mb={"1rem"}>Edit your profile</Heading>
+                            <Heading mb={"1rem"} color="white">
+                              Edit your profile
+                            </Heading>
                             {/* <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
                             <VStack
                               pl={0}

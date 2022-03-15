@@ -117,13 +117,25 @@
   z-index: -1000;
 }
 
-.heading {
+.aboutHeading {
   align-items: center;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
   margin-bottom: 48px;
-  color: var(--textColor1);
+  color: White;
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.aboutHowHeading {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 48px;
+  color: #333;
   font-size: 45px;
   font-weight: 700;
   line-height: 140%;
