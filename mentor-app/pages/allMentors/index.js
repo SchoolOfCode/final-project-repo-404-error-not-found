@@ -103,11 +103,12 @@ const AllMentors = ({ mentors }) => {
           return firstname ? (
             <div
               key={userid}
-              className={styles.mentorDisplayCard}
+              // className={styles.mentorDisplayCard}
               data-cy={`mentorDisplayCard`}
             >
               <Center py={6}>
                 <Stack
+                  className={styles.mentorDisplayCard}
                   borderWidth="1px"
                   borderRadius="lg"
                   w={{ sm: "100%", md: "55%" }}
@@ -125,7 +126,12 @@ const AllMentors = ({ mentors }) => {
                     mt={"1rem"}
                   >
                     <div className={styles.ImgContainer}>
-                      <Image boxSize="280px" src={photourl} alt="" />
+                      <Image
+                        className={styles.profilePic}
+                        boxSize="280px"
+                        src={photourl}
+                        alt=""
+                      />
                     </div>
                     <Text
                       fontWeight={600}
