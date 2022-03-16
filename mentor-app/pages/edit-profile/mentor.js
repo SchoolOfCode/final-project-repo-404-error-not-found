@@ -17,6 +17,7 @@ import {
   ButtonGroup,
   CheckboxGroup,
   Container,
+  Spinner
   Flex,
   FormControl,
   FormLabel,
@@ -51,6 +52,7 @@ function EditMentor() {
     const value = e.target.value;
     setMentor({ ...mentor, [name]: value });
   }
+
   //update social media object whenever the type or username changes
   useEffect(() => {
     setSocials({ [socialMediaType]: socialMediaUserName });
@@ -93,29 +95,63 @@ function EditMentor() {
     router.push("/profile/mentor");
   };
 
+  const validationSchema = Yup.object({
+    Firstname: Yup.string().required("First Name required"),
+    Surname: Yup.string().required("Surname required"),
+    Email: Yup.string().email("Invalid Email").required("Email required"),
+  });
+
   //RENDER PAGE
   if (mentor === null) {
-    return <h2>...Loading</h2>;
+    return (
+      <h2 display={flex} justifyContent={center}>
+        ...Loading
+      </h2>
+    );
+    <Spinner
+      thickness="4px"
+      speed="0.65s"
+      emptyColor="gray.200"
+      color="blue.500"
+      size="xl"
+    />;
   } else {
+    // console.log("mentor firstname", mentor.firstname);
+    // console.log("mentors", mentor);
     const initialValues = {
-      Firstname: mentor.firstname,
-      Surname: "",
-      Email: "",
+      firstname: mentor.firstname,
+      surname: "",
+      email: "",
     };
 
-    const validationSchema = Yup.object({
-      Firstname: Yup.string().required("First Name required"),
-      Surname: Yup.string().required("Surname required"),
-      Email: Yup.string().email("Invalid Email").required("Email required"),
-    });
     return (
       <>
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
-          validationSchema={validationSchema}
+          // validationSchema={validationSchema}
+          validate={(values) => {
+            console.log("capture", values);
+            return {};
+
+            const errors = {};
+            if (!values.surname) {
+              errors.surname = "Required";
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.surname)
+            ) {
+              errors.surname = "Surname required";
+            }
+            return errors;
+          }}
+          onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+              alert(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }, 400);
+          }}
         >
-          {({ handleSubmit, values, errors }) => (
+          {({ handleSubmit, handleChange, values, errors }) => (
             <Container
               bg="#9DC4FB"
               maxW="full"
@@ -166,21 +202,22 @@ function EditMentor() {
                                     <InputControl
                                       name="Firstname"
                                       label="First Name"
-                                      value={mentor.firstname}
+                                      // value={initialValues.firstname}
                                       onChange={(e) => handleChange(e)}
                                     />
 
                                     <InputControl
-                                      name="Surname"
-                                      label="Surname"
-                                      value={mentor.surname}
-                                      onChange={(e) => handleChange(e)}
+                                      name="surname"
+                                      label="surname"
+                                      value={values.surname}
+                                      // onChange={(e) => handleChange(e)}
+                                      onChange={handleChange}
                                     />
 
                                     <InputControl
                                       name="Email"
                                       label="Email"
-                                      value={mentor.email}
+                                      defaultValue={mentor.email}
                                       onChange={(e) => handleChange(e)}
                                     />
 
