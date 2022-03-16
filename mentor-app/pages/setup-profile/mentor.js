@@ -51,7 +51,9 @@ function Mentor() {
   const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
   const [biography, setBiography] = useState("");
-  const [photourl, setPhotourl] = useState("");
+  const [photourl, setPhotourl] = useState(
+    "https://www.pngitem.com/pimgs/m/421-4212617_person-placeholder-image-transparent-hd-png-download.png"
+  );
   const [tagline, setTagline] = useState("");
   const [skills, setSkills] = useState([]);
   const [socialMediaType, setSocialMediaType] = useState("");
@@ -430,7 +432,6 @@ function Mentor() {
 }
 
 export default Mentor;
-
 
 // import { Button } from "react-bootstrap";
 

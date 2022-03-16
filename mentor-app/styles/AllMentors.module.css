@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
 
 .mentorList h1 {
   text-align: center;
@@ -17,7 +17,7 @@
 }
 
 .mentorCard {
-  /* border: 3px solid blue; */
+  border: 3px solid blue;
   padding: 2em;
   margin: 1em;
   display: grid;
@@ -43,16 +43,12 @@
   transition: ease 0.3s all;
 }
 
+.mentorDisplayCard {
+  width: 90%;
+}
 .profileLeft {
   margin: auto;
   padding: 1em;
-}
-
-.profilePic {
-  width: 9em;
-  height: 9em;
-  margin: 1em 2em;
-  border-radius: 50%;
 }
 
 .socials {
@@ -110,14 +106,24 @@
 .button {
   display: flex;
 }
+
 .ImgContainer {
-  object-fit: cover;
+  /* object-fit: contain; */
   height: 200px;
   width: 200px;
   overflow: hidden;
   align-items: center;
   border-radius: 50%;
+  background-color: aquamarine;
   /* box-shadow: 5px 5px 13px -4px rgba(110, 110, 110, 1); */
+}
+
+.profilePic {
+  object-fit: cover;
+
+  width: 1em;
+  height: 1em;
+  /* border-radius: 50%; */
 }
 
 /* .body {
@@ -135,4 +141,17 @@
   display: flex;
   justify-content: space-between;
   width: 26rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .btnsContainer {
+    max-width: 90%;
+    margin: auto;
+    justify-content: center;
+  }
+
+  .btnsContainer Button {
+    margin: 0.2em;
+    font-size: 0.8em;
+  }
 }
