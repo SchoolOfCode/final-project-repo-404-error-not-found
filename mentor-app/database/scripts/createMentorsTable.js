@@ -12,7 +12,7 @@ async function createMentors() {
        biography TEXT,
        socials jsonb,
        location TEXT,
-       photourl TEXT,
+       photourl TEXT DEFAULT 'https://www.pngitem.com/pimgs/m/421-4212617_person-placeholder-image-transparent-hd-png-download.png',
        tagline TEXT,
        skills TEXT[],
        relationships jsonb,
