@@ -1,15 +1,14 @@
-
-import Link from 'next/link'
-import firebase from '../firebase/clientApp'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { getAuth, signOut } from 'firebase/auth'
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import styles from '../styles/Home.module.css'
-import Image from 'next/image'
-import { server } from '../config'
-import logo from '../Images/mentoree_home_logo.jpg'
-import { Button } from 'react-bootstrap'
+import Link from "next/link";
+import firebase from "../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth, signOut } from "firebase/auth";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import styles from "../styles/Home.module.css";
+import Image from "next/image";
+import { server } from "../config";
+import logo from "../Images/mentoree_home_logo.jpg";
+import { Button } from "react-bootstrap";
 
 import {
   Menu,
@@ -17,15 +16,15 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
+  IconButton,
+  Show,
+  Hide,
+} from "@chakra-ui/react";
 
-} from '@chakra-ui/react'
-import { IconButton } from '@chakra-ui/react'
-import { HamburgerIcon } from '@chakra-ui/icons'
-import { createBreakpoints } from '@chakra-ui/theme-tools'
-import { Show, Hide } from '@chakra-ui/react'
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { createBreakpoints } from "@chakra-ui/theme-tools";
 
-const auth = getAuth()
-
+const auth = getAuth();
 
 const NavbarS = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -76,39 +75,37 @@ const NavbarS = () => {
   }
 
   const breakpoints = createBreakpoints({
-
-    sm: '30em',
-    md: '48em',
-    lg: '62em',
-    xl: '80em',
-    '2xl': '96em',
-  })
-
+    sm: "30em",
+    md: "48em",
+    lg: "62em",
+    xl: "80em",
+    "2xl": "96em",
+  });
 
   function handleClick(e) {
-    e.preventDefault()
-    console.log(e.target.value)
+    e.preventDefault();
+    console.log(e.target.value);
     switch (e.target.value) {
-      case 'home':
-        router.push('/')
-        break
-      case 'find':
-        router.push('/allMentors')
-        break
-      case 'edit':
-        router.push(`/edit-profile/${currentUser}`)
-        break
-      case 'dashboard':
-        router.push(`/dashboard/${currentUser}`)
-        break
-      case 'about':
-        router.push('/#about')
-        break
-      case 'dashboard':
-        router.push('/#contact')
-        break
+      case "home":
+        router.push("/");
+        break;
+      case "find":
+        router.push("/allMentors");
+        break;
+      case "edit":
+        router.push(`/edit-profile/${currentUser}`);
+        break;
+      case "dashboard":
+        router.push(`/dashboard/${currentUser}`);
+        break;
+      case "about":
+        router.push("/#about");
+        break;
+      case "dashboard":
+        router.push("/#contact");
+        break;
       default:
-        break
+        break;
     }
   }
 
@@ -122,9 +119,7 @@ const NavbarS = () => {
 
       <div className={styles.main}>
         <div className={styles.mains}>
-
-          <Link href='/'>
-
+          <Link href="/">
             <a>Home</a>
           </Link>
 
@@ -136,19 +131,15 @@ const NavbarS = () => {
             <a>Contact</a>
           </Link>
 
-
-          <Link href='/allMentors'>
-
+          <Link href="/allMentors">
             <a>Find a Mentor</a>
           </Link>
         </div>
       </div>
 
       {currentUser && (
-
-        <Show breakpoint='(min-width: 48em)'>
-          <Menu display='none'>
-
+        <Show breakpoint="(min-width: 48em)">
+          <Menu display="none">
             <MenuButton as={Button}>Profile</MenuButton>
             <MenuList>
               <MenuItem>
@@ -163,9 +154,7 @@ const NavbarS = () => {
               </MenuItem>
               <MenuDivider />
 
-
-              <MenuItem variant='outline-success' onClick={handleLogout}>
-
+              <MenuItem variant="outline-success" onClick={handleLogout}>
                 <a>Logout</a>
               </MenuItem>
             </MenuList>
@@ -173,9 +162,7 @@ const NavbarS = () => {
         </Show>
       )}
 
-
-      <Hide above='md'>
-
+      <Hide above="md">
         <Menu>
           <MenuButton
             as={IconButton}
@@ -185,33 +172,30 @@ const NavbarS = () => {
           />
 
           <MenuList>
-            <MenuItem value={'home'} onClick={(e) => handleClick(e)}>
+            <MenuItem value={"home"} onClick={(e) => handleClick(e)}>
               Home
             </MenuItem>
-            <MenuItem value={'find'} onClick={(e) => handleClick(e)}>
+            <MenuItem value={"find"} onClick={(e) => handleClick(e)}>
               Find a Mentor
             </MenuItem>
-            <MenuItem value={'about'} onClick={(e) => handleClick(e)}>
+            <MenuItem value={"about"} onClick={(e) => handleClick(e)}>
               About
             </MenuItem>
-            <MenuItem value={'contact'} onClick={(e) => handleClick(e)}>
+            <MenuItem value={"contact"} onClick={(e) => handleClick(e)}>
               Contact
-
             </MenuItem>
             {currentUser && (
-
               <>
-                <MenuItem value={'edit'} onClick={(e) => handleClick(e)}>
+                <MenuItem value={"edit"} onClick={(e) => handleClick(e)}>
                   Edit Profile
                 </MenuItem>
-                <MenuItem value={'dashboard'} onClick={(e) => handleClick(e)}>
+                <MenuItem value={"dashboard"} onClick={(e) => handleClick(e)}>
                   Dashboard
                 </MenuItem>
-                <MenuItem value={'logout'} onClick={handleLogout}>
+                <MenuItem value={"logout"} onClick={handleLogout}>
                   Logout
                 </MenuItem>
               </>
-
             )}
           </MenuList>
         </Menu>
