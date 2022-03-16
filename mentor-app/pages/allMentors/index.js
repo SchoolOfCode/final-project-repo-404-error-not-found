@@ -1,14 +1,14 @@
-import styles from '../../styles/AllMentors.module.css'
-import { useState } from 'react'
-import TwitterIcon from '../../components/TwitterIcon'
-import GithubIcon from '../../components/GithubIcon'
-import LinkedinIcon from '../../components/LinkedinIcon'
-import Link from 'next/link'
-import { server } from '../../config'
-import { Button } from 'react-bootstrap'
-import { motion } from 'framer-motion'
-import { Icon } from '@chakra-ui/react'
-import { IoLocationSharp } from 'react-icons/io5'
+import styles from "../../styles/AllMentors.module.css";
+import { useState } from "react";
+import TwitterIcon from "../../components/TwitterIcon";
+import GithubIcon from "../../components/GithubIcon";
+import LinkedinIcon from "../../components/LinkedinIcon";
+import Link from "next/link";
+import { server } from "../../config";
+import { Button } from "react-bootstrap";
+import { motion } from "framer-motion";
+import { Icon } from "@chakra-ui/react";
+import { IoLocationSharp } from "react-icons/io5";
 import {
   HStack,
   Badge,
@@ -21,19 +21,19 @@ import {
   Stack,
   Text,
   useColorModeValue,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
 export const getServerSideProps = async () => {
-  const res = await fetch(`${server}/api/mentors`)
-  const data = await res.json()
+  const res = await fetch(`${server}/api/mentors`);
+  const data = await res.json();
 
   return {
     props: { mentors: data },
-  }
-}
+  };
+};
 
 const AllMentors = ({ mentors }) => {
-  const [currentSkill, setCurrentSkill] = useState('frontend')
+  const [currentSkill, setCurrentSkill] = useState("frontend");
   return (
     <motion.div
       className={styles.body}
@@ -44,32 +44,32 @@ const AllMentors = ({ mentors }) => {
       <div className={styles.btns}>
         <div className={styles.btnsContainer}>
           <Button
-            variant='outline-success'
-            onClick={() => setCurrentSkill('all')}
+            variant="outline-success"
+            onClick={() => setCurrentSkill("all")}
           >
             All
           </Button>
           <Button
-            variant='outline-success'
-            onClick={() => setCurrentSkill('frontend')}
+            variant="outline-success"
+            onClick={() => setCurrentSkill("frontend")}
           >
             Frontend
           </Button>
           <Button
-            variant='outline-success'
-            onClick={() => setCurrentSkill('backend')}
+            variant="outline-success"
+            onClick={() => setCurrentSkill("backend")}
           >
             Backend
           </Button>
           <Button
-            variant='outline-success'
-            onClick={() => setCurrentSkill('fullstack')}
+            variant="outline-success"
+            onClick={() => setCurrentSkill("fullstack")}
           >
             Fullstack
           </Button>
           <Button
-            variant='outline-success'
-            onClick={() => setCurrentSkill('ux-ui')}
+            variant="outline-success"
+            onClick={() => setCurrentSkill("ux-ui")}
           >
             UX/UI
           </Button>
@@ -78,10 +78,10 @@ const AllMentors = ({ mentors }) => {
       {mentors
         .filter((mentor) => {
           if (mentor.skills !== null) {
-            if (currentSkill !== 'all') {
-              return mentor.skills.includes(`${currentSkill}`)
+            if (currentSkill !== "all") {
+              return mentor.skills.includes(`${currentSkill}`);
             } else {
-              return mentor !== null
+              return mentor !== null;
             }
           }
         })
@@ -99,7 +99,7 @@ const AllMentors = ({ mentors }) => {
             skills,
             jobtitle,
             company,
-          } = mentor
+          } = mentor;
           return firstname ? (
             <div
               key={userid}
@@ -108,41 +108,41 @@ const AllMentors = ({ mentors }) => {
             >
               <Center py={6}>
                 <Stack
-                  borderWidth='1px'
-                  borderRadius='lg'
-                  w={{ sm: '100%', md: '55%' }}
-                  minHeight={{ sm: '480px', md: '20rem' }}
-                  direction={{ base: 'column', md: 'row' }}
-                  bg={useColorModeValue('white', 'gray.900')}
-                  boxShadow={'2xl'}
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  w={{ sm: "100%", md: "55%" }}
+                  minHeight={{ sm: "480px", md: "20rem" }}
+                  direction={{ base: "column", md: "row" }}
+                  bg={useColorModeValue("white", "gray.900")}
+                  boxShadow={"2xl"}
                   padding={3}
-                  overflow={'hidden'}
+                  overflow={"hidden"}
                 >
                   <Stack
                     flex={1}
-                    justifyContent={'center'}
-                    alignItems={'center'}
-                    mt={'1rem'}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    mt={"1rem"}
                   >
                     <div className={styles.ImgContainer}>
-                      <Image boxSize='280px' src={photourl} alt='' />
+                      <Image boxSize="280px" src={photourl} alt="" />
                     </div>
                     <Text
                       fontWeight={600}
-                      color={'gray.500'}
-                      size='sm'
+                      color={"gray.500"}
+                      size="sm"
                       mb={4}
                       pb={4}
                     >
                       {socials ? (
                         <div className={styles.socials}>
-                          {Object.keys(socials)[0] === 'linkedin' ? (
+                          {Object.keys(socials)[0] === "linkedin" ? (
                             <LinkedinIcon handle={Object.values(socials)[0]} />
                           ) : null}
-                          {Object.keys(socials)[0] === 'github' ? (
+                          {Object.keys(socials)[0] === "github" ? (
                             <GithubIcon handle={Object.values(socials)[0]} />
                           ) : null}
-                          {Object.keys(socials)[0] === 'twitter' ? (
+                          {Object.keys(socials)[0] === "twitter" ? (
                             <TwitterIcon handle={Object.values(socials)[0]} />
                           ) : null}
                         </div>
@@ -152,20 +152,20 @@ const AllMentors = ({ mentors }) => {
 
                   <Stack
                     flex={1}
-                    flexDirection='column'
-                    justifyContent='center left'
-                    alignItems='center left'
+                    flexDirection="column"
+                    justifyContent="center left"
+                    alignItems="center left"
                     p={1}
                     pt={2}
                   >
                     <Heading
-                      fontSize={'3xl'}
-                      fontFamily={'body'}
-                      alignText={'center left'}
+                      fontSize={"3xl"}
+                      fontFamily={"body"}
+                      aligntext={"center left"}
                     >
                       {firstname} {surname}
                     </Heading>
-                    <Text fontWeight={600} color={'gray.500'} size='sm' mb={4}>
+                    <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
                       {jobtitle} at {company}
                     </Text>
 
@@ -173,8 +173,8 @@ const AllMentors = ({ mentors }) => {
                       <Icon as={IoLocationSharp} />
                       <Text
                         fontWeight={600}
-                        color={'gray.500'}
-                        size='sm'
+                        color={"gray.500"}
+                        size="sm"
                         mb={4}
                       >
                         {location}
@@ -183,11 +183,11 @@ const AllMentors = ({ mentors }) => {
 
                     <Text
                       noOfLines={3}
-                      textAlign={'center left'}
-                      color={useColorModeValue('gray.700', 'gray.400')}
+                      textAlign={"center left"}
+                      color={useColorModeValue("gray.700", "gray.400")}
                       // px={3}
-                      overflow={'hidden'}
-                      text-overflow={'ellipsis'}
+                      overflow={"hidden"}
+                      text-overflow={"ellipsis"}
                       pr={6}
                       // maxWidth={"9ch"}
                     >
@@ -195,9 +195,9 @@ const AllMentors = ({ mentors }) => {
                     </Text>
 
                     <Stack
-                      alignItems={'center left'}
-                      justifyContent={'center left'}
-                      direction={'row'}
+                      alignItems={"center left"}
+                      justifyContent={"center left"}
+                      direction={"row"}
 
                       // mt={3}
                     >
@@ -213,9 +213,9 @@ const AllMentors = ({ mentors }) => {
                     </Stack>
                     <div>
                       <Stack
-                        width={'100%'}
-                        mt={'0.5rem'}
-                        direction={'row'}
+                        width={"100%"}
+                        mt={"0.5rem"}
+                        direction={"row"}
                         pt={2}
                         pb={2}
                         // justifyContent={"space-between"}
@@ -223,7 +223,7 @@ const AllMentors = ({ mentors }) => {
                       >
                         <Link
                           href={{
-                            pathname: '/read-profile/mentor',
+                            pathname: "/read-profile/mentor",
                             query: {
                               loginid: loginid,
                             },
@@ -231,10 +231,10 @@ const AllMentors = ({ mentors }) => {
                         >
                           <Button
                             flex={1}
-                            fontSize={'sm'}
-                            rounded={'full'}
+                            fontSize={"sm"}
+                            rounded={"full"}
                             _focus={{
-                              bg: 'gray.200',
+                              bg: "gray.200",
                             }}
                           >
                             View Profile
@@ -246,10 +246,10 @@ const AllMentors = ({ mentors }) => {
                 </Stack>
               </Center>
             </div>
-          ) : null
+          ) : null;
         })}
     </motion.div>
-  )
-}
+  );
+};
 
-export default AllMentors
+export default AllMentors;

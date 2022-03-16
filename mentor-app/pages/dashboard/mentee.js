@@ -12,6 +12,7 @@ export default function Mentee() {
   const [user, loading, error] = useAuthState(firebase.auth());
   const [connectionAccepted, setConnectionAccepted] = useState(null);
   const [connectionPending, setConnectionPending] = useState(null);
+  const [userName, setUserName] = useState("");
 
   function filterData(data) {
     const pendingData = data.filter((each) => {
@@ -31,9 +32,19 @@ export default function Mentee() {
   useEffect(async () => {
     if (user !== null) {
       const loginid = user.uid;
+      const res = await fetch(`${server}/api/mentees/${loginid}`);
+      const currentMentee = await res.json();
+      setUserName(currentMentee[0].firstname + " " + currentMentee[0].surname);
+    }
+  }, [user]);
+
+  useEffect(async () => {
+    if (user !== null) {
+      const loginid = user.uid;
+      setUserName(user.displayName);
       const res = await fetch(`${server}/api/connection/${loginid}`);
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       filterData(data);
     }
   }, [user]);
@@ -43,7 +54,7 @@ export default function Mentee() {
   return (
     <div className={css.main}>
       <div span={18}>
-        <h1 className={css.title}>Name's Dashboard</h1>
+        <h1 className={css.title}>{userName}'s Dashboard</h1>
         <Link href="/edit-profile/mentee">
           <Button
             colorScheme="teal"

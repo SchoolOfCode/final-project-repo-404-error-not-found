@@ -1,92 +1,103 @@
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import css from './dashboard.module.css'
-import CardDashboard from '../../components/CardDashboard'
-import CardDashboardLong from '../../components/CardDasboardLong'
-import firebase from '../../firebase/clientApp'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { server } from '../../config'
-import CardDetail from '../../components/CardDetail'
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { Button, ButtonGroup } from "@chakra-ui/react";
+import css from "./dashboard.module.css";
+import CardDashboard from "../../components/CardDashboard";
+import CardDashboardLong from "../../components/CardDasboardLong";
+import firebase from "../../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { server } from "../../config";
+import CardDetail from "../../components/CardDetail";
 
 export default function Mentor() {
-  const [user, loading, error] = useAuthState(firebase.auth())
-  const [connectionAccepted, setConnectionAccepted] = useState(null)
-  const [connectionPending, setConnectionPending] = useState(null)
-  const [status, setStatus] = useState(false)
+  const [user, loading, error] = useAuthState(firebase.auth());
+  const [connectionAccepted, setConnectionAccepted] = useState(null);
+  const [connectionPending, setConnectionPending] = useState(null);
+  const [status, setStatus] = useState(false);
+  const [userName, setUserName] = useState("");
 
   function filterData(data) {
     const pendingData = data.filter((each) => {
-      return each.status === 'pending'
-    })
+      return each.status === "pending";
+    });
     if (pendingData.length !== 0) {
-      setConnectionPending(pendingData)
+      setConnectionPending(pendingData);
     }
     const acceptedData = data.filter((each) => {
-      return each.status === 'accepted'
-    })
+      return each.status === "accepted";
+    });
     if (acceptedData.length !== 0) {
-      setConnectionAccepted(acceptedData)
+      setConnectionAccepted(acceptedData);
     }
   }
 
   useEffect(async () => {
     if (user !== null) {
-      const loginid = user.uid
-      const res = await fetch(`${server}/api/connectionMentor/${loginid}`)
-      const data = await res.json()
-      console.log(data)
-      filterData(data)
+      const loginid = user.uid;
+      const res = await fetch(`${server}/api/mentors/${loginid}`);
+      const currentMentor = await res.json();
+      setUserName(currentMentor[0].firstname + " " + currentMentor[0].surname);
     }
-  }, [user, status])
+  }, [user]);
+
+  useEffect(async () => {
+    if (user !== null) {
+      const loginid = user.uid;
+
+      const res = await fetch(`${server}/api/connectionMentor/${loginid}`);
+      const data = await res.json();
+      console.log(data);
+      filterData(data);
+    }
+  }, [user, status]);
 
   async function acceptRequest(currentId) {
-    const data = { id: currentId }
+    const data = { id: currentId };
     const res = await fetch(`${server}/api/connection`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "",
       },
       body: JSON.stringify(data),
-    })
-    const response = await res.json()
-    setStatus(!status)
+    });
+    const response = await res.json();
+    setStatus(!status);
   }
   async function deleteRequest(id) {
     const res = await fetch(`${server}/api/connectionMentor/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "",
       },
-    })
-    const response = await res.json()
+    });
+    const response = await res.json();
     // if status is true, set status to false
-    setStatus(!status)
+    setStatus(!status);
   }
 
   return (
     <div className={css.main}>
       <div span={18}>
-        <h1 className={css.title}>Name's Dashboard</h1>
-        <Link href='/edit-profile/mentor'>
+        <h1 className={css.title}>{userName}'s Dashboard</h1>
+        <Link href="/edit-profile/mentor">
           <Button
-            colorScheme='teal'
-            variant='outline'
-            style={{ margin: '10px 0' }}
+            colorScheme="teal"
+            variant="outline"
+            style={{ margin: "10px 0" }}
           >
             Edit Profile
           </Button>
         </Link>
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: "center" }}>
           <h2 className={css.subtitle}>Your Mentees are...</h2>
         </div>
         <div className={css.container}>
           {/* if connectionAccepted is true render CardDashboard for each accepted connection, if not render <p>you dont have mentees</p> */}
           {connectionAccepted ? (
             connectionAccepted.map((each, index) => {
-              return <CardDetail info={each} key={index} roleUrl={'mentees'} />
+              return <CardDetail info={each} key={index} roleUrl={"mentees"} />;
             })
           ) : (
             <div className={css.acceptedRequest}>
@@ -95,7 +106,7 @@ export default function Mentor() {
           )}
         </div>
         <h2 className={css.subtitle}>
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: "center" }}>
             These mentees have requested mentorship from you...
           </div>
         </h2>
@@ -109,9 +120,9 @@ export default function Mentor() {
                   key={index}
                   acceptRequest={acceptRequest}
                   deleteRequest={deleteRequest}
-                  roleUrl={'mentees'}
+                  roleUrl={"mentees"}
                 />
-              )
+              );
             })
           ) : (
             <div className={css.pendingRequest}>
@@ -122,5 +133,5 @@ export default function Mentor() {
       </div>
       <div></div>
     </div>
-  )
+  );
 }
