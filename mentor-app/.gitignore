@@ -3,8 +3,8 @@
 .env.local
 .env.test.local
 .env.test
-setEnvVars.js
 testingJSONstuff.js
+ORIGINALsetEnvVars.js
 
 
 # dependencies
