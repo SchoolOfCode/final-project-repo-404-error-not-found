@@ -26,8 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm' 
-        repository: final-project-repo-404-error-not-found/mentor-app
-
+    - env:
         NEXT_PUBLIC_DB_URI: ${{ secrets.NEXT_PUBLIC_DB_URI }}
         NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY}}
         NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}}
