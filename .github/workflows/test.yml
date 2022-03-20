@@ -5,9 +5,9 @@ name: Tests
 
 on:
   push:
-    branches: [gitAction-1]
+    branches: [gitAction2]
   pull_request:
-    branches: [gitAction-1]
+    branches: [gitAction2]
 
 jobs:
   build:
