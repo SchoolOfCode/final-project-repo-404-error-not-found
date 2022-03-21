@@ -100,7 +100,7 @@ footer p {
   nav {
     display: flex;
     opacity: 1;
-    padding: 2.5rem;
+    padding: 2rem;
   }
 
   nav a {
@@ -117,5 +117,15 @@ footer p {
 
   .signIn h1 {
     justify-items: center;
+  }
+
+  nav .logo {
+    width: 130px;
+    padding-top: 0;
+    margin-left: auto;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    bottom: 50;
   }
 }

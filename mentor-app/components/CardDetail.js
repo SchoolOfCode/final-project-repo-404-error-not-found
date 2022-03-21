@@ -1,40 +1,40 @@
-import React from 'react'
-import { Button } from '@chakra-ui/react'
-import styles from '../styles/CardDashboard.module.css'
-import css from '../pages/dashboard/dashboard.module.css'
-import Link from 'next/link'
-import { server } from '../config'
-import { useEffect, useState } from 'react'
-import { IconButton, EmailIcon } from '@chakra-ui/react'
+import React from "react";
+import { Button } from "@chakra-ui/react";
+import styles from "../styles/CardDashboard.module.css";
+import css from "../pages/dashboard/dashboard.module.css";
+import Link from "next/link";
+import { server } from "../config";
+import { useEffect, useState } from "react";
+import { IconButton, EmailIcon } from "@chakra-ui/react";
 
 export default function CardDetail(props) {
-  const { info, roleUrl } = props
-  const [infoRender, setInfoRender] = useState(null)
-  const [modal, setModal] = useState(false)
+  const { info, roleUrl } = props;
+  const [infoRender, setInfoRender] = useState(null);
+  const [modal, setModal] = useState(false);
 
-  let viewId
+  let viewId;
 
-  if (roleUrl === 'mentees') {
-    viewId = info.mentee_id
+  if (roleUrl === "mentees") {
+    viewId = info.mentee_id;
   } else {
-    viewId = info.mentor_id
+    viewId = info.mentor_id;
   }
   useEffect(async () => {
     if (info !== null) {
-      const loginid = viewId
-      const res = await fetch(`${server}/api/${roleUrl}/${loginid}`)
-      const data = await res.json()
-      console.log(data)
-      setInfoRender(data)
+      const loginid = viewId;
+      const res = await fetch(`${server}/api/${roleUrl}/${loginid}`);
+      const data = await res.json();
+      console.log(data);
+      setInfoRender(data);
     }
-  }, [info])
+  }, [info]);
 
   return (
     <>
       <div>
         <div className={css.card}>
           {infoRender && (
-            <img src={infoRender[0].photourl} alt='' className={css.picture} />
+            <img src={infoRender[0].photourl} alt="" className={css.picture} />
           )}
 
           {infoRender ? (
@@ -42,7 +42,7 @@ export default function CardDetail(props) {
               {infoRender[0].firstname} {infoRender[0].surname}
             </h4>
           ) : (
-            'Name Surname'
+            "Name Surname"
           )}
           <Link
             // when view profile button is clicked, line 41
@@ -54,22 +54,24 @@ export default function CardDetail(props) {
               },
             }}
           >
-            <Button colorScheme='blue' variant='ghost'>
+            <Button colorScheme="blue" variant="ghost">
               View Profile
             </Button>
           </Link>
 
-          <Button
-            onClick={() =>
-              (window.location.href = `mailto:${infoRender[0].email}`)
-            }
-            colorScheme='teal'
-            variant='ghost'
-          >
-            + Email
-          </Button>
+          {infoRender && (
+            <Button
+              onClick={() =>
+                (window.location.href = `mailto:${infoRender[0].email}`)
+              }
+              colorScheme="teal"
+              variant="ghost"
+            >
+              {infoRender[0].email}
+            </Button>
+          )}
         </div>
       </div>
     </>
-  )
+  );
 }
