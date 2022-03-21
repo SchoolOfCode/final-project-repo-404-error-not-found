@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import About from "../components/About";
-import Contact from "../components/Contact";
+import About from "../../components/About";
+import Contact from "../../components/Contact";
 
 Object.defineProperty(window, "matchMedia", {
   writable: true,

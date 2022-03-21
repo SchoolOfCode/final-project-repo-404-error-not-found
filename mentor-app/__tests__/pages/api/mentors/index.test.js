@@ -1,8 +1,8 @@
-import handler from "../../../pages/api/mentors";
+import handler from "../../../../pages/api/mentors";
 import { createMocks } from "node-mocks-http";
 import { render, screen } from "@testing-library/react";
-import query from "../../../database/index.js";
-import { pool } from "../../../database/index";
+import query from "../../../../database/index.js";
+import { pool } from "../../../../database/index";
 
 afterAll(async () => {
   await pool.end();

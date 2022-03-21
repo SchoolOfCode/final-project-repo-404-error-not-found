@@ -1,8 +1,8 @@
-import handler from "../../../pages/api/mentors/[mentorsid]";
+import handler from "../../../../pages/api/mentors/[mentorsid]";
 import { createMocks } from "node-mocks-http";
 import { render, screen } from "@testing-library/react";
-import query from "../../../database/index.js";
-import { pool } from "../../../database/index";
+import query from "../../../../database/index.js";
+import { pool } from "../../../../database/index.js";
 
 //this should be the loginid of the first mentor in the database
 const firstMentorID = "12whatever";
