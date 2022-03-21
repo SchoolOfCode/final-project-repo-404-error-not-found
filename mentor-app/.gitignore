@@ -3,7 +3,7 @@
 .env.local
 .env.test.local
 .env.test
-.jest/setEnvVars.js
+setEnvVars.js
 testingJSONstuff.js
 
 

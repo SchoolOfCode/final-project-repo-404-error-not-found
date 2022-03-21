@@ -5,7 +5,7 @@ import query from "../../../database/index.js";
 import { pool } from "../../../database/index";
 
 //this should be the loginid of the first mentor in the database
-const firstMentorID = "99whatever";
+const firstMentorID = "12whatever";
 
 afterAll(async () => {
   await pool.end();
