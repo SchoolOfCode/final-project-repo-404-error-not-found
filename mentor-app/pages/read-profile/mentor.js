@@ -136,6 +136,7 @@ export default function Profile(props) {
                 >
                   <div className={styles.ImgContainer}>
                     <Image
+                      className={styles.profilePic}
                       boxSize="280px"
                       src={currentMentor.photourl}
                       alt=""
