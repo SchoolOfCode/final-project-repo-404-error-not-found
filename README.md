@@ -1,6 +1,6 @@
 # Mentoree
 
-Welcoming to Mentoree, a tech Mentoring App which connects people and enables growth. Mentoree was created as part of a 4 week project for the School Of Code Bootcamp in February - March 2022 by ChunWai Lo, Fatou Cham, Goyas Miah, Novel Alam, Scott Brown, and Simon Prato. Our brief was to use some of the skills we had learned on the bootcamp to create a full-stack application that would solve a real world problem.
+Welcome to Mentoree - a tech Mentoring App which connects people and enables growth. Mentoree was created as part of a 4 week project for the School Of Code Bootcamp in February - March 2022 by ChunWai Lo, Fatou Cham, Goyas Miah, Novel Alam, Scott Brown, and Simon Prato. Our brief was to use some of the skills we had learned on the bootcamp to create a full-stack application that would solve a real world problem.
 
 ![signup screenshot](./screenshots/team.png)
 
