@@ -101,8 +101,9 @@ export default function Profile() {
                   alignItems={"center"}
                   mt={"1rem"}
                 >
-                  <div className={styles.ImgContainer}>
+                  <div className={css.ImgContainer}>
                     <Image
+                      className={css.profilePic}
                       boxSize="280px"
                       src={currentMentor.photourl}
                       alt=""
