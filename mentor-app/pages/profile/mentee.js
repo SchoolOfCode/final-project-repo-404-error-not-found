@@ -64,7 +64,7 @@ export default function Profile() {
   //render page only if currentMentee is loaded, otherwise show loading text
   if (currentMentee !== null) {
     // let socialsKey = Object.keys(currentMentee.socials);
-
+    console.log(currentMentee);
     return (
       <div className={css.profileFullArea}>
         <h1>Your profile</h1>
@@ -98,13 +98,15 @@ export default function Profile() {
                   alignItems={"center"}
                   mt={"1rem"}
                 >
-                  <div className={styles.ImgContainer}>
-                    <Image
-                      boxSize="280px"
-                      src={currentMentee.photourl}
-                      alt=""
-                    />
-                  </div>
+                  {currentMentee.photourl ? (
+                    <div className={styles.ImgContainer}>
+                      <Image
+                        boxSize="280px"
+                        src={currentMentee.photourl}
+                        alt=""
+                      />
+                    </div>
+                  ) : null}
 
                   <Text
                     fontWeight={600}
