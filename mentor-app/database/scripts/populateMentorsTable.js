@@ -1,5 +1,5 @@
 import query from "../index.js";
-import mentors from "../mock-data.js";
+import mentors from "../mentors-sample-data.js";
 
 async function populateMentorsTable() {
   for (let i = 0; i < mentors.length; i++) {

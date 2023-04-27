@@ -35,6 +35,13 @@
   font-size: 3em;
 }
 
+.profilePic {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 15em;
+  width: 15em;
+}
+
 .sideDisplay {
   background-color: beige;
   border-radius: 20px;
@@ -148,4 +155,3 @@
   align-items: center;
   justify-content: center;
 }
-

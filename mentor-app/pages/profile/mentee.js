@@ -104,6 +104,7 @@ export default function Profile() {
                         boxSize="280px"
                         src={currentMentee.photourl}
                         alt=""
+                        className={styles.profilePic}
                       />
                     </div>
                   ) : null}
