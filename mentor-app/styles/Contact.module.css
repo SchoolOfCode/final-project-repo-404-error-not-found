@@ -23,6 +23,7 @@
   text-align: center;
   font-weight: 700;
   font-size: xx-large;
+  /* border: 3px solid red; */
 }
 .textarea {
   resize: none;
@@ -30,5 +31,3 @@
 .contactImg {
   margin-left: 170px;
 }
-
-
