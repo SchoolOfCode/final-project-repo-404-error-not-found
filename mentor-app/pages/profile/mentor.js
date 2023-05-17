@@ -104,7 +104,7 @@ export default function Profile() {
                   <div className={css.ImgContainer}>
                     <Image
                       className={css.profilePic}
-                      boxSize="280px"
+                      // boxSize="280px"
                       src={currentMentor.photourl}
                       alt=""
                     />

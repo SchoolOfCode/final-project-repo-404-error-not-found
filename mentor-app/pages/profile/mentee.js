@@ -52,7 +52,6 @@ export default function Profile() {
   useEffect(async () => {
     if (user !== null) {
       const loginid = user.uid;
-      // const loginid = 'hJAvwClURqXX0aiqsKsIlXqNa0R2'
       console.log("about to send GET request!");
       const res = await fetch(`${server}/api/mentees/${loginid}`);
       const data = await res.json();
@@ -63,8 +62,6 @@ export default function Profile() {
 
   //render page only if currentMentee is loaded, otherwise show loading text
   if (currentMentee !== null) {
-    // let socialsKey = Object.keys(currentMentee.socials);
-
     return (
       <div className={css.profileFullArea}>
         <h1>Your profile</h1>
@@ -98,13 +95,16 @@ export default function Profile() {
                   alignItems={"center"}
                   mt={"1rem"}
                 >
-                  <div className={styles.ImgContainer}>
-                    <Image
-                      boxSize="280px"
-                      src={currentMentee.photourl}
-                      alt=""
-                    />
-                  </div>
+                  {currentMentee.photourl ? (
+                    <div className={styles.ImgContainer}>
+                      <Image
+                        boxSize="280px"
+                        src={currentMentee.photourl}
+                        alt=""
+                        className={styles.profilePic}
+                      />
+                    </div>
+                  ) : null}
 
                   <Text
                     fontWeight={600}
@@ -260,9 +260,6 @@ export default function Profile() {
                         border="2px"
                         colorScheme="teal"
                         variant="ghost"
-                        // rounded={"full"}
-                        // bg={"gray.500"}
-                        // color={"white"}
                         boxShadow={
                           "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
                         }

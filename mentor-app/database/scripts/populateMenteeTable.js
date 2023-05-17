@@ -1,14 +1,14 @@
 import query from "../index.js";
-import mentors from "../mentors-sample-data.js";
+import mentees from "../mentees-sample-data.js";
 
-async function populateMentorsTable() {
-  for (let i = 0; i < mentors.length; i++) {
+async function populateMenteeTable() {
+  for (let i = 0; i < mentees.length; i++) {
     const {
       loginid,
       firstname,
       surname,
       jobtitle,
-      company,
+      aims,
       email,
       biography,
       socials,
@@ -17,16 +17,16 @@ async function populateMentorsTable() {
       tagline,
       skills,
       relationships,
-    } = mentors[i];
-    console.log(mentors[i]);
+    } = mentees[i];
+    console.log(mentees[i]);
     const res = await query(
-      "INSERT INTO mentors ( loginid, firstname, surname, jobtitle, company, email, biography, socials, location, photourl, tagline, skills, relationships) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)",
+      "INSERT INTO mentees ( loginid, firstname, surname, jobtitle, aims, email, biography, socials, location, photourl, tagline, skills, relationships) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)",
       [
         loginid,
         firstname,
         surname,
         jobtitle,
-        company,
+        aims,
         email,
         biography,
         socials,
@@ -39,4 +39,4 @@ async function populateMentorsTable() {
     );
   }
 }
-populateMentorsTable();
+populateMenteeTable();
