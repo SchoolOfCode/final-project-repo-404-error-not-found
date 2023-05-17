@@ -62,10 +62,6 @@ function Mentor() {
 
   const [isLogIn, setLogIn] = useState(null);
 
-  // useEffect(() => {
-  //   setLogIn(user);
-  // }, [user]);
-
   useEffect(async () => {
     if (user !== null) {
       //create 1 page for set up

@@ -26,7 +26,6 @@ import {
 export const getServerSideProps = async () => {
   const res = await fetch(`${server}/api/mentors`);
   const data = await res.json();
-  console.log(data);
 
   return {
     props: { mentors: data },

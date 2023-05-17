@@ -57,10 +57,6 @@ function Mentee() {
   const [socials, setSocials] = useState({});
   const [isLogIn, setLogIn] = useState(null);
 
-  // useEffect(() => {
-  //   setLogIn(user);
-  // }, [user]);
-
   useEffect(async () => {
     if (user !== null) {
       const data = { loginid: user.uid };

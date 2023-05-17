@@ -1,11 +1,4 @@
 .contactContainer {
-  /* border-radius: 1rem;
-  --tw-border-opacity: 1;
-  border: 5px solid rgb(229 231 235 / var(--tw-border-opacity)); */
-  /* /* margin: 0 auto; */
-  /*display: flex;
-  justify-content: center;*/
-  /* align-items: center; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
@@ -14,8 +7,7 @@
 .contact {
   font-family: "Nunito";
   padding-left: 10rem;
-  /* display: grid;
-  grid-template-columns: 2fr 1fr; */
+
   color: #333;
   padding-bottom: 20px;
   padding-top: 10px;
@@ -23,7 +15,6 @@
   text-align: center;
   font-weight: 700;
   font-size: xx-large;
-  /* border: 3px solid red; */
 }
 .textarea {
   resize: none;
