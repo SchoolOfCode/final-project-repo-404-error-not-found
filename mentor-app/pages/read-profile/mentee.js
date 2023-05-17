@@ -99,6 +99,7 @@ export default function Profile(props) {
                       boxSize="280px"
                       src={currentMentee.photourl}
                       alt=""
+                      className={styles.profilePic}
                     />
                   </div>
 

@@ -48,12 +48,13 @@ export default function contact() {
           bg="#fff"
           color="black"
           borderRadius="lg"
-          m={{ sm: 4, md: 16, lg: 10 }}
-          p={{ sm: 5, md: 5, lg: 16 }}
+          m={{ sm: 4, md: 16, lg: 20 }}
+          p={{ sm: 5, md: 5, lg: 8 }}
+          minW={{ sm: "full", md: "full", lg: "1000px" }}
           maxW="full"
         >
           <Flex
-            p={4}
+            p={0}
             maxW="full"
             direction={{
               base: "column",
@@ -64,17 +65,20 @@ export default function contact() {
           >
             {/* <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }} maxW="full"> */}
             <WrapItem
-              width="100%"
-              mr={0}
-              pr={0}
+              maxW="100%"
+              minW="50%"
+              // mr={0}
+              // pr={0}
               centerContent
               justifyContent="center"
-              m={0}
+              m={4}
             >
-              <Box maxW="full">
-                <Heading centerContent>Contact</Heading>
+              <Box maxW="full" centerContent justifyContent="center">
+                <Heading centerContent textAlign={"center"}>
+                  Contact
+                </Heading>
                 <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
-                  Fill up the form below to contact
+                  Fill in the form below to contact us
                 </Text>
                 <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }} maxW="full">
                   <VStack pl={0} spacing={3} alignItems="center" maxW="full">
@@ -146,8 +150,8 @@ export default function contact() {
                 </HStack>
               </Box>
             </WrapItem>
-            <WrapItem>
-              <Box bg="white" borderRadius="lg">
+            <WrapItem minW={"50%"} centerContent justifyContent="center">
+              <Box bg="white" borderRadius="lg" w={"full"}>
                 <Box m={8} color="#0B0E3F">
                   <VStack spacing={5}>
                     <FormControl id="name">

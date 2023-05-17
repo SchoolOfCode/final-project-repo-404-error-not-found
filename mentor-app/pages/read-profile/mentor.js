@@ -116,7 +116,7 @@ export default function Profile(props) {
               borderRadius="lg"
               w={{ sm: "100%", md: "55%" }}
               minHeight={{ sm: "480px", md: "20rem" }}
-              minWidth={{ sm: "480px", md: "70rem" }}
+              minWidth={{ sm: "480px", md: "60rem" }}
               direction={{ base: "column", md: "row" }}
               bg={useColorModeValue("white", "gray.900")}
               boxShadow={"2xl"}
@@ -180,7 +180,7 @@ export default function Profile(props) {
                   flexDirection="column"
                   justifyContent="center left"
                   alignItems="center left"
-                  p={9}
+                  p={{ sm: 2, md: 4, lg: 8 }}
                   pt={2}
                 >
                   <HStack>
@@ -228,12 +228,14 @@ export default function Profile(props) {
                   </Stack>
 
                   <Text
-                    textAlign={"center left"}
+                    textAlign={{
+                      sm: "left",
+                    }}
                     color={useColorModeValue("gray.700", "gray.400")}
                     overflow={"hidden"}
                     pr={6}
                     pt={3}
-                    fontSize={"1.3em"}
+                    fontSize={{ sm: "1.3em" }}
                   >
                     {/* <Heading
                       fontSize={"2xl"}

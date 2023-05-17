@@ -77,7 +77,8 @@
   display: flex;
   padding: auto;
   margin-top: 1em;
-  justify-content: left;
+  justify-content: space-evenly;
+  max-width: 100%;
 }
 
 .skill {
@@ -87,6 +88,8 @@
   border-radius: 5px;
   padding: 0.3em 0.8em;
   text-align: center;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 
 .profileRight p {

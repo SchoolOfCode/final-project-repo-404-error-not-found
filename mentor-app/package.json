@@ -11,6 +11,7 @@
     "createMenteeDB": "node -r dotenv/config database/scripts/createMenteeTable.js",
     "createConnectionDB": "node -r dotenv/config database/scripts/createTableRelation.js",
     "populateDB": "node -r dotenv/config database/scripts/populateMentorsTable.js",
+    "populateMentees": "node -r dotenv/config database/scripts/populateMenteeTable.js",
     "clearDBMentors": "node -r dotenv/config database/scripts/resetMentorsTable.js",
     "clearDBM": "node -r dotenv/config database/scripts/resetMenteeTable.js",
     "clearDBC": "node -r dotenv/config database/scripts/resetConnectionTable.js",

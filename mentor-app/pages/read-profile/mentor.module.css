@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
 
-.profileFullArea {
-  /* display: grid;
-  grid-template-columns: 2fr 1fr; */
-  /* width: 50%; */
-  /* margin: auto; */
-}
 .profileFullArea h1 {
   font-size: 3em;
   padding-top: 3rem;
@@ -33,6 +27,13 @@
 
 .profileMainArea h1 {
   font-size: 3em;
+}
+
+.profilePic {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 15em;
+  width: 15em;
 }
 
 .sideDisplay {
@@ -105,12 +106,6 @@
 }
 
 .skill {
-  /* background-color: lightgrey;
-  border-radius: 10px;
-  text-align: center;
-  width: 8em;
-  margin: 0.2em;
-  justify-self: center; */
   margin: 0.5em;
   background-color: black;
   color: white;
@@ -120,7 +115,6 @@
 
 .rightSquare {
   width: 100%;
-  /* height: 370px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,12 +134,10 @@
 
 .lowSquare {
   margin-top: 3rem;
-  /* border: 1px solid black; */
-  /* border-radius: 10px; */
+
   height: 100px;
   width: 13rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
