@@ -101,7 +101,7 @@ const NavbarS = () => {
       case "about":
         router.push("/#about");
         break;
-      case "dashboard":
+      case "contact":
         router.push("/#contact");
         break;
       default:

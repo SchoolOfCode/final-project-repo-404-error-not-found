@@ -74,7 +74,7 @@ export default function contact() {
               m={4}
             >
               <Box maxW="full" centerContent justifyContent="center">
-                <Heading centerContent textAlign={"center"} id="#contact">
+                <Heading centerContent textAlign={"center"} id="contact">
                   Contact
                 </Heading>
                 <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
