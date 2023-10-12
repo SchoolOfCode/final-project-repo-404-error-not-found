@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
 .main {
-  padding: 0 50px;
+  padding: 0 3em;
   font-family: "Nunito";
 }
 .column {
@@ -17,7 +17,10 @@
 }
 .container {
   min-height: 5rem;
-  padding: 20px 50px;
+  padding: 1em 0;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,29 +38,33 @@
   margin-bottom: 30px;
 }
 .card {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
+
   justify-content: space-evenly;
-  width: 45rem;
+  width: 100%;
+  margin: auto;
   border-radius: 7px;
-  height: 120px;
-  padding: 30px 30px;
+  min-height: 120px;
+  padding: 1em 1em;
   box-shadow: 6px 8px 12px 8px rgba(0, 0, 0, 0.25);
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 .card img {
   border-radius: 50%;
+  margin: auto;
 }
 .picture {
   object-fit: cover;
   /* border-radius: 50%; */
-  margin: 2em 2em;
+  margin: 1em;
   width: 6em;
   height: 6em;
 }
 .cardName {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-weight: 600;
   display: flex;
   justify-content: space-around;
@@ -78,4 +85,20 @@
 }
 .pendingRequest {
   color: red;
+}
+
+@media only screen and (max-width: 360px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .card {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .picture {
+    width: 10em;
+    height: 10em;
+  }
 }

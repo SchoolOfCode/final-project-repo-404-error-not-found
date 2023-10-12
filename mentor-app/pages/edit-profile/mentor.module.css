@@ -1,5 +1,6 @@
 .UpdateMentorProfileFormContainer {
   text-align: center;
+  padding: 2em;
 }
 
 .UpdateMentorProfileForm {
@@ -8,7 +9,7 @@
   /* border: 3px solid black; */
   text-align: left;
   padding: 3em;
-  width: 60%;
+  width: 100%;
   margin: 2em auto;
   border-radius: 8px;
   justify-items: center;
@@ -121,4 +122,28 @@
 .checkboxes label {
   font-weight: 400;
   padding: 0.1em;
+}
+
+@media only screen and (max-width: 900px) {
+  .UpdateMentorProfileForm {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1em;
+  }
+
+  .UpdateMentorProfileForm input[type="text"],
+  .UpdateMentorProfileForm textArea,
+  .UpdateMentorProfileForm .socialType,
+  .skills {
+    margin: 0.5em auto 1em;
+    width: 90%;
+  }
+  .dropdown {
+    width: 100%;
+  }
+
+  .checkboxes {
+    grid-template-columns: 1fr;
+  }
 }
