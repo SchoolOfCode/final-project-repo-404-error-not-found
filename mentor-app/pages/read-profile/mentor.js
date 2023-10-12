@@ -110,6 +110,7 @@ export default function Profile(props) {
             justifyContent={"center"}
             display={{ md: "flex" }}
             width={{ base: "100%", sm: "50%", md: "25%" }}
+            margin={"auto"}
           >
             <Stack
               borderWidth="1px"
@@ -183,7 +184,7 @@ export default function Profile(props) {
                   p={{ sm: 2, md: 4, lg: 8 }}
                   pt={2}
                 >
-                  <HStack>
+                  <HStack className={styles.nameandtitle}>
                     <Heading
                       fontSize={"4xl"}
                       fontFamily={"body"}

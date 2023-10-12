@@ -31,46 +31,44 @@ export default function CardDetail(props) {
 
   return (
     <>
-      <div>
-        <div className={css.card}>
-          {infoRender && (
-            <img src={infoRender[0].photourl} alt="" className={css.picture} />
-          )}
+      <div className={css.card}>
+        {infoRender && (
+          <img src={infoRender[0].photourl} alt="" className={css.picture} />
+        )}
 
-          {infoRender ? (
-            <h4 className={css.cardName}>
-              {infoRender[0].firstname} {infoRender[0].surname}
-            </h4>
-          ) : (
-            "Name Surname"
-          )}
-          <Link
-            // when view profile button is clicked, line 41
-            href={{
-              pathname: `/read-profile/${roleUrl.slice(0, roleUrl.length - 1)}`,
-              // return the mentee information
-              query: {
-                loginid: viewId,
-              },
-            }}
+        {infoRender ? (
+          <h4 className={css.cardName}>
+            {infoRender[0].firstname} {infoRender[0].surname}
+          </h4>
+        ) : (
+          "Name Surname"
+        )}
+        <Link
+          // when view profile button is clicked, line 41
+          href={{
+            pathname: `/read-profile/${roleUrl.slice(0, roleUrl.length - 1)}`,
+            // return the mentee information
+            query: {
+              loginid: viewId,
+            },
+          }}
+        >
+          <Button colorScheme="blue" variant="ghost">
+            View Profile
+          </Button>
+        </Link>
+
+        {infoRender && (
+          <Button
+            onClick={() =>
+              (window.location.href = `mailto:${infoRender[0].email}`)
+            }
+            colorScheme="teal"
+            variant="ghost"
           >
-            <Button colorScheme="blue" variant="ghost">
-              View Profile
-            </Button>
-          </Link>
-
-          {infoRender && (
-            <Button
-              onClick={() =>
-                (window.location.href = `mailto:${infoRender[0].email}`)
-              }
-              colorScheme="teal"
-              variant="ghost"
-            >
-              {infoRender[0].email}
-            </Button>
-          )}
-        </div>
+            {infoRender[0].email}
+          </Button>
+        )}
       </div>
     </>
   );

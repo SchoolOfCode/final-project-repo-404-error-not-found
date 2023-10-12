@@ -12,6 +12,7 @@
 
 .profileMainArea {
   padding: 1em 2em;
+  margin: auto;
   display: grid;
   text-align: center;
   background-color: beige;
